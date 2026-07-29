@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SOCY 1200 · Materials · Introduction to Using AI to Study Society</title>
-<meta name="description" content="Lecture slides for SOCY 1200: Introduction to Using AI to Study Society. Yale University, taught by Daniel Karell.">
+<meta name="description" content="Lecture slides and assignments for SOCY 1200: Introduction to Using AI to Study Society. Yale University, taught by Daniel Karell.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230B2545'/%3E%3Ctext x='16' y='23' font-family='monospace' font-size='16' font-weight='700' fill='%23ffffff' text-anchor='middle'%3E12%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -382,7 +382,7 @@ footer a{ color:#93AAC6; }
     <h1>Introduction to Using AI to <em>Study Society</em></h1>
     <div class="meta-row">
       <span>Professor <b>Daniel Karell</b></span>
-      <span>Lecture <b>Tue / Thu 1:30 PM –2:20 PM</b></span>
+      <span>Lecture <b>Tue / Thu 1:30 PM – 2:20 PM</b></span>
       <span>Room <b>TBD</b></span>
       <span>Sections <b>TBD</b></span>
     </div>
@@ -395,7 +395,7 @@ footer a{ color:#93AAC6; }
       <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5L21 21"/></svg>
       <label for="search" class="skip">Search course materials</label>
       <input id="search" type="search" autocomplete="off" spellcheck="false"
-             placeholder="Search lecture slides — try “embeddings” or “silicon sampling”">
+             placeholder="Search lecture slides and assignments — try “embeddings” or “paper summaries”">
       <span class="kbd-hint">press /</span>
     </div>
     <div class="chips" id="chips" role="group" aria-label="Filter by material type"></div>
@@ -532,13 +532,20 @@ const UNITS = [
   },
 ];
 
+/* Assignments — course handouts and problem sets, not tied to a specific week
+   unless you add one below. */
+const ASSIGNMENTS = [
+  { label:"Short Summaries of Sorted Articles", sub:"One-line summary of every course reading, grouped into six thematic sections (Foundations of AI and LLMs; Textual and Recording Analysis; LLMs in Social Networks; AI Bias and Ethics; Political Applications of AI; AI's Influence on Labor, Research, Creativity, and Innovation)", ext:"PDF", url:"assignments/paper_summaries.pdf" },
+];
+
 
 /* ============================================================
    Rendering + filtering
    ============================================================ */
 const TYPES = [
-  {key:"all",    label:"All"},
-  {key:"slides", label:"Slides"},
+  {key:"all",        label:"All"},
+  {key:"slides",     label:"Slides"},
+  {key:"assignment", label:"Assignments"},
 ];
 
 const $ = (s) => document.querySelector(s);
@@ -547,7 +554,8 @@ const searchEl = $("#search"), statusEl = $("#status-text");
 const emptyEl = $("#empty"), resetEl = $("#reset");
 
 const ALL_WEEKS = UNITS.flatMap(u => u.weeks.map(w => ({...w, unit:u})));
-const TOTAL = ALL_WEEKS.reduce((n,w) => n + w.materials.length, 0);
+const SLIDE_TOTAL = ALL_WEEKS.reduce((n,w) => n + w.materials.length, 0);
+const TOTAL = SLIDE_TOTAL + ASSIGNMENTS.length;
 
 let activeType = "all";
 
@@ -563,7 +571,9 @@ function highlight(text, q){
 /* --- type filter chips --- */
 function buildChips(){
   chipsEl.innerHTML = TYPES.map(t => {
-    const n = TOTAL;
+    let n = TOTAL;
+    if(t.key === "slides") n = SLIDE_TOTAL;
+    if(t.key === "assignment") n = ASSIGNMENTS.length;
     return `<button class="chip" type="button" data-type="${t.key}"
              aria-pressed="${t.key === activeType}">${t.label}<span class="ct">${n}</span></button>`;
   }).join("");
@@ -586,50 +596,82 @@ function render(){
   let shown = 0;
   const visibleWeeks = new Set();
   let html = "";
+  const showSlides = activeType === "all" || activeType === "slides";
+  const showAssignments = activeType === "all" || activeType === "assignment";
 
-  for(const unit of UNITS){
-    let unitHtml = "";
-    for(const w of unit.weeks){
-      const mats = w.materials.filter(m => {
-        if(!q) return true;
-        return (m.label + " " + (m.sub || "") + " " + w.title + " " + unit.name).toLowerCase().includes(q);
-      });
-      if(!mats.length) continue;
-      shown += mats.length;
-      visibleWeeks.add(w.n);
-      const now = w.n === CURRENT_WEEK;
-      unitHtml += `
-        <article class="week ${now ? "is-now" : ""}" id="week-${w.n}">
-          <div class="week-head">
-            <div class="wk-num">${String(w.n).padStart(2,"0")}</div>
-            <div class="wk-copy">
-              <h3>${highlight(w.title, q)}</h3>
-              <div class="wk-dates"><span>${esc(w.dates)}</span><span>${mats.length} item${mats.length===1?"":"s"}</span></div>
+  if(showSlides){
+    for(const unit of UNITS){
+      let unitHtml = "";
+      for(const w of unit.weeks){
+        const mats = w.materials.filter(m => {
+          if(!q) return true;
+          return (m.label + " " + (m.sub || "") + " " + w.title + " " + unit.name).toLowerCase().includes(q);
+        });
+        if(!mats.length) continue;
+        shown += mats.length;
+        visibleWeeks.add(w.n);
+        const now = w.n === CURRENT_WEEK;
+        unitHtml += `
+          <article class="week ${now ? "is-now" : ""}" id="week-${w.n}">
+            <div class="week-head">
+              <div class="wk-num">${String(w.n).padStart(2,"0")}</div>
+              <div class="wk-copy">
+                <h3>${highlight(w.title, q)}</h3>
+                <div class="wk-dates"><span>${esc(w.dates)}</span><span>${mats.length} item${mats.length===1?"":"s"}</span></div>
+              </div>
+              ${now ? '<span class="now-flag">This week</span>' : ""}
             </div>
-            ${now ? '<span class="now-flag">This week</span>' : ""}
-          </div>
+            <ul class="mats">
+              ${mats.map(m => `
+                <li class="mat">
+                  <a href="${m.url}"${m.url === "#" ? "" : ' target="_blank" rel="noopener"'}>
+                    <span class="type type-${m.type}">${esc(m.type)}</span>
+                    <span class="mat-body">
+                      <span class="mat-label">${highlight(m.label, q)}</span>
+                      ${m.sub ? `<span class="mat-sub">${highlight(m.sub, q)}</span>` : ""}
+                    </span>
+                    <span class="mat-ext">${esc(m.ext || "")}</span>
+                  </a>
+                </li>`).join("")}
+            </ul>
+          </article>`;
+      }
+      if(unitHtml){
+        html += `
+          <div class="unit-head">
+            <span class="u-tag">Unit ${unit.id}</span>
+            <h2>${highlight(unit.name, q)}</h2>
+            <span class="u-note">${esc(unit.note)}</span>
+          </div>${unitHtml}`;
+      }
+    }
+  }
+
+  if(showAssignments){
+    const aMats = ASSIGNMENTS.filter(a => !q || (a.label + " " + (a.sub || "")).toLowerCase().includes(q));
+    if(aMats.length){
+      shown += aMats.length;
+      html += `
+        <div class="unit-head">
+          <span class="u-tag">Handouts</span>
+          <h2>Assignments</h2>
+          <span class="u-note">${aMats.length} item${aMats.length===1?"":"s"}</span>
+        </div>
+        <article class="week">
           <ul class="mats">
-            ${mats.map(m => `
+            ${aMats.map(a => `
               <li class="mat">
-                <a href="${m.url}"${m.url === "#" ? "" : ' target="_blank" rel="noopener"'}>
-                  <span class="type type-${m.type}">${esc(m.type)}</span>
+                <a href="${a.url}" target="_blank" rel="noopener">
+                  <span class="type type-assignment">assignment</span>
                   <span class="mat-body">
-                    <span class="mat-label">${highlight(m.label, q)}</span>
-                    ${m.sub ? `<span class="mat-sub">${highlight(m.sub, q)}</span>` : ""}
+                    <span class="mat-label">${highlight(a.label, q)}</span>
+                    ${a.sub ? `<span class="mat-sub">${highlight(a.sub, q)}</span>` : ""}
                   </span>
-                  <span class="mat-ext">${esc(m.ext || "")}</span>
+                  <span class="mat-ext">${esc(a.ext || "")}</span>
                 </a>
               </li>`).join("")}
           </ul>
         </article>`;
-    }
-    if(unitHtml){
-      html += `
-        <div class="unit-head">
-          <span class="u-tag">Unit ${unit.id}</span>
-          <h2>${highlight(unit.name, q)}</h2>
-          <span class="u-note">${esc(unit.note)}</span>
-        </div>${unitHtml}`;
     }
   }
 
@@ -640,7 +682,7 @@ function render(){
   resetEl.hidden = !filtering;
   statusEl.innerHTML = filtering
     ? `Showing <b>${shown}</b> of ${TOTAL} materials.`
-    : `<b>${TOTAL}</b> slide decks across ${ALL_WEEKS.length} weeks.`;
+    : `<b>${TOTAL}</b> materials · ${SLIDE_TOTAL} slide decks across ${ALL_WEEKS.length} weeks, ${ASSIGNMENTS.length} assignment${ASSIGNMENTS.length===1?"":"s"}.`;
 
   document.querySelectorAll(".rail-chip").forEach(c => {
     c.classList.toggle("is-empty", !visibleWeeks.has(Number(c.dataset.week)));
