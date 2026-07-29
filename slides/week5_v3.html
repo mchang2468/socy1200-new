@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>SOCY 1200: Introduction to Using AI to Study Society</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Daniel Karell" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="yale.css" type="text/css" />
+    <link rel="stylesheet" href="yale-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# SOCY 1200: Introduction to Using AI to Study Society
+]
+.subtitle[
+## Unit 2: Prompting, with Application to Measurement: Bias, Systematic Errors, and Other Issues to Consider with Measurement
+]
+.author[
+### Daniel Karell
+]
+.institute[
+### Yale University
+]
+.date[
+### Week 5
+]
+
+---
+
+
+
+
+&lt;style&gt;
+.remark-slide-content:not(.title-slide) {
+  font-size: 16px; padding: 1.8em 2.2em 1em;
+  color: #1a1a2e; background: #fafafa;
+}
+.remark-slide-content:not(.title-slide) h1 {
+  font-size: 2em; font-weight: 700; letter-spacing: -0.03em;
+  color: #1a1a2e; border-bottom: 3px solid #c0392b;
+  padding-bottom: 0.3em; margin-bottom: 0.7em;
+}
+.remark-slide-content:not(.title-slide) h2 { font-size:1.05em; color:#555; font-weight:500; }
+.remark-slide-content:not(.title-slide) p, .remark-slide-content:not(.title-slide) li { line-height:1.65; }
+.inverse:not(.title-slide) { background: #1a1a2e !important; }
+.inverse:not(.title-slide) h1, .inverse:not(.title-slide) h2, .inverse:not(.title-slide) h3 { color:white !important; border:none !important; }
+.inverse:not(.title-slide) h1 { font-size:1.9em !important; letter-spacing:-0.03em; }
+.inverse:not(.title-slide) h2 { color:#aaa !important; font-weight:400 !important; }
+.section-num:not(.title-slide) { display:inline-block; font-size:4em; font-weight:900; color:rgba(39,183,245,0.8); line-height:1; margin-bottom:0.1em; }
+.discussion { background: #0f3460 !important; }
+.discussion h1 { color: #f0c040 !important; border-bottom: 3px solid #f0c040 !important; }
+.discussion p, .discussion li { color: #e8e8f0 !important; line-height: 1.75 !important; }
+.discussion strong { color: #f0c040 !important; }
+.paper-walk { background: #1a3a1a !important; }
+.paper-walk h1 { color: #90ee90 !important; border-bottom: 3px solid #90ee90 !important; }
+.paper-walk p, .paper-walk li { color: #ddeedd !important; line-height:1.7 !important; }
+.paper-walk strong { color: #90ee90 !important; }
+.debate { background: #1a1a2e !important; }
+.debate h1 { color: #ffcc66 !important; border-bottom: 3px solid #ffcc66 !important; }
+.debate p, .debate li { color: #f0e8d0 !important; line-height:1.7 !important; }
+.debate strong { color: #ffcc66 !important; }
+.casestudy { background: #0a1a2a !important; }
+.casestudy h1 { color: #66ccff !important; border-bottom: 3px solid #66ccff !important; }
+.casestudy p, .casestudy li { color: #ddeeff !important; line-height:1.7 !important; }
+.casestudy strong { color: #66ccff !important; }
+.box { border-radius:6px; padding:0.75em 1em; margin:0.4em 0; font-size:0.85em; line-height:1.6; }
+.box-red    { background:#fdf2f2; border-left:4px solid #c0392b; color:#3d0c0c; }
+.box-green  { background:#f0faf3; border-left:4px solid #27ae60; color:#0c3320; }
+.box-blue   { background:#f0f4ff; border-left:4px solid #2a5bd7; color:#0d1f5c; }
+.box-amber  { background:#fffbf0; border-left:4px solid #e67e22; color:#5c3400; }
+.box-slate  { background:#f4f5f7; border-left:4px solid #7f8c8d; color:#2c3e50; }
+.box-purple { background:#f5f0ff; border-left:4px solid #8e44ad; color:#2e0060; }
+.box-teal   { background:#f0fafa; border-left:4px solid #16a085; color:#0c3030; }
+.quote { border-left:5px solid #c0392b; background:white; border-radius:0 6px 6px 0; padding:0.7em 1.2em; font-size:0.88em; font-style:italic; color:#2c3e50; margin:0.6em 0; box-shadow:0 1px 4px rgba(0,0,0,0.07); }
+.quote cite { display:block; font-style:normal; font-size:0.82em; color:#c0392b; margin-top:0.3em; font-weight:600; }
+.cols-2 { display:grid; grid-template-columns:1fr 1fr; gap:1em; margin:0.5em 0; }
+.cols-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.9em; margin:0.5em 0; }
+.cols-4 { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:0.7em; margin:0.5em 0; }
+.step-row { display:flex; align-items:flex-start; gap:0.75em; margin-bottom:0.5em; }
+.step-num { flex-shrink:0; width:1.7em; height:1.7em; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.8em; margin-top:0.05em; }
+.step-num.red    { background:#c0392b; color:white; }
+.step-num.blue   { background:#2a5bd7; color:white; }
+.step-num.green  { background:#27ae60; color:white; }
+.step-num.amber  { background:#e67e22; color:white; }
+.step-num.grey   { background:#7f8c8d; color:white; }
+.step-body { font-size:0.83em; line-height:1.6; color:#2c3e50; padding-top:0.15em; }
+.styled-table { width:100%; border-collapse:collapse; font-size:0.81em; margin:0.5em 0; box-shadow:0 1px 6px rgba(0,0,0,0.08); }
+.styled-table thead tr { background:#1a1a2e; color:white; }
+.styled-table thead th { padding:0.6em 0.8em; text-align:left; font-weight:600; }
+.styled-table tbody tr:nth-child(even) { background:#f4f5f7; }
+.styled-table tbody tr:nth-child(odd) { background:white; }
+.styled-table tbody td { padding:0.55em 0.8em; color:#2c3e50; vertical-align:top; }
+.styled-table .hl      { background:#fdf2f2 !important; font-weight:600; }
+.styled-table .hl-green { background:#f0faf3 !important; }
+.styled-table .hl-blue  { background:#f0f4ff !important; }
+.badge { display:inline-block; border-radius:20px; padding:0.12em 0.65em; font-size:0.72em; font-weight:700; }
+.badge-red    { background:#fde8e8; color:#922b21; }
+.badge-green  { background:#e8f8ee; color:#1e8449; }
+.badge-blue   { background:#e8edff; color:#1a3fa0; }
+.badge-amber  { background:#fef3d0; color:#784212; }
+.badge-grey   { background:#eaecee; color:#515a5a; }
+.mono { font-family:'Cascadia Code','Fira Code','Courier New',monospace; font-size:0.78em; background:#1e2433; color:#abb2bf; border-radius:6px; padding:0.8em 1.1em; line-height:1.85; margin:0.4em 0; }
+.mono .hi-blue   { color:#61afef; }
+.mono .hi-green  { color:#98c379; }
+.mono .hi-red    { color:#e06c75; }
+.mono .hi-amber  { color:#e5c07b; }
+.mono .hi-grey   { color:#636d83; }
+.mono .hi-white  { color:#ffffff; }
+.mono .hi-purple { color:#c678dd; }
+.src { display:inline-block; background:#1a1a2e; color:#FFFFFF; font-size:0.68em; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; border-radius:3px; padding:0.15em 0.55em; margin-bottom:0.45em; }
+blockquote { border:none; padding:0; margin:0; background:none; }
+&lt;/style&gt;
+
+
+# What We're Covering This Week
+
+&lt;div class="cols-3" style="margin-top:0.7em;"&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Part I · Bias&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;What is bias and how do we detect it?&lt;br&gt;Overt vs. covert bias&lt;br&gt;LLMs are not culturally neutral&lt;br&gt;Errors fall on marginalized populations&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Part II · Pitfalls&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;Why replication is near-impossible&lt;br&gt;What to compare to after LLMs exceed humans&lt;br&gt;Why better models ≠ better conclusions&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Part III · Correction&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;Error correction requires knowing the structure&lt;br&gt;Design-based supervised learning&lt;br&gt;Regulation and standards debates&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;**The framing question for this week:**
+
+&lt;div class="box box-amber" style="text-align:center; font-size:0.9em;"&gt;We now know LLMs have biases. But &lt;em&gt;what kind&lt;/em&gt;, &lt;em&gt;where&lt;/em&gt;, &lt;em&gt;for whom&lt;/em&gt; — and what can we actually do about it?&lt;/div&gt;
+
+---
+
+# The Seven Papers — A Map
+
+&lt;div class="cols-2" style="margin-top:0.5em; font-size:0.82em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.5em;"&gt;Bias and what it looks like&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.3em;"&gt;&lt;strong&gt;Ashwin et al. (2025)&lt;/strong&gt; — LLM errors are non-random w.r.t. respondent characteristics; Rohingya refugees&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.3em;"&gt;&lt;strong&gt;Bai et al. (2025)&lt;/strong&gt; — Implicit bias persists even in aligned models; two psychology-inspired measures&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.3em;"&gt;&lt;strong&gt;Germani et al. (2025)&lt;/strong&gt; — Source framing: attributing to Chinese individuals lowers agreement across all models&lt;/div&gt;
+    &lt;div class="box box-red"&gt;&lt;strong&gt;Tan et al. (2026)&lt;/strong&gt; — LLMs have a "home culture"; cultural alignment affects human-AI collaboration&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:700; color:#2a5bd7; margin-bottom:0.5em;"&gt;Pitfalls and correction&lt;/div&gt;
+    &lt;div class="box box-blue" style="margin-bottom:0.3em;"&gt;&lt;strong&gt;Barrie et al. (2025)&lt;/strong&gt; — Rolling replication design; variance unacceptably high; open-weight models recommended&lt;/div&gt;
+    &lt;div class="box box-blue" style="margin-bottom:0.3em;"&gt;&lt;strong&gt;Bisbee &amp; Spirling (2025)&lt;/strong&gt; — When LLMs exceed human performance, robustness matters more than accuracy&lt;/div&gt;
+    &lt;div class="box box-blue"&gt;&lt;strong&gt;Maranca et al. (2025)&lt;/strong&gt; — DSL framework corrects non-classical AI measurement error using small validation sets&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*38k6XTwIjx0TmWBDrcXqrg.png)
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;I&lt;/div&gt;
+
+# Bias
+## What it is, how we detect it, and where it falls
+
+---
+
+# Three Definitions of Bias — All Apply Here
+
+&lt;div class="cols-3" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-blue"&gt;
+    &lt;div style="font-weight:700; color:#2a5bd7; margin-bottom:0.4em;"&gt;📐 Statistical bias&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;A systematic tendency for an estimator to deviate from the true value in a &lt;em&gt;consistent direction&lt;/em&gt;.&lt;br&gt;&lt;br&gt;Random errors average out. Bias does not — more data makes you more confidently wrong.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-blue"&gt;
+    &lt;div style="font-weight:700; color:#2a5bd7; margin-bottom:0.4em;"&gt;📏 Measurement bias&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;Systematic differences in how accurately an instrument performs &lt;em&gt;across groups or conditions&lt;/em&gt;.&lt;br&gt;&lt;br&gt;The same instrument measures some populations better than others — non-randomly.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-blue"&gt;
+    &lt;div style="font-weight:700; color:#2a5bd7; margin-bottom:0.4em;"&gt;🧠 Cognitive / social bias&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;Systematic patterns in judgment deviating from rational inference: stereotyping, in-group favoritism, source credibility effects.&lt;br&gt;&lt;br&gt;These are the biases LLMs absorb from training data.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="quote" style="margin-top:0.7em;"&gt;All three operate simultaneously in LLM-based social science measurement — often invisibly.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:500px; height:250px"&gt;
+![](https://static.vecteezy.com/system/resources/previews/004/759/949/original/fact-vs-bias-compare-with-huge-scale-and-people-analyze-facts-around-it-with-modern-flat-style-free-vector.jpg)
+
+
+---
+
+# Bias Is Demographically Patterned
+
+&lt;div class="src"&gt;Bai et al. 2025 · PNAS · 8 aligned models, 4 social categories, 21 stereotypes&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;The paradox they identify&lt;/div&gt;
+    &lt;div class="box box-amber" style="margin-bottom:0.4em; font-size:0.83em;"&gt;Standard bias benchmarks showed &lt;strong&gt;GPT-4 is essentially unbiased&lt;/strong&gt;: 98% "not enough info" on ambiguous QA; minimal differential treatment; consistent emotional tone across groups.&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:0.83em;"&gt;Yet their two new psychology-inspired measures reveal &lt;strong&gt;pervasive stereotype biases mirroring societal discrimination&lt;/strong&gt; across all 8 aligned models tested.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;How they measured it&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;LLM Word Association Test&lt;/strong&gt; — adapts the Implicit Association Test; prompt-based; measures automatic associations between concepts&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;LLM Relative Decision Test&lt;/strong&gt; — comparative evaluations between two candidates; more diagnostic of implicit bias than absolute ratings&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;!&lt;/span&gt;&lt;div class="step-body"&gt;Both work on proprietary models &lt;strong&gt;without embedding access&lt;/strong&gt; — closing a critical methodological gap&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:500px; height:250px"&gt;
+![](https://thfvnext.bing.com/th/id/R.527f93f100bb7f5b096a9dc11351ee65?rik=i6DfUAgsGCmd9Q&amp;pid=ImgRaw&amp;r=0)
+
+---
+
+# Bai et al.: What They Found
+
+&lt;div class="src"&gt;Bai et al. 2025&lt;/div&gt;
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th style="width:22%;"&gt;Bias category&lt;/th&gt;
+    &lt;th style="width:35%;"&gt;Example stereotype tested&lt;/th&gt;
+    &lt;th style="width:43%;"&gt;Finding&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Race&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Race and criminality; race and weapons&lt;/td&gt;&lt;td&gt;Strong implicit associations matching societal biases — even in GPT-4&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Gender&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Gender and science; gender and career&lt;/td&gt;&lt;td&gt;Male → science/career; female → family/arts associations persist&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Religion&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Religion and trustworthiness; religion and violence&lt;/td&gt;&lt;td&gt;Differential associations across religious groups; Islam most negatively associated&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Health&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Age and negativity; disability and competence&lt;/td&gt;&lt;td&gt;Older age and disability associated with lower competence and more negativity&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+--
+
+&lt;br&gt;&lt;div class="box box-red" style="font-size:0.84em;"&gt;&lt;strong&gt;The key finding:&lt;/strong&gt; These biases appear in models that &lt;em&gt;pass&lt;/em&gt; standard bias benchmarks. The benchmarks only measure overt, explicit bias. They are blind to implicit bias — which is what actually conditions model outputs in practice.&lt;/div&gt;
+
+---
+
+# Alignment and Bias
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-green"&gt;
+    &lt;div style="font-weight:700; color:#27ae60; margin-bottom:0.4em;"&gt;What alignment does ✓&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      Suppresses outputs that &lt;em&gt;explicitly&lt;/em&gt; express bias&lt;br&gt;
+      Reduces harmful, discriminatory language&lt;br&gt;
+      Makes the model socially acceptable&lt;br&gt;
+      Passes standard explicit bias benchmarks
+    &lt;/div&gt;
+    &lt;div style="margin-top:0.5em; font-size:1em; font-style:italic; color:#27ae60;"&gt;Like a person trained not to say biased things&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.4em;"&gt;What alignment does not do ✗&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      Remove statistical associations in the weights&lt;br&gt;
+      Prevent demographics from conditioning interpretation&lt;br&gt;
+      Eliminate implicit associations absorbed from training data&lt;br&gt;
+      Fix the source — only the surface expression
+    &lt;/div&gt;
+    &lt;div style="margin-top:0.5em; font-size:1em; font-style:italic; color:#c0392b;"&gt;That person still holds implicit associations — they just don't say them&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="quote" style="margin-top:0.6em;"&gt;Alignment is a layer on top of a biased training corpus. It modulates outputs without correcting the underlying structure. Don't mistake alignment for validity.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://www.visual-paradigm.com/servlet/editor-content/cn/tutorials/how-to-use/sites/7/2019/08/root-cause-analysis.png)
+
+---
+
+# Overt v. Covert Bias
+
+**Not all bias looks the same — and the harder-to-see kind is the more dangerous one for research.**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:700; color:#27ae60; font-size:0.88em; margin-bottom:0.4em;"&gt;Overt bias &lt;span class="badge badge-green"&gt;Visible&lt;/span&gt;&lt;/div&gt;
+    &lt;div class="box box-green" style="margin-bottom:0.3em; font-size:0.82em;"&gt;Discriminatory language in outputs&lt;/div&gt;
+    &lt;div class="box box-green" style="margin-bottom:0.3em; font-size:0.82em;"&gt;Differential refusal rates across groups&lt;/div&gt;
+    &lt;div class="box box-green" style="font-size:0.82em;"&gt;Explicit stereotyping in generated text&lt;/div&gt;
+    &lt;div style="margin-top:0.5em; font-size:0.81em; color:#27ae60; font-weight:600;"&gt;Detectable with standard evaluation methods&lt;/div&gt;
+    &lt;div style="font-size:0.8em; color:#555; margin-top:0.2em;"&gt;Reduced (not eliminated) by alignment&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:700; color:#c0392b; font-size:0.88em; margin-bottom:0.4em;"&gt;Covert bias &lt;span class="badge badge-red"&gt;Hidden&lt;/span&gt;&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.3em; font-size:0.82em;"&gt;Demographics silently condition how &lt;em&gt;inputs&lt;/em&gt; are interpreted&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.3em; font-size:0.82em;"&gt;Bias appears in &lt;em&gt;which inputs get which labels&lt;/em&gt;&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:0.82em;"&gt;Aggregate accuracy looks fine; subgroup accuracy is systematically off&lt;/div&gt;
+    &lt;div style="margin-top:0.5em; font-size:0.81em; color:#c0392b; font-weight:600;"&gt;Requires designed experiments or subgroup audits to detect&lt;/div&gt;
+    &lt;div style="font-size:0.8em; color:#555; margin-top:0.2em;"&gt;Survives alignment; passes benchmarks&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:500px; height:250px"&gt;
+![](https://static.vecteezy.com/system/resources/previews/021/213/904/non_2x/speaker-and-mute-volume-icon-in-flat-style-vector.jpg)
+
+---
+
+# Concrete Example: Covert Bias in Action
+
+&lt;div class="src"&gt;Bai et al. 2025 · LLM Relative Decision Test&lt;/div&gt;
+
+**Setup:** Present two identical candidates to a hiring decision prompt. Vary only their names (signaling race). Ask the model to recommend one.
+
+--
+
+&lt;div class="box box-red" style="font-size:0.84em;"&gt;The output is not discriminatory language — it is a recommendation. Standard bias checks would give this model a clean bill of health. Only a carefully designed comparative test reveals the bias. This is why &lt;strong&gt;Bai et al.'s measures are a genuine methodological contribution&lt;/strong&gt;, not just an empirical finding.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:250px; height:500px"&gt;
+![](https://cdn.corenexis.com/f/M6v59o2AGvl.png)
+
+---
+
+# Source Framing Triggers Systematic Bias
+
+&lt;div class="src"&gt;Germani &amp; Spitale 2025 · Science Advances · 4 LLMs, 4800 statements, 192,000 assessments&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;Study design&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em; font-size:0.82em;"&gt;24 topics spanning social, political, and public health domains&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em; font-size:0.82em;"&gt;Each statement presented to 4 LLMs (GPT-4, Claude, Gemini, DeepSeek)&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:0.82em;"&gt;Attribution varied: &lt;em&gt;human author (various nationalities)&lt;/em&gt; vs. &lt;em&gt;another LLM&lt;/em&gt;&lt;/div&gt;
+    &lt;div style="margin-top:0.6em; font-weight:600; font-size:0.84em; margin-bottom:0.3em;"&gt;Baseline finding&lt;/div&gt;
+    &lt;div class="box box-green" style="font-size:0.82em;"&gt;Without source attribution, LLMs show &lt;strong&gt;remarkably high inter- and intra-model agreement&lt;/strong&gt; — consistent evaluation across runs and models&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;When source framing is introduced&lt;/div&gt;
+    &lt;div class="mono" style="font-size:0.75em;"&gt;
+No attribution:
+  Agreement score: &lt;span class="hi-green"&gt;████████░░&lt;/span&gt;  0.74
+&lt;br&gt;
+Human (US):
+  Agreement score: &lt;span class="hi-green"&gt;████████░░&lt;/span&gt;  0.73
+&lt;br&gt;
+Human (Chinese):
+  Agreement score: &lt;span class="hi-red"&gt;█████░░░░░&lt;/span&gt;  0.51
+&lt;br&gt;
+DeepSeek (most affected):
+  Agreement score: &lt;span class="hi-red"&gt;███░░░░░░░&lt;/span&gt;  0.38
+    &lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:0.82em; margin-top:0.3em;"&gt;Same statement. Different attributed source. Consistent, systematic drop.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:500px; height:250px"&gt;
+![](https://images.ctfassets.net/lzny33ho1g45/66htcVa9cVmb0Qi82tXLGC/2ee85099eb977c4be48fd0c7aa7129f6/Group_12762.jpg)
+
+---
+
+# Germani et al.: The General Mechanism
+
+&lt;div class="src"&gt;Germani &amp; Spitale 2025&lt;/div&gt;
+
+**Why does Chinese attribution lower agreement?** The mechanism is structural, not specific to China.
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;What the model learned from training data&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;Western-dominated corpora encode Western perspectives as defaults.
+    &lt;br&gt;Statements attributed to non-Western, adversarial, or underrepresented sources are more frequently contested, discounted, or negatively framed in the training data — so the model learned to treat them that way.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.4em;"&gt;Expect similar effects for:&lt;/div&gt;
+    &lt;div style="font-size:0.83em; line-height:1.7;"&gt;
+      -Countries with negative Western media coverage&lt;br&gt;
+      -Languages with thin training data representation&lt;br&gt;
+      -Political systems diverging from Western liberal democracy&lt;br&gt;
+      -Any group systematically underrepresented in the corpus
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;&lt;div class="box box-amber" style="font-size:0.84em;"&gt;&lt;strong&gt;The implication for research:&lt;/strong&gt; Any study where source identity (author nationality, institutional affiliation, political group) is part of the input text must treat this as a confound. The model does not evaluate the content — it evaluates the content &lt;em&gt;as produced by a member of a particular group.&lt;/em&gt;&lt;/div&gt;
+
+---
+
+class: paper-walk
+
+# 📄 Paper Walkthrough: Germani et al. — What 192,000 Assessments Tell Us
+
+**The scale of this study is important: 4 LLMs × 4,800 statements × 10 evaluations each = 192,000 assessments.**
+
+&lt;br&gt;
+
+This isn't a demonstration on a handful of examples — it's a systematic measurement of framing effects across a large, diverse topic set.
+
+&lt;br&gt;
+
+**Key methodological point:** The high baseline agreement across models (without source attribution) is actually good news — it means LLMs are consistent evaluators when not perturbed. The dramatic drop when Chinese attribution is added is not noise: it is signal.
+
+&lt;br&gt;
+
+**The DeepSeek finding is particularly striking.** DeepSeek Reasoner (trained predominantly on Chinese-language data) showed the *largest* drop in agreement when evaluating Chinese-attributed statements — counter to what you might expect if the bias were simply "Western models disfavor Chinese sources." The pattern suggests the model has learned that Chinese sources are *contested* regardless of its own training language.
+
+&lt;br&gt;
+
+**For social science:** This means cross-national comparative studies using LLMs to evaluate political statements must explicitly control for source nationality in the prompt or treat nationality as a potential confound in analysis.
+
+---
+
+# LLMs Are Not Culturally Neutral
+
+&lt;div class="src"&gt;Tan et al. 2026 · AI Models as Cultural Beings&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;The core argument&lt;/div&gt;
+    &lt;div class="box box-amber" style="font-size:0.83em; margin-bottom:0.4em;"&gt;LLMs are not culturally neutral tools. They are &lt;strong&gt;cultural beings&lt;/strong&gt; — they have absorbed a particular cultural perspective from their training data and express it as a default.&lt;/div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin:0.5em 0 0.3em;"&gt;Study design&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:0.82em;"&gt;Systematically varied the cultural alignment between user and AI model across creative collaboration tasks. Measured output quality, diversity, and cultural appropriateness.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;What "home culture" means in practice&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;!&lt;/span&gt;&lt;div class="step-body"&gt;Social norms, appropriate behavior, and interpersonal expectations all filtered through Western individualist defaults&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;!&lt;/span&gt;&lt;div class="step-body"&gt;When asked to reason about Confucian values or collectivist decision-making, models apply individualist frameworks unless explicitly corrected&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;!&lt;/span&gt;&lt;div class="step-body"&gt;Cultural &lt;em&gt;misalignment&lt;/em&gt; between user and model reduces collaboration quality and produces culturally inappropriate outputs&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://m.media-amazon.com/images/I/816BF49VQVL._AC_SL1500_.jpg)
+
+---
+
+# Tan et al.: How Cultural Bias Shapes Creative Collaboration
+
+&lt;div class="src"&gt;Tan et al. 2026 · Singapore Management University&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;Study design&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em; font-size:0.82em;"&gt;Participants from &lt;strong&gt;East Asian (collectivist)&lt;/strong&gt; and &lt;strong&gt;Western (individualist)&lt;/strong&gt; cultural backgrounds collaborated with AI models on creative tasks&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:0.82em;"&gt;Varied cultural alignment: user culture matched or mismatched with the model's embedded cultural orientation&lt;/div&gt;
+    &lt;div style="margin-top:0.5em; font-weight:600; font-size:0.84em;"&gt;Key findings&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:0.82em; margin-bottom:0.3em;"&gt;Cultural &lt;em&gt;misalignment&lt;/em&gt; between user and model reduces collaboration quality, creative output diversity, and user satisfaction&lt;/div&gt;
+    &lt;div class="box box-amber" style="font-size:0.82em;"&gt;Models embedded with individualist cultural assumptions produce outputs that feel "off" to collectivist users — even when technically correct&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;What "cultural embedding" looks like&lt;/div&gt;
+    &lt;div class="mono" style="font-size:0.76em;"&gt;
+Prompt: "How should this team resolve a conflict?"
+&lt;br&gt;&lt;/br&gt;
+Individualist-embedded model:
+&lt;span class="hi-amber"&gt;"The team members should each express their
+individual concerns directly. The best solution
+will emerge from open debate and the most
+persuasive argument should win."&lt;/span&gt;
+&lt;br&gt;&lt;/br&gt;
+Collectivist-appropriate response:
+&lt;span class="hi-green"&gt;"The team should work to preserve relationships
+and find a solution that allows everyone to
+maintain face. A senior member might mediate
+privately before any group discussion."&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:0.82em; margin-top:0.3em;"&gt;Neither response is "wrong" in the abstract — but the first is culturally inappropriate for many East Asian professional contexts&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+# Cultural Neutrality: Three Concrete Examples
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th style="width:28%;"&gt;Research scenario&lt;/th&gt;
+    &lt;th style="width:38%;"&gt;What the model does by default&lt;/th&gt;
+    &lt;th style="width:34%;"&gt;What it should do&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;Code political attitudes in Japanese party manifestos&lt;/td&gt;&lt;td&gt;Apply Western left-right ideology framework as the primary dimension&lt;/td&gt;&lt;td&gt;Apply Japanese political dimensions (e.g., revisionism, economic nationalism)&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Assess communication styles in Nigerian social media&lt;/td&gt;&lt;td&gt;Evaluate against American norms of directness and individual expression&lt;/td&gt;&lt;td&gt;Apply culturally appropriate frameworks for indirect communication and community reference&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;Code community values in indigenous language text&lt;/td&gt;&lt;td&gt;Apply individualist decision-making frameworks and property concepts&lt;/td&gt;&lt;td&gt;Apply collective, relational, or land-based frameworks relevant to the community&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Evaluate interview responses from South Asian respondents&lt;/td&gt;&lt;td&gt;Interpret deference and hedged language as uncertainty or low confidence&lt;/td&gt;&lt;td&gt;Recognize culturally appropriate linguistic strategies in interview contexts&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+--
+
+&lt;br&gt;&lt;div class="box box-red" style="font-size:0.84em;"&gt;Cultural neutrality is not a setting you can turn on. It requires explicit prompting, domain expertise, and often fine-tuning on culturally appropriate training data.&lt;/div&gt;
+
+---
+
+# Errors Fall on Marginalized Populations
+
+&lt;div class="src"&gt;Ashwin, Chhabra &amp; Rao 2025 · Sociological Methods &amp; Research&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;The study&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em; font-size:0.82em;"&gt;Open-ended interview transcripts from &lt;strong&gt;Rohingya refugees and their Bengali hosts&lt;/strong&gt; in Bangladesh — one of the world's most marginalized populations&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:0.82em;"&gt;Used LLMs (ChatGPT, LLaMA 2, LLaMA 3) to annotate coding tasks: aspirations, sentiment, needs, attitudes&lt;/div&gt;
+    &lt;div style="margin-top:0.5em; font-weight:600; font-size:0.84em;"&gt;The finding&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:0.82em;"&gt;LLM annotation errors are &lt;strong&gt;non-random with respect to respondent characteristics.&lt;/strong&gt; The models systematically misclassify specific subgroups — not randomly, but in ways correlated with who is speaking.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;The cruel irony&lt;/div&gt;
+    &lt;div class="box box-amber" style="font-size:0.82em; margin-bottom:0.4em;"&gt;Marginalized, non-Western, and underrepresented populations are:&lt;br&gt;&lt;br&gt;• Most likely to be the focus of research requiring careful measurement&lt;br&gt;• Least represented in LLM training data&lt;br&gt;• Most affected by systematic LLM errors&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:0.82em; font-weight:600;"&gt;The tool fails most where accuracy matters most.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://static.vecteezy.com/system/resources/previews/010/640/462/non_2x/multicultural-people-crowd-diverse-person-group-isolated-multi-ethnic-community-portrait-different-nationality-illustration-characters-free-vector.jpg)
+
+---
+
+# Ashwin et al.: The Mechanism and the Fix
+
+&lt;div class="src"&gt;Ashwin et al. 2025&lt;/div&gt;
+
+**Why do errors fall on marginalized populations?**
+
+&lt;div class="mono" style="margin:0.5em 0; font-size:0.76em;"&gt;
+LLM training data:
+  &lt;br&gt;&lt;/br&gt;
+  English, Western, internet-accessible text     → &lt;span class="hi-green"&gt;billions of examples&lt;/span&gt;
+  &lt;br&gt;&lt;/br&gt;
+  Formal interview transcripts                   → &lt;span class="hi-amber"&gt;millions of examples&lt;/span&gt;
+  &lt;br&gt;&lt;/br&gt;
+  Rohingya refugee interviews in Bengali dialect → &lt;span class="hi-red"&gt;essentially zero examples&lt;/span&gt;
+  &lt;br&gt;&lt;/br&gt;
+
+Result:
+  The model has no calibrated representation of this population's
+  language, idiom, cultural reference, or lived experience.
+  
+  It applies whatever patterns fit from the nearest training distribution —
+  which introduces systematic, non-random error.
+&lt;/div&gt;
+
+--
+
+**Their recommended solution:**
+
+&lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Expert-code a representative subsample&lt;/strong&gt; — trained sociologists, not crowdworkers, code a subset of the corpus&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Train a bespoke supervised model&lt;/strong&gt; on those expert codes — not a general-purpose LLM&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Apply to full corpus&lt;/strong&gt; — the fine-tuned model knows &lt;em&gt;your population&lt;/em&gt;, not a generic approximation&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Audit by subgroup&lt;/strong&gt; — especially populations of primary theoretical interest&lt;/div&gt;&lt;/div&gt;
+
+---
+
+class: discussion
+
+# 💬 Discussion Question 1
+
+**"LLMs encode the biases of their training data — but so do human coders."**
+
+&lt;br&gt;
+
+Ashwin et al. find that LLM annotation of Rohingya refugee interviews introduces systematic bias correlated with respondent characteristics. But human coders trained in sociology also bring cultural assumptions and interpretive frameworks to qualitative coding.
+
+&lt;br&gt;
+
+1. Is the LLM bias problem qualitatively different from the human coder bias problem — or is it the same problem at larger scale?
+
+2. Ashwin et al. recommend training a bespoke supervised model on expert-coded transcripts rather than using a general-purpose LLM. But expert sociologists are expensive, slow, and not always available for every research context. Is this recommendation realistic — or only available to well-funded teams?
+
+3. Bai et al. find implicit bias in &lt;em&gt;all&lt;/em&gt; aligned models they test — including the most sophisticated proprietary ones. If bias is universal in LLMs, does that mean we should require explicit bias audits for every published study using LLM annotation?
+
+---
+
+class: casestudy
+
+# 📊 Case Study: What "Non-Random Errors" Looks Like — Ashwin et al. in Detail
+
+**Task:** Code Rohingya respondents' expressed aspirations as "economic," "educational," "social," or "safety."
+
+&lt;br&gt;
+
+**What random errors would look like:** Rohingya and Bengali respondents misclassified at similar rates, and the misclassifications don't correlate with any observable respondent characteristic. Analysis still works — the error is just noise.
+
+&lt;br&gt;
+
+**What Ashwin et al. actually found:** Rohingya respondents' aspirations were systematically more likely to be coded by LLMs as "safety" — regardless of what they actually expressed. Bengali respondents' aspirations were more accurately categorized.
+
+&lt;br&gt;
+
+**Why this is dangerous:** If you use LLM annotations to compare aspirations across groups, you will find that Rohingya respondents appear more safety-focused than they actually are — not because they are, but because the model's representation of their language and cultural context systematically triggers "safety" labels.
+
+&lt;br&gt;
+
+**The inference is wrong not because of noise, but because of a consistent directional error correlated with ethnicity.** Standard statistical power calculations don't protect against this. The answer is not a larger sample — it is a better measurement instrument.
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;II&lt;/div&gt;
+
+# Pitfalls and Issues
+## Replication, benchmarks, and the limits of improvement
+
+---
+
+# Why LLM Research Is Near-Impossible to Replicate
+
+&lt;div class="src"&gt;Barrie, Palmer &amp; Spirling 2025 · Rolling iterated replication design&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;Study design&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:0.82em; margin-bottom:0.3em;"&gt;Rolling iterated replication: same tasks repeated across multiple LLMs and crowdsourcing platforms over many months&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:0.82em;"&gt;Compared: LLM-only, crowdsourcing-only, and hybrid approaches on political text annotation&lt;/div&gt;
+    &lt;div style="margin-top:0.5em; font-weight:600; font-size:0.84em;"&gt;Key finding&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:0.82em;"&gt;&lt;strong&gt;LMs can be accurate, but the observed variance in performance is often unacceptably high.&lt;/strong&gt; Strict temperature control does not resolve these issues. In many cases the LM findings cannot be re-run, let alone replicated.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;Three sources of irreproducibility&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Run-to-run variance&lt;/strong&gt; — temp=0 does not guarantee determinism in proprietary APIs; same prompt → different outputs&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Version drift&lt;/strong&gt; — "GPT-4" in January ≠ "GPT-4" in September; silent provider updates break replication&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Prompt sensitivity&lt;/strong&gt; — punctuation, whitespace, word order produce meaningfully different output distributions&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://t3.ftcdn.net/jpg/01/13/16/96/360_F_113169628_qFbZUawBCZbdBxLO36oEJkmvvxhZVNWB.jpg)
+
+---
+
+# The Replication Standard LLM Research Must Meet
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-green"&gt;
+    &lt;div style="font-weight:700; color:#27ae60; margin-bottom:0.4em;"&gt;Standard quantitative social science&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      ✓ Code archived and shared&lt;br&gt;
+      ✓ Data archived (or access documented)&lt;br&gt;
+      ✓ Analysis re-run → identical results&lt;br&gt;
+      ✓ Independent replication with new data is possible
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.4em;"&gt;LLM-based research (current practice)&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      ✗ Prompt often not reported fully&lt;br&gt;
+      ✗ Model version often not reported&lt;br&gt;
+      ✗ Model has changed by the time of replication&lt;br&gt;
+      ✗ "Identical results" is not achievable with proprietary APIs
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;**Barrie et al.'s recommendations:**
+
+&lt;div class="cols-3" style="margin-top:0.4em; font-size:1em;"&gt;
+  &lt;div class="box box-blue" style="text-align:center;"&gt;&lt;strong&gt;Use open-weight models&lt;/strong&gt;&lt;br&gt;Locally versioned; pinned; reproducible&lt;/div&gt;
+  &lt;div class="box box-blue" style="text-align:center;"&gt;&lt;strong&gt;Archive everything&lt;/strong&gt;&lt;br&gt;Exact model version, full prompt, raw outputs alongside final dataset&lt;/div&gt;
+  &lt;div class="box box-blue" style="text-align:center;"&gt;&lt;strong&gt;Test sensitivity&lt;/strong&gt;&lt;br&gt;Prompt wording variations; model substitution; report both&lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+# Irreproducibility: A Fixability Assessment
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th style="width:35%;"&gt;Source of variance&lt;/th&gt;
+    &lt;th style="width:20%; text-align:center;"&gt;Fixable?&lt;/th&gt;
+    &lt;th style="width:45%;"&gt;What to do&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Prompt sensitivity&lt;/strong&gt;&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-green"&gt;Yes&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Standardize prompts; test sensitivity before publication; report final prompt verbatim&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Run-to-run variance&lt;/strong&gt;&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-amber"&gt;Partially&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Use open-weight models locally; multiple runs and report variance&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Version drift&lt;/strong&gt;&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-amber"&gt;Partially&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Pin exact version strings; archive raw outputs; prefer open-weight&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Training data changes&lt;/strong&gt;&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-red"&gt;No&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Inherent to continuously updated systems; only open-weight avoids this&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Proprietary opacity&lt;/strong&gt;&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-red"&gt;No&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Switch to open-weight models for published research where possible&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://www.bobvila.com/wp-content/uploads/2020/01/The-Best-Hammer-Option-Stalwart-75-HT3000-16-oz-Natural-Hardwood-Claw.jpg)
+
+---
+
+# Paper Walkthrough: Barrie et al. — Rolling Iterated Replication
+
+&lt;div class="src"&gt;Barrie, Palmer &amp; Spirling 2025 · The rolling replication design&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;What "rolling iterated replication" means&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:0.82em; margin-bottom:0.3em;"&gt;Same annotation tasks repeated at monthly intervals over many months — using the &lt;em&gt;same models&lt;/em&gt;, &lt;em&gt;same prompts&lt;/em&gt;, &lt;em&gt;same data&lt;/em&gt;&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:0.82em; margin-bottom:0.3em;"&gt;Both LLMs and crowdsourcing (MTurk, Prolific) used in parallel, providing a baseline&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:0.82em;"&gt;Compared: sentiment analysis, political text classification, named entity recognition&lt;/div&gt;
+    &lt;div style="margin-top:0.5em; font-weight:600; font-size:0.84em;"&gt;The variance problem&lt;/div&gt;
+    &lt;div class="mono" style="font-size:0.75em;"&gt;
+Same task, same model, same prompt
+&lt;br&gt;&lt;/br&gt;
+Run 1 (Month 1):  accuracy = &lt;span class="hi-green"&gt;84%&lt;/span&gt;
+&lt;br&gt;&lt;/br&gt;
+Run 2 (Month 2):  accuracy = &lt;span class="hi-amber"&gt;79%&lt;/span&gt;
+&lt;br&gt;&lt;/br&gt;
+Run 3 (Month 3):  accuracy = &lt;span class="hi-red"&gt;71%&lt;/span&gt;
+&lt;br&gt;&lt;/br&gt;
+Run 4 (Month 4):  accuracy = &lt;span class="hi-amber"&gt;82%&lt;/span&gt;
+&lt;br&gt;&lt;/br&gt;
+&lt;span class="hi-grey"&gt;Nothing changed. The model drifted.&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;What makes this different from prior work&lt;/div&gt;
+    &lt;div class="box box-green" style="font-size:0.82em; margin-bottom:0.3em;"&gt;Not just "can LLMs annotate well?" — but "do they annotate &lt;em&gt;consistently&lt;/em&gt; over time?"&lt;/div&gt;
+    &lt;div class="box box-green" style="font-size:0.82em; margin-bottom:0.3em;"&gt;Crowdsourcing shows stable variance over the same period — the problem is LLM-specific&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:0.82em; margin-bottom:0.3em;"&gt;Temperature=0 does not fix the problem — variance persists even with deterministic settings&lt;/div&gt;
+    &lt;div class="box box-amber" style="font-size:0.82em;"&gt;&lt;strong&gt;The theoretical contribution:&lt;/strong&gt; A framework for what LLM "replication" even means — distinguishing re-running, reproducing, and replicating in the LM context&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+# When the Gold Standard Dissolves
+
+&lt;div class="src"&gt;Bisbee &amp; Spirling 2025 · "What to Do When Humans Are No Longer the Gold Standard"&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;The classic validation logic&lt;/div&gt;
+    &lt;div class="mono" style="font-size:0.77em;"&gt;
+① LLM annotates a sample
+&lt;br&gt;&lt;/br&gt;
+② Human experts annotate same sample
+&lt;br&gt;&lt;/br&gt;
+③ Calculate agreement
+&lt;br&gt;&lt;/br&gt;
+④ Human performance = gold standard ✓
+    &lt;/div&gt;
+    &lt;div class="box box-amber" style="font-size:0.82em; margin-top:0.4em;"&gt;&lt;strong&gt;The problem:&lt;/strong&gt; Frontier LLMs demonstrate near-expert performance on many annotation tasks — and are getting better over time. What happens when they surpass the benchmark?&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;When LLMs exceed human performance&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.3em; font-size:0.82em;"&gt;The gold standard ceases to function as a benchmark — there is no external reference clearly superior to the model&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.3em; font-size:0.82em;"&gt;We cannot "correct" errors we cannot identify relative to a better reference&lt;/div&gt;
+    &lt;div class="box box-blue" style="font-size:0.82em;"&gt;&lt;strong&gt;Bisbee &amp; Spirling's answer:&lt;/strong&gt; Shift from asking "how accurate?" to "how robust to future model improvement?"&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:150px; height:300px"&gt;
+![](https://miro.medium.com/v2/da:true/resize:fit:1024/0*l5XeyTCTFznoqrr2)
+
+---
+
+# Paper Walkthrough: Bisbee &amp; Spirling — The Framework
+
+&lt;div class="src"&gt;Bisbee &amp; Spirling 2025 · futureProofR&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;Old question → New question&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.4em; font-size:0.82em;"&gt;&lt;strong&gt;Old:&lt;/strong&gt; "How accurate is this LLM relative to human coders?"&lt;br&gt;This fails when LLMs exceed human performance.&lt;/div&gt;
+    &lt;div class="box box-green" style="font-size:0.82em;"&gt;&lt;strong&gt;New:&lt;/strong&gt; "How sensitive are my conclusions to LLM choice — and how will they change as models improve?"&lt;br&gt;This remains answerable regardless of model capability.&lt;/div&gt;
+    &lt;div style="margin-top:0.5em; font-weight:600; font-size:0.84em;"&gt;Their tool&lt;/div&gt;
+    &lt;div class="box box-blue" style="font-size:0.82em;"&gt;&lt;code&gt;futureProofR&lt;/code&gt; — free R package for bounding estimates under different assumptions about future LLM accuracy&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;What their analysis shows&lt;/div&gt;
+    &lt;div class="mono" style="font-size:0.75em;"&gt;
+As LLM annotation accuracy increases...
+&lt;br&gt;&lt;/br&gt;
+Effect sizes      → get &lt;span class="hi-green"&gt;LARGER&lt;/span&gt;
+                     (less attenuation bias)
+                     &lt;br&gt;&lt;/br&gt;
+
+Null results      → become &lt;span class="hi-amber"&gt;MORE SUSPICIOUS&lt;/span&gt;
+                     (were they false nulls from measurement error?)
+                     &lt;br&gt;&lt;/br&gt;
+
+Ceiling effects   → eventually &lt;span class="hi-blue"&gt;STABILIZE&lt;/span&gt; estimates
+                     (accuracy bounded at 100%)
+    &lt;/div&gt;
+    &lt;div class="box box-amber" style="font-size:0.82em; margin-top:0.4em;"&gt;The implication: a null result found with a weak LLM may become significant when re-run with a better one — not because the data changed, but because measurement improved.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:200px; height:100px"&gt;
+![](https://media.istockphoto.com/id/1333902867/vector/old-and-new-way-conceptual-hand-drawn-vector-illustration.jpg?s=612x612&amp;w=0&amp;k=20&amp;c=QIPwjFTwMNArhvovzfHgqWpDzWe4_KSYjBrIpwS-eAc=)
+
+---
+
+# Better Models ≠ Better Research Conclusions
+
+**This is the counterintuitive finding that most researchers miss.**
+
+&lt;div class="mono" style="margin:0.5em 0;"&gt;
+&lt;span class="hi-grey"&gt;Same data. Same research question. Different LLM annotation quality.&lt;/span&gt;
+&lt;br&gt;&lt;/br&gt;
+Study with GPT-3.5 (lower accuracy):
+  β = 0.12 *      &lt;span class="hi-amber"&gt;(significant, small effect)&lt;/span&gt;
+  &lt;br&gt;&lt;/br&gt;
+
+Study with GPT-4 (higher accuracy):
+  β = 0.23 ***    &lt;span class="hi-green"&gt;(larger, more significant)&lt;/span&gt;
+  &lt;br&gt;&lt;/br&gt;
+
+&lt;span class="hi-grey"&gt;Why? Higher accuracy → less measurement error → less attenuation.
+&lt;br&gt;&lt;/br&gt;
+The effect size changed. The data didn't.&lt;/span&gt;
+&lt;br&gt;&lt;/br&gt;
+Implication:
+  - Cannot re-run with better model and assume new result is "more valid"
+  - Must explicitly assess how model improvement changes your conclusions
+  - Sensitivity analysis across model versions belongs in the paper
+&lt;/div&gt;
+
+--
+
+&lt;div class="box box-red" style="font-size:0.84em; margin-top:0.3em;"&gt;Switching to GPT-4 from GPT-3.5 is not a neutral methodological update — it is a change in your measurement instrument that changes your estimates. This requires the same transparency as switching survey instruments mid-study.&lt;/div&gt;
+
+---
+
+class: debate
+
+# ⚖️ Debate: Should All Published LLM Research Use Open-Weight Models?
+
+**The case for open-weight requirements (Barrie et al.):**
+
+Proprietary models (GPT-4, Claude, Gemini) are closed-source, updated without notice, not archivable, and expensive at scale. A paper using GPT-4-0314 cannot be exactly replicated after OpenAI deprecates that version. This violates basic open-science principles that political science has spent 20 years building.
+
+Open-weight models (LLaMA, Mistral, DEBATE) can be pinned to an exact version, run locally, archived alongside the dataset, and verified by any reviewer. Barrie et al. find their performance is competitive on well-defined tasks.
+
+&lt;br&gt;
+
+**The case against a blanket requirement:**
+
+Proprietary models often achieve meaningfully higher accuracy on complex, theory-laden tasks. Forcing researchers to use weaker models for the sake of reproducibility sacrifices validity for form. The better answer is requiring exact version reporting, output archiving, and sensitivity testing — not restricting model choice.
+
+&lt;br&gt;
+
+**Where do you stand?** And does your answer depend on whether the task is simple (protest event detection) or complex (covert racism classification)?
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;III&lt;/div&gt;
+
+# Correcting for Bias
+## What error correction requires — and what it doesn't
+
+---
+
+# Using futureProofR: A Practical Example
+
+&lt;div class="src"&gt;Bisbee &amp; Spirling 2025 · futureProofR package&lt;/div&gt;
+
+**Suppose you publish a study using GPT-3.5 annotations and find β = 0.12 (p = 0.04). A reviewer asks: "What happens if a better model is used?"**
+
+&lt;div class="mono" style="margin:0.5em 0; font-size:0.77em;"&gt;
+library(futureProofR)
+&lt;br&gt;&lt;/br&gt;
+&lt;span class="hi-grey"&gt;# Your current estimate with GPT-3.5 (accuracy ~78%)&lt;/span&gt;
+&lt;br&gt;&lt;
+result_current &lt;- your_regression_with_LLM_labels()
+&lt;span class="hi-amber"&gt;beta = 0.12, p = 0.04&lt;/span&gt;
+&lt;br&gt;&lt;/br&gt;
+
+&lt;span class="hi-grey"&gt;# futureProofR: what happens as accuracy improves to 85%, 90%, 95%?&lt;/span&gt;
+&lt;br&gt;
+sensitivity &lt;- futureproof(model = result_current,
+  current_acc = 0.78,
+  future_acc  = c(0.85, 0.90, 0.95))
+&lt;br&gt;&lt;/br&gt;
+&lt;span class="hi-grey"&gt;# Projected estimates&lt;/span&gt;
+&lt;br&gt;
+At 85% accuracy:  &lt;span class="hi-amber"&gt;beta = 0.16&lt;/span&gt;, p = 0.01   ← still significant, larger &lt;br&gt; At 90% accuracy:  &lt;span class="hi-green"&gt;beta = 0.20&lt;/span&gt;, p = 0.002  ← more significant &lt;br&gt; At 95% accuracy:  &lt;span class="hi-green"&gt;beta = 0.23&lt;/span&gt;, p &lt; 0.001 ← ceiling approaching
+&lt;/div&gt;
+
+&lt;div class="box box-green" style="margin-top:0.3em; font-size:0.83em;"&gt;&lt;strong&gt;Good news here:&lt;/strong&gt; The conclusion is robust to model improvement — the effect remains significant and grows. But a null result at β = 0.04 (p = 0.06) would look very different: improving accuracy might push it to significance, suggesting a false null.&lt;/div&gt;
+
+---
+
+# How All Seven Papers Connect
+
+&lt;div class="cols-2" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.5em;"&gt;The bias chain&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.3em;"&gt;Training data encodes societal biases → model weights absorb them &lt;span style="color:#888;"&gt;(Bai et al.)&lt;/span&gt;&lt;/div&gt;
+    &lt;div style="text-align:center; color:#c0392b; font-size:1.1em;"&gt;↓&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.3em;"&gt;Source framing activates those biases in evaluation tasks &lt;span style="color:#888;"&gt;(Germani et al.)&lt;/span&gt;&lt;/div&gt;
+    &lt;div style="text-align:center; color:#c0392b; font-size:1.1em;"&gt;↓&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.3em;"&gt;Cultural home-country defaults shape all outputs &lt;span style="color:#888;"&gt;(Tan et al.)&lt;/span&gt;&lt;/div&gt;
+    &lt;div style="text-align:center; color:#c0392b; font-size:1.1em;"&gt;↓&lt;/div&gt;
+    &lt;div class="box box-red"&gt;Errors fall hardest on populations absent from training data &lt;span style="color:#888;"&gt;(Ashwin et al.)&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:700; color:#2a5bd7; margin-bottom:0.5em;"&gt;The reproducibility chain&lt;/div&gt;
+    &lt;div class="box box-blue" style="margin-bottom:0.3em;"&gt;Proprietary models are non-deterministic and silently updated → replication impossible &lt;span style="color:#888;"&gt;(Barrie et al.)&lt;/span&gt;&lt;/div&gt;
+    &lt;div style="text-align:center; color:#2a5bd7; font-size:1.1em;"&gt;↓&lt;/div&gt;
+    &lt;div class="box box-blue" style="margin-bottom:0.3em;"&gt;As models improve, the human gold standard fails and effect sizes change systematically &lt;span style="color:#888;"&gt;(Bisbee &amp; Spirling)&lt;/span&gt;&lt;/div&gt;
+    &lt;div style="text-align:center; color:#2a5bd7; font-size:1.1em;"&gt;↓&lt;/div&gt;
+    &lt;div class="box box-blue"&gt;Non-classical AI errors require DSL correction, not standard regression &lt;span style="color:#888;"&gt;(Maranca et al.)&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-amber" style="margin-top:0.6em; font-size:1em; text-align:center;"&gt;&lt;strong&gt;All seven papers describe different facets of the same underlying problem:&lt;/strong&gt; using an imperfectly understood instrument to measure phenomena that matter — without adequate tools to characterize or correct for its imperfections.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:150px; height:75px"&gt;
+![](https://img2.clipart-library.com/27/gears-clip-art/gears-clip-art-16.jpg)
+
+---
+
+# What Prompting Cannot Fix
+
+**The most common (wrong) response to learning about LLM bias:**
+
+&lt;div class="box box-slate" style="margin:0.5em 0; font-size:0.9em; font-style:italic;"&gt;"I'll just add a debiasing instruction to my prompt."&lt;/div&gt;
+
+**Why this consistently fails — four papers, the same conclusion:**
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th style="width:28%;"&gt;Paper&lt;/th&gt;
+    &lt;th style="width:37%;"&gt;What was tried&lt;/th&gt;
+    &lt;th style="width:35%;"&gt;Result&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Jeon et al. (Week 4)&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Explicit debiasing instructions in vision-language models&lt;/td&gt;&lt;td&gt;&lt;span class="badge badge-red"&gt;Demographic shortcuts persist&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Bai et al.&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Full RLHF alignment (already includes debiasing)&lt;/td&gt;&lt;td&gt;&lt;span class="badge badge-red"&gt;Implicit bias persists in weights&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Germani et al.&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Careful prompt design for cross-national evaluation&lt;/td&gt;&lt;td&gt;&lt;span class="badge badge-red"&gt;Source framing effects persist&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Ashwin et al.&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;General-purpose LLMs on marginalized population data&lt;/td&gt;&lt;td&gt;&lt;span class="badge badge-red"&gt;Systematic errors persist&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class="quote" style="margin-top:0.6em;"&gt;Prompting operates on the model's outputs. Bias lives in the model's weights. The prompt does not reach the weights.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:200px; height:100px"&gt;
+![](https://images.law.com/contrib/content/uploads/sites/397/2023/04/Artificial-Intelligence-Prompt-767x633.jpg)
+
+---
+
+# Error Correction Requires Knowing the Error Structure
+
+&lt;div class="src"&gt;Maranca, Chung, Hinck, Wolsky, Egami &amp; Stewart 2025 · Sociological Methods &amp; Research&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;The core insight&lt;/div&gt;
+    &lt;div class="box box-amber" style="font-size:0.83em; margin-bottom:0.4em;"&gt;AI annotation errors are not classical (random, mean-zero). They are &lt;strong&gt;non-random, non-classical, and not mean-zero&lt;/strong&gt; — they correlate with covariates and vary systematically across subgroups.&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:0.83em;"&gt;Standard measurement error corrections assume classical error and therefore &lt;strong&gt;do not work&lt;/strong&gt; for AI-generated labels. Even small amounts of AI error can produce substantial bias in downstream estimates.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;Their application&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:0.82em; margin-bottom:0.3em;"&gt;&lt;strong&gt;Image analysis&lt;/strong&gt; — perceived violence in protest images; images shared in Black Lives Matter movement&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:0.82em;"&gt;GPT-4o assigned violence scores to protest images — but errors were systematically correlated with protest characteristics (size, type, outcome)&lt;/div&gt;
+    &lt;div class="box box-amber" style="margin-top:0.4em; font-size:0.82em;"&gt;Using raw AI labels without correction led to substantially biased estimates of predictors of perceived violence&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://prezentium.com/wp-content/uploads/2024/11/Organizational-Chart-2-1024x576.webp)
+
+---
+
+# The Design-Based Supervised Learning Framework
+
+&lt;div class="src"&gt;Maranca et al. 2025 · DSL&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;The DSL procedure&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;Draw a &lt;strong&gt;representative&lt;/strong&gt; validation sample from your corpus (stratified, not convenience)&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Expert-annotate&lt;/strong&gt; the validation sample — this step is unavoidable&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;Model the relationship: AI labels, human labels, and covariates → estimate the error structure&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;Apply the estimated error model as a correction to the full corpus; obtain valid confidence intervals&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;What makes DSL different&lt;/div&gt;
+    &lt;div class="box box-green" style="margin-bottom:0.3em; font-size:0.82em;"&gt;&lt;strong&gt;Asymptotically unbiased&lt;/strong&gt; — guarantees convergence to the correct estimate as validation sample grows&lt;/div&gt;
+    &lt;div class="box box-green" style="margin-bottom:0.3em; font-size:0.82em;"&gt;&lt;strong&gt;Proper confidence interval coverage&lt;/strong&gt; — accounts for uncertainty from the AI annotation step&lt;/div&gt;
+    &lt;div class="box box-green" style="font-size:0.82em;"&gt;&lt;strong&gt;Works with small validation sets&lt;/strong&gt; — doesn't require coding the full corpus; efficient use of expert labor&lt;/div&gt;
+    &lt;div class="box box-amber" style="margin-top:0.4em; font-size:0.82em;"&gt;Originally developed for text LLMs; Maranca et al. extend it to &lt;strong&gt;image analysis&lt;/strong&gt; — broader applicability&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://cdn.vectorstock.com/i/preview-1x/95/25/people-crowd-funnel-flow-conversion-group-graphic-vector-16299525.jpg)
+
+---
+
+# The Unavoidable Role of Human Coding
+
+&lt;div class="quote" style="margin-bottom:0.7em;"&gt;You cannot escape human coding. You can only reduce how much you need — and use it more strategically.&lt;/div&gt;
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th style="width:30%;"&gt;Approach&lt;/th&gt;
+    &lt;th style="width:28%;"&gt;Human coding required&lt;/th&gt;
+    &lt;th style="width:22%; text-align:center;"&gt;Validity guarantee&lt;/th&gt;
+    &lt;th style="width:20%;"&gt;When to use&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Zero-shot only&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;None&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-red"&gt;None&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Piloting only&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Few-shot prompting&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;5–20 examples&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-amber"&gt;Partial&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Limited resources&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Fine-tuning&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;100–10,000+ examples&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-blue"&gt;Moderate&lt;/span&gt;&lt;/td&gt;&lt;td&gt;High volume tasks&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl-green"&gt;&lt;td&gt;&lt;strong&gt;DSL correction (Maranca et al.)&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Representative validation sample&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-green"&gt;High&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Any high-stakes AI labeling&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl-green"&gt;&lt;td&gt;&lt;strong&gt;Bespoke model (Ashwin et al.)&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Subsample of corpus by experts&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-green"&gt;High&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Marginalized populations&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:300px"&gt;
+![](https://i.pinimg.com/736x/62/01/0d/62010d848b790a2336d1542fcda51789.jpg)
+
+---
+
+# Corrections for Error Types
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th style="width:40%;"&gt;Error type&lt;/th&gt;
+    &lt;th style="width:60%;"&gt;Appropriate correction&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Non-representative validation sample&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Stratified sampling; ensure subgroups of interest are proportionally represented&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Systematic demographic bias&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Fine-tune on balanced data; audit by demographic subgroup; apply DSL correction (Maranca et al.)&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Concept mismatch&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:0.88em; font-weight:400;"&gt;model's operationalization ≠ yours&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Improve the prompt with definitions and examples; switch to bespoke fine-tuned model&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Model version instability&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Pin to open-weight versioned model; archive all outputs; test sensitivity across versions&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Population underrepresentation&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:0.88em; font-weight:400;"&gt;marginalized groups, rare languages&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Bespoke supervised model trained on expert-coded examples from your specific population (Ashwin et al.)&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Cultural framework mismatch&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Domain experts provide cultural context in prompt; fine-tune on culturally appropriate data (Tan et al.)&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://img.magnific.com/free-vector/grammar-correction-concept-illustration_114360-12521.jpg?w=900&amp;t=st=1711051332~exp=1711051932~hmac=70b4b2976a202bd2d2d6e8fd871320638704da46aeb5bcf820b7434f6c6f6051)
+
+---
+
+# How Should LLM Biases Be Regulated?
+
+**The field is debating four main positions. Each has real costs and benefits.**
+
+&lt;div class="cols-2" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div class="box box-blue"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Position 1 · Disclosure standards&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;Journals require model version, prompt, validation accuracy by subgroup — but no restriction on methods.&lt;br&gt;&lt;br&gt;&lt;span style="color:#888; font-style:italic;"&gt;Critique: disclosure doesn't fix bias; it makes it visible but allows it to propagate.&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-blue"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Position 2 · Validation requirements&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;Require human-coded validation samples for any LLM-annotated dataset. Require sensitivity analysis across ≥2 model versions.&lt;br&gt;&lt;br&gt;&lt;span style="color:#888; font-style:italic;"&gt;Critique: costly; advantages well-funded teams; may slow down science.&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-blue"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Position 3 · Domain restrictions&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;Restrict LLM measurement in high-stakes decisions (criminal justice, hiring, policy). Allow freer use in basic research.&lt;br&gt;&lt;br&gt;&lt;span style="color:#888; font-style:italic;"&gt;Critique: hard to enforce; basic research feeds applied decisions.&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-blue"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Position 4 · Open-weight requirements&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;Require open, versioned models for published research — enforcing reproducibility at the source (Barrie et al.).&lt;br&gt;&lt;br&gt;&lt;span style="color:#888; font-style:italic;"&gt;Critique: open models may carry different or worse biases on some tasks.&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:200px; height:100px"&gt;
+![](https://cdn3d.iconscout.com/3d/premium/thumb/debate-four-candidate-9871013-8082178.png)
+
+---
+
+class: casestudy
+
+# 📊 Case Study: Maranca et al. — DSL in Practice
+
+**Task:** Estimate the visual predictors of perceived violence in protest images (Black Lives Matter dataset).
+
+&lt;br&gt;
+
+**Step 1:** GPT-4o annotates perceived violence scores for 3,200 protest images. Fast, cheap — but how accurate?
+
+**Step 2:** Expert coders annotate a stratified random sample of 400 images — roughly 12.5% of the corpus.
+
+**Step 3:** Maranca et al. model the error structure: how does AI error correlate with image characteristics (crowd size, police presence, setting, protest type)?
+
+**Step 4:** Apply DSL correction to the full 3,200-image dataset. Re-estimate the regression: what predicts perceived violence?
+
+&lt;br&gt;
+
+**Key result:** The uncorrected AI labels produced biased regression coefficients — systematically overestimating the association between police presence and perceived violence. The DSL correction substantially changed the estimates and produced valid confidence intervals.
+
+&lt;br&gt;
+
+**The lesson:** Even when GPT-4o achieves high overall accuracy (~87%), the residual errors are non-random — they are systematically correlated with the covariates of interest. DSL catches this; standard regression does not.
+
+---
+
+class: discussion
+
+# 💬 Discussion Question 2
+
+**"Better model performance does not necessarily mean better research conclusions."**
+
+&lt;br&gt;
+
+Bisbee &amp; Spirling show that switching to a higher-accuracy LLM changes your estimates systematically — larger effects, fewer null results — in ways that look like scientific progress but are actually measurement changes.
+
+&lt;br&gt;
+
+1. Suppose you publish a paper using GPT-3.5 annotations that finds a null result. Two years later, another researcher re-runs your analysis with GPT-4 and finds a significant positive effect. Whose finding is "correct"? How should we adjudicate?
+
+2. Bisbee &amp; Spirling argue that future-proofing research means focusing on robustness rather than accuracy. Is robustness the right target — or does this let researchers hide behind uncertainty rather than committing to a best-estimate finding?
+
+3. Maranca et al. show that even "small" AI errors (13% error rate) can produce substantial bias in downstream regression estimates. If this is true, does any published LLM-annotation study that did not use DSL or an equivalent correction need to be retracted or flagged?
+
+---
+
+# Comparing Barrie et al. and Bisbee &amp; Spirling: Two Diagnoses, One Problem
+
+**Both papers identify a crisis in LLM-based social science — but they frame it differently and prescribe different remedies.**
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th style="width:22%;"&gt;Dimension&lt;/th&gt;
+    &lt;th style="width:39%;"&gt;Barrie et al.&lt;/th&gt;
+    &lt;th style="width:39%;"&gt;Bisbee &amp; Spirling&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Core problem&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Unacceptably high variance across runs, models, and time — fundamental irreproducibility&lt;/td&gt;&lt;td&gt;Human gold standard becomes invalid as LLMs improve — benchmark collapse&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Primary evidence&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Rolling replication design — same tasks, monthly, large variance observed&lt;/td&gt;&lt;td&gt;Theoretical framework + simulation — projected effect of accuracy improvements&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Villain&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Proprietary, opaque, silently-updated models&lt;/td&gt;&lt;td&gt;Over-reliance on human accuracy as the benchmark target&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Primary remedy&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Open-weight, locally versioned models; archive everything&lt;/td&gt;&lt;td&gt;Robustness analyses; &lt;code&gt;futureProofR&lt;/code&gt;; focus on sensitivity not SOTA&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Key insight&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;A study that cannot be re-run fails basic scientific integrity — regardless of accuracy&lt;/td&gt;&lt;td&gt;A study that cannot survive model improvement is already wrong — or will be soon&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+--
+
+&lt;br&gt;&lt;div class="box box-purple" style="font-size:0.84em;"&gt;These are complementary, not competing, diagnoses. &lt;strong&gt;Barrie et al. solve the past:&lt;/strong&gt; how do we make what we already did reproducible? &lt;strong&gt;Bisbee &amp; Spirling solve the future:&lt;/strong&gt; how do we make what we publish robust to what's coming?&lt;/div&gt;
+
+---
+
+# A Practical Roadmap for This Week's Standards
+
+**If you are designing or reviewing an LLM-annotation study, here is the minimum bar:**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:700; color:#c0392b; font-size:0.85em; margin-bottom:0.4em;"&gt;Before running your model&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;Define the construct theoretically — not just the label names&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;Plan your validation sample: stratified, representative of hard cases, includes subgroups of theoretical interest&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;Choose your model: open-weight preferred; if proprietary, pin the exact version string now&lt;/div&gt;&lt;/div&gt;
+    &lt;div style="font-weight:700; color:#c0392b; font-size:0.85em; margin:0.6em 0 0.4em;"&gt;While running&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num amber"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;Archive raw outputs alongside the dataset — not just final labels&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num amber"&gt;5&lt;/span&gt;&lt;div class="step-body"&gt;Run on the validation sample; have experts code the same sample&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:700; color:#c0392b; font-size:0.85em; margin-bottom:0.4em;"&gt;After running&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;6&lt;/span&gt;&lt;div class="step-body"&gt;Audit errors by subgroup — especially your primary theoretical population&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;7&lt;/span&gt;&lt;div class="step-body"&gt;Test whether errors are systematic using the Maranca et al. diagnostic: regress errors on covariates&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;8&lt;/span&gt;&lt;div class="step-body"&gt;If systematic: apply DSL correction (Maranca et al.) or bespoke model (Ashwin et al.)&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;9&lt;/span&gt;&lt;div class="step-body"&gt;Run futureProofR (Bisbee &amp; Spirling): what happens to your β if model accuracy improves by 10pp?&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;10&lt;/span&gt;&lt;div class="step-body"&gt;Re-run with at least one other model version; report both; discuss divergence&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://tse2.mm.bing.net/th/id/OIP.K4MoLeV82aPahqfDDWOK-QHaCa?r=0&amp;cb=thfvnextfalcon4&amp;rs=1&amp;pid=ImgDetMain&amp;o=7&amp;rm=3)
+
+---
+
+# The Bias Audit: Four Steps Before Publishing
+
+&lt;div class="steps" style="margin-top:0.5em;"&gt;
+  &lt;div class="step-row"&gt;
+    &lt;span class="step-num blue"&gt;1&lt;/span&gt;
+    &lt;div class="step-body"&gt;
+      &lt;strong&gt;Map the error structure&lt;/strong&gt;&lt;br&gt;
+      &lt;span style="font-size:0.92em;"&gt;Run your classifier on a stratified validation sample. Report accuracy by: demographic group of text subject, text type, time period, topic domain, rhetorical register. Identify where accuracy is lowest.&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="step-row"&gt;
+    &lt;span class="step-num blue"&gt;2&lt;/span&gt;
+    &lt;div class="step-body"&gt;
+      &lt;strong&gt;Test whether errors are systematic&lt;/strong&gt;&lt;br&gt;
+      &lt;span style="font-size:0.92em;"&gt;Regress annotation errors on covariates. If errors correlate with theoretically important variables, you have systematic bias — not random noise. This is the Maranca et al. diagnostic step.&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="step-row"&gt;
+    &lt;span class="step-num blue"&gt;3&lt;/span&gt;
+    &lt;div class="step-body"&gt;
+      &lt;strong&gt;Assess impact on conclusions&lt;/strong&gt;&lt;br&gt;
+      &lt;span style="font-size:0.92em;"&gt;Does the error pattern predict the direction of your findings? What are the conclusions if the lowest-accuracy subgroup is excluded? Run futureProofR sensitivity analysis (Bisbee &amp; Spirling).&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="step-row"&gt;
+    &lt;span class="step-num green"&gt;4&lt;/span&gt;
+    &lt;div class="step-body"&gt;
+      &lt;strong&gt;Correct or disclose&lt;/strong&gt;&lt;br&gt;
+      &lt;span style="font-size:0.92em;"&gt;If correction is feasible (Maranca et al. DSL), apply it and report corrected estimates. If not, honestly disclose the error pattern, assess its implications, and acknowledge the limitation explicitly.&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:500px; height:250px"&gt;
+![](https://tse3.mm.bing.net/th/id/OIP.Q3q8nd23dFznYEui-doJrwHaDt?r=0&amp;cb=thfvnextfalcon4&amp;rs=1&amp;pid=ImgDetMain&amp;o=7&amp;rm=3)
+
+---
+
+# Three Diagnostic Questions for Any LLM Study
+
+&lt;div class="cols-3" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-red" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.8em; margin-bottom:0.3em;"&gt;🔬&lt;/div&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.5em;"&gt;Is the construct valid?&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.8; text-align:left;"&gt;
+      Is the concept theoretically defined, not just named?&lt;br&gt;
+      Does the model's operationalization match yours?&lt;br&gt;
+      Validated against expert coders on a &lt;em&gt;representative&lt;/em&gt; sample?
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.8em; margin-bottom:0.3em;"&gt;🔍&lt;/div&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.5em;"&gt;Are errors audited?&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.8; text-align:left;"&gt;
+      Is accuracy reported by the subgroup most relevant to your hypothesis?&lt;br&gt;
+      Are errors characterized as systematic or random?&lt;br&gt;
+      Has Maranca et al. DSL (or equivalent) been applied?
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.8em; margin-bottom:0.3em;"&gt;🧪&lt;/div&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.5em;"&gt;Are conclusions robust?&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.8; text-align:left;"&gt;
+      Do findings hold across ≥2 model versions?&lt;br&gt;
+      What happens if model accuracy improves by 10pp?&lt;br&gt;
+      Are prompt and exact model version archived?
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-red" style="margin-top:0.7em; text-align:center;"&gt;
+  &lt;strong&gt;If a study cannot answer these three questions, its conclusions should be treated with caution.&lt;/strong&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:250px; height:250px"&gt;
+![](https://tse3.mm.bing.net/th/id/OIP.nk-Xm6bjXYowNFEj6RVUTAHaGQ?r=0&amp;cb=thfvnextfalcon4&amp;rs=1&amp;pid=ImgDetMain&amp;o=7&amp;rm=3)
+
+---
+
+class: discussion
+
+# 💬 Discussion Question 3
+
+**"The solution to LLM bias is not more prompting — it's better research design."**
+
+&lt;br&gt;
+
+Across all seven papers this week, one message emerges consistently: you cannot prompt your way out of structural bias. The fix requires validation samples, bespoke models, or correction frameworks — all of which require human labor and domain expertise.
+
+&lt;br&gt;
+
+1. Ashwin et al. argue researchers should train bespoke supervised models for marginalized populations rather than using general-purpose LLMs. Maranca et al. show DSL can correct for AI errors with a validation sample. Both require significant expert labor. Is this realistic for most social science research teams — or does it create a two-tier research landscape where only well-funded projects can meet the standard?
+
+2. Barrie et al. find unacceptably high variance in LLM performance across runs. Bisbee &amp; Spirling show better models change conclusions systematically. Does the field need a moratorium on LLM-annotation papers until standards are developed — or would that go too far?
+
+3. If you were editing a major journal, what would your minimum requirements be for accepting a paper that uses LLM annotation as its primary measurement strategy?
+
+---
+
+# Summary: The Full Picture
+
+&lt;div class="cols-2" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.5em;"&gt;Bias — what it is and where it lives&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      Demographically patterned even in aligned models &lt;span style="color:#888;"&gt;(Bai et al.)&lt;/span&gt;&lt;br&gt;
+      Covert bias survives alignment and standard benchmarks&lt;br&gt;
+      Source nationality conditions evaluation &lt;span style="color:#888;"&gt;(Germani et al.)&lt;/span&gt;&lt;br&gt;
+      Models have a home culture; cross-cultural validity threatened &lt;span style="color:#888;"&gt;(Tan et al.)&lt;/span&gt;&lt;br&gt;
+      Errors fall hardest on marginalized populations &lt;span style="color:#888;"&gt;(Ashwin et al.)&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.5em;"&gt;Pitfalls and issues&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      Replication structurally near-impossible for proprietary models &lt;span style="color:#888;"&gt;(Barrie et al.)&lt;/span&gt;&lt;br&gt;
+      Gold standard dissolves as LLMs exceed human performance &lt;span style="color:#888;"&gt;(Bisbee &amp; Spirling)&lt;/span&gt;&lt;br&gt;
+      Better models change conclusions systematically, not uniformly&lt;br&gt;
+      Prompt sensitivity, version drift, run-to-run variance all unfixed
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-green"&gt;
+    &lt;div style="font-weight:700; color:#27ae60; margin-bottom:0.5em;"&gt;Correction — what it requires&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      Must know the error structure, not just that errors exist &lt;span style="color:#888;"&gt;(Maranca et al.)&lt;/span&gt;&lt;br&gt;
+      Human coding cannot be eliminated — only minimized&lt;br&gt;
+      You cannot prompt your way out of structural bias&lt;br&gt;
+      Match the correction to the specific error type&lt;br&gt;
+      DSL for non-classical errors; bespoke models for marginalized populations
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-blue"&gt;
+    &lt;div style="font-weight:700; color:#2a5bd7; margin-bottom:0.5em;"&gt;The regulatory landscape&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      Disclosure vs. validation vs. domain restriction vs. open-weight mandates&lt;br&gt;
+      No consensus — field converging on minimum reporting standards&lt;br&gt;
+      futureProofR (Bisbee &amp; Spirling) and DSL (Maranca et al.) provide practical tools&lt;br&gt;
+      The stakes are higher than they appear in individual papers
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+# Readings for This Unit
+
+&lt;div class="cols-3" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.5em;"&gt;Bias&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      Ashwin, Chhabra &amp; Rao (2025)&lt;br&gt;&lt;span style="color:#888; font-size:0.88em;"&gt;Using LLMs for qualitative analysis can introduce serious bias&lt;/span&gt;&lt;br&gt;&lt;br&gt;
+      Bai et al. (2025)&lt;br&gt;&lt;span style="color:#888; font-size:0.88em;"&gt;Explicitly unbiased LLMs still form biased associations&lt;/span&gt;&lt;br&gt;&lt;br&gt;
+      Germani &amp; Spitale (2025)&lt;br&gt;&lt;span style="color:#888; font-size:0.88em;"&gt;Source framing triggers systematic bias in LLMs&lt;/span&gt;&lt;br&gt;&lt;br&gt;
+      Tan et al. (2026)&lt;br&gt;&lt;span style="color:#888; font-size:0.88em;"&gt;AI models as cultural beings&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.5em;"&gt;Pitfalls and correction&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      Barrie, Palmer &amp; Spirling (2025)&lt;br&gt;&lt;span style="color:#888; font-size:0.88em;"&gt;Replication for language models: problems, principles, best practices&lt;/span&gt;&lt;br&gt;&lt;br&gt;
+      Bisbee &amp; Spirling (2025)&lt;br&gt;&lt;span style="color:#888; font-size:0.88em;"&gt;What to do when humans are no longer the gold standard&lt;/span&gt;&lt;br&gt;&lt;br&gt;
+      Maranca et al. (2025)&lt;br&gt;&lt;span style="color:#888; font-size:0.88em;"&gt;Correcting measurement errors of AI-assisted labeling using DSL&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.5em;"&gt;Next week&lt;/div&gt;
+    &lt;div style="line-height:1.9; color:#888; font-size:0.9em;"&gt;
+      broska_mixedsubjects_2025&lt;br&gt;
+      xie_realism_2026
+    &lt;/div&gt;
+    &lt;div style="margin-top:0.6em; font-size:0.85em; color:#555;"&gt;Limitations and potential solutions: what can synthetic human data actually do?&lt;/div&gt;
+    &lt;div style="margin-top:1em; font-weight:700; font-size:0.85em; margin-bottom:0.3em;"&gt;Software from this week&lt;/div&gt;
+    &lt;div style="font-size:0.82em; line-height:1.7; color:#555;"&gt;&lt;code&gt;futureProofR&lt;/code&gt; — Bisbee &amp; Spirling&lt;br&gt;DSL framework — Maranca et al.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+class: inverse, center, middle
+
+# Questions?
+
+&lt;div style="color:#aaa; font-size:0.9em; margin-top:1em;"&gt;Week 5 · SOCY 1200: Introduction to Using AI to Study Society&lt;/div&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "16:9",
+  "slideNumberFormat": "%current% / %total%"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

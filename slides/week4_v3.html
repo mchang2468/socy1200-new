@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>SOCY 1200: Introduction to Using AI to Study Society</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Daniel Karell" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="yale.css" type="text/css" />
+    <link rel="stylesheet" href="yale-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# SOCY 1200: Introduction to Using AI to Study Society
+]
+.subtitle[
+## Unit 2: Prompting, with Application to Measurement: Application of Prompts to Measurement
+]
+.author[
+### Daniel Karell
+]
+.institute[
+### Yale University
+]
+.date[
+### Week 4
+]
+
+---
+
+
+
+
+&lt;style&gt;
+.remark-slide-content:not(.title-slide) {
+  font-size: 16px; padding: 1.8em 2.2em 1em;
+  color: #1a1a2e; background: #fafafa;
+}
+.remark-slide-content:not(.title-slide) h1 {
+  font-size: 2em; font-weight: 700; letter-spacing: -0.03em;
+  color: #1a1a2e; border-bottom: 3px solid #8e44ad;
+  padding-bottom: 0.3em; margin-bottom: 0.7em;
+}
+.remark-slide-content:not(.title-slide) h2 { font-size:1.05em; color:#555; font-weight:500; }
+.remark-slide-content:not(.title-slide) p, .remark-slide-content:not(.title-slide) li { line-height:1.65; }
+.inverse:not(.title-slide) { background: #1a1a2e !important; }
+.inverse:not(.title-slide) h1, .inverse:not(.title-slide) h2, .inverse:not(.title-slide) h3 { color:white !important; border:none !important; }
+.inverse:not(.title-slide) h1 { font-size:1.9em !important; letter-spacing:-0.03em; }
+.inverse:not(.title-slide) h2 { color:#aaa !important; font-weight:400 !important; }
+.section-num:not(.title-slide) { display:inline-block; font-size:4em; font-weight:900; color:rgba(39,183,245,0.8); line-height:1; margin-bottom:0.1em; }
+.discussion:not(.title-slide) { background: #0f3460 !important; }
+.discussion:not(.title-slide) h1 { color: #f0c040 !important; border-bottom: 3px solid #f0c040 !important; }
+.discussion:not(.title-slide) p, .discussion:not(.title-slide) li { color: #e8e8f0 !important; line-height: 1.75 !important; }
+.discussion:not(.title-slide) strong { color: #f0c040 !important; }
+.paper-walk:not(.title-slide) { background: #1a3a1a !important; }
+.paper-walk:not(.title-slide) h1 { color: #90ee90 !important; border-bottom: 3px solid #90ee90 !important; }
+.paper-walk:not(.title-slide) p { color: #FFFFFF}, .paper-walk:not(.title-slide) li { color: #FFFFFF !important; line-height:1.7 !important; }
+.paper-walk:not(.title-slide) strong { color: #FFFFFF !important; }
+.debate:not(.title-slide) { background: #2a1a0a !important; }
+.debate:not(.title-slide) h1 { color: #ffcc66 !important; border-bottom: 3px solid #ffcc66 !important; }
+.debate:not(.title-slide) p, .debate li { color: #f0e8d0 !important; line-height:1.7 !important; }
+.debate:not(.title-slide) strong { color: #ffcc66 !important; }
+.casestudy:not(.title-slide) { background: #0a1a2a !important; }
+.casestudy:not(.title-slide) h1 { color: #66ccff !important; border-bottom: 3px solid #66ccff !important; }
+.casestudy:not(.title-slide) p, .casestudy:not(.title-slide) li { color: #ddeeff !important; line-height:1.7 !important; }
+.casestudy:not(.title-slide) strong { color: #66ccff !important; }
+.box { border-radius:6px; padding:0.75em 1em; margin:0.4em 0; font-size:0.85em; line-height:1.6; }
+.box-purple { background:#f5f0ff; border-left:4px solid #8e44ad; color:#2e0060; }
+.box-red    { background:#fdf2f2; border-left:4px solid #c0392b; color:#3d0c0c; }
+.box-green  { background:#f0faf3; border-left:4px solid #27ae60; color:#0c3320; }
+.box-blue   { background:#f0f4ff; border-left:4px solid #2a5bd7; color:#0d1f5c; }
+.box-amber  { background:#fffbf0; border-left:4px solid #e67e22; color:#5c3400; }
+.box-slate  { background:#f4f5f7; border-left:4px solid #7f8c8d; color:#2c3e50; }
+.quote { border-left:5px solid #8e44ad; background:white; border-radius:0 6px 6px 0; padding:0.7em 1.2em; font-size:0.88em; font-style:italic; color:#2c3e50; margin:0.6em 0; box-shadow:0 1px 4px rgba(0,0,0,0.07); }
+.quote cite { display:block; font-style:normal; font-size:0.82em; color:#8e44ad; margin-top:0.3em; font-weight:600; }
+.cols-2 { display:grid; grid-template-columns:1fr 1fr; gap:1em; margin:0.5em 0; }
+.cols-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.9em; margin:0.5em 0; }
+.cols-4 { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:0.7em; margin:0.5em 0; }
+.cols-1-2 { display:grid; grid-template-columns:1fr 2fr; gap:1em; margin:0.5em 0; }
+.step-row { display:flex; align-items:flex-start; gap:0.75em; margin-bottom:0.5em; }
+.step-num { flex-shrink:0; width:1.7em; height:1.7em; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.8em; margin-top:0.05em; }
+.step-num.purple { background:#8e44ad; color:white; }
+.step-num.blue   { background:#2a5bd7; color:white; }
+.step-num.green  { background:#27ae60; color:white; }
+.step-num.amber  { background:#e67e22; color:white; }
+.step-num.red    { background:#c0392b; color:white; }
+.step-body { font-size:0.83em; line-height:1.6; color:#2c3e50; padding-top:0.15em; }
+.styled-table { width:100%; border-collapse:collapse; font-size:0.81em; margin:0.5em 0; box-shadow:0 1px 6px rgba(0,0,0,0.08); }
+.styled-table thead tr { background:#1a1a2e; color:white; }
+.styled-table thead th { padding:0.6em 0.8em; text-align:left; font-weight:600; }
+.styled-table tbody tr:nth-child(even) { background:#f4f5f7; }
+.styled-table tbody tr:nth-child(odd) { background:white; }
+.styled-table tbody td { padding:0.55em 0.8em; color:#2c3e50; vertical-align:top; }
+.styled-table .hl        { background:#f5f0ff !important; font-weight:600; }
+.styled-table .hl-red    { background:#fdf2f2 !important; }
+.styled-table .hl-green  { background:#f0faf3 !important; }
+.badge { display:inline-block; border-radius:20px; padding:0.12em 0.65em; font-size:0.72em; font-weight:700; }
+.badge-purple { background:#f0e6ff; color:#6c1a9c; }
+.badge-green  { background:#e8f8ee; color:#1e8449; }
+.badge-red    { background:#fde8e8; color:#922b21; }
+.badge-amber  { background:#fef3d0; color:#784212; }
+.badge-grey   { background:#eaecee; color:#515a5a; }
+.mono { font-family:'Cascadia Code','Fira Code','Courier New',monospace; font-size:0.78em; background:#1e2433; color:#abb2bf; border-radius:6px; padding:0.8em 1.1em; line-height:1.85; margin:0.4em 0; }
+.mono .hi-blue  { color:#61afef; }
+.mono .hi-green { color:#98c379; }
+.mono .hi-red   { color:#e06c75; }
+.mono .hi-amber { color:#e5c07b; }
+.mono .hi-grey  { color:#636d83; }
+.mono .hi-white { color:#ffffff; }
+.mono .hi-purple { color:#c678dd; }
+.src { display:inline-block; background:#1a1a2e; color:#FFFFFF; font-size:0.68em; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; border-radius:3px; padding:0.15em 0.55em; margin-bottom:0.45em; }
+.divider { height:2px; background:linear-gradient(to right, #8e44ad, transparent); margin:0.5em 0; border:none; }
+blockquote { border:none; padding:0; margin:0; background:none; }
+&lt;/style&gt;
+
+
+# What We're Covering This Week
+
+&lt;div class="cols-2" style="margin-top:0.7em;"&gt;
+  &lt;div class="box box-purple"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Part I · Conceptual Foundations&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;How LLMs expand text classification&lt;br&gt;Why reliability is lower than assumed&lt;br&gt;Why non-random errors are a big problem&lt;br&gt;Demographic stereotyping in annotation&lt;br&gt;Stability and reproducibility failures&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-purple"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Part II · Models and Methods&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;Zero-shot vs. few-shot vs. fine-tuning&lt;br&gt;Why BERT can beat GPT-4 on well-defined tasks&lt;br&gt;Foundation models for causal inference&lt;br&gt;High validity requires high accuracy on the right construct&lt;br&gt;Supervised fine-tuning as the gold standard&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;**The core tension for this week:**
+
+&lt;div class="box box-amber" style="text-align:center; font-size:0.9em; margin-top:0.3em;"&gt;LLMs make measurement dramatically easier and dramatically riskier at the same time. Understanding both is the only way to use them well.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://www.nicepng.com/png/full/777-7771327_open-book-clipart.png)
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;I&lt;/div&gt;
+
+# Conceptual Foundations
+## What we need to understand before touching a model
+
+---
+
+# How LLMs Expand the Scope of Measurement
+
+**Before LLMs:** text-at-scale was practically out of reach for most research teams.
+
+&lt;div class="cols-3" style="margin-top:0.6em;"&gt;
+  &lt;div class="box box-slate" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.4em; margin-bottom:0.3em;"&gt;⏱️&lt;/div&gt;
+    &lt;div style="font-weight:700; font-size:0.85em; margin-bottom:0.3em;"&gt;Time&lt;/div&gt;
+    &lt;div style="font-size:1.2em; line-height:1.6; color:#555;"&gt;Hand-coding 10,000 documents at 5 min each = 833 hours = ~20 work weeks&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.4em; margin-bottom:0.3em;"&gt;💰&lt;/div&gt;
+    &lt;div style="font-weight:700; font-size:0.85em; margin-bottom:0.3em;"&gt;Cost&lt;/div&gt;
+    &lt;div style="font-size:1.2em; line-height:1.6; color:#555;"&gt;RA at $20/hr × 833 hours = $16,600. With GPT-4: ~$50.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.4em; margin-bottom:0.3em;"&gt;📏&lt;/div&gt;
+    &lt;div style="font-weight:700; font-size:0.85em; margin-bottom:0.3em;"&gt;Scale&lt;/div&gt;
+    &lt;div style="font-size:1.2em; line-height:1.6; color:#555;"&gt;Crowl et al. coded a decade of local news across 10 cities. Millions of articles. Humanly impossible.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;**What this actually unlocks:**
+
+&lt;div class="cols-2" style="margin-top:0.3em; font-size:1.2em;"&gt;
+  &lt;div class="box box-purple"&gt;Longitudinal studies spanning decades of text — impossible with human coding at reasonable cost&lt;/div&gt;
+  &lt;div class="box box-purple"&gt;Cross-national comparison requiring multilingual annotation — previously needed large teams&lt;/div&gt;
+  &lt;div class="box box-purple"&gt;Full-corpus analysis instead of samples — eliminates sampling bias in text analysis&lt;/div&gt;
+  &lt;div class="box box-purple"&gt;Rapid iteration on operationalization — test different construct definitions cheaply&lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+# The New Constraint: Validity, Not Scale
+
+&lt;div class="src"&gt;Benoit et al. 2025 · Halterman &amp; Keith 2025&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-green"&gt;
+    &lt;div style="font-weight:700; color:#27ae60; margin-bottom:0.4em;"&gt;The old question&lt;/div&gt;
+    &lt;div style="font-size:0.88em; font-style:italic; line-height:1.7;"&gt;"Can we measure this at scale?"&lt;/div&gt;
+    &lt;div style="font-size:0.82em; color:#555; margin-top:0.4em;"&gt;Almost always yes, now. Scale is no longer the binding constraint.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-purple"&gt;
+    &lt;div style="font-weight:700; color:#8e44ad; margin-bottom:0.4em;"&gt;The new question&lt;/div&gt;
+    &lt;div style="font-size:0.88em; font-style:italic; line-height:1.7;"&gt;"Are we measuring what we think we're measuring — validly, reliably, and for the right subgroups?"&lt;/div&gt;
+    &lt;div style="font-size:0.82em; color:#555; margin-top:0.4em;"&gt;This is much harder. And the ease of scale can obscure validity failures.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;**The four measurement criteria — all apply to LLMs, all can fail:**
+
+&lt;div class="cols-4" style="margin-top:0.4em; font-size:0.82em;"&gt;
+  &lt;div class="box box-slate" style="text-align:center;"&gt;&lt;strong&gt;Construct validity&lt;/strong&gt;&lt;br&gt;Does it capture the theoretical concept?&lt;/div&gt;
+  &lt;div class="box box-slate" style="text-align:center;"&gt;&lt;strong&gt;Reliability&lt;/strong&gt;&lt;br&gt;Same input → same output?&lt;/div&gt;
+  &lt;div class="box box-slate" style="text-align:center;"&gt;&lt;strong&gt;Accuracy&lt;/strong&gt;&lt;br&gt;Agrees with gold standard?&lt;/div&gt;
+  &lt;div class="box box-slate" style="text-align:center;"&gt;&lt;strong&gt;Generalizability&lt;/strong&gt;&lt;br&gt;Validation sample → full corpus?&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:500px; height:250px"&gt;
+![](https://www.minecraft.net/content/dam/minecraftnet/archive/0a1431e938f47423050eac09dceb7794-botw_gold_header.png)
+
+---
+
+# Reliability Is Lower Than Researchers Assume
+
+&lt;div class="src"&gt;Yang et al. 2025 · 300 million+ annotations, 14 papers, 15 LLMs&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;The study design&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num purple"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;Select 14 published political science papers using LLM annotation&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num purple"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;Re-annotate each paper's data with 15 different LLMs (open-weight + proprietary)&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num purple"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;Compare LLM outputs to original human-coded labels&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;Test whether the original conclusions hold under each LLM's annotations&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;What they found&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.4em;"&gt;&lt;strong&gt;Low intercoder reliability&lt;/strong&gt; between LLMs and original human labels&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.4em;"&gt;&lt;strong&gt;Moderate reliability&lt;/strong&gt; among LLMs themselves — they don't agree with each other either&lt;/div&gt;
+    &lt;div class="box box-red"&gt;&lt;span style="font-size:1.1em; font-weight:700; color:#c0392b;"&gt;37%&lt;/span&gt; of cases: switching LLMs changed the original conclusions&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="quote" style="margin-top:0.6em;"&gt;LLM choice changes whether studies replicate in more than one third of cases. The "finding" is partly a property of the model, not just the data.&lt;cite&gt;— Yang et al. (2025)&lt;/cite&gt;&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://www.nature.com/nature-index/article/image/5f605fbe17c63323315eb2e2)
+
+---
+
+# What 37% Actually Means
+
+**This is not a minor methodological footnote. It is a validity crisis.**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-amber"&gt;
+    &lt;div style="font-weight:700; color:#e67e22; margin-bottom:0.4em;"&gt;The survey analogy&lt;/div&gt;
+    &lt;div style="font-size:0.84em; line-height:1.7;"&gt;Imagine switching between two survey instruments reversed your findings 37% of the time. We would not consider survey research a valid methodology.&lt;br&gt;&lt;br&gt;That is where LLM annotation currently stands.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.4em;"&gt;Practical implications&lt;/div&gt;
+    &lt;div style="font-size:0.84em; line-height:1.7;"&gt;A paper using GPT-3.5 may reach opposite conclusions if re-run with GPT-4.&lt;br&gt;&lt;br&gt;A paper using Claude may contradict a paper using LLaMA — on the same data.&lt;br&gt;&lt;br&gt;The finding is partly a measurement artifact.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;**What Yang et al. recommend:**
+&lt;div style="display:flex; flex-wrap:wrap; gap:0.5em; margin-top:0.3em; font-size:0.82em;"&gt;
+  &lt;span style="background:#f0e6ff; color:#6c1a9c; border-radius:4px; padding:0.2em 0.6em; font-weight:600;"&gt;Report exact model version&lt;/span&gt;
+  &lt;span style="background:#f0e6ff; color:#6c1a9c; border-radius:4px; padding:0.2em 0.6em; font-weight:600;"&gt;Test sensitivity to model substitution&lt;/span&gt;
+  &lt;span style="background:#f0e6ff; color:#6c1a9c; border-radius:4px; padding:0.2em 0.6em; font-weight:600;"&gt;Report LLM vs. human intercoder reliability&lt;/span&gt;
+  &lt;span style="background:#f0e6ff; color:#6c1a9c; border-radius:4px; padding:0.2em 0.6em; font-weight:600;"&gt;Archive raw LLM outputs&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:250px; height:250px"&gt;
+![](https://b2670330.smushcdn.com/2670330/wp-content/uploads/2018/10/AdobeStock_206006240-Converted.png?size=3840x3840&amp;lossy=1&amp;strip=1&amp;webp=1)
+
+---
+
+# Non-Random Errors: Why This Is a Big Problem
+
+**The critical distinction most researchers miss:**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-green"&gt;
+    &lt;div style="font-weight:700; color:#27ae60; margin-bottom:0.4em;"&gt;Random errors ✓ (manageable)&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:0.85em;"&gt;Cancel out across observations&lt;br&gt;Attenuate effect sizes toward zero&lt;br&gt;Don't bias the direction of findings&lt;br&gt;Partially correctable with standard methods&lt;br&gt;&lt;span style="color:#888; font-size:0.9em;"&gt;More data → less noise&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.4em;"&gt;Systematic errors ✗ (dangerous)&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:0.85em;"&gt;Cluster in predictable ways&lt;br&gt;Bias estimates in a consistent direction&lt;br&gt;Can produce significant results in the wrong direction&lt;br&gt;Cannot be corrected by averaging&lt;br&gt;&lt;span style="color:#888; font-size:0.9em;"&gt;More data → more confident wrong estimates&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;&lt;div class="box box-red" style="font-size:0.84em;"&gt;LLM errors are systematic. They cluster by: &lt;strong&gt;demographic characteristics of the text subject&lt;/strong&gt; · &lt;strong&gt;rhetorical register&lt;/strong&gt; (irony, satire, coded language) · &lt;strong&gt;topic domain&lt;/strong&gt; (thin training coverage) · &lt;strong&gt;text type and length&lt;/strong&gt;&lt;/div&gt;
+
+&lt;div class="quote" style="margin-top:0.5em;"&gt;A model that is 88% accurate overall may be 60% accurate on the exact documents most relevant to your hypothesis. The 88% is hiding a validity crisis.&lt;/div&gt;
+
+---
+
+# Concrete Example: The Hidden Accuracy Problem
+
+**Scenario:** LLM classifying news coverage of police as critical vs. non-critical.
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th style="width:38%;"&gt;Document subset&lt;/th&gt;
+    &lt;th style="width:18%; text-align:center;"&gt;LLM accuracy&lt;/th&gt;
+    &lt;th style="width:44%;"&gt;Research implication&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Overall corpus&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style="text-align:center; color:#27ae60; font-weight:700;"&gt;88% ✓&lt;/td&gt;
+      &lt;td&gt;Looks fine in aggregate&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class="hl-red"&gt;
+      &lt;td&gt;&lt;strong&gt;Stories about police violence against Black residents&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style="text-align:center; color:#c0392b; font-weight:700;"&gt;61% ✗&lt;/td&gt;
+      &lt;td&gt;&lt;em&gt;If racial disparities in coverage are your hypothesis, 88% is a lie&lt;/em&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Police union negotiations&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style="text-align:center; color:#27ae60;"&gt;93% ✓&lt;/td&gt;
+      &lt;td&gt;High accuracy where it matters less theoretically&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class="hl-red"&gt;
+      &lt;td&gt;&lt;strong&gt;Ironic / satirical criticism&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style="text-align:center; color:#c0392b; font-weight:700;"&gt;54% ✗&lt;/td&gt;
+      &lt;td&gt;Satire systematically misclassified as non-critical&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+--
+
+&lt;br&gt;&lt;div class="box box-purple" style="font-size:0.84em;"&gt;&lt;strong&gt;The minimum standard:&lt;/strong&gt; Report accuracy separately for the subgroup of documents most directly relevant to your research question. Never only report aggregate accuracy.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:200px; height:100px"&gt;
+![](https://tse2.mm.bing.net/th/id/OIP.J4cCrXYmKnN3oTJY9R-d0AHaLK?cb=thfvnextfalcon4&amp;rs=1&amp;pid=ImgDetMain&amp;o=7&amp;rm=3)
+
+---
+
+# Demographic Stereotyping in Political Annotation
+
+&lt;div class="src"&gt;Jeon et al. 2026 · Vision-language models and political ideology&lt;/div&gt;
+
+**Research question:** When foundation models analyze political content, do they use demographic characteristics as shortcuts for ideological attribution?
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;Experimental design&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:0.83em; margin-bottom:0.3em;"&gt;Identical, ideologically neutral campaign advertisements&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:0.83em; margin-bottom:0.3em;"&gt;Systematically vary candidate demographics: gender, race&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:0.83em;"&gt;Test: do demographic attributes predict ideological attributions independent of content?&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;Findings&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.3em; font-size:0.83em;"&gt;&lt;strong&gt;All models:&lt;/strong&gt; women attributed more liberal ideologies than men — effects exceed real-world gender differences&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.3em; font-size:0.83em;"&gt;&lt;strong&gt;GPT-4o-mini:&lt;/strong&gt; Black candidates attributed substantially more liberal ideologies&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:0.83em;"&gt;&lt;strong&gt;Debiasing instructions:&lt;/strong&gt; do not eliminate these effects in GPT-4o-mini&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:250px; height:250px"&gt;
+![](https://static.vecteezy.com/system/resources/previews/012/863/571/original/politics-blue-gradient-concept-icon-government-organizations-power-and-authority-social-institution-abstract-idea-thin-line-illustration-isolated-outline-drawing-vector.jpg)
+
+---
+
+# Why Demographic Shortcuts Happen
+
+**The mechanism is structural, not incidental.**
+
+&lt;div class="mono" style="margin:0.5em 0;"&gt;
+Training data reality:
+&lt;br&gt;
+  Women candidates  → &lt;span class="hi-amber"&gt;on average more liberal than men&lt;/span&gt;  [real correlation]
+  &lt;br&gt;
+  Black candidates  → &lt;span class="hi-amber"&gt;on average more likely to be Democrats&lt;/span&gt;  [real correlation]
+  &lt;br&gt;
+
+Model learned: demographic features → political ideology
+&lt;br&gt;
+&lt;span class="hi-red"&gt;Model applies: demographic features → ideology [to every individual]
+             Regardless of what the ad actually says&lt;/span&gt;
+&lt;br&gt;
+&lt;span class="hi-grey"&gt;This is demographic stereotyping operationalized as a classifier.&lt;/span&gt;
+&lt;/div&gt;
+
+--
+
+&lt;div class="box box-red" style="margin-top:0.4em; font-size:0.84em;"&gt;The bias is not in what the model says &lt;em&gt;about&lt;/em&gt; demographics explicitly. It is in how demographics &lt;em&gt;condition the model's interpretation of everything else.&lt;/em&gt; This is invisible without designed experiments.&lt;/div&gt;
+
+&lt;div class="box box-amber" style="margin-top:0.3em; font-size:0.84em;"&gt;&lt;strong&gt;For research:&lt;/strong&gt; Any study using multimodal AI to analyze political content involving human faces should &lt;em&gt;assume this bias is present until demonstrated otherwise.&lt;/em&gt;&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:800px; height:400px"&gt;
+![](https://globisinsights.com/wp-content/uploads/2023/03/Gender-bias-pie-scaled.jpg)
+
+---
+
+# LLM Measurement Lacks Stability and Reproducibility
+
+**Three distinct sources of instability — each requires a different response:**
+
+&lt;div class="cols-3" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-red" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.3em; margin-bottom:0.3em;"&gt;🔁&lt;/div&gt;
+    &lt;div style="font-weight:700; font-size:1em; color:#c0392b; margin-bottom:0.3em;"&gt;Run-to-run variance&lt;/div&gt;
+    &lt;div style="font-size:0.78em; line-height:1.6;"&gt;Even with temp=0, identical inputs produce different outputs. Proprietary models are not deterministic.&lt;/div&gt;
+    &lt;div style="margin-top:0.4em;"&gt;&lt;span class="badge badge-amber"&gt;Fix: open-weight models&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.3em; margin-bottom:0.3em;"&gt;📅&lt;/div&gt;
+    &lt;div style="font-weight:700; font-size:1em; color:#c0392b; margin-bottom:0.3em;"&gt;Version drift&lt;/div&gt;
+    &lt;div style="font-size:0.78em; line-height:1.6;"&gt;"GPT-4" in January ≠ "GPT-4" in October. Providers update silently. Studies cannot be re-run.&lt;/div&gt;
+    &lt;div style="margin-top:0.4em;"&gt;&lt;span class="badge badge-amber"&gt;Fix: pin exact version&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.3em; margin-bottom:0.3em;"&gt;✏️&lt;/div&gt;
+    &lt;div style="font-weight:700; font-size:1em; color:#c0392b; margin-bottom:0.3em;"&gt;Prompt sensitivity&lt;/div&gt;
+    &lt;div style="font-size:0.78em; line-height:1.6;"&gt;A comma, word order, capitalization → meaningfully different output distributions across runs.&lt;/div&gt;
+    &lt;div style="margin-top:0.4em;"&gt;&lt;span class="badge badge-green"&gt;Fix: sensitivity testing&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;&lt;div class="box box-slate" style="font-size:0.84em;"&gt;Yang et al. find that smaller and reasoning models are &lt;strong&gt;particularly sensitive to minor variations in prompt format&lt;/strong&gt; — even changes in whitespace or punctuation. This is not a bug that will be fixed; it is a structural property of how these models generate text.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:800px; height:400px"&gt;
+![](https://d3f1iyfxxz8i1e.cloudfront.net/courses/course_image_variant/7d5fa784bfab_w480.webp)
+
+---
+
+class: discussion
+
+# 💬 Discussion Question 1
+
+**"LLM annotations changed the conclusions in 37% of cases. Does that mean we should stop using LLMs for annotation — or that we need better standards?"**
+
+&lt;br&gt;
+
+Yang et al. are not saying LLM annotation is useless. They are saying it needs to be treated with the same methodological rigor as any other measurement instrument.
+
+&lt;br&gt;
+
+- If switching between two human coding schemes reversed conclusions 37% of the time, we would require extensive intercoder reliability reporting and validation. Should LLM annotation be held to the same standard?
+- Yang et al. provide an R package (`localLLM`) to help implement best practices. Is tool availability enough, or do journals need to require specific checks?
+- Some researchers argue that LLM annotations are actually *better* than human coders on some tasks (faster, more consistent, cheaper). Does that change the reliability concern?
+
+&lt;br&gt;
+
+**What standards would you set for a journal accepting a paper that uses LLM annotation as its primary measurement strategy?**
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;II&lt;/div&gt;
+
+# Models and Methods
+## Zero-shot, few-shot, fine-tuning, and when each wins
+
+---
+
+# Zero-Shot Classification: Promise and Limits
+
+&lt;div class="src"&gt;Halterman &amp; Keith 2025 · Three real political science codebooks&lt;/div&gt;
+
+**The appeal of zero-shot:** No labeled data needed. Just describe the task and run.
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;When zero-shot works&lt;/div&gt;
+    &lt;div class="box box-green" style="margin-bottom:0.3em; font-size:0.83em;"&gt;Concept maps onto everyday language the model knows well&lt;/div&gt;
+    &lt;div class="box box-green" style="margin-bottom:0.3em; font-size:0.83em;"&gt;Task is close to the model's training distribution&lt;/div&gt;
+    &lt;div class="box box-green" style="font-size:0.83em;"&gt;Categories are intuitively obvious — "does this describe a violent event?"&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;When zero-shot fails (Halterman &amp; Keith)&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.3em; font-size:0.83em;"&gt;Codebook encodes implicit theoretical decisions the model hasn't internalized&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.3em; font-size:0.83em;"&gt;Concept has domain-specific meaning differing from everyday usage&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:0.83em;"&gt;Categories are theoretically motivated — "is this an organized protest vs. a riot?"&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;&lt;div class="quote"&gt;Zero-shot is not "free" classification. It is classification using the model's operationalization — which may not match yours.&lt;cite&gt;— Halterman &amp; Keith (2025)&lt;/cite&gt;&lt;/div&gt;
+
+---
+
+# The Codebook-LLM Five-Stage Framework
+
+&lt;div class="src"&gt;Halterman &amp; Keith 2025&lt;/div&gt;
+
+**Their contribution:** A systematic framework for using LLMs with real codebooks — not just simple classification tasks.
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Prepare the codebook&lt;/strong&gt; — restructure for LLMs: explicit labels, decision trees, worked examples&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Test basic capabilities&lt;/strong&gt; — can the model understand and follow the codebook instructions at all?&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Evaluate zero-shot accuracy&lt;/strong&gt; — how well does the model perform without any fine-tuning?&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num amber"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Analyze errors&lt;/strong&gt; — which categories fail? Are errors systematic? What does the model misunderstand?&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;5&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Supervised instruction-tuning&lt;/strong&gt; — fine-tune on human-coded examples; assess improvement&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;Key finding&lt;/div&gt;
+    &lt;div class="box box-amber" style="margin-bottom:0.4em; font-size:0.83em;"&gt;Current open-weight LLMs (7–12B parameter) have &lt;strong&gt;substantial limitations&lt;/strong&gt; following real codebooks zero-shot&lt;/div&gt;
+    &lt;div class="box box-green" style="font-size:0.83em;"&gt;Supervised instruction-tuning &lt;strong&gt;substantially improves performance&lt;/strong&gt; — often dramatically closing the gap with proprietary models&lt;/div&gt;
+    &lt;div style="margin-top:0.5em; font-size:0.82em; color:#555;"&gt;Tested on: protest events, political violence, party manifestos — real codebooks from published political science&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+# When to Use Few-Shot Prompting
+
+**Few-shot** sits between zero-shot and fine-tuning: include labeled examples in the prompt.
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-purple"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Use few-shot when:&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:0.85em;"&gt;
+      Labeled data is scarce (5–20 examples)&lt;br&gt;
+      Zero-shot is underperforming on edge cases&lt;br&gt;
+      The concept has a domain-specific meaning&lt;br&gt;
+      You're piloting before committing to fine-tuning&lt;br&gt;
+      Budget constraints prevent large-scale fine-tuning
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Key insight from Burnham et al.&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;DEBATE models with 10–25 examples &lt;strong&gt;outperform supervised classifiers trained on hundreds or thousands of documents&lt;/strong&gt; — and match state-of-the-art generative models.&lt;br&gt;&lt;br&gt;Few-shot with the right base model is extremely powerful.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;&lt;div class="box box-amber" style="font-size:0.84em;"&gt;&lt;strong&gt;Example quality matters more than quantity.&lt;/strong&gt; 10 well-chosen examples covering the full range of categories, including boundary cases, outperform 50 examples drawn from easy cases. As established in Week 3: select examples that represent your hardest classification decisions, not your easiest.&lt;/div&gt;
+
+---
+
+# Paper Walkthrough: Burnham et al. (2025) — DEBATE
+
+&lt;div class="src"&gt;burnham_debate_2025 · Political DEBATE: Efficient Zero-Shot and Few-Shot Classifiers&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;The motivation&lt;/div&gt;
+    &lt;div class="box box-amber" style="font-size:0.83em; margin-bottom:0.4em;"&gt;GPT-4 for political text annotation: expensive, proprietary, not reproducible, at odds with open science.&lt;/div&gt;
+    &lt;div class="box box-blue" style="font-size:0.83em; margin-bottom:0.4em;"&gt;&lt;strong&gt;Their question:&lt;/strong&gt; Can a smaller, open-source, purpose-built model match GPT-4 on political classification?&lt;/div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin:0.5em 0 0.3em;"&gt;PolNLI dataset&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:0.83em;"&gt;200,000+ political documents with high-accuracy labels across 800+ classification tasks — the training foundation&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;Results&lt;/div&gt;
+    &lt;div class="box box-green" style="margin-bottom:0.3em; font-size:0.83em;"&gt;&lt;strong&gt;Zero-shot:&lt;/strong&gt; DEBATE matches GPT-4 on well-defined political classification tasks&lt;/div&gt;
+    &lt;div class="box box-green" style="margin-bottom:0.3em; font-size:0.83em;"&gt;&lt;strong&gt;Few-shot (10–25 examples):&lt;/strong&gt; DEBATE outperforms supervised classifiers trained on hundreds of examples&lt;/div&gt;
+    &lt;div class="box box-green" style="margin-bottom:0.3em; font-size:0.83em;"&gt;&lt;strong&gt;Open source:&lt;/strong&gt; models, weights, and training data all publicly available&lt;/div&gt;
+    &lt;div class="box box-green" style="font-size:0.83em;"&gt;&lt;strong&gt;Efficiency:&lt;/strong&gt; orders of magnitude cheaper and faster than GPT-4&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://media.istockphoto.com/id/1186244173/vector/young-politician-male-and-female-speakers-behind-rostrum-in-debates-vector-illustration-set.jpg?s=612x612&amp;w=0&amp;k=20&amp;c=Y8lKafXkRveGZyACMIa5994x1W55-QMeqQvREcxwpTo=)
+
+---
+# Label Clarity Determines Which Model Wins
+
+&lt;div class="src"&gt;Burnham et al. 2025&lt;/div&gt;
+
+**The key condition:** DEBATE beats GPT-4 only when the labels are well-defined. When they're vague, the bigger model's breadth wins.
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th style="width:22%;"&gt;Label clarity&lt;/th&gt;
+    &lt;th style="width:30%;"&gt;Example task&lt;/th&gt;
+    &lt;th style="width:25%; text-align:center;"&gt;DEBATE vs. GPT-4&lt;/th&gt;
+    &lt;th style="width:23%;"&gt;Why&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl-green"&gt;
+      &lt;td&gt;&lt;strong&gt;High clarity&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;"Does this document mention a protest event?"&lt;/td&gt;
+      &lt;td style="text-align:center;"&gt;&lt;span class="badge badge-green"&gt;DEBATE wins&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;Well-defined; training signal is precise&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Medium clarity&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;"Is this article critical of government policy?"&lt;/td&gt;
+      &lt;td style="text-align:center;"&gt;&lt;span class="badge badge-amber"&gt;Roughly equal&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;Some ambiguity; models roughly match&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class="hl-red"&gt;
+      &lt;td&gt;&lt;strong&gt;Low clarity&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;"How ideologically radical is this document?"&lt;/td&gt;
+      &lt;td style="text-align:center;"&gt;&lt;span class="badge badge-red"&gt;GPT-4 advantage&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;Fuzzy construct; breadth of training helps&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+--
+
+&lt;br&gt;&lt;div class="box box-purple" style="font-size:0.84em;"&gt;&lt;strong&gt;Practical implication:&lt;/strong&gt; Invest in conceptual clarity first. A well-defined construct + open-source DEBATE model often beats a vague construct + expensive GPT-4. The bottleneck is your codebook, not your model.&lt;/div&gt;
+
+---
+
+# Fine-Tuned BERT Can Beat Large Models - The Results
+
+&lt;div class="src"&gt;Burnham et al. 2025 · Chae &amp; Davidson 2025&lt;/div&gt;
+
+**The counterintuitive result:** A smaller, purpose-built, fine-tuned model regularly outperforms a much larger general-purpose model.
+
+**Task: Classify congressional tweets for stance toward police (Griswold et al.)**
+
+* GPT-4 zero-shot          &lt;br&gt;   &lt;span class="hi-amber"&gt;████████████░░░░░░░░&lt;/span&gt;  71% accuracy
+* GPT-4 few-shot (10 ex.)   &lt;br&gt;  &lt;span class="hi-amber"&gt;████████████████░░░░&lt;/span&gt;  78% accuracy
+* GPT-4 chain-of-thought   &lt;br&gt;   &lt;span class="hi-amber"&gt;████████████████░░░░&lt;/span&gt;  80% accuracy
+* &lt;span class="hi-white"&gt;BERT fine-tuned (in-domain) &lt;br&gt; ████████████████████  87% accuracy&lt;/span&gt;
+* DEBATE few-shot (10 ex.)  &lt;br&gt;  &lt;span class="hi-green"&gt;████████████████░░░░&lt;/span&gt;  82% accuracy
+
+&lt;center&gt;
+BERT is ~100x smaller than GPT-4. Fine-tuning wins.
+
+---
+
+# Fine-Tuned BERT Can Beat Large Models: Why Fine-Tuning Wins
+&lt;div class="src"&gt;Burnham et al. 2025 · Chae &amp; Davidson 2025&lt;/div&gt;
+&lt;div class="cols-2" style="margin-top:0.3em; font-size:2em;"&gt;
+  &lt;div class="box box-green"&gt;The model learns &lt;em&gt;your&lt;/em&gt; specific operationalization, not a generic one&lt;/div&gt;
+  &lt;div class="box box-green"&gt;Training signal is dense and relevant — every example is directly on-task&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-green" style="font-size:2em"&gt;The model's weights update toward your specific construct definition&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://www.brainpulse.com/wp-content/uploads/2023/12/the-power-of-personalization.webp)
+
+---
+
+# Supervised Fine-Tuning: The Gold Standard
+
+&lt;div class="src"&gt;Chae &amp; Davidson 2025 · 10 models, 4 training regimes, stance detection&lt;/div&gt;
+
+**Chae &amp; Davidson's systematic comparison** across 10 LLMs of varying sizes and 4 training strategies:
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th style="width:28%;"&gt;Strategy&lt;/th&gt;
+    &lt;th style="width:32%;"&gt;What it requires&lt;/th&gt;
+    &lt;th style="width:20%; text-align:center;"&gt;Performance&lt;/th&gt;
+    &lt;th style="width:20%;"&gt;Best use case&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Zero-shot&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Task description only&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-amber"&gt;Moderate&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Piloting; general concepts&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Few-shot&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;5–20 labeled examples in prompt&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-amber"&gt;Good&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Limited labeled data&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Fine-tuning&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;100–10,000+ labeled examples&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-green"&gt;Best&lt;/span&gt;&lt;/td&gt;&lt;td&gt;High volume; specialized tasks&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Instruction-tuning&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Fine-tuning + natural language task descriptions&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-green"&gt;Best + flexible&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Complex, multi-type tasks&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+--
+
+&lt;br&gt;&lt;div class="quote"&gt;Instruction-tuning the latest generative LLMs expands the scope of text classification, enabling applications to more complex tasks than previously feasible.&lt;cite&gt;— Chae &amp; Davidson (2025)&lt;/cite&gt;&lt;/div&gt;
+
+---
+
+# Case Study: Crowl et al. — A Model Study in AI Measurement
+
+&lt;div class="src"&gt;crowl_measuring_2025 · A decade of police coverage in 10 U.S. cities&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;The research challenge&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:0.83em; margin-bottom:0.3em;"&gt;10 cities × 10 years × daily local news = millions of articles — humanly impossible to code&lt;/div&gt;
+    &lt;div class="box box-amber" style="font-size:0.83em; margin-bottom:0.3em;"&gt;Prior studies: small samples or single cities — insufficient to draw national conclusions&lt;/div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin:0.5em 0 0.3em;"&gt;Why this case study matters&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:0.83em;"&gt;The finding — police coverage has been &lt;em&gt;stable&lt;/em&gt; since 2013, contrary to public perception — depends entirely on whether the measurement is valid. Let's evaluate it.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;What they did right&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;✓&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Theory first:&lt;/strong&gt; two theoretically distinct dimensions, not one generic "criticism"&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;✓&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Cross-partisan validation:&lt;/strong&gt; labels validated across Republican and Democratic raters&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;✓&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Transparency:&lt;/strong&gt; model, prompt, and validation procedure documented&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;✓&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Limitation acknowledgment:&lt;/strong&gt; coverage ≠ framing ≠ editorial stance&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://store.nytimes.com/cdn/shop/products/new-york-times-back-copies_1024x1024.jpg?v=1749447915)
+
+---
+
+# Crowl et al.: The Two-Dimension Framework - Methodology
+
+&lt;div class="src"&gt;crowl_measuring_2025&lt;/div&gt;
+
+**Why two dimensions — not one?** Because "police criticism" conflates two theoretically distinct claims.
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-blue"&gt;
+    &lt;div style="font-weight:700; color:#2a5bd7; margin-bottom:0.4em;"&gt;📉 Effectiveness criticism&lt;/div&gt;
+    &lt;div style="font-size:0.85em; line-height:1.7;"&gt;Does reporting support or undermine the claim that &lt;em&gt;police protect citizens effectively&lt;/em&gt;?&lt;br&gt;&lt;br&gt;Captures: crime coverage, response time reporting, clearance rate stories, community safety framing&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.4em;"&gt;⚖️ Conduct criticism&lt;/div&gt;
+    &lt;div style="font-size:0.85em; line-height:1.7;"&gt;Does reporting support or undermine the claim that &lt;em&gt;police are racist or engage in misconduct&lt;/em&gt;?&lt;br&gt;&lt;br&gt;Captures: use-of-force coverage, racial disparities, misconduct investigations, protest coverage&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://cdn.creazilla.com/cliparts/1502558/police-clipart-xl.png)
+
+---
+
+# Crowl et al.: The Two-Dimension Framework - Findings
+
+&lt;div class="src"&gt;crowl_measuring_2025&lt;/div&gt;
+
+* Both dimensions have remained largely stable since 2013.
+* Spikes after high-profile killings (George Floyd) did not produce sustained increases.
+* Effectiveness coverage has slightly &lt;em&gt;increased&lt;/em&gt; since 2020.
+  * This directly contradicts the public narrative that media has become dramatically more anti-police.
+  
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://media.istockphoto.com/id/1435905501/vector/police-peaked-cap-with-gold-cockade-vector-illustration.jpg?s=612x612&amp;w=0&amp;k=20&amp;c=h5APqCxhDhUoWr6Q9yNXlJ2AxXTkDZZwyERw9hxESxE=)
+
+---
+
+# 📄 Paper Walkthrough: Vafa et al. (2025) - Foundation Models for Causal Inference - Problem
+
+**The problem with standard econometric controls for career history:**
+
+* Standard regression controls for gender wage gap:
+  * years of experience
+  * industry code
+  * occupation code
+* These are coarse — they miss the full sequence and texture of a career.
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://imageio.forbes.com/specials-images/imageserve/605bbc0a79b9a4872209bb0b/An-illustration-of-several-women-and-one-man--each-standing-on-a-stack-of-coins--The/0x0.jpg?width=960&amp;dpr=2)
+
+---
+
+# 📄 Paper Walkthrough: Vafa et al. (2025) - Foundation Models for Causal Inference - Methodology
+
+
+**Vafa et al.'s insight:** A foundation model fine-tuned on full career history text can build richer representations of career trajectories than any manually constructed variable set — because it reads the actual path, not a summary.
+
+**Their approach:**
+* Build a custom foundation model on Panel Study of Income Dynamics career history text
+* Fine-tune to predict wages — but with a novel correction for omitted variable bias
+* Use the model's representations as controls in a gender wage gap decomposition
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://dealersupport.co.uk/wp-content/uploads/2024/04/iStock-1405983081-678x381.jpg)
+
+---
+
+# 📄 Paper Walkthrough: Vafa et al. (2025) - Foundation Models for Causal Inference - Findings
+
+
+**Key findings:** 
+* Career history explains **more** of the gender wage gap than standard econometric models measure — because the model captures variation that coarse categorical variables miss.
+* Elements of career history previously treated as "unexplained" gap are actually explained — just not by traditional controls.
+
+
+&lt;center&gt;
+&lt;div style="width:400px; height:400px"&gt;
+![](https://timespro.com/_next/image?url=https%3A%2F%2Ftimesproweb-static-backend-prod.s3.ap-south-1.amazonaws.com%2FBlog_Page_On_Career_Options_In_History_31a51dce2a.webp&amp;w=3840&amp;q=75)
+
+---
+
+# Vafa et al.: The General Principle
+
+&lt;div class="src"&gt;vafa_wage_2025&lt;/div&gt;
+
+**Fine-tuned foundation models give a better and broader picture of the impact of data.**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.4em;"&gt;Standard approach — coarse variables&lt;/div&gt;
+    &lt;div class="mono" style="font-size:0.74em; margin:0;"&gt;
+years_experience  &lt;span class="hi-grey"&gt;# loses sequence&lt;/span&gt;
+&lt;br&gt;
+industry_code     &lt;span class="hi-grey"&gt;# loses within-industry variation&lt;/span&gt;
+&lt;br&gt;
+occupation_code   &lt;span class="hi-grey"&gt;# loses transitions&lt;/span&gt;
+&lt;br&gt;
+&lt;span class="hi-red"&gt;missing: job sequences, gaps, advancement
+pace, lateral moves, interruptions&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-green"&gt;
+    &lt;div style="font-weight:700; color:#27ae60; margin-bottom:0.4em;"&gt;Foundation model approach — rich text&lt;/div&gt;
+    &lt;div style="font-size:0.82em; line-height:1.8;"&gt;Reads the full career history text&lt;br&gt;Captures sequences, not just summaries&lt;br&gt;Learns which patterns predict wages&lt;br&gt;Encodes gaps, transitions, interruptions&lt;br&gt;Builds representations no human would design&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;&lt;div class="box box-purple" style="font-size:0.84em;"&gt;&lt;strong&gt;The broader lesson:&lt;/strong&gt; This approach applies wherever the &lt;em&gt;path&lt;/em&gt; matters, not just the endpoint. Health trajectories, criminal justice histories, educational pathways, residential sequences — any domain where coarse categorical variables may be omitting meaningful variation in the process.&lt;/div&gt;
+
+---
+
+# High Validity Requires High Accuracy on the Right Construct
+
+&lt;div class="src"&gt;Benoit et al. 2025 · LLMs for party position estimation&lt;/div&gt;
+
+**The key distinction:** High overall accuracy ≠ high validity for your research question.
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;What Benoit et al. show&lt;/div&gt;
+    &lt;div class="box box-blue" style="font-size:0.83em; margin-bottom:0.4em;"&gt;LLMs used as "virtual expert coders" for party manifesto scaling produce estimates that correlate well with traditional expert survey benchmarks (CHES)&lt;/div&gt;
+    &lt;div class="box box-blue" style="font-size:0.83em;"&gt;Ensemble of LLM-generated estimates (averaging across multiple models) reduces noise and improves reliability&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;The validity requirements they satisfy&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;✓&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Construct validity:&lt;/strong&gt; LLM estimates correlate with established benchmarks&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;✓&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Reliability:&lt;/strong&gt; ensemble approach reduces run-to-run variance&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num amber"&gt;⚠&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Subgroup accuracy:&lt;/strong&gt; performance varies across issue dimensions and party families&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num amber"&gt;⚠&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Generalizability:&lt;/strong&gt; validated on Western European parties — may not extend elsewhere&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:400px"&gt;
+![](https://tse2.mm.bing.net/th/id/OIP.gCHbChvEZN6WnqlVA3E6WAHaEJ?cb=thfvnextfalcon4&amp;rs=1&amp;pid=ImgDetMain&amp;o=7&amp;rm=3)
+
+---
+
+class: debate
+
+# ⚖️ Debate: Should Proprietary LLMs Be Used for Published Research?
+
+**The case against (Burnham et al.):**
+
+Proprietary models like GPT-4 are closed-source, not archived, updated without notice, expensive at scale, and require trusting a commercial company's infrastructure. A paper using GPT-4 today cannot be exactly replicated in six months. This violates basic open-science principles.
+
+DEBATE and similar open-weight models match GPT-4 on well-defined tasks — at orders of magnitude lower cost, with full reproducibility.
+
+&lt;br&gt;
+
+**The case for (implicitly, Yang et al. and Benoit et al.):**
+
+Proprietary models often achieve higher accuracy on complex, underspecified tasks where open models fall short. For research that requires the best available performance, restricting to open-weight models may sacrifice validity for reproducibility.
+
+&lt;br&gt;
+
+**The middle ground:**
+
+Use open-weight models when they're competitive. Use proprietary models when necessary, but pin exact versions, archive outputs, and test sensitivity. Report which model was used as prominently as you'd report which survey instrument was used.
+
+&lt;br&gt;
+
+**Where do you stand?**
+
+---
+
+class: casestudy
+
+# 📊 Case Study: Yang et al. in Practice — What Happens When You Swap the Model - Results
+
+**Walk through a concrete example from the replication.**
+
+&lt;br&gt;
+
+**Original study:** Classifies social media posts as supporting or opposing a policy using GPT-3.5. Finds that left-leaning users are significantly more supportive of the policy (β = 0.18, p &lt; 0.05).
+
+**Replication with GPT-4:** Same data, same prompt. Finds β = 0.31, p &lt; 0.001. The effect is larger and more significant.
+
+**Replication with LLaMA-3:** Same data, same prompt. Finds β = 0.07, p = 0.21. The effect is non-significant.
+
+**Replication with Mistral:** Same data, same prompt. Finds β = −0.04, p = 0.62. The effect reverses direction.
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://static1.makeuseofimages.com/wordpress/wp-content/uploads/2024/08/some-3d-social-media-icons.jpg)
+
+---
+
+class: casestudy
+
+# 📊 Case Study: Yang et al. in Practice — What Happens When You Swap the Model - Analysis
+
+**What's happening?** Each model has different implicit operationalizations of "support" and "opposition" — shaped by different training data and alignment approaches. The finding is partly a measurement artifact.
+
+**The lesson:** Yang et al.'s 37% isn't abstract. It looks exactly like this. Which conclusion you publish depends on which model you happened to use.
+
+&lt;center&gt;
+&lt;div style="width:800px; height:400px"&gt;
+![](https://www.talentlms.com/blog/wp-content/uploads/2023/07/TLMS_20230629_1200x628-1.png)
+
+---
+
+# The Decision Framework: Which Approach When?
+
+&lt;center&gt;
+&lt;div style="width:370px; height:370px"&gt;
+![](https://cdn.corenexis.com/f/jzvvUtMQnMg.png)
+
+---
+
+class: discussion
+
+# 💬 Discussion Question 2
+
+**"The constraint is no longer scale. The constraint is validity."**
+
+&lt;br&gt;
+
+LLMs have essentially solved the scale problem in text analysis. Millions of documents can be coded for a few hundred dollars. But Yang et al. show that what you code depends heavily on which model you use — and that this changes conclusions in 37% of cases.
+
+&lt;br&gt;
+
+- Crowl et al.'s finding (police coverage is stable since 2013) depends on their specific model, prompt, and operationalization. How much should we trust it? What additional evidence would make you more confident?
+
+- Vafa et al. argue that foundation models can build better control variables than researchers design manually. Is this empowering or does it reduce researcher control over the measurement process in ways that should concern us?
+
+- If LLM measurement is unreliable across model choices, does that argue for standardizing on one model (e.g., DEBATE for political science) — or for always testing multiple models?
+
+&lt;br&gt;
+
+**Is the field better off with cheap, scalable, imperfect measurement — or expensive, slow, more valid measurement?**
+
+---
+
+# What Makes AI Measurement Valid: A Checklist
+
+Before publishing LLM-based measurement:
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th style="width:5%;"&gt;✓&lt;/th&gt;&lt;th&gt;Criterion&lt;/th&gt;&lt;th style="width:30%;"&gt;Why it matters&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;☐&lt;/td&gt;&lt;td&gt;Concept is theoretically defined, not just named&lt;/td&gt;&lt;td&gt;Zero-shot applies model's operationalization, not yours&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;☐&lt;/td&gt;&lt;td&gt;Performance validated against human-coded representative sample&lt;/td&gt;&lt;td&gt;Easy validation samples hide hard-case failures&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;☐&lt;/td&gt;&lt;td&gt;Accuracy reported by theoretically relevant subgroup&lt;/td&gt;&lt;td&gt;Aggregate accuracy hides the validity crisis&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;☐&lt;/td&gt;&lt;td&gt;Errors audited for systematic patterns&lt;/td&gt;&lt;td&gt;Systematic errors bias estimates in ways averaging doesn't fix&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;☐&lt;/td&gt;&lt;td&gt;Results tested across ≥2 model versions or types&lt;/td&gt;&lt;td&gt;Yang et al.: 37% of conclusions change with model substitution&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;☐&lt;/td&gt;&lt;td&gt;Exact model version, prompt, and raw outputs archived&lt;/td&gt;&lt;td&gt;Reproducibility requires archiving — not just reporting&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;☐&lt;/td&gt;&lt;td&gt;&lt;strong&gt;Demographic bias tested for text with visible or implied demographic characteristics&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Jeon et al.: debiasing instructions don't eliminate shortcuts&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+class: discussion
+
+# 💬 Discussion Question 3
+
+**"High validity data measurement requires high accuracy in well-defined constructs."**
+
+&lt;br&gt;
+
+This sounds obvious — but it has a sharp implication. Crowl et al. achieve high accuracy on a well-defined construct (police effectiveness criticism, police conduct criticism) and produce a finding that contradicts public perception. Benoit et al. achieve high accuracy on party position estimation.
+
+But many studies use LLMs for constructs that are poorly defined — and achieve "acceptable" aggregate accuracy that hides validity failures.
+
+&lt;br&gt;
+
+1. Halterman &amp; Keith tested LLMs against *real* political science codebooks — not simplified versions. They found substantial zero-shot limitations. What does this say about the dozens of published papers that used LLMs with brief, informal task descriptions?
+
+2. Jeon et al. find that models systematically attribute more liberal ideologies to women. Suppose you are conducting research comparing media coverage of male vs. female politicians. What should you do — avoid LLMs, use them with caution, or design experiments to detect and correct the bias?
+
+3. Is there a construct complexity threshold above which LLMs simply shouldn't be used as the primary measurement instrument?
+
+---
+
+class: inverse, center, middle
+&lt;div class="section-num"&gt;III&lt;/div&gt;
+# Key Vocabulary
+## Terms from this week's papers worth knowing cold
+
+---
+
+# Classification Approaches: Zero-Shot, Few-Shot, Fine-Tuned
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-purple"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Zero-shot classification &lt;span class="badge badge-purple"&gt;core term&lt;/span&gt;&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;Classifying documents into categories using only instructions or a codebook — no labeled examples of the specific task. Tests a model's "off-the-shelf" performance.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-blue"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Few-shot learning &lt;span class="badge badge-grey"&gt;Burnham et al.&lt;/span&gt;&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;Teaching a model a task using a small random sample of labeled examples — Burnham et al. found just 10–25 labeled documents enough for DEBATE models to outperform larger zero-shot LLMs.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-green"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Supervised fine-tuning (SFT) &lt;span class="badge badge-green"&gt;gold standard&lt;/span&gt;&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;Further training a model on a labeled dataset specific to the task at hand. Consistently the most reliable way to boost accuracy when labeled data is available.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-amber"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Parameter-efficient training &lt;span class="badge badge-amber"&gt;Halterman &amp;amp; Keith&lt;/span&gt;&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;Fine-tuning methods that update only a small subset of a model's parameters rather than the whole network — makes supervised training feasible even for large open-weight LLMs.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:370px; height:370px"&gt;
+![](https://static.vecteezy.com/system/resources/previews/039/612/820/non_2x/machine-learning-ai-classification-linear-icon-vector.jpg)
+
+---
+
+# Model Architecture: How DEBATE Actually Works
+
+&lt;div class="box box-purple" style="margin:0.5em 0;"&gt;
+  &lt;strong&gt;DEBATE&lt;/strong&gt; — &lt;em&gt;Domain Enhanced BERT-based Algorithm for Textual Entailment&lt;/em&gt;. Burnham et al.'s family of small (150–435M parameter), open-source, efficient classifiers purpose-built for political text.
+&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div class="box box-blue"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Natural Language Inference (NLI) / textual entailment&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;Reframes classification as a logic problem: does a "premise" (the document) entail a "hypothesis" (the candidate label)? This is the underlying framework DEBATE is trained on.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Encoder vs. decoder architecture&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;&lt;strong&gt;Encoders&lt;/strong&gt; (like BERT, DeBERTa — what DEBATE uses) are built for classification and are far more efficient. &lt;strong&gt;Decoders&lt;/strong&gt; (the architecture behind generative LLMs like GPT-4) are more general-purpose but far more computationally expensive.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="quote" style="margin-top:0.4em;"&gt;The efficiency gap is the point: DEBATE is orders of magnitude smaller than proprietary LLMs, fully open-source, and still competitive at zero-shot classification of political text.&lt;cite&gt;— Burnham et al. (2025)&lt;/cite&gt;&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://img.magnific.com/premium-vector/political-debates-concept-diverse-man-woman-standing-together_1326094-7511.jpg)
+
+---
+
+# Halterman &amp;amp; Keith's Five-Stage Codebook-LLM Framework
+
+&lt;div class="box box-purple" style="margin:0.5em 0; text-align:center;"&gt;
+  &lt;strong&gt;Codebook-LLM measurement&lt;/strong&gt; — using an LLM to apply a human-written social-science codebook to unlabeled documents, evaluated through a structured, repeatable process.
+&lt;/div&gt;
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th style="width:14%;"&gt;Stage&lt;/th&gt;&lt;th style="width:30%;"&gt;Name&lt;/th&gt;&lt;th style="width:56%;"&gt;What happens&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;&lt;strong&gt;Codebook preparation&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Operationalize the concept in a semi-structured format both humans and LLMs can follow&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;&lt;strong&gt;Capability testing&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Label-free "behavioral tests" — controlled checks of basic model capability and failure modes, needing no ground truth&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;&lt;strong&gt;Zero-shot evaluation&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Measure off-the-shelf accuracy against real human-coded labels&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;&lt;strong&gt;Error analysis&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Diagnose where and why the model's zero-shot labels diverge from expert coding&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;4&lt;/td&gt;&lt;td&gt;&lt;strong&gt;Supervised training&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Fine-tune (often parameter-efficiently) on labeled examples to close the remaining gap&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;center&gt;
+&lt;div style="width:500px; height:250px"&gt;
+![](https://cdn.vectorstock.com/i/preview-1x/24/74/open-book-vector-3422474.jpg)
+
+---
+
+# Validity and Measurement Quality
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-purple"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Construct validity &lt;span class="badge badge-purple"&gt;core term&lt;/span&gt;&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:0.95em;"&gt;Whether a measurement actually captures the theoretical concept it claims to — the deeper standard behind "high accuracy," since a model can be accurate on a poorly defined construct and still measure the wrong thing.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-blue"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Label clarity&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:0.95em;"&gt;How well-defined and unambiguous a category is. This week's papers show label clarity — not just model size — determines whether a fine-tuned small model or a large zero-shot LLM performs better.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-green"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Foundation model (as measurement instrument) &lt;span class="badge badge-grey"&gt;Vafa et al.&lt;/span&gt;&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:0.95em;"&gt;A general-purpose pretrained model repurposed as a measurement tool for a specific domain (e.g., Vafa et al.'s use for causal inference) — richer than a narrow classifier, but requiring its own validation.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-amber"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Subgroup accuracy auditing&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:0.95em;"&gt;Checking a model's accuracy separately within theoretically important subgroups, rather than relying on one aggregate accuracy number that can mask uneven, patterned errors.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://th.bing.com/th/id/R.083dcd9663e639027ba3e695611e0112?rik=cxhfpcPMsj7ulw&amp;riu=http%3a%2f%2fwww.smartcaluae.com%2fmain%2fimages%2fQuality.jpg&amp;ehk=oHtFLLFt2wnG55gFOzWtJGUnZfpITWZi%2fMJ%2b%2fXUlp9o%3d&amp;risl=&amp;pid=ImgRaw&amp;r=0)
+
+---
+
+# Bias and Instability Terms
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Demographic shortcuts &lt;span class="badge badge-grey"&gt;Jeon et al.&lt;/span&gt;&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:0.95em;"&gt;When a model uses a person's apparent demographic characteristics (e.g., gender) as a proxy for an unrelated judgment (e.g., ideology), rather than the actual content — even on identical, ideologically neutral material.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Model substitution effect &lt;span class="badge badge-grey"&gt;Yang et al.&lt;/span&gt;&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:0.95em;"&gt;The finding that swapping which model (or model version) performs an annotation task can change a substantial share of downstream research conclusions — in Yang et al.'s case, around 37%.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Non-random (systematic) error&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:0.95em;"&gt;Measurement error that clusters in theoretically meaningful subsets of the data, rather than being evenly distributed noise — the reason aggregate accuracy can be misleading.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Run-to-run / version-to-version instability&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:0.95em;"&gt;A model producing different classifications for the identical input across repeated runs, or across different versions of "the same" model — a threat to reproducibility distinct from accuracy itself.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://th.bing.com/th/id/R.7264dc52a5fed9616a2687dd8b040b05?rik=cOkUXWXWe4k2eQ&amp;pid=ImgRaw&amp;r=0)
+
+---
+
+# Vocabulary Quick Reference
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th style="width:34%;"&gt;Term&lt;/th&gt;&lt;th style="width:66%;"&gt;One-line definition&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;Zero-shot classification&lt;/td&gt;&lt;td&gt;Classifying with instructions/codebook alone, no task-specific examples&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Few-shot learning&lt;/td&gt;&lt;td&gt;Learning a task from a small sample of labeled examples (e.g., 10–25)&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;DEBATE&lt;/td&gt;&lt;td&gt;Burnham et al.'s efficient, open-source NLI-based political text classifiers&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;NLI / textual entailment&lt;/td&gt;&lt;td&gt;Reframing classification as: does this document entail this label?&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;Codebook-LLM framework&lt;/td&gt;&lt;td&gt;Halterman &amp;amp; Keith's five-stage process for rigorous LLM measurement&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Construct validity&lt;/td&gt;&lt;td&gt;Whether a measurement captures the real underlying concept&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;Label clarity&lt;/td&gt;&lt;td&gt;How well-defined a category is — determines which approach wins&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Demographic shortcuts&lt;/td&gt;&lt;td&gt;Using demographic cues as a proxy for an unrelated judgment&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;Model substitution effect&lt;/td&gt;&lt;td&gt;Swapping models changes ~37% of downstream conclusions (Yang et al.)&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Subgroup accuracy auditing&lt;/td&gt;&lt;td&gt;Checking accuracy within subgroups, not just in aggregate&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+# Summary: The Full Picture
+
+&lt;div class="cols-2" style="margin-top:0.5em; font-size:1.2em;"&gt;
+  &lt;div class="box box-green"&gt;
+    &lt;div style="font-weight:700; color:#27ae60; margin-bottom:0.5em;"&gt;What AI measurement enables&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      Scale and speed previously impossible&lt;br&gt;
+      Foundation models as richer measurement instruments (Vafa et al.)&lt;br&gt;
+      Purpose-built classifiers match large models (Burnham et al.)&lt;br&gt;
+      Systematic scaling of expert knowledge (Crowl et al., Benoit et al.)&lt;br&gt;
+      Rapid iteration on operationalization
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.5em;"&gt;What AI measurement threatens&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      37% of conclusions change with model substitution (Yang et al.)&lt;br&gt;
+      Errors cluster in theoretically important subsets&lt;br&gt;
+      Demographic shortcuts bias political annotation (Jeon et al.)&lt;br&gt;
+      Run-to-run and version-to-version instability&lt;br&gt;
+      False confidence from high aggregate accuracy
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-purple"&gt;
+    &lt;div style="font-weight:700; color:#8e44ad; margin-bottom:0.5em;"&gt;What makes it work&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      Theory-first construct definition&lt;br&gt;
+      Label clarity → DEBATE/fine-tuned model advantage&lt;br&gt;
+      Supervised fine-tuning when data is available&lt;br&gt;
+      Subgroup accuracy auditing&lt;br&gt;
+      Open-weight, versioned models for publication
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.5em;"&gt;The minimum standards&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      Report exact model version&lt;br&gt;
+      Archive prompt and raw outputs&lt;br&gt;
+      Validate on representative human-coded sample&lt;br&gt;
+      Report accuracy by relevant subgroup&lt;br&gt;
+      Test sensitivity to model substitution
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+# Readings for This Unit
+
+&lt;div class="cols-3" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.5em;"&gt;Using AI to measure things&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      Burnham et al. (2025)&lt;br&gt;&lt;span style="color:#888; font-size:0.88em;"&gt;Political DEBATE: efficient zero-shot and few-shot classifiers&lt;/span&gt;&lt;br&gt;&lt;br&gt;
+      Halterman &amp; Keith (2025)&lt;br&gt;&lt;span style="color:#888; font-size:0.88em;"&gt;Codebook LLMs: evaluating LLMs as measurement tools&lt;/span&gt;&lt;br&gt;&lt;br&gt;
+      Crowl et al. (2025)&lt;br&gt;&lt;span style="color:#888; font-size:0.88em;"&gt;Measuring criticism of the police in local news media&lt;/span&gt;&lt;br&gt;&lt;br&gt;
+      Vafa, Athey &amp; Blei (2025)&lt;br&gt;&lt;span style="color:#888; font-size:0.88em;"&gt;Estimating wage disparities using foundation models&lt;/span&gt;&lt;br&gt;&lt;br&gt;
+      Benoit et al. (2025)&lt;br&gt;&lt;span style="color:#888; font-size:0.88em;"&gt;Using LLMs to analyze political texts through NLU&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.5em;"&gt;How AI performs&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      Chae &amp; Davidson (2025)&lt;br&gt;&lt;span style="color:#888; font-size:0.88em;"&gt;LLMs for text classification: zero-shot to instruction-tuning&lt;/span&gt;&lt;br&gt;&lt;br&gt;
+      Yang et al. (2025)&lt;br&gt;&lt;span style="color:#888; font-size:0.88em;"&gt;Data annotation with LLMs: lessons from a large empirical evaluation&lt;/span&gt;&lt;br&gt;&lt;br&gt;
+      Jeon et al. (2026)&lt;br&gt;&lt;span style="color:#888; font-size:0.88em;"&gt;From faces to politics: vision-language models link demographics to ideology&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.5em;"&gt;Next week&lt;/div&gt;
+    &lt;div style="line-height:1.9; color:#888; font-size:0.9em;"&gt;
+      ashwin_qualitative_2025&lt;br&gt;
+      bai_biased_2025&lt;br&gt;
+      germani_bias_2025&lt;br&gt;
+      tan_cultural_2026&lt;br&gt;
+      barrie_replication_2025&lt;br&gt;
+      bisbee_gold_2025&lt;br&gt;
+      maranca_dsl_2025
+    &lt;/div&gt;
+    &lt;div style="margin-top:0.6em; font-size:0.85em; color:#555;"&gt;Bias, systematic errors, and other issues&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+class: inverse, center, middle
+
+# Questions?
+
+&lt;div style="color:#aaa; font-size:0.9em; margin-top:1em;"&gt;Week 4 · SOCY 1200: Introduction to Using AI to Study Society&lt;/div&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "16:9",
+  "slideNumberFormat": "%current% / %total%"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

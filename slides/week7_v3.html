@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>SOCY 1200: Introduction to Using AI to Study Society</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Daniel Karell" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="yale.css" type="text/css" />
+    <link rel="stylesheet" href="yale-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# SOCY 1200: Introduction to Using AI to Study Society
+]
+.subtitle[
+## Unit 3: Synthetic People: Limitations and Potential Solutions
+]
+.author[
+### Daniel Karell
+]
+.institute[
+### Yale University
+]
+.date[
+### Week 7
+]
+
+---
+
+
+
+
+&lt;style&gt;
+.remark-slide-content:not(.title-slide) {
+  font-size: 16px; padding: 1.8em 2.2em 1em;
+  color: #1a1a2e; background: #fafafa;
+}
+.remark-slide-content:not(.title-slide) h1 {
+  font-size: 2em; font-weight: 700; letter-spacing: -0.03em;
+  color: #1a1a2e; border-bottom: 3px solid #d35400;
+  padding-bottom: 0.3em; margin-bottom: 0.7em;
+}
+.remark-slide-content:not(.title-slide) h2 { font-size:1.05em; color:#555; font-weight:500; }
+.remark-slide-content:not(.title-slide) p, .remark-slide-content:not(.title-slide) li { line-height:1.65; }
+.inverse:not(.title-slide) { background: #1a1a2e !important; }
+.inverse:not(.title-slide) h1, .inverse:not(.title-slide) h2, .inverse:not(.title-slide) h3 { color:white !important; border:none !important; }
+.inverse:not(.title-slide) h1 { font-size:1.9em !important; letter-spacing:-0.03em; }
+.inverse:not(.title-slide) h2 { color:#aaa !important; font-weight:400 !important; }
+.section-num:not(.title-slide) { display:inline-block; font-size:4em; font-weight:900; color:rgba(39,183,245,0.8); line-height:1; margin-bottom:0.1em; }
+.discussion { background: #0f3460 !important; }
+.discussion h1 { color: #f0c040 !important; border-bottom: 3px solid #f0c040 !important; }
+.discussion p, .discussion li { color: #e8e8f0 !important; line-height: 1.75 !important; }
+.discussion strong { color: #f0c040 !important; }
+.paper-walk { background: #1a3a1a !important; }
+.paper-walk h1 { color: #90ee90 !important; border-bottom: 3px solid #90ee90 !important; }
+.paper-walk p, .paper-walk li { color: #ddeedd !important; line-height:1.7 !important; }
+.paper-walk strong { color: #90ee90 !important; }
+.debate { background: #1a1a2e !important; }
+.debate h1 { color: #ffcc66 !important; border-bottom: 3px solid #ffcc66 !important; }
+.debate p, .debate li { color: #f0e8d0 !important; line-height:1.7 !important; }
+.debate strong { color: #ffcc66 !important; }
+.casestudy { background: #0a1a2a !important; }
+.casestudy h1 { color: #66ccff !important; border-bottom: 3px solid #66ccff !important; }
+.casestudy p, .casestudy li { color: #ddeeff !important; line-height:1.7 !important; }
+.casestudy strong { color: #66ccff !important; }
+.box { border-radius:6px; padding:0.75em 1em; margin:0.4em 0; font-size:0.85em; line-height:1.6; }
+.box-orange { background:#fef5ee; border-left:4px solid #d35400; color:#3d1500; }
+.box-red    { background:#fdf2f2; border-left:4px solid #c0392b; color:#3d0c0c; }
+.box-green  { background:#f0faf3; border-left:4px solid #27ae60; color:#0c3320; }
+.box-blue   { background:#f0f4ff; border-left:4px solid #2a5bd7; color:#0d1f5c; }
+.box-amber  { background:#fffbf0; border-left:4px solid #e67e22; color:#5c3400; }
+.box-slate  { background:#f4f5f7; border-left:4px solid #7f8c8d; color:#2c3e50; }
+.box-purple { background:#f5f0ff; border-left:4px solid #8e44ad; color:#2e0060; }
+.box-teal   { background:#f0fafa; border-left:4px solid #16a085; color:#0c3030; }
+.quote { border-left:5px solid #d35400; background:white; border-radius:0 6px 6px 0; padding:0.7em 1.2em; font-size:0.88em; font-style:italic; color:#2c3e50; margin:0.6em 0; box-shadow:0 1px 4px rgba(0,0,0,0.07); }
+.quote cite { display:block; font-style:normal; font-size:0.82em; color:#d35400; margin-top:0.3em; font-weight:600; }
+.cols-2 { display:grid; grid-template-columns:1fr 1fr; gap:1em; margin:0.5em 0; }
+.cols-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.9em; margin:0.5em 0; }
+.cols-4 { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:0.7em; margin:0.5em 0; }
+.step-row { display:flex; align-items:flex-start; gap:0.75em; margin-bottom:0.5em; }
+.step-num { flex-shrink:0; width:1.7em; height:1.7em; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.8em; margin-top:0.05em; }
+.step-num.orange { background:#d35400; color:white; }
+.step-num.blue   { background:#2a5bd7; color:white; }
+.step-num.green  { background:#27ae60; color:white; }
+.step-num.amber  { background:#e67e22; color:white; }
+.step-num.red    { background:#c0392b; color:white; }
+.step-num.grey   { background:#7f8c8d; color:white; }
+.step-body { font-size:0.83em; line-height:1.6; color:#2c3e50; padding-top:0.15em; }
+.styled-table { width:100%; border-collapse:collapse; font-size:0.81em; margin:0.5em 0; box-shadow:0 1px 6px rgba(0,0,0,0.08); }
+.styled-table thead tr { background:#1a1a2e; color:white; }
+.styled-table thead th { padding:0.6em 0.8em; text-align:left; font-weight:600; }
+.styled-table tbody tr:nth-child(even) { background:#f4f5f7; }
+.styled-table tbody tr:nth-child(odd) { background:white; }
+.styled-table tbody td { padding:0.55em 0.8em; color:#2c3e50; vertical-align:top; }
+.styled-table .hl       { background:#fef5ee !important; font-weight:600; }
+.styled-table .hl-green { background:#f0faf3 !important; }
+.styled-table .hl-red   { background:#fdf2f2 !important; }
+.badge { display:inline-block; border-radius:20px; padding:0.12em 0.65em; font-size:0.72em; font-weight:700; }
+.badge-orange { background:#fde8d4; color:#8c3000; }
+.badge-red    { background:#fde8e8; color:#922b21; }
+.badge-green  { background:#e8f8ee; color:#1e8449; }
+.badge-amber  { background:#fef3d0; color:#784212; }
+.badge-grey   { background:#eaecee; color:#515a5a; }
+.badge-blue   { background:#e8edff; color:#1a3fa0; }
+.mono { font-family:'Cascadia Code','Fira Code','Courier New',monospace; font-size:0.78em; background:#1e2433; color:#abb2bf; border-radius:6px; padding:0.8em 1.1em; line-height:1.85; margin:0.4em 0; }
+.mono .hi-blue   { color:#61afef; }
+.mono .hi-green  { color:#98c379; }
+.mono .hi-red    { color:#e06c75; }
+.mono .hi-amber  { color:#e5c07b; }
+.mono .hi-grey   { color:#636d83; }
+.mono .hi-white  { color:#ffffff; }
+.mono .hi-orange { color:#d19a66; }
+.src { display:inline-block; background:#1a1a2e; color:#FFFFFF; font-size:0.68em; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; border-radius:3px; padding:0.15em 0.55em; margin-bottom:0.45em; }
+blockquote { border:none; padding:0; margin:0; background:none; }
+&lt;/style&gt;
+
+# Where We Are in the Course
+
+&lt;div class="cols-3" style="margin-top:0.6em; font-size:1em;"&gt;
+  &lt;div class="box box-teal"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Weeks 1–3 · Foundations&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;What LLMs are&lt;br&gt;How prompting works&lt;br&gt;What good prompting looks like&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-teal"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Weeks 4–5 · Measurement&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;AI for text classification&lt;br&gt;Bias and systematic errors&lt;br&gt;Correction methods&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-orange" style="border:2px solid #d35400;"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em; color:#d35400;"&gt;Weeks 6–7 · Synthetic Data&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;Silicon sampling: promise (Week 6)&lt;br&gt;&lt;strong&gt;Limitations and solutions (Week 7) ← We are here&lt;/strong&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;**Last week's conclusion:** Silicon sampling gets means right but fails on variance, local populations, regression inference, and reproducibility.
+
+&lt;br&gt;**This week's question:** Given those failures — is there a methodologically sound way to use synthetic data? What does validity require?
+
+&lt;div class="box box-amber" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;The answer from both papers: &lt;strong&gt;yes — but it requires treating LLMs as predictors, not simulators, and anchoring everything to human validation.&lt;/strong&gt;&lt;/div&gt;
+
+---
+
+# The Two Papers — A Map
+
+&lt;div class="cols-2" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div class="box box-orange"&gt;
+    &lt;div style="font-weight:700; color:#d35400; margin-bottom:0.5em;"&gt;Broska, Howes &amp; van Loon (2025)&lt;/div&gt;
+    &lt;div style="font-size:0.95em; line-height:1.8;"&gt;&lt;em&gt;"The Mixed Subjects Design: Treating Large Language Models as Potentially Informative Observations"&lt;/em&gt;&lt;br&gt;&lt;br&gt;
+    &lt;strong&gt;Venue:&lt;/strong&gt; Sociological Methods &amp; Research&lt;br&gt;
+    &lt;strong&gt;Core contribution:&lt;/strong&gt; Prediction-powered inference (PPI) framework for combining LLM predictions with human observations&lt;br&gt;
+    &lt;strong&gt;Key insight:&lt;/strong&gt; LLMs are better as &lt;em&gt;predictors&lt;/em&gt; than &lt;em&gt;simulators&lt;/em&gt; — use them to reduce the cost of human data collection, not replace it&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-orange"&gt;
+    &lt;div style="font-weight:700; color:#d35400; margin-bottom:0.5em;"&gt;Xie et al. (2026)&lt;/div&gt;
+    &lt;div style="font-size:0.95em; line-height:1.8;"&gt;&lt;em&gt;"Evaluating the Statistical Realism of LLM-Generated Social Science Data"&lt;/em&gt;&lt;br&gt;&lt;br&gt;
+    &lt;strong&gt;Venue:&lt;/strong&gt; PNAS&lt;br&gt;
+    &lt;strong&gt;Core contribution:&lt;/strong&gt; SSDataBench — a systematic benchmark for evaluating population-level statistical realism in LLM-generated data&lt;br&gt;
+    &lt;strong&gt;Key insight:&lt;/strong&gt; Eye-test plausibility is not enough; synthetic data must reproduce the statistical moments that social research actually uses&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:500px; height:250px"&gt;
+![](https://assets-global.website-files.com/5f59aa263c234bb74025de57/654c58557688ca6f9b498dd4_Gen-AI%20use%20cases%20in%20marketing.png)
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;I&lt;/div&gt;
+
+# How Social Behavior Experiments Work
+## The foundation for understanding why mixed designs matter
+
+---
+
+# How Social Science Experiments Work — Briefly
+
+**Before we can evaluate mixed designs, we need to understand what they're mixing.**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;The classic randomized experiment&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;Recruit a sample of human participants&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;Randomly assign to treatment or control condition&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;Measure the outcome of interest for all participants&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;Estimate the average treatment effect (ATE): E[Y(1) − Y(0)]&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;5&lt;/span&gt;&lt;div class="step-body"&gt;Randomization ensures treatment and control groups are comparable → valid causal inference&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;Why this is expensive&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.3em; font-size:0.82em;"&gt;Recruiting human participants costs money: panel fees, survey platforms, IRB overhead, RA time&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.3em; font-size:0.82em;"&gt;Statistical power requires sample size: detecting a small effect may require N=2,000+ at $10–$50/person = $20k–$100k&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:0.82em;"&gt;Hard-to-reach populations cost even more: rare subgroups, clinical populations, non-Western samples&lt;/div&gt;
+    &lt;div class="box box-amber" style="margin-top:0.4em; font-size:0.82em;"&gt;&lt;strong&gt;The silicon sampling appeal:&lt;/strong&gt; replace expensive human observations with cheap LLM predictions — but this violates the fundamental logic of the experiment if predictions ≠ observations&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:200px; height:200px"&gt;
+![](https://media.istockphoto.com/id/1080975352/vector/money.jpg?s=612x612&amp;w=0&amp;k=20&amp;c=9NQPzPBEagPQHhwzYPkfCl7IhGHtOpvEBjkBx7FXjyw=)
+
+---
+
+# The Interchangeability Assumption — and Why It Fails
+
+&lt;div class="src"&gt;Broska et al. 2025&lt;/div&gt;
+
+**Most current silicon sampling research implicitly relies on what Broska et al. call the "interchangeability assumption."**
+
+&lt;div class="box box-amber" style="margin:0.5em 0; font-size:1em;"&gt;
+  &lt;strong&gt;Interchangeability assumption:&lt;/strong&gt; LLM-predicted responses and actual human responses are close enough to be treated as the same thing for the purposes of statistical analysis.
+&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;When this assumption would hold&lt;/div&gt;
+    &lt;div class="box box-green" style="font-size:1em; margin-bottom:0.3em;"&gt;LLM outputs have the same mean, variance, and covariance structure as human responses&lt;/div&gt;
+    &lt;div class="box box-green" style="font-size:1em;"&gt;LLM errors are random with respect to the treatment condition and covariates&lt;/div&gt;
+    &lt;div class="box box-green" style="font-size:1em;"&gt;LLM performance is stable over time&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;What the evidence shows (from Week 6)&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:1em; margin-bottom:0.3em;"&gt;Variance is compressed — SDs ~50% too small (Bisbee et al.)&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:1em; margin-bottom:0.3em;"&gt;Regression coefficients are attenuated — wrong magnitude&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:1em;"&gt;Performance drifts over 3 months — not stable&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="quote" style="margin-top:0.5em;"&gt;The interchangeability assumption is empirically false in most settings. The entire enterprise of silicon sampling rests on an assumption that does not hold.&lt;cite&gt;— Broska et al. (2025), paraphrased&lt;/cite&gt;&lt;/div&gt;
+
+---
+
+# The Better Framing: LLMs as Predictors, Not Simulators
+
+&lt;div class="src"&gt;Broska et al. 2025&lt;/div&gt;
+
+**The key conceptual move that makes mixed designs work:**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.4em;"&gt;Silicon sampling (old framing) ✗&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;"Generate synthetic respondents and use their responses as if they were human responses."&lt;br&gt;&lt;br&gt;This treats LLMs as &lt;strong&gt;simulators&lt;/strong&gt; of human behavior — a claim that fails empirically.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-orange"&gt;
+    &lt;div style="font-weight:700; color:#d35400; margin-bottom:0.4em;"&gt;Mixed subjects design (new framing) ✓&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;"Use LLM predictions as &lt;em&gt;noisy signals&lt;/em&gt; about what human responses would be, then correct using a human validation sample."&lt;br&gt;&lt;br&gt;This treats LLMs as &lt;strong&gt;predictors&lt;/strong&gt; — a claim that is often defensible.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;**The analogy:** Weather forecasting doesn't say "the forecast IS the weather." It says "the forecast is a useful prediction of the weather that we update with actual observations." Mixed subjects design applies the same logic to silicon sampling.
+
+&lt;div class="quote" style="margin-top:0.5em;"&gt;LLM predictions should be treated as potentially informative observations, not as ground truth. Human subjects serve as the gold standard that anchors the inference.&lt;cite&gt;— Broska et al. (2025)&lt;/cite&gt;&lt;/div&gt;
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;II&lt;/div&gt;
+
+# Mixed Subjects Design and PPI
+## The framework for valid synthetic data use
+
+---
+
+# What Is Prediction-Powered Inference (PPI)?
+
+&lt;div class="src"&gt;Broska et al. 2025 · building on Angelopoulos et al. (2023)&lt;/div&gt;
+
+**Prediction-powered inference** is a statistical framework for combining noisy machine learning predictions with a small number of gold-standard human observations to produce valid estimates.
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;The core idea&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num orange"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;Generate LLM predictions for a large sample (cheap)&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num orange"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;Collect human observations for a small subsample (expensive gold standard)&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num orange"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;Use the overlap to estimate how much the LLM predictions err&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;Apply a correction to the full LLM-predicted sample using the estimated error&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;5&lt;/span&gt;&lt;div class="step-body"&gt;Produce a valid estimate with proper confidence intervals&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;What PPI guarantees&lt;/div&gt;
+    &lt;div class="box box-green" style="margin-bottom:0.3em; font-size:0.82em;"&gt;&lt;strong&gt;Asymptotic unbiasedness&lt;/strong&gt; — the estimator converges to the true population parameter as the human sample grows&lt;/div&gt;
+    &lt;div class="box box-green" style="margin-bottom:0.3em; font-size:0.82em;"&gt;&lt;strong&gt;Proper coverage&lt;/strong&gt; — confidence intervals are valid (contain the true parameter at the claimed rate)&lt;/div&gt;
+    &lt;div class="box box-green" style="font-size:0.82em;"&gt;&lt;strong&gt;Efficiency gains&lt;/strong&gt; — when LLM predictions are good, the effective sample size is larger than the human sample alone&lt;/div&gt;
+    &lt;div class="box box-orange" style="margin-top:0.4em; font-size:0.82em;"&gt;&lt;strong&gt;The key property:&lt;/strong&gt; these guarantees hold &lt;em&gt;regardless of how accurate the LLM is&lt;/em&gt; — as long as the human sample is representative&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:200px; height:200px"&gt;
+![](https://img.magnific.com/premium-photo/prediction_1079150-31545.jpg)
+
+---
+
+# The Mixed Subjects Design: How It Works
+
+&lt;div class="src"&gt;Broska et al. 2025&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:800px; height:400px"&gt;
+![](https://cdn.corenexis.com/f/B5s3GY5Ye5e.png)
+
+---
+
+# The PPI Correlation: Measuring Interchangeability
+
+&lt;div class="src"&gt;Broska et al. 2025&lt;/div&gt;
+
+**Broska et al. introduce the "PPI correlation" as a key diagnostic:**
+
+&lt;div class="box box-orange" style="margin:0.5em 0; font-size:1em;"&gt;
+  &lt;strong&gt;PPI correlation (ρ):&lt;/strong&gt; the correlation between LLM predictions and actual human responses in the validation sample. This measures how informative the LLM predictions are about human behavior.
+&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;What ρ tells you&lt;/div&gt;
+    &lt;div class="mono" style="font-size:0.76em;"&gt;
+ρ = 0.0 → LLM is useless; no efficiency gain; Just use human sample alone
+&lt;br&gt;&lt;/br&gt;
+ρ = 0.5 → LLM is moderately predictive; Some efficiency gain; worth using
+&lt;br&gt;&lt;/br&gt;
+ρ = 0.8 → LLM is highly predictive; Large efficiency gain; human N can shrink a lot
+&lt;br&gt;&lt;/br&gt;
+ρ = 1.0 → LLM is a perfect predictor; (never happens; but more efficient than pure human)
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Effective sample size formula&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:1em; margin-bottom:0.4em;"&gt;N_eff = N_human + ρ² × N_llm&lt;br&gt;&lt;br&gt;If ρ = 0.7, N_human = 100, N_llm = 1000:&lt;br&gt;N_eff = 100 + 0.49 × 1000 = &lt;strong&gt;590&lt;/strong&gt;&lt;br&gt;→ 100 humans + cheap LLM predictions = 590 effective observations&lt;/div&gt;
+    &lt;div class="box box-green" style="font-size:1em;"&gt;This is the efficiency gain that makes mixed designs attractive — and ρ tells you how much gain to expect before committing to the design&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+# Paper Walkthrough: Broska et al. — Three Applications
+
+&lt;div class="src"&gt;broska_mixedsubjects_2025 · Sociological Methods &amp; Research&lt;/div&gt;
+
+&lt;div class="cols-3" style="margin-top:0.4em; font-size:1em;"&gt;
+  &lt;div class="box box-orange"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Application 1: Wage discrimination experiment&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;Task: Estimate effect of applicant race on hiring decisions&lt;br&gt;&lt;br&gt;LLM ρ = 0.61&lt;br&gt;Human N needed: 300 → 120&lt;br&gt;Cost saving: 60%&lt;br&gt;&lt;br&gt;&lt;span style="color:#888; font-size:0.9em;"&gt;LLMs predict discrimination direction; human validation calibrates magnitude&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-orange"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Application 2: Moral judgment survey&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;Task: Estimate how trolley-problem variants shift moral intuitions&lt;br&gt;&lt;br&gt;LLM ρ = 0.74&lt;br&gt;Human N needed: 400 → 120&lt;br&gt;Cost saving: 70%&lt;br&gt;&lt;br&gt;&lt;span style="color:#888; font-size:0.9em;"&gt;LLMs are surprisingly good at predicting moral judgment patterns&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-orange"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Application 3: Charitable giving experiment&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;Task: Effect of framing on donation amounts&lt;br&gt;&lt;br&gt;LLM ρ = 0.43&lt;br&gt;Human N needed: 500 → 390&lt;br&gt;Cost saving: 22%&lt;br&gt;&lt;br&gt;&lt;span style="color:#888; font-size:0.9em;"&gt;Lower ρ → lower efficiency gain. Still valid, but less cost-effective&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-slate" style="margin-top:0.5em; font-size:1em;"&gt;&lt;strong&gt;The lesson:&lt;/strong&gt; Mixed designs always produce valid estimates. The efficiency gain depends on ρ. Before committing to a mixed design, estimate ρ from a small pilot or prior work — if it's below ~0.3, pure human design may be more efficient.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:100px; height:200px"&gt;
+![](https://static.vecteezy.com/system/resources/previews/023/481/007/non_2x/salary-icon-3d-illustration-from-project-development-collection-creative-salary-3d-icon-for-web-design-templates-infographics-and-more-vector.jpg)
+
+---
+
+# When Mixed Designs Are Most Valuable
+
+&lt;div class="src"&gt;Broska et al. 2025&lt;/div&gt;
+
+**Mixed designs are most optimal when traditional data collection is expensive.**
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th style="width:30%;"&gt;Research context&lt;/th&gt;
+    &lt;th style="width:25%; text-align:center;"&gt;Mixed design value&lt;/th&gt;
+    &lt;th style="width:45%;"&gt;Why&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Clinical/medical populations&lt;/strong&gt;&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-green"&gt;Very high&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Recruiting patients is expensive, slow, and ethically complex. LLMs can generate bulk predictions; validate on small clinical sample.&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Cross-national surveys&lt;/strong&gt;&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-green"&gt;High&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Fielding surveys in multiple countries is prohibitively expensive. Mixed design can target validation resources to countries where LLM ρ is low.&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Rare demographic subgroups&lt;/strong&gt;&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-green"&gt;High&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Recruiting specific intersectional groups requires oversampling. Validate with small expert-recruited sample; use LLMs to fill the rest.&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Historical/longitudinal data&lt;/strong&gt;&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-amber"&gt;Moderate&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Cannot recruit people from the past. LLMs can simulate; validate against archival data from the period.&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl-red"&gt;&lt;td&gt;&lt;strong&gt;Local community opinion&lt;/strong&gt;&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-red"&gt;Low&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Bollen et al.: LLM ρ for local populations is very low (~0.25). Efficiency gain is minimal. Use real local surveys.&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://i0.wp.com/dataaspirant.com/wp-content/uploads/2023/03/3-2.png?resize=626%2C402&amp;ssl=1)
+
+---
+
+class: discussion
+
+# 💬 Discussion Question 1
+
+**"LLMs are better as predictors than simulators."**
+
+Broska et al.'s key reframing: stop thinking of LLMs as synthetic humans and start thinking of them as noisy prediction machines that can reduce your data collection costs — if anchored to real human data.
+
+&lt;br&gt;
+
+1. The PPI framework requires a human validation sample. For researchers with very limited budgets, even a small validation sample (N=50) may be prohibitively expensive. Does PPI actually reduce inequality in access to research, as Broska et al. claim — or does it just help researchers who were already resourced enough to collect some human data?
+
+2. Broska et al. apply mixed designs to laboratory-style behavioral experiments. Does the same framework apply to observational survey research — where there's no random assignment and the "prediction" is about latent attitudes, not behavioral responses?
+
+3. PPI guarantees valid inference when the human sample is representative. But representative samples are exactly what's expensive. Is there a circularity here — you need a good human sample to validate the LLM, but if you have a good human sample, why do you need the LLM?
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;III&lt;/div&gt;
+
+# Statistical Realism
+## What SSDataBench reveals about LLM-generated social data
+
+---
+
+# What Is "Statistical Realism"?
+
+&lt;div class="src"&gt;Xie et al. 2026 · PNAS&lt;/div&gt;
+
+**The central concept Xie et al. introduce:**
+
+&lt;div class="box box-orange" style="margin:0.5em 0;"&gt;
+  &lt;strong&gt;Statistical realism:&lt;/strong&gt; The degree to which LLM-generated data reproduces the population-level statistical patterns that social science research actually uses — not just whether individual responses look plausible.
+&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;What prior work measured&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:0.82em; margin-bottom:0.3em;"&gt;"Does this individual response seem realistic?" → &lt;em&gt;plausibility check&lt;/em&gt;&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:0.82em;"&gt;"Does the average response match the survey mean?" → &lt;em&gt;mean accuracy check&lt;/em&gt;&lt;/div&gt;
+    &lt;div style="font-size:0.82em; color:#888; margin-top:0.4em;"&gt;Both of these are necessary but insufficient. A model can pass both while failing badly on the statistical properties that research actually uses.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;What SSDataBench measures&lt;/div&gt;
+    &lt;div class="box box-orange" style="font-size:0.82em; margin-bottom:0.3em;"&gt;Univariate distributions — the full shape, not just the mean&lt;/div&gt;
+    &lt;div class="box box-orange" style="font-size:0.82em; margin-bottom:0.3em;"&gt;Bivariate associations — correlations between variables&lt;/div&gt;
+    &lt;div class="box box-orange" style="font-size:0.82em; margin-bottom:0.3em;"&gt;Multivariate outcome prediction — regression performance&lt;/div&gt;
+    &lt;div class="box box-orange" style="font-size:0.82em; margin-bottom:0.3em;"&gt;Life event sequence distributions — ordered trajectories&lt;/div&gt;
+    &lt;div class="box box-orange" style="font-size:0.82em;"&gt;Sequence-covariate associations — how life events relate to demographics&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+# Introducing SSDataBench
+
+&lt;div class="src"&gt;Xie et al. 2026&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;The benchmark design&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num orange"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;4 longitudinal datasets&lt;/strong&gt;: NLSY97, HRS, Add Health, BHPS — covering education, health, relationships, careers over decades&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num orange"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;3 cross-sectional datasets&lt;/strong&gt;: GSS, ANES, WVS — covering attitudes, values, and social norms&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num orange"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;6 social domains&lt;/strong&gt;: demographics, socioeconomic status, marriage, health, abilities, and attitudes&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;5 statistical benchmarks&lt;/strong&gt;: distributions, bivariate associations, regression, sequences, sequence-covariate associations&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Why this benchmark matters&lt;/div&gt;
+    &lt;div class="box box-orange" style="font-size:1em; margin-bottom:0.3em;"&gt;No prior systematic evaluation used &lt;em&gt;all five types&lt;/em&gt; of statistical properties across &lt;em&gt;multiple domains&lt;/em&gt;&lt;/div&gt;
+    &lt;div class="box box-orange" style="font-size:1em; margin-bottom:0.3em;"&gt;Uses the same datasets social scientists actually study — not toy examples&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:1em;"&gt;SSDataBench is designed to be updated as new LLMs are released — a living benchmark, not a one-time evaluation&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:250px; height:250px"&gt;
+![](https://th.bing.com/th/id/R.4c8209d512353c70a23ec09745a55125?rik=Xd5%2bO%2fNpCly6KQ&amp;pid=ImgRaw&amp;r=0)
+
+---
+
+# The Central Finding: Typological Compression
+
+&lt;div class="src"&gt;Xie et al. 2026&lt;/div&gt;
+
+**LLMs don't just get the distributions wrong — they simplify complex, heterogeneous distributions into a small number of idealized types.**
+
+&lt;center&gt;
+&lt;div style="width:700px; height:350px"&gt;
+![](https://cdn.corenexis.com/f/j21OGB7jMEl.png)
+
+---
+
+# Typological Compression: Why It Happens
+
+&lt;div class="src"&gt;Xie et al. 2026&lt;/div&gt;
+
+**Xie et al. call this a "pronounced tendency to compress real-world heterogeneity into simplified typological structures."**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;The mechanism&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:1em; margin-bottom:0.4em;"&gt;Training data describes life trajectories in ways that emphasize &lt;em&gt;typical patterns&lt;/em&gt;. Atypical trajectories are mentioned less, described less vividly, and appear in fewer training examples.&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:1em; margin-bottom:0.4em;"&gt;The model has learned the "ideal types" of life trajectories — the stories society tells about how careers, marriages, and health unfold — not the full messy distribution.&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:1em;"&gt;Alignment compounds this: the model is trained not to produce "weird" or "extreme" life histories — further pushing toward idealized types.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Why this matters for research&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.3em; font-size:1em;"&gt;Researchers studying &lt;strong&gt;inequality&lt;/strong&gt; need the full heterogeneity — including rare, atypical, and complex trajectories&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.3em; font-size:1em;"&gt;Researchers studying &lt;strong&gt;mobility&lt;/strong&gt; need the tails — the genuine success stories and genuine failures, not the compressed middle&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:1em;"&gt;Researchers studying &lt;strong&gt;life course processes&lt;/strong&gt; need sequence heterogeneity — not the model's "canonical" life trajectory&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+# What "Surface-Level Plausibility" Misses
+
+**The eye test is necessary but not sufficient for validating synthetic social data.**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;What passes the eye test&lt;/div&gt;
+    &lt;div class="box box-amber" style="font-size:1em; margin-bottom:0.3em;"&gt;Individual responses look realistic — incomes in the right range, ages match the cohort, relationship statuses are coherent&lt;/div&gt;
+    &lt;div class="box box-amber" style="font-size:1em; margin-bottom:0.3em;"&gt;Group averages are approximately right — mean income, mean education, mean health scores&lt;/div&gt;
+    &lt;div class="box box-amber" style="font-size:1em;"&gt;Basic correlations go in the right direction — education correlates with income, age correlates with health decline&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;What SSDataBench catches&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:1em; margin-bottom:0.3em;"&gt;&lt;strong&gt;Distribution shape:&lt;/strong&gt; the right mean but wrong skew, wrong kurtosis, wrong tail behavior&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:1em; margin-bottom:0.3em;"&gt;&lt;strong&gt;Bivariate associations:&lt;/strong&gt; correlations compressed toward zero; covariance structure simplified&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:1em; margin-bottom:0.3em;"&gt;&lt;strong&gt;Sequence realism:&lt;/strong&gt; life trajectories follow "typical" patterns; real complexity suppressed&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:1em;"&gt;&lt;strong&gt;Multivariate regression:&lt;/strong&gt; coefficients attenuated; R² inflated by the compression&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="quote" style="margin-top:0.5em;"&gt;Assessment should center on the ability of LLM-generated data to reproduce real-world, population-level statistical patterns — not just whether individual responses seem plausible.&lt;cite&gt;— Xie et al. (2026)&lt;/cite&gt;&lt;/div&gt;
+
+---
+
+# Categorical vs. Continuous: LLMs Handle Them Differently
+
+&lt;div class="src"&gt;Xie et al. 2026 · Bisbee et al. 2024&lt;/div&gt;
+
+**One of the most practically useful findings: LLMs perform better on categorical than continuous distributions.**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Why categorical works better&lt;/div&gt;
+    &lt;div class="box box-green" style="font-size:1em; margin-bottom:0.3em;"&gt;Categories have natural boundaries the model can learn: "college degree or not," "married or divorced," "Republican or Democrat"&lt;/div&gt;
+    &lt;div class="box box-green" style="font-size:1em; margin-bottom:0.3em;"&gt;Training data frequently describes categorical states — more examples of what "a college graduate" is like than precise income distributions&lt;/div&gt;
+    &lt;div class="box box-green" style="font-size:1em;"&gt;The model knows that "college degree" and "no college degree" are mutually exclusive and exhaustive — harder to compress&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Why continuous fails&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:1em; margin-bottom:0.3em;"&gt;Continuous values can be compressed to the mean without violating any categorical constraint — and they are&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:1em; margin-bottom:0.3em;"&gt;Alignment pushes toward "safe," "moderate" outputs — which for continuous variables means the center&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:1em;"&gt;The model doesn't have calibrated uncertainty about income values — it knows $50k is "middle class" but doesn't know the income variance within that category&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-orange" style="margin-top:0.5em; font-size:1em;"&gt;&lt;strong&gt;Practical implication:&lt;/strong&gt; If your research uses categorical outcomes (party ID, degree attainment, marital status), LLM-generated data is more likely to be statistically realistic than if you use continuous outcomes (income, health scores, attitude scales).&lt;/div&gt;
+
+---
+
+# How Well-Represented Demographics Matter
+
+&lt;div class="src"&gt;Xie et al. 2026&lt;/div&gt;
+
+**LLMs produce more statistically realistic data for groups well-represented in training data.**
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th style="width:35%;"&gt;Demographic group&lt;/th&gt;
+    &lt;th style="width:25%; text-align:center;"&gt;Statistical realism&lt;/th&gt;
+    &lt;th style="width:40%;"&gt;Why&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl-green"&gt;&lt;td&gt;&lt;strong&gt;White, college-educated, U.S.-born adults&lt;/strong&gt;&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-green"&gt;Highest&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Majority of training data describes this group; rich, diverse representation&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Urban, middle-income, English-speaking&lt;/strong&gt;&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-green"&gt;High&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Well-represented in English-language internet content&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Older adults (65+)&lt;/strong&gt;&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-amber"&gt;Moderate&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Health trajectories are complex; training data skews toward younger demographics&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Low-income, rural, non-college&lt;/strong&gt;&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-amber"&gt;Moderate&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Underrepresented in online content; model applies stereotyped trajectories&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl-red"&gt;&lt;td&gt;&lt;strong&gt;Non-Western, non-English-speaking&lt;/strong&gt;&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-red"&gt;Low&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Thin training data; cultural life-course patterns not well-learned&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl-red"&gt;&lt;td&gt;&lt;strong&gt;Indigenous, marginalized communities&lt;/strong&gt;&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-red"&gt;Lowest&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Minimal training data; high risk of stereotype-driven outputs (cf. Ashwin et al.)&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+c&lt;center&gt;
+&lt;div style="width:200px; height:100px"&gt;
+![](https://img.magnific.com/premium-photo/collage-large-group-smiling-people-composite-portrait_943281-33513.jpg)
+
+---
+
+# The Human Validation Sample: Not Optional
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;Broska et al.: PPI requires it for validity&lt;/div&gt;
+    &lt;div class="box box-orange" style="font-size:0.82em; margin-bottom:0.3em;"&gt;PPI guarantees valid inference only if the human validation sample is representative of the target population&lt;/div&gt;
+    &lt;div class="box box-orange" style="font-size:0.82em; margin-bottom:0.3em;"&gt;Without the human sample, you're back to the interchangeability assumption — which is false&lt;/div&gt;
+    &lt;div class="box box-orange" style="font-size:0.82em;"&gt;The human sample doesn't need to be large — but it must be stratified and representative&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;Xie et al.: it's required for benchmarking&lt;/div&gt;
+    &lt;div class="box box-orange" style="font-size:0.82em; margin-bottom:0.3em;"&gt;You cannot evaluate statistical realism without real data to compare to&lt;/div&gt;
+    &lt;div class="box box-orange" style="font-size:0.82em; margin-bottom:0.3em;"&gt;The "eye test" is not a substitute — you need actual distributional comparisons&lt;/div&gt;
+    &lt;div class="box box-orange" style="font-size:0.82em;"&gt;SSDataBench provides the infrastructure, but you still need the real dataset for your specific domain&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="quote" style="margin-top:0.6em;"&gt;You cannot escape human data. You can only reduce how much you need — and you must use it to calibrate, not just to verify after the fact.&lt;/div&gt;
+
+c&lt;center&gt;
+&lt;div style="width:200px; height:200px"&gt;
+![](https://img.magnific.com/premium-vector/white-background-friendship-day-group-picture-vector-illustration-flat-2_764382-104592.jpg)
+
+---
+
+class: casestudy
+
+# 📊 Case Study: Mixed Design in Practice — Wage Discrimination
+
+**Following Broska et al.'s Application 1 end-to-end.**
+
+&lt;br&gt;
+
+**Research question:** Does applicant race affect hiring decisions? By how much?
+
+**Traditional approach (pure human):** Audit study — send identical resumes with Black-sounding vs. white-sounding names to real job postings. N=1,000 applications needed for 80% power. Cost: ~$15,000 in research time and platform fees.
+
+**Mixed subjects approach (Broska et al.):**
+
+Step 1: Generate 5,000 LLM "hiring decisions" — condition GPT-4 on hiring manager personas and present resumes. Cost: ~$25.
+
+Step 2: Recruit N=120 human participants (Prolific, stratified sample) to make real hiring decisions on the same resumes. Cost: ~$1,800.
+
+Step 3: Estimate PPI correlation between LLM and human decisions → ρ = 0.61.
+
+Step 4: Apply PPI correction → Effective N = 120 + 0.37 × 5,000 = **1,970 effective observations**.
+
+Step 5: ATE estimate: being Black reduces callback probability by 12.4 pp (95% CI: 8.2–16.7). Valid confidence intervals.
+
+**Result:** 88% cost reduction; valid causal inference; no compromise on the gold-standard property.
+
+---
+
+class: paper-walk
+
+# 📄 Paper Walkthrough: Xie et al. — SSDataBench in Action
+
+**Walk through what SSDataBench actually tests and what it finds.**
+
+&lt;br&gt;
+
+**Test 1: Univariate distributions** — Does the LLM generate the right income distribution?
+Result: Means are approximately right. Variance is compressed by ~40%. Tails (very low and very high incomes) are systematically underrepresented.
+
+&lt;br&gt;
+
+**Test 2: Bivariate associations** — Is the education-income correlation reproduced?
+Result: Correlation direction is right. Magnitude is attenuated by ~30%. The model understands that education correlates with income but underestimates how strongly.
+
+&lt;br&gt;
+
+**Test 3: Life event sequences** — Do LLM-generated career trajectories match real NLSY97 trajectories?
+Result: Modal trajectories (college → stable career; dropout → job instability) are well-reproduced. Complex, non-modal trajectories (late career switches, repeated job loss) are underrepresented by ~60%.
+
+&lt;br&gt;
+
+**Key finding across all tests:** LLMs produce data that is plausible, directionally correct, and statistically compressed. The more heterogeneous the real-world distribution, the worse the LLM performs at reproducing it.
+
+---
+
+class: discussion
+
+# 💬 Discussion Question 2
+
+**"Synthetic data needs to be validated with statistical measures rather than just with a surface-level eye test."**
+
+Xie et al. introduce SSDataBench precisely because prior work validated LLM-generated data by asking "does this look realistic?" — a question that systematically misses distributional failures.
+
+&lt;br&gt;
+
+1. SSDataBench evaluates five types of statistical properties. For a study on income inequality, which of these five would you prioritize, and why? What statistical property would your specific research question require the data to reproduce?
+
+2. Xie et al. find that domain-specific fine-tuning improves statistical realism substantially. But fine-tuning requires large amounts of domain-specific labeled data — exactly what synthetic data is meant to supplement. Is this a solution or a circular argument?
+
+3. Broska et al.'s PPI framework and Xie et al.'s SSDataBench address complementary problems: PPI tells you how to use synthetic data validly; SSDataBench tells you whether synthetic data is statistically realistic at all. In what order should a researcher apply these tools? Can SSDataBench performance predict PPI efficiency?
+
+---
+
+# Can Silicon Sampling Replace Human Data? The Verdict
+
+&lt;div class="cols-2" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.5em;"&gt;What silicon sampling cannot replace&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      Human data as the basis for statistical inference without correction&lt;br&gt;
+      Local/community opinion with meaningful accuracy &lt;span style="color:#888;"&gt;(Bollen et al., Week 6)&lt;/span&gt;&lt;br&gt;
+      Rare or marginalized population data &lt;span style="color:#888;"&gt;(Ashwin et al., Week 5)&lt;/span&gt;&lt;br&gt;
+      Continuous distribution shape, variance, and tail behavior&lt;br&gt;
+      Life course sequence heterogeneity&lt;br&gt;
+      Reproducible data over time (3-month drift) &lt;span style="color:#888;"&gt;(Bisbee et al., Week 6)&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-orange"&gt;
+    &lt;div style="font-weight:700; color:#d35400; margin-bottom:0.5em;"&gt;What silicon sampling can contribute&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      Prediction signal in a mixed subjects design (PPI)&lt;br&gt;
+      Efficiency gains when anchored to human validation sample&lt;br&gt;
+      Categorical distribution approximation for well-represented groups&lt;br&gt;
+      Bivariate association directions (not magnitudes)&lt;br&gt;
+      Group-level mean estimates for national-level U.S. opinion&lt;br&gt;
+      Hypothesis screening before expensive data collection
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-amber" style="margin-top:0.6em; font-size:1em; text-align:center;"&gt;&lt;strong&gt;The bottom line:&lt;/strong&gt; Silicon sampling cannot yet completely replace human data without reducing validity. But it can substantially reduce the amount of human data you need — if used within the right framework (PPI) and with the right validation (SSDataBench).&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:200px; height:200px"&gt;
+![](https://www.marketing91.com/wp-content/uploads/2020/04/What-is-Productivity.jpg)
+
+---
+
+class: debate
+
+# ⚖️ Debate: Is PPI a Genuine Solution or a Band-Aid?
+
+**The case for PPI as a genuine solution (Broska et al.):**
+
+PPI makes mixed designs statistically rigorous. It provides valid inference with proper confidence intervals regardless of LLM accuracy. It reduces costs by 50–90% while maintaining scientific integrity. It democratizes access to experimental social science for researchers without large grants.
+
+&lt;br&gt;
+
+**The skeptical case:**
+
+PPI requires a representative human validation sample — which is itself expensive and difficult to obtain. If you have a good human sample, why add the complexity of LLM predictions at all? The efficiency gains only materialize when ρ is high — and ρ is low for exactly the populations (marginalized, local, non-Western) where human data is hardest to collect.
+
+&lt;br&gt;
+
+**The deeper question:**
+
+Is PPI an answer to the problems documented in Weeks 5–6 — systematic bias, local blindness, variance compression — or does it just allow us to use flawed synthetic data in a way that minimally satisfies validity criteria while still inheriting all the representational limitations of LLMs?
+
+---
+
+# How Broska et al. and Xie et al. Complement Each Other
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th style="width:25%;"&gt;Dimension&lt;/th&gt;
+    &lt;th style="width:37%;"&gt;Broska et al. (2025)&lt;/th&gt;
+    &lt;th style="width:38%;"&gt;Xie et al. (2026)&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Core question&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;How do we use LLM predictions to reduce the cost of valid experimental inference?&lt;/td&gt;&lt;td&gt;How statistically realistic is LLM-generated social data at the population level?&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Primary tool&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;PPI framework; mixed subjects design; power analysis&lt;/td&gt;&lt;td&gt;SSDataBench; five statistical dimensions; seven real datasets&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;What they assume&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Human sample exists; LLM is at least somewhat predictive (ρ &gt; 0)&lt;/td&gt;&lt;td&gt;Compares LLM outputs to real benchmark datasets&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Main finding&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Mixed designs valid when anchored to human data; efficiency gains proportional to ρ&lt;/td&gt;&lt;td&gt;LLMs compress heterogeneity; categorical &gt; continuous; well-represented groups &gt; marginalized&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;What they prescribe&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Use LLMs as predictors; estimate ρ first; deploy PPI&lt;/td&gt;&lt;td&gt;Use SSDataBench to pre-screen; validate statistically; don't trust the eye test&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Together they say&lt;/strong&gt;&lt;/td&gt;&lt;td colspan="2"&gt;&lt;em&gt;Check statistical realism first (Xie et al.), then use the mixed design if realistic enough (Broska et al.).&lt;/em&gt;&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;center&gt;
+&lt;div style="width:450px; height:225px"&gt;
+![](https://cdn.prod.website-files.com/63ccf2f0ea97be12ead278ed/644a18b637053fa3709c5ba2_what-is-data-science.jpg)
+
+---
+
+class: discussion
+
+# 💬 Discussion Question 3
+
+**Connecting back to the course arc: what would it take for silicon sampling to become a legitimate research tool?**
+
+&lt;br&gt;
+
+We've now covered six weeks of evidence on LLMs as data generators. Weeks 4–5 showed systematic measurement bias. Week 6 showed silicon sampling fails on variance, local populations, and regression. Week 7 shows the conditions under which it can be used validly (PPI) and how to evaluate it (SSDataBench).
+
+&lt;br&gt;
+
+1. Broska et al. argue that mixed designs could "reduce inequality in access to costly evidence." But their framework still requires human data collection, IRB approval, and statistical expertise. Is the inequality in access to social science research solved, reduced, or unchanged?
+
+2. Xie et al. report that domain-specific fine-tuning improves statistical realism. If the future of synthetic data requires domain-specific fine-tuned models rather than general-purpose LLMs, does that change your assessment of the promise of synthetic data for social science?
+
+3. From an ethics standpoint: is it acceptable to publish research based on PPI-corrected LLM data as if it were equivalent to research based on human subjects — or should there be mandatory disclosure? What would the disclosure say?
+
+---
+
+# The Roadmap Xie et al. Propose
+
+&lt;div class="src"&gt;Xie et al. 2026&lt;/div&gt;
+
+**Xie et al. don't just diagnose — they propose a path forward:**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;Short-term: Better benchmarking&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num orange"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;Adopt SSDataBench as a standard pre-publication check for LLM-generated social data&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num orange"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;Require reporting of all five statistical dimensions — not just mean accuracy&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num orange"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;Distinguish categorical from continuous outcomes in validity claims&lt;/div&gt;&lt;/div&gt;
+    &lt;div style="margin-top:0.5em; font-weight:600; font-size:0.84em;"&gt;Medium-term: Better models&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;Domain-specific fine-tuning on real survey datasets to improve realism&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;5&lt;/span&gt;&lt;div class="step-body"&gt;Sparse conditioning improvements — better use of demographic backstories&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;Long-term: Different approaches&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;6&lt;/span&gt;&lt;div class="step-body"&gt;Social agent frameworks where multiple LLMs interact — may produce more realistic emergent social patterns&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;7&lt;/span&gt;&lt;div class="step-body"&gt;Hybrid methods combining real survey data with LLM imputation for missing values and rare subgroups&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;8&lt;/span&gt;&lt;div class="step-body"&gt;Purpose-built models trained on longitudinal panel data — not general-purpose internet-trained LLMs&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="box box-amber" style="margin-top:0.5em; font-size:0.82em;"&gt;&lt;strong&gt;The tentative good news:&lt;/strong&gt; domain-specific training shows preliminary improvements in statistical realism — suggesting the path forward is fine-tuned, specialized models, not larger general ones&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/22-walk-trail-marvin-mariano.jpg)
+
+---
+
+# Comparing PPI and DSL: Two Correction Frameworks
+
+**Broska et al.'s PPI and Maranca et al.'s DSL (Week 5) are solving related but distinct problems.**
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th style="width:25%;"&gt;Dimension&lt;/th&gt;
+    &lt;th style="width:37%;"&gt;PPI (Broska et al.)&lt;/th&gt;
+    &lt;th style="width:38%;"&gt;DSL (Maranca et al.)&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Primary context&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Experimental behavioral research; ATE estimation&lt;/td&gt;&lt;td&gt;Observational research; image and text annotation&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;What's being corrected&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;LLM predictions used to estimate causal effects&lt;/td&gt;&lt;td&gt;LLM labels used as measurement instruments&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Error assumption&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;LLM predictions are correlated with but not equal to human observations&lt;/td&gt;&lt;td&gt;LLM labels have non-classical, non-random measurement error&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;What validates&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Human subsample: same participants, treated and control&lt;/td&gt;&lt;td&gt;Human subsample: expert-coded validation set&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Statistical guarantee&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Valid ATE estimate with proper CI&lt;/td&gt;&lt;td&gt;Asymptotically unbiased with proper CI&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Together they cover&lt;/strong&gt;&lt;/td&gt;&lt;td colspan="2"&gt;PPI = experimental inference; DSL = observational measurement. Together they address most use cases where LLMs generate research data.&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:300px"&gt;
+![](https://static.vecteezy.com/system/resources/previews/006/686/340/large_2x/correction-paper-and-red-pencil-vector.jpg)
+
+---
+
+# The "Interchangeability vs. Prediction" Distinction in Practice
+
+**A concrete example showing why the framing matters for how you design your study.**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.4em;"&gt;Interchangeability framing (wrong)&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;
+      "I'll generate 2,000 silicon respondents, expose half to the treatment, measure the outcome, and compute the ATE."&lt;br&gt;&lt;br&gt;
+      This assumes LLM outputs are equivalent to human responses. They are not — variance is compressed, regression coefficients are wrong, and the output reflects the model's priors, not human attitudes.&lt;br&gt;&lt;br&gt;
+      &lt;strong&gt;What you get:&lt;/strong&gt; A point estimate that is wrong in unknown ways.
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-orange"&gt;
+    &lt;div style="font-weight:700; color:#d35400; margin-bottom:0.4em;"&gt;Prediction framing (Broska et al., correct)&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;
+      "I'll generate 2,000 LLM predictions as a baseline signal, then recruit 100 humans whose responses I'll use to correct the LLM predictions via PPI."&lt;br&gt;&lt;br&gt;
+      The LLM is a noisy measurement instrument being calibrated against ground truth — like any other imperfect measurement device in quantitative research.&lt;br&gt;&lt;br&gt;
+      &lt;strong&gt;What you get:&lt;/strong&gt; A valid ATE estimate with proper confidence intervals.
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:250px; height:250px"&gt;
+![](https://artstreet.in/cdn/shop/products/71iSWM8_Y9S._SL1300_1024x1024.jpg?v=1685431977)
+
+---
+
+# Three Things Silicon Sampling Gets Right — and Why They're Not Enough
+
+&lt;div class="cols-3" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-green" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.3em; margin-bottom:0.3em;"&gt;📊&lt;/div&gt;
+    &lt;div style="font-weight:700; color:#27ae60; margin-bottom:0.4em;"&gt;Group-level means ✓&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7; text-align:left;"&gt;Silicon samples reproduce group-level averages with r ≈ 0.85–0.92 (Argyle et al.)&lt;br&gt;&lt;br&gt;&lt;strong&gt;Why it's not enough:&lt;/strong&gt; Social science is rarely only about means. Polarization, inequality, regression — all require variance and covariance structure.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-green" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.3em; margin-bottom:0.3em;"&gt;🎯&lt;/div&gt;
+    &lt;div style="font-weight:700; color:#27ae60; margin-bottom:0.4em;"&gt;Direction of effects ✓&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7; text-align:left;"&gt;LLMs get the direction of bivariate associations right: education → income is positive, partisan ID → thermometer is negative&lt;br&gt;&lt;br&gt;&lt;strong&gt;Why it's not enough:&lt;/strong&gt; Magnitude matters for policy. If race effect is 12pp in reality and 3pp in silicon data, the policy conclusion changes.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-green" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.3em; margin-bottom:0.3em;"&gt;📋&lt;/div&gt;
+    &lt;div style="font-weight:700; color:#27ae60; margin-bottom:0.4em;"&gt;Categorical classification ✓&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7; text-align:left;"&gt;Party ID, degree attainment, marital status — categorical outcomes are reproduced with higher fidelity than continuous ones (Xie et al.)&lt;br&gt;&lt;br&gt;&lt;strong&gt;Why it's not enough:&lt;/strong&gt; Most interesting social outcomes are continuous or ordinal, not binary.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:450px; height:225px"&gt;
+![](https://embracetw.com/wp-content/uploads/2022/04/shutterstock_1685834230-scaled.jpg)
+
+---
+
+# What Domain-Specific Fine-Tuning Can Achieve
+
+&lt;div class="src"&gt;Xie et al. 2026 — preliminary results&lt;/div&gt;
+
+**Xie et al. report early evidence that fine-tuning on domain-specific data substantially improves statistical realism.**
+
+&lt;div class="mono" style="margin:0.5em 0; font-size:0.77em;"&gt;
+&lt;span class="hi-grey"&gt;Experiment: fine-tune GPT-4 on NLSY97 longitudinal data, then generate synthetic trajectories&lt;/span&gt;
+&lt;br&gt;&lt;/br&gt;
+Baseline GPT-4 (general purpose):
+&lt;br&gt;&lt;/br&gt;
+  Univariate distribution match:    &lt;span class="hi-red"&gt;51%&lt;/span&gt; | 
+  Bivariate association match:      &lt;span class="hi-red"&gt;44%&lt;/span&gt; |
+  Life event sequence realism:      &lt;span class="hi-red"&gt;38%&lt;/span&gt;
+  &lt;br&gt;&lt;/br&gt;
+
+After NLSY97 fine-tuning:
+&lt;br&gt;&lt;/br&gt;
+  Univariate distribution match:    &lt;span class="hi-green"&gt;74%&lt;/span&gt;  (+23pp) |
+  Bivariate association match:      &lt;span class="hi-green"&gt;68%&lt;/span&gt;  (+24pp) |
+  Life event sequence realism:      &lt;span class="hi-green"&gt;61%&lt;/span&gt;  (+23pp)
+  &lt;br&gt;&lt;/br&gt;
+
+&lt;span class="hi-grey"&gt;Substantial improvement across all dimensions.
+Still not perfect — but approaching usable for many purposes.&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-orange" style="margin-top:0.3em; font-size:1em;"&gt;&lt;strong&gt;The implication:&lt;/strong&gt; The path to statistically realistic synthetic social data is not bigger general-purpose LLMs — it is smaller, domain-specific models fine-tuned on the exact type of data you want to generate. This is a different and more tractable research agenda.&lt;/div&gt;
+
+---
+
+# The Remaining Gap: What Fine-Tuning Cannot Fix
+
+**Even with domain-specific fine-tuning, several failures persist (Xie et al.):**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.4em; font-size:1em;"&gt;&lt;strong&gt;Tail behavior:&lt;/strong&gt; Even fine-tuned models underrepresent the most extreme outcomes — the very rich, the very poor, the outlier trajectories. Alignment still pushes toward the center.&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.4em; font-size:1em;"&gt;&lt;strong&gt;Marginalized populations:&lt;/strong&gt; Fine-tuning on NLSY97 helps for the groups NLSY97 surveys well. Groups underrepresented in the survey are still poorly simulated.&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:1em;"&gt;&lt;strong&gt;Novel conditions:&lt;/strong&gt; A model fine-tuned on 1990s–2010s data cannot generate realistic trajectories for conditions that didn't exist then — pandemic disruptions, gig economy transitions, remote work patterns.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;What this means for the research agenda&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:1em; margin-bottom:0.3em;"&gt;Fine-tuning is necessary but not sufficient. The remaining gap requires either more diverse training data or fundamentally different modeling approaches.&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:1em; margin-bottom:0.3em;"&gt;Social agent frameworks — multiple LLMs interacting with each other — may generate more realistic emergent heterogeneity than single-model generation.&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:1em;"&gt;The honest conclusion: we are several years away from synthetic social data that can substitute for human surveys in statistical inference without correction frameworks like PPI.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+# The Sparse Conditioning Problem
+
+&lt;div class="src"&gt;Xie et al. 2026&lt;/div&gt;
+
+**One of SSDataBench's most precise technical findings: LLM performance degrades dramatically under "sparse conditioning."**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;What sparse conditioning means&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:1em; margin-bottom:0.3em;"&gt;&lt;strong&gt;Dense conditioning:&lt;/strong&gt; "You are a 45-year-old white male with a college degree, earning $75k/year in Chicago, married with two kids, registered Democrat." → LLM has rich context to draw on&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:1em;"&gt;&lt;strong&gt;Sparse conditioning:&lt;/strong&gt; "You are a 45-year-old white male." → LLM must fill in the rest from priors&lt;/div&gt;
+    &lt;div style="margin-top:0.5em; font-weight:600; font-size:1em;"&gt;What SSDataBench finds&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:1em; margin-top:0.3em;"&gt;Under sparse conditioning, LLMs immediately fall back on typological structures — the "canonical 45-year-old white male" trajectory, not the full distribution of possible trajectories&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;The implication for silicon sampling&lt;/div&gt;
+    &lt;div class="mono" style="font-size:0.8em;"&gt;
+Statistical realism by conditioning density:
+&lt;br&gt;&lt;/br&gt;
+Dense conditioning:
+&lt;br&gt;
+  Univariate distribution match: &lt;span class="hi-green"&gt;76%&lt;/span&gt;  ✓
+  &lt;br&gt;
+  Bivariate association match:   &lt;span class="hi-green"&gt;71%&lt;/span&gt;  ✓
+  &lt;br&gt;&lt;/br&gt;
+
+Sparse conditioning (typical in practice):
+&lt;br&gt;
+  Univariate distribution match: &lt;span class="hi-amber"&gt;52%&lt;/span&gt;  ~
+  &lt;br&gt;
+  Bivariate association match:   &lt;span class="hi-red"&gt;41%&lt;/span&gt;  ✗
+  &lt;br&gt;&lt;/br&gt;
+
+&lt;span class="hi-grey"&gt;Most silicon sampling studies use sparse conditioning.
+Dense conditioning requires detailed personal histories
+that are rarely available in advance.&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+# Sparse Conditioning vs. Dense Conditioning: A Design Choice
+
+**Researchers using silicon sampling face a fundamental design decision about how much context to give the model.**
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th style="width:22%;"&gt;Conditioning level&lt;/th&gt;
+    &lt;th style="width:30%;"&gt;Example backstory&lt;/th&gt;
+    &lt;th style="width:22%; text-align:center;"&gt;Statistical realism&lt;/th&gt;
+    &lt;th style="width:26%;"&gt;Practical challenge&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Minimal&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;"You are a 45-year-old Republican."&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-red"&gt;Low&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Easy to generate; falls back on stereotypes&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Demographic&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;"You are a 45-year-old white Republican man with a college degree from Ohio."&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-amber"&gt;Moderate&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Argyle et al.'s approach; reasonable mean fidelity&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Attitudinal&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Above + "You believe immigration should be reduced and support lower taxes."&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-green"&gt;Higher&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Requires pre-specified attitude profile; limits generalizability&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Biographical&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Full life history: education path, employment, family, income trajectory&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-green"&gt;Highest&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Requires detailed individual records; rarely available&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class="box box-amber" style="margin-top:0.5em; font-size:1em;"&gt;&lt;strong&gt;The trade-off:&lt;/strong&gt; the conditioning that produces the most realistic data is also the most expensive to construct and the most constrained in what it can tell you. You need rich biographical data to generate realistic synthetic biographical trajectories — which partly defeats the purpose.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://static.vecteezy.com/system/resources/thumbnails/047/390/874/small_2x/businesswoman-balancing-on-tightrope-between-profit-and-purpose-concept-ethical-business-practices-values-and-trade-offs-vector.jpg)
+
+---
+
+# The PPI Power Analysis: Planning a Mixed Study
+
+&lt;div class="src"&gt;Broska et al. 2025&lt;/div&gt;
+
+**Before committing to a mixed design, run a power analysis to find the optimal split between human observations and LLM predictions.**
+
+&lt;center&gt;
+&lt;div style="width:700px; height:350px"&gt;
+![](https://cdn.corenexis.com/f/DXMs3wInnWT.png)
+
+---
+
+# The Equity Argument: Who Benefits from Mixed Designs?
+
+&lt;div class="src"&gt;Broska et al. 2025&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;The optimistic argument (Broska et al.)&lt;/div&gt;
+    &lt;div class="box box-orange" style="font-size:1em; margin-bottom:0.4em;"&gt;Large-budget universities can afford N=500 randomized experiments. Small universities, international institutions, and developing-country researchers cannot. Mixed designs reduce the cost of valid experimental social science by 50–90% — democratizing access.&lt;/div&gt;
+    &lt;div class="box box-orange" style="font-size:1em;"&gt;Hard-to-reach populations (clinical patients, political elites, refugees) remain expensive to recruit. Mixed designs can substitute bulk LLM predictions, reducing the required human N substantially.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;The skeptical counterpoint&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:1em; margin-bottom:0.4em;"&gt;Mixed designs still require human data collection, IRB, Prolific access, and statistical expertise — resources that remain concentrated in well-funded institutions&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:1em; margin-bottom:0.4em;"&gt;Xie et al. show LLMs perform worst on non-Western, marginalized populations — the exact groups international researchers often study&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:1em;"&gt;Low ρ for these populations means efficiency gains are minimal — the equity benefit disappears precisely where it is most needed&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://static.vecteezy.com/system/resources/thumbnails/056/441/092/small_2x/3d-isometric-flat-conceptual-illustration-of-equality-vs-equity-vs-justice-vector.jpg)
+
+---
+
+# A Final Reflection: What These Two Papers Accomplish
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Broska et al.'s contribution&lt;/div&gt;
+    &lt;div class="box box-orange" style="font-size:1em; margin-bottom:0.4em;"&gt;They provide the first &lt;strong&gt;statistically rigorous framework&lt;/strong&gt; for combining LLM predictions with human data in a way that guarantees valid inference. This is not a minor contribution — it transforms silicon sampling from an unvalidated shortcut into a principled research design.&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:1em;"&gt;The PPI framework existed before (Angelopoulos et al., 2023); Broska et al. extend it to social science experimental designs, derive the PPI correlation, and provide the power analysis tools researchers need to actually use it.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Xie et al.'s contribution&lt;/div&gt;
+    &lt;div class="box box-orange" style="font-size:1em; margin-bottom:0.4em;"&gt;They provide the first &lt;strong&gt;systematic evaluation framework&lt;/strong&gt; for LLM-generated social data — moving from "does it look plausible?" to "does it reproduce the statistical moments that research uses?" SSDataBench is a lasting infrastructure contribution, not just a set of empirical findings.&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:1em;"&gt;Their roadmap — domain-specific fine-tuning, sparse conditioning improvements, social agent frameworks — gives the field a research agenda rather than just a set of failure modes to acknowledge.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-orange" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;&lt;strong&gt;Together:&lt;/strong&gt; one paper tells you how to use synthetic data validly; the other tells you when synthetic data is good enough to use. Both are necessary; neither is sufficient alone.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:200px; height:100px"&gt;
+![](https://www.techuk.org/static/97a1beae-a756-4d6f-99652aefa62653b3/opengraphimage_83f4e8796336604b59d7216d0ecd81a5_4a7c7e45a350/Data-Blocks-Concept-iStock-1392193093.jpg)
+
+---
+
+# Key Formulas and Numbers to Remember
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th style="width:40%;"&gt;Concept&lt;/th&gt;
+    &lt;th style="width:30%;"&gt;Formula / Number&lt;/th&gt;
+    &lt;th style="width:30%;"&gt;Source&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Effective sample size (PPI)&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;N_eff = N_human + ρ² × N_llm&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Broska et al.&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;PPI correlation in wage discrimination study&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;ρ = 0.61&lt;/td&gt;&lt;td&gt;Broska et al.&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Cost reduction in wage study&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;~88% (from $15k to ~$1.8k)&lt;/td&gt;&lt;td&gt;Broska et al.&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Variance compression in silicon sampling&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;~50% lower SDs&lt;/td&gt;&lt;td&gt;Bisbee et al., Week 6&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Statistical dimensions in SSDataBench&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;5 types, 7 datasets, 6 domains&lt;/td&gt;&lt;td&gt;Xie et al.&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Model conclusions changed by model substitution&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;37%&lt;/td&gt;&lt;td&gt;Yang et al., Week 4&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;GenAI vs. local residents correlation&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;r ≈ 0.22–0.34&lt;/td&gt;&lt;td&gt;Bollen et al., Week 6&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://static.vecteezy.com/system/resources/previews/007/104/072/non_2x/math-formula-on-blackboard-isolated-free-vector.jpg)
+
+---
+
+# A Decision Guide: When to Use Synthetic Data
+
+&lt;center&gt;
+&lt;div style="width:800px; height:1600px"&gt;
+![](https://cdn.corenexis.com/f/9PEkNHCbaVV.png)
+
+---
+
+# Summary: The Integrated Picture
+
+&lt;div class="cols-2" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div class="box box-orange"&gt;
+    &lt;div style="font-weight:700; color:#d35400; margin-bottom:0.5em;"&gt;The mixed subjects design (Broska et al.)&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      LLMs are better as predictors than simulators&lt;br&gt;
+      PPI framework: LLM predictions + human validation → valid inference&lt;br&gt;
+      Efficiency gain proportional to ρ (PPI correlation)&lt;br&gt;
+      Most valuable when human data is expensive&lt;br&gt;
+      Still requires representative human validation sample&lt;br&gt;
+      Validity guaranteed by PPI regardless of LLM accuracy
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-orange"&gt;
+    &lt;div style="font-weight:700; color:#d35400; margin-bottom:0.5em;"&gt;Statistical realism (Xie et al.)&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      Eye-test plausibility ≠ statistical validity&lt;br&gt;
+      LLMs compress heterogeneity into typological structures&lt;br&gt;
+      Categorical distributions: better&lt;br&gt;
+      Continuous distributions: worse&lt;br&gt;
+      Well-represented demographics: better&lt;br&gt;
+      SSDataBench: five statistical dimensions, seven real datasets&lt;br&gt;
+      Domain-specific fine-tuning improves realism
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.5em;"&gt;What cannot be replaced (yet)&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      Local community opinion&lt;br&gt;
+      Continuous distribution shape and variance&lt;br&gt;
+      Regression-based causal inference without correction&lt;br&gt;
+      Life course heterogeneity&lt;br&gt;
+      Data on marginalized/non-Western populations
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.5em;"&gt;The path forward&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      Use SSDataBench to pre-screen before deploying&lt;br&gt;
+      Use PPI when deploying, not pure silicon&lt;br&gt;
+      Domain-specific fine-tuning for better realism&lt;br&gt;
+      Mandatory disclosure for published synthetic data&lt;br&gt;
+      Treat LLMs as predictors, not simulators
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+# Readings for This Unit
+
+&lt;div class="cols-2" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.5em;"&gt;Mixed subjects design and PPI&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      Broska, Howes &amp; van Loon (2025)&lt;br&gt;
+      &lt;span style="color:#888; font-size:1em;"&gt;The mixed subjects design: treating large language models as potentially informative observations. &lt;em&gt;Sociological Methods &amp; Research.&lt;/em&gt;&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.5em;"&gt;Statistical realism benchmark&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      Xie, Liang, Li, Lu, Xiao, Shi, Huang, Wang &amp; Xie (2026)&lt;br&gt;
+      &lt;span style="color:#888; font-size:0.88em;"&gt;Evaluating the statistical realism of LLM-generated social science data. &lt;em&gt;PNAS.&lt;/em&gt;&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-orange" style="margin-top:0.7em; text-align:center; font-size:1em;"&gt;
+  &lt;strong&gt;Next week:&lt;/strong&gt; Dynamic Materials — Using AI to generate experimental materials in real time&lt;br&gt;
+  &lt;span style="color:#888; font-size:0.9em;"&gt;argyle_conversation_2023 · williams-ceci_attitudes_2026 · heidejorgensen_debate_2025&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-slate" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;strong&gt;Software from this unit:&lt;/strong&gt;&lt;br&gt;
+  &lt;code&gt;PPI&lt;/code&gt; R/Python package — Angelopoulos et al. (2023); implemented and extended by Broska et al.&lt;br&gt;
+  &lt;code&gt;SSDataBench&lt;/code&gt; — Xie et al. (2026); available at the paper's GitHub repository
+&lt;/div&gt;
+
+---
+
+# Connecting This Week to the Whole Arc
+
+&lt;div class="cols-2" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:700; color:#d35400; margin-bottom:0.4em;"&gt;This week resolves last week's crisis&lt;/div&gt;
+    &lt;div class="box box-orange" style="margin-bottom:0.3em; font-size:1em;"&gt;&lt;strong&gt;Week 6 problem:&lt;/strong&gt; Silicon sampling fails on variance, regression, local populations, and reproducibility&lt;/div&gt;
+    &lt;div class="box box-orange" style="margin-bottom:0.3em; font-size:1em;"&gt;&lt;strong&gt;Broska et al.:&lt;/strong&gt; Use LLMs as predictors with PPI correction → validity restored&lt;/div&gt;
+    &lt;div class="box box-orange" style="font-size:1em;"&gt;&lt;strong&gt;Xie et al.:&lt;/strong&gt; Evaluate statistical realism first → know where synthetic data can help&lt;/div&gt;
+    &lt;div style="margin-top:0.5em; font-weight:700; color:#d35400;"&gt;Connection backward to Weeks 1–5&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:1em; margin-bottom:0.3em;"&gt;&lt;strong&gt;Week 1 (Alignment):&lt;/strong&gt; Alignment compresses variance — exactly what SSDataBench detects&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:1em; margin-bottom:0.3em;"&gt;&lt;strong&gt;Week 5 (Bias):&lt;/strong&gt; LLMs fail on marginalized populations — Xie et al.'s worst-performing demographic groups&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:1em;"&gt;&lt;strong&gt;Week 5 (Maranca et al.):&lt;/strong&gt; DSL corrects non-classical errors — PPI does the same thing for experimental inference&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:700; color:#d35400; margin-bottom:0.4em;"&gt;Points forward&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em; font-size:1em;"&gt;&lt;strong&gt;Week 8 (Dynamic materials):&lt;/strong&gt; LLMs generating experimental treatments in real time — a different use of synthetic content that sidesteps some validity concerns&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em; font-size:1em;"&gt;&lt;strong&gt;Week 9 (Conversations):&lt;/strong&gt; LLMs as conversational persuaders — not simulating humans, but being a new kind of actor&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em; font-size:1em;"&gt;&lt;strong&gt;Week 12+ (AI and society):&lt;/strong&gt; The feedback loop risk Weatherby &amp; Recht raised — Xie et al.'s SSDataBench is part of the answer&lt;/div&gt;
+    &lt;div class="box box-amber" style="font-size:1em;"&gt;&lt;strong&gt;The through-line:&lt;/strong&gt; Valid use of LLMs always requires understanding what they can and can't do — and anchoring outputs to human ground truth&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+# What Have We Learned? — A Five-Week Synthesis
+
+**Weeks 3–7 cover one extended methodological argument. Here is the cumulative claim:**
+
+&lt;div class="step-row" style="margin-top:0.6em;"&gt;&lt;span class="step-num blue"&gt;W3&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Prompting:&lt;/strong&gt; You can direct LLMs to measure things, but theory must come first; prompting cannot rescue underspecified constructs&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;W4&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Measurement:&lt;/strong&gt; LLMs expand what's measurable but introduce reliability failures; DEBATE shows purpose-built models often beat general ones; Yang et al.'s 37% is the bottom line&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;W5&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Bias:&lt;/strong&gt; Errors are systematic, demographically patterned, and fall on marginalized populations; prompting can't fix structural bias; DSL correction requires knowing the error structure&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num orange"&gt;W6&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Silicon sampling:&lt;/strong&gt; Gets means right, fails on variance, local populations, and regression; reproducibility collapses over time; interchangeability assumption is false&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;W7&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Solutions:&lt;/strong&gt; Treat LLMs as predictors, not simulators (PPI); validate statistically, not by eye (SSDataBench); the answer is less synthetic data, more carefully anchored human data&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class="box box-orange" style="margin-top:0.5em; font-size:1em; text-align:center;"&gt;The arc from Week 3 to Week 7: from "what prompts work?" to "under what conditions can we trust what LLMs produce?" — and the answer is always: only when anchored to human ground truth.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://www.immerse.education/wp-content/uploads/2022/11/Website-Images.jpg)
+
+---
+
+class: inverse, center, middle
+
+# Questions?
+
+&lt;div style="color:#aaa; font-size:0.9em; margin-top:1em;"&gt;Week 7 · SOCY 1200: Introduction to Using AI to Study Society&lt;/div&gt;
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "16:9",
+  "slideNumberFormat": "%current% / %total%"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

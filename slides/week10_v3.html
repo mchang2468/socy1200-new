@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>SOCY 1200: Introduction to Using AI to Study Society</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Daniel Karell" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="yale.css" type="text/css" />
+    <link rel="stylesheet" href="yale-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# SOCY 1200: Introduction to Using AI to Study Society
+]
+.subtitle[
+## Unit 4: AI in Experiments: Dynamic Materials
+]
+.author[
+### Daniel Karell
+]
+.institute[
+### Yale University
+]
+.date[
+### Week 10
+]
+
+---
+
+
+
+
+&lt;style&gt;
+.remark-slide-content:not(.title-slide) {
+  font-size: 16px; padding: 1.8em 2.2em 1em;
+  color: #1a1a2e; background: #fafafa;
+}
+.remark-slide-content:not(.title-slide) h1 {
+  font-size: 2em; font-weight: 700; letter-spacing: -0.03em;
+  color: #1a1a2e; border-bottom: 3px solid #1abc9c;
+  padding-bottom: 0.3em; margin-bottom: 0.7em;
+}
+.remark-slide-content:not(.title-slide) h2 { font-size:1.05em; color:#555; font-weight:500; }
+.remark-slide-content:not(.title-slide) p, .remark-slide-content:not(.title-slide) li { line-height:1.65; }
+.inverse:not(.title-slide) { background: #1a1a2e !important; }
+.inverse:not(.title-slide) h1, .inverse:not(.title-slide) h2, .inverse:not(.title-slide) h3 { color:white !important; border:none !important; }
+.inverse:not(.title-slide) h1 { font-size:1.9em !important; letter-spacing:-0.03em; }
+.inverse:not(.title-slide) h2 { color:#aaa !important; font-weight:400 !important; }
+.section-num:not(.title-slide) { display:inline-block; font-size:4em; font-weight:900; color:rgba(39,183,245,0.8); line-height:1; margin-bottom:0.1em; }
+.discussion { background: #0f3460 !important; }
+.discussion h1 { color: #f0c040 !important; border-bottom: 3px solid #f0c040 !important; }
+.discussion p, .discussion li { color: #e8e8f0 !important; line-height: 1.75 !important; }
+.discussion strong { color: #f0c040 !important; }
+.paper-walk { background: #1a3a1a !important; }
+.paper-walk h1 { color: #90ee90 !important; border-bottom: 3px solid #90ee90 !important; }
+.paper-walk p, .paper-walk li { color: #ddeedd !important; line-height:1.7 !important; }
+.paper-walk strong { color: #90ee90 !important; }
+.debate { background: #1a1a2e !important; }
+.debate h1 { color: #ffcc66 !important; border-bottom: 3px solid #ffcc66 !important; }
+.debate p, .debate li { color: #f0e8d0 !important; line-height:1.7 !important; }
+.debate strong { color: #ffcc66 !important; }
+.casestudy { background: #0a1a2a !important; }
+.casestudy h1 { color: #66ccff !important; border-bottom: 3px solid #66ccff !important; }
+.casestudy p, .casestudy li { color: #ddeeff !important; line-height:1.7 !important; }
+.casestudy strong { color: #66ccff !important; }
+.warning-slide { background: #2a0a0a !important; }
+.warning-slide h1 { color: #ff8888 !important; border-bottom: 3px solid #ff8888 !important; }
+.warning-slide p, .warning-slide li { color: #ffd0d0 !important; line-height:1.7 !important; }
+.warning-slide strong { color: #ff8888 !important; }
+.box { border-radius:6px; padding:0.75em 1em; margin:0.4em 0; font-size:0.85em; line-height:1.6; }
+.box-teal   { background:#f0fafa; border-left:4px solid #1abc9c; color:#0c3030; }
+.box-red    { background:#fdf2f2; border-left:4px solid #c0392b; color:#3d0c0c; }
+.box-green  { background:#f0faf3; border-left:4px solid #27ae60; color:#0c3320; }
+.box-blue   { background:#f0f4ff; border-left:4px solid #2a5bd7; color:#0d1f5c; }
+.box-amber  { background:#fffbf0; border-left:4px solid #e67e22; color:#5c3400; }
+.box-slate  { background:#f4f5f7; border-left:4px solid #7f8c8d; color:#2c3e50; }
+.box-purple { background:#f5f0ff; border-left:4px solid #8e44ad; color:#2e0060; }
+.box-orange { background:#fef5ee; border-left:4px solid #d35400; color:#3d1500; }
+.quote { border-left:5px solid #1abc9c; background:white; border-radius:0 6px 6px 0; padding:0.7em 1.2em; font-size:0.88em; font-style:italic; color:#2c3e50; margin:0.6em 0; box-shadow:0 1px 4px rgba(0,0,0,0.07); }
+.quote cite { display:block; font-style:normal; font-size:0.82em; color:#1abc9c; margin-top:0.3em; font-weight:600; }
+.cols-2 { display:grid; grid-template-columns:1fr 1fr; gap:1em; margin:0.5em 0; }
+.cols-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.9em; margin:0.5em 0; }
+.cols-4 { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:0.7em; margin:0.5em 0; }
+.step-row { display:flex; align-items:flex-start; gap:0.75em; margin-bottom:0.5em; }
+.step-num { flex-shrink:0; width:1.7em; height:1.7em; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.8em; margin-top:0.05em; }
+.step-num.teal  { background:#1abc9c; color:white; }
+.step-num.blue  { background:#2a5bd7; color:white; }
+.step-num.green { background:#27ae60; color:white; }
+.step-num.amber { background:#e67e22; color:white; }
+.step-num.red   { background:#c0392b; color:white; }
+.step-num.grey  { background:#7f8c8d; color:white; }
+.step-body { font-size:0.83em; line-height:1.6; color:#2c3e50; padding-top:0.15em; }
+.styled-table { width:100%; border-collapse:collapse; font-size:0.81em; margin:0.5em 0; box-shadow:0 1px 6px rgba(0,0,0,0.08); }
+.styled-table thead tr { background:#1a1a2e; color:white; }
+.styled-table thead th { padding:0.6em 0.8em; text-align:left; font-weight:600; }
+.styled-table tbody tr:nth-child(even) { background:#f4f5f7; }
+.styled-table tbody tr:nth-child(odd) { background:white; }
+.styled-table tbody td { padding:0.55em 0.8em; color:#2c3e50; vertical-align:top; }
+.styled-table .hl      { background:#f0fafa !important; font-weight:600; }
+.styled-table .hl-red  { background:#fdf2f2 !important; }
+.styled-table .hl-green { background:#f0faf3 !important; }
+.badge { display:inline-block; border-radius:20px; padding:0.12em 0.65em; font-size:0.72em; font-weight:700; }
+.badge-teal   { background:#d5f5f0; color:#0e6b5a; }
+.badge-red    { background:#fde8e8; color:#922b21; }
+.badge-green  { background:#e8f8ee; color:#1e8449; }
+.badge-amber  { background:#fef3d0; color:#784212; }
+.badge-grey   { background:#eaecee; color:#515a5a; }
+.badge-blue   { background:#e8edff; color:#1a3fa0; }
+.mono { font-family:'Cascadia Code','Fira Code','Courier New',monospace; font-size:0.78em; background:#1e2433; color:#abb2bf; border-radius:6px; padding:0.8em 1.1em; line-height:1.85; margin:0.4em 0; }
+.mono .hi-blue   { color:#61afef; }
+.mono .hi-green  { color:#98c379; }
+.mono .hi-red    { color:#e06c75; }
+.mono .hi-amber  { color:#e5c07b; }
+.mono .hi-grey   { color:#636d83; }
+.mono .hi-white  { color:#ffffff; }
+.mono .hi-teal   { color:#56b6c2; }
+.src { display:inline-block; background:#1a1a2e; color:#FFFFFF; font-size:0.68em; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; border-radius:3px; padding:0.15em 0.55em; margin-bottom:0.45em; }
+blockquote { border:none; padding:0; margin:0; background:none; }
+&lt;/style&gt;
+
+# What We're Covering This Week
+
+&lt;div class="cols-3" style="margin-top:0.7em;"&gt;
+  &lt;div class="box box-teal"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Part I · What Are Dynamic Materials?&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;How experiments normally work&lt;br&gt;What "dynamic materials" means&lt;br&gt;Why we might want them&lt;br&gt;The design space&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-teal"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Part II · Advantages&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;Argyle et al.: AI improves online political conversations&lt;br&gt;Heide-Jørgensen et al.: what makes debates work&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-teal"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Part III · Limitations&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;Williams-Ceci et al.: biased autocomplete shifts attitudes&lt;br&gt;Disclosure dilemmas&lt;br&gt;Authenticity and demand effects&lt;br&gt;Democratic dangers&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;**The central tension for this week:**
+
+&lt;div class="box box-amber" style="text-align:center; font-size:1em;"&gt;AI can make political conversations better — more civil, more evidence-based, more open. But it can also make them more manipulable, more homogenized, and more covertly influenced. The same capability that enables the first enables the second.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://media.licdn.com/dms/image/v2/D4E12AQG1JFg8e2jt-Q/article-cover_image-shrink_720_1280/B4EZWqoU3RGYAI-/0/1742324455565?e=2147483647&amp;v=beta&amp;t=kh2486_UmABtJJBE6lpy62_9a-5QPO2SOWZ5usGBXCM)
+
+---
+
+# The Three Papers — A Map
+
+&lt;div class="cols-3" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div class="box box-teal"&gt;
+    &lt;div style="font-weight:700; color:#1abc9c; margin-bottom:0.5em;"&gt;Argyle et al. (2023)&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;&lt;em&gt;"Leveraging AI for democratic discourse: Chat interventions can improve online political conversations at scale"&lt;/em&gt;&lt;br&gt;&lt;br&gt;
+    &lt;strong&gt;Venue:&lt;/strong&gt; PNAS&lt;br&gt;
+    &lt;strong&gt;Design:&lt;/strong&gt; RCT — AI chat assistant makes real-time suggestions during live political conversations&lt;br&gt;
+    &lt;strong&gt;Key finding:&lt;/strong&gt; AI suggestions improve conversation quality and democratic reciprocity without shifting policy attitudes&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-green"&gt;
+    &lt;div style="font-weight:700; color:#27ae60; margin-bottom:0.5em;"&gt;Heide-Jørgensen et al. (2025)&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;&lt;em&gt;"Understanding the success and failure of online political debate: Experimental evidence using large language models"&lt;/em&gt;&lt;br&gt;&lt;br&gt;
+    &lt;strong&gt;Venue:&lt;/strong&gt; Science Advances&lt;br&gt;
+    &lt;strong&gt;Design:&lt;/strong&gt; RCT — LLM-generated debate openers vary justification, tone, and openness&lt;br&gt;
+    &lt;strong&gt;Key finding:&lt;/strong&gt; Evidence + respectful tone + openness increases debate quality 1.6–2×; no attitude change&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.5em;"&gt;Williams-Ceci et al. (2026)&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;&lt;em&gt;"Biased AI writing assistants shift users' attitudes on societal issues"&lt;/em&gt;&lt;br&gt;&lt;br&gt;
+    &lt;strong&gt;Venue:&lt;/strong&gt; Science Advances&lt;br&gt;
+    &lt;strong&gt;Design:&lt;/strong&gt; Two preregistered RCTs (N=2,582) — biased autocomplete suggestions during writing&lt;br&gt;
+    &lt;strong&gt;Key finding:&lt;/strong&gt; AI autocomplete shifts attitudes; warnings don't help; most participants unaware&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://cdn.pixabay.com/photo/2024/03/17/09/13/ai-generated-8638564_960_720.jpg)
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;I&lt;/div&gt;
+
+# What Are Dynamic Materials?
+## How experiments work — and how AI changes them
+
+---
+
+# Review: How Experiments Study Social Behavior
+
+**The classic social science experiment relies on static, pre-authored materials.**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;The standard design&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Recruit&lt;/strong&gt; a sample of participants&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Randomly assign&lt;/strong&gt; to treatment or control&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Expose&lt;/strong&gt; participants to materials: a news article, a speech, a debate opening — written by researchers in advance&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Measure&lt;/strong&gt; the outcome: attitude change, willingness to compromise, affect toward outgroup&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;5&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Infer&lt;/strong&gt; the causal effect: what does exposure to this material do?&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;The classic limitations&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.3em; font-size:0.82em;"&gt;&lt;strong&gt;Scale:&lt;/strong&gt; researchers can only write a few versions of each treatment — high cost per variant&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.3em; font-size:0.82em;"&gt;&lt;strong&gt;Personalization:&lt;/strong&gt; the same material for everyone — ignores participant heterogeneity&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.3em; font-size:0.82em;"&gt;&lt;strong&gt;Ecological validity:&lt;/strong&gt; pre-authored conversations don't feel like real conversations&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:0.82em;"&gt;&lt;strong&gt;Adaptability:&lt;/strong&gt; cannot respond to what the participant says — static, not interactive&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://global.sacap.edu.za/wp-content/uploads/2024/02/famous-social-experiments-global-sacap.jpg)
+
+---
+
+# What Dynamic Materials Are
+
+**Dynamic materials** = experimental stimuli that are generated or adapted in real time, during the experiment, using AI — rather than pre-authored by researchers before data collection begins.
+
+&lt;div class="cols-3" style="margin-top:0.6em;"&gt;
+  &lt;div class="box box-teal" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.3em; margin-bottom:0.3em;"&gt;💬&lt;/div&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Real-time suggestions&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;AI reads a live conversation and suggests messages to participants — dynamically adapting to what's been said&lt;/div&gt;
+    &lt;div style="margin-top:0.4em; font-size:1em; color:#555;"&gt;&lt;em&gt;Argyle et al.&lt;/em&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-teal" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.3em; margin-bottom:0.3em;"&gt;📝&lt;/div&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Autocomplete suggestions&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;AI suggests completions as a participant writes — subtly steering the direction of their text&lt;/div&gt;
+    &lt;div style="margin-top:0.4em; font-size:1em; color:#555;"&gt;&lt;em&gt;Williams-Ceci et al.&lt;/em&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-teal" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.3em; margin-bottom:0.3em;"&gt;🤖&lt;/div&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Generated debate openers&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;LLM generates the initial message in a political debate — systematically varying tone, evidence, and openness to compromise&lt;/div&gt;
+    &lt;div style="margin-top:0.4em; font-size:1em; color:#555;"&gt;&lt;em&gt;Heide-Jørgensen et al.&lt;/em&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="quote" style="margin-top:0.6em;"&gt;Dynamic materials let researchers test hypotheses about communication at a scale and level of control that was previously impossible — but they introduce new methodological and ethical complications that static materials do not.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://trans4mind.com/counterpoint/index-internet/building-an-ai-powered-recommendation-system.jpg)
+
+---
+
+# Why Dynamic Materials Increase Feasibility
+
+**AI dramatically reduces the cost and labor of experimental material creation.**
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th style="width:25%;"&gt;What's needed&lt;/th&gt;
+    &lt;th style="width:37%;"&gt;Static (pre-AI) approach&lt;/th&gt;
+    &lt;th style="width:38%;"&gt;Dynamic (AI) approach&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Treatment variants&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Researchers write each variant by hand — 5 variants requires 5× the writing labor&lt;/td&gt;&lt;td&gt;Prompt the model: generate 500 variants varying tone, evidence level, partisanship simultaneously&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Personalization&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;One script for all participants — ecological validity suffers when content doesn't match participant's context&lt;/td&gt;&lt;td&gt;Generate tailored content for each participant's stated issue, region, or political background&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Scale&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Pre-authored materials limit N to what can be manually checked; conversation studies require pairs of trained confederates&lt;/td&gt;&lt;td&gt;Generate treatments for thousands of participants; AI can serve as conversational partner&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Iteration&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Pilot testing requires writing new materials; slow and expensive&lt;/td&gt;&lt;td&gt;Pilot by reprompting; fast iteration on treatment design before committing to full data collection&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Rare conditions&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Testing "both evidence and respectful tone" × 4 debate topics × 2 countries = 16 cells, each hand-written&lt;/td&gt;&lt;td&gt;Factorial design fully crossed across all conditions — LLM generates each cell on demand&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;center&gt;
+&lt;div style="width:350px; height:175px"&gt;
+![](https://www.extwebtech.com/wp-content/uploads/2023/09/Manual-vs.-Automation-QA.webp)
+
+---
+
+# The Design Space: Three Roles for AI in Experiments
+
+&lt;div class="cols-3" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div class="box box-teal"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;🎨 Material generator&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;AI writes the experimental stimuli — news articles, debate openings, persuasive messages — according to researcher-specified parameters.&lt;br&gt;&lt;br&gt;Participant interacts with the static output. AI's job is done before the experiment starts.&lt;br&gt;&lt;br&gt;&lt;em&gt;Heide-Jørgensen et al.: LLM generates the debate openers&lt;/em&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-teal"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;🔁 Real-time assistant&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;AI reads the live interaction and provides suggestions, completions, or nudges to participants — dynamically adapting to what's been said.&lt;br&gt;&lt;br&gt;Participant can accept, modify, or ignore the suggestions.&lt;br&gt;&lt;br&gt;&lt;em&gt;Argyle et al.: AI chat assistant reads conversation history and suggests messages&lt;/em&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-teal"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;👤 Conversational partner&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;AI takes the role of another participant — responding to what the participant says, maintaining a persona, and pursuing an experimental objective.&lt;br&gt;&lt;br&gt;Participant may or may not know they're talking to AI.&lt;br&gt;&lt;br&gt;&lt;em&gt;Williams-Ceci et al.: AI autocomplete is invisible to participants&lt;/em&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:250px; height:250px"&gt;
+![](https://fast.io/_astro/best-ai-for-writing-books-2026-hero.2-NVVrvP_Z2dytN9.webp)
+
+---
+
+class: discussion
+
+# 💬 Discussion Question 1
+
+**"Dynamic materials make experimental research more feasible — but at what cost to validity?"**
+
+&lt;br&gt;
+
+Heide-Jørgensen et al. use an LLM to generate hundreds of debate openers varying tone, evidence, and openness. This makes a complex factorial design feasible. But it also means the treatment materials are AI-generated, not human-generated.
+
+&lt;br&gt;
+
+1. If the research question is "how does debate tone affect response quality," does it matter whether the debate opener was written by a human or an LLM? Could the effect be different depending on who (or what) produced the initial message?
+
+2. Argyle et al.'s AI assistant provides suggestions during live conversations. Participants can accept, modify, or ignore them. Does this design isolate the effect of "AI assistance" — or does it confound the effect with participant selectivity (those who accept suggestions may be systematically different from those who don't)?
+
+3. Williams-Ceci et al. study covert AI influence — participants don't know the autocomplete is biased. Is this design ethically permissible? What disclosure is required after the experiment?
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;II&lt;/div&gt;
+
+# Advantages
+## How AI-generated materials can improve political discourse
+
+---
+
+# Argyle et al.: The Core Finding
+
+&lt;div class="src"&gt;Argyle et al. 2023 · PNAS · N = 1,574 participants in live conversations&lt;/div&gt;
+
+&lt;div class="box box-teal" style="margin:0.5em 0;"&gt;
+  &lt;strong&gt;Central finding:&lt;/strong&gt; When one participant in a live online political conversation had access to an AI chat assistant making real-time, evidence-based suggestions, their conversation partner reported higher conversation quality, both participants showed greater democratic reciprocity — and neither person's policy attitudes changed.
+&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Study design&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num teal"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;Recruit 1,574 U.S. participants on Prolific; pair across partisan lines&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num teal"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;Randomly assign: one participant gets AI chat assistant; one does not&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num teal"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;AI reads conversation history; suggests messages aimed at making partner feel understood&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num teal"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;Participant can accept, modify, or ignore suggestions&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;5&lt;/span&gt;&lt;div class="step-body"&gt;Measure: conversation quality, democratic reciprocity, policy attitudes (pre/post)&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Key results&lt;/div&gt;
+    &lt;div class="box box-green" style="margin-bottom:0.3em; font-size:0.82em;"&gt;&lt;strong&gt;Partner's perceived quality:&lt;/strong&gt; significantly higher when interacting with AI-assisted participant&lt;/div&gt;
+    &lt;div class="box box-green" style="margin-bottom:0.3em; font-size:0.82em;"&gt;&lt;strong&gt;Democratic reciprocity:&lt;/strong&gt; both participants more willing to grant opponents the right to express views&lt;/div&gt;
+    &lt;div class="box box-green" style="margin-bottom:0.3em; font-size:0.82em;"&gt;&lt;strong&gt;Tone:&lt;/strong&gt; improved significantly&lt;/div&gt;
+    &lt;div class="box box-teal" style="font-size:0.82em;"&gt;&lt;strong&gt;Policy positions:&lt;/strong&gt; no change — the assistant improves how you talk, not what you think&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://www.sciencenewstoday.org/wp-content/uploads/2025/04/ai-assistant_0.jpg)
+
+---
+
+# Paper Walkthrough: Argyle et al. — How the AI Assistant Works
+
+&lt;div class="src"&gt;Argyle et al. 2023&lt;/div&gt;
+
+&lt;div class="mono" style="margin:0.5em 0; font-size:0.77em;"&gt;
+&lt;span class="hi-grey"&gt;Live conversation about gun control (simplified)&lt;/span&gt;
+&lt;br&gt;
+Participant A (Democrat):
+&lt;br&gt;
+&lt;span class="hi-red"&gt;"You people never want to do anything about gun violence.
+ It's disgusting. Kids are dying."&lt;/span&gt;
+&lt;br&gt;
+&lt;span class="hi-grey"&gt;AI reads conversation history and suggests to Participant A:&lt;/span&gt;
+&lt;br&gt;
+&lt;span class="hi-teal"&gt;Suggestion 1: "I'm really concerned about the number of gun deaths we're
+seeing. Can you help me understand your perspective on this?"&lt;/span&gt;
+&lt;br&gt;
+&lt;span class="hi-teal"&gt;Suggestion 2: "I feel strongly that we need to act. I'd like to understand
+what solutions you think would work."&lt;/span&gt;
+&lt;br&gt;
+&lt;span class="hi-teal"&gt;Suggestion 3: "This topic matters a lot to me. What experiences shape your
+views on gun policy?"&lt;/span&gt;
+&lt;br&gt;
+&lt;span class="hi-grey"&gt;Participant A can: accept a suggestion, modify it, or ignore it and type their own message.&lt;/span&gt;
+&lt;br&gt;
+&lt;span class="hi-green"&gt;The accepted/modified suggestion is what Participant B sees.&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-blue" style="margin-top:0.3em; font-size:1em;"&gt;The assistant doesn't tell people what to think — it helps them say what they mean in a way their conversation partner can hear. This is the distinction between quality and content: better communication, not changed minds.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://www.mikeglaw.com/wp-content/uploads/2023/01/Can-Gun-Rights-Be-Restored-to-Felons-in-Florida-scaled-1.jpeg)
+
+---
+
+# Argyle et al.: Why "Quality Not Content" Matters
+
+**The most important distinction in Argyle et al.'s finding:**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-green"&gt;
+    &lt;div style="font-weight:700; color:#27ae60; margin-bottom:0.4em;"&gt;What the AI changed ✓&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      Tone of messages — less hostile, more curious&lt;br&gt;
+      Perceived understanding by conversation partner&lt;br&gt;
+      Democratic reciprocity — willingness to grant opponents space to speak&lt;br&gt;
+      Reported conversation quality
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-teal"&gt;
+    &lt;div style="font-weight:700; color:#1abc9c; margin-bottom:0.4em;"&gt;What the AI did NOT change ✓&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      Policy attitudes of either participant&lt;br&gt;
+      Content of participants' views&lt;br&gt;
+      Underlying disagreement&lt;br&gt;
+      Issue positions on guns, immigration, etc.
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;&lt;div class="quote"&gt;AI can make democratic conversations more civil without making them more conformist. That is exactly what we want from a deliberation-support tool.&lt;cite&gt;— Argyle et al. (2023)&lt;/cite&gt;&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:200px; height:100px"&gt;
+![](https://th.bing.com/th/id/R.39a9ffcfee69ab2777fd22806a8d7fa0?rik=5m8EnjlWNcoI0w&amp;pid=ImgRaw&amp;r=0)
+
+---
+
+# Personable AI Output Increases Persuasiveness
+
+&lt;div class="src"&gt;Argyle et al. 2023 · Heide-Jørgensen et al. 2025&lt;/div&gt;
+
+**Both papers identify a key mechanism: LLMs produce outputs that feel personally addressed, not generic.**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;What "personable" means here&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em; font-size:1em;"&gt;The AI's suggestions reference what the other person actually said — not generic "be civil" advice&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em; font-size:1em;"&gt;Suggestions express curiosity about the specific person's views, not generic interest in "the other side"&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:1em;"&gt;Tone matches the emotional register of the conversation — not a canned script&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;Why this matters&lt;/div&gt;
+    &lt;div class="box box-amber" style="margin-bottom:0.3em; font-size:1em;"&gt;Personability is not a bug — it is a deliberate feature. LLMs are extraordinarily good at generating text that feels tailored to the recipient.&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:1em;"&gt;But this same quality makes them more persuasive when they are biased — the same mechanism that makes good conversation also makes covert influence more effective (Williams-Ceci et al.)&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://lumenalta.com/_next/image?url=https:%2F%2Fassets.lumenalta.com%2Ff%2F1019928%2F735x437%2F77894c61ed%2Fpersonalization_user_profiles_layers.png%2Fm%2F&amp;w=1920&amp;q=75)
+
+---
+
+# Heide-Jørgensen et al.: What Makes Debates Work
+
+&lt;div class="src"&gt;Heide-Jørgensen et al. 2025 · Science Advances · Denmark + UK, 4 political issues&lt;/div&gt;
+
+&lt;div class="box box-teal" style="margin:0.5em 0;"&gt;
+  &lt;strong&gt;Research question:&lt;/strong&gt; What features of an initial debate message causally affect the quality of the subsequent response? Four elements tested: justification (evidence-based arguments), tone (respectful vs. disrespectful), openness to compromise, and partisanship.
+&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Why AI makes this possible&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:1em; margin-bottom:0.3em;"&gt;To test all combinations: 2 (justification) × 2 (tone) × 2 (openness) × 2 (partisanship) = 16 cells × 4 issues × 2 countries = &lt;strong&gt;128 treatment conditions&lt;/strong&gt;&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:1em;"&gt;Humans writing 128 carefully matched debate openers = enormous, expensive, inconsistent. LLM writing 128 matched debate openers = fast, cheap, systematically varied.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;LLM's role&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num teal"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;Researchers specify the factorial design: each cell has a precise combination of the four features&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num teal"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;LLM generates a debate opener for each cell — implementing the specified features consistently&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num teal"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;Human researchers validate that each opener correctly implements the condition&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;Openers administered to participants who then write a response&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://static.vecteezy.com/system/resources/previews/009/951/839/large_2x/political-candidate-cartoon-hand-drawn-illustration-with-debates-concept-for-promotion-election-campaign-active-discussion-and-get-votes-vector.jpg)
+
+---
+
+# Heide-Jørgensen et al.: Results — What Moves the Needle
+
+&lt;div class="src"&gt;Heide-Jørgensen et al. 2025&lt;/div&gt;
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th style="width:22%;"&gt;Element tested&lt;/th&gt;
+    &lt;th style="width:35%;"&gt;Effect on debate quality&lt;/th&gt;
+    &lt;th style="width:43%;"&gt;Effect on political attitudes&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl-green"&gt;&lt;td&gt;&lt;strong&gt;Justification&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; font-weight:400;"&gt;Evidence-based vs. bare assertion&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span class="badge badge-green"&gt;Strong positive ✓&lt;/span&gt;&lt;br&gt;More reasoned responses; higher quality engagement&lt;/td&gt;&lt;td&gt;No significant change in issue positions&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl-green"&gt;&lt;td&gt;&lt;strong&gt;Respectful tone&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; font-weight:400;"&gt;vs. disrespectful/dismissive&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span class="badge badge-green"&gt;Strong positive ✓&lt;/span&gt;&lt;br&gt;More open, less defensive responses&lt;/td&gt;&lt;td&gt;No significant change in issue positions&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl-green"&gt;&lt;td&gt;&lt;strong&gt;Openness to compromise&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; font-weight:400;"&gt;vs. closed position&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span class="badge badge-green"&gt;Positive ✓&lt;/span&gt;&lt;br&gt;Higher quality; more reciprocal openness in response&lt;/td&gt;&lt;td&gt;No significant change in issue positions&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl-red"&gt;&lt;td&gt;&lt;strong&gt;Partisanship&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; font-weight:400;"&gt;Cue in opener vs. none&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span class="badge badge-grey"&gt;No effect&lt;/span&gt;&lt;br&gt;Partisanship of the opener does not affect response quality&lt;/td&gt;&lt;td&gt;No significant change&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+--
+
+&lt;br&gt;&lt;div class="box box-teal" style="font-size:1em;"&gt;&lt;strong&gt;Combined effect:&lt;/strong&gt; When all three positive elements are present (justification + respectful tone + openness), the probability of a high-quality response increases by roughly &lt;strong&gt;1.6 to 2 times&lt;/strong&gt;. Substantial, replicable effects on the quality of democratic discourse.&lt;/div&gt;
+
+---
+
+# Paper Walkthrough: Heide-Jørgensen et al. — The 128-Cell Design
+
+&lt;div class="src"&gt;Heide-Jørgensen et al. 2025&lt;/div&gt;
+
+&lt;div class="mono" style="margin:0.5em 0; font-size:1em;"&gt;
+Issue: Universal basic income (UBI)
+&lt;br&gt;
+&lt;span class="hi-grey"&gt;Condition: LOW justification + DISRESPECTFUL tone + CLOSED + no partisan cue&lt;/span&gt;
+&lt;br&gt;
+&lt;span class="hi-red"&gt;Treatment: "UBI is just another socialist handout that would destroy work incentive.
+            People need to earn their money. This policy is ridiculous."&lt;/span&gt;
+&lt;br&gt;
+Response quality: LOW
+
+&lt;br&gt;
+
+&lt;span class="hi-grey"&gt;Condition: HIGH justification + RESPECTFUL tone + OPEN + no partisan cue&lt;/span&gt;
+
+&lt;br&gt;
+&lt;span class="hi-green"&gt;Treatment: "I've been reading about UBI and I find some of the evidence compelling —
+            particularly studies from Finland showing it improved wellbeing without
+            reducing employment significantly. I'm genuinely curious what your take
+            is and whether there are aspects of the evidence that have changed your
+            thinking over time."&lt;/span&gt;
+            
+&lt;br&gt;
+Response quality: HIGH (1.6–2× more likely)
+&lt;/div&gt;
+
+&lt;div class="box box-blue" style="margin-top:0.3em; font-size:1em;"&gt;The LLM generates both treatments — ensuring the only differences are the four experimental elements. A human writer would struggle to write 128 such pairs consistently while controlling for word count, topic coverage, and everything else.&lt;/div&gt;
+
+---
+
+# AI Improves Discourse Quality: The Mechanism
+
+**Why do evidence-based, respectful, open openers produce better responses?**
+
+&lt;div class="cols-3" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Justification → norm-setting&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;When the opener uses evidence, it signals that this is a conversation where evidence matters. It sets a norm: "we're engaging with arguments here, not just expressing identities." The responder rises to that norm.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Respectful tone → threat reduction&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;Disrespect triggers defensive responses. When the opener is respectful, participants feel less threatened by the exchange — they can engage with the argument rather than defending against an attack.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Openness → reciprocity&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;Expressing genuine curiosity about the other's view elicits reciprocal openness. Heide-Jørgensen et al. find that openness in the opener significantly increases openness to alternative viewpoints in the response.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;&lt;div class="box box-amber" style="font-size:1em;"&gt;&lt;strong&gt;The critical null finding:&lt;/strong&gt; None of these improvements change participants' political attitudes. Better process ≠ changed minds. Democratic reciprocity improves; policy disagreement persists. Whether this is a feature or a limitation depends on what you think democratic deliberation is for.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://miro.medium.com/v2/resize:fit:1200/1*1MraG3AOX5JYL4yM6nKHWw.jpeg)
+
+---
+
+class: discussion
+
+# 💬 Discussion Question 2
+
+**"High-quality debates are supported with evidence and conducted with a respectful tone — but they don't change minds."**
+
+Heide-Jørgensen et al. find that their best treatment conditions double the probability of a high-quality response but produce no attitude change. Argyle et al. find that AI assistance improves conversation quality without moving policy positions.
+
+&lt;br&gt;
+
+1. Should we interpret the null attitude-change finding as a failure (AI can't do the hard work of persuasion) — or a success (AI improves democratic discourse without homogenizing opinions)?
+
+2. Heide-Jørgensen et al. find partisanship doesn't affect debate quality. This seems counterintuitive given how polarized U.S. politics is. What might explain this finding? Does it replicate to the U.S. context (the study was done in Denmark and the UK)?
+
+3. Argyle et al.'s AI assistant helps participants be more civil. But civility norms are not culturally neutral — what counts as "respectful" varies across communities. Could AI suggestions that improve "quality" from a Western deliberative democracy perspective actually feel condescending or inappropriate to participants from other cultural backgrounds?
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;III&lt;/div&gt;
+
+# Limitations
+## The dark side of AI-generated materials
+
+---
+
+# Williams-Ceci et al.: Biased Autocomplete Shifts Attitudes
+
+&lt;div class="src"&gt;Williams-Ceci et al. 2026 · Science Advances · N = 2,582, two preregistered RCTs&lt;/div&gt;
+
+&lt;div class="box box-red" style="margin:0.5em 0;"&gt;
+  &lt;strong&gt;Central finding:&lt;/strong&gt; When people write about societal issues using an AI writing assistant with biased autocomplete suggestions, their attitudes shift toward the AI's position — even though most participants are unaware of the bias, and even though warnings about the bias do not mitigate its effect.
+&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Study 1 design&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;Participants write a short essay about a societal issue (e.g., immigration, climate, social media)&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;Treatment group receives AI autocomplete suggestions biased in a specified direction&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;Control group uses same interface without biased suggestions&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;Post-essay survey: measure attitudes on the issue&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Study 2 design&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;Same as Study 1&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;Add warning conditions: warned before essay / warned after essay / not warned&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;Test whether warnings reduce the attitude shift&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;Result: warnings do not help&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://img.magnific.com/premium-photo/futuristic-robot-assistant-accompanies-senior-lady-walk-city-streets-back-view_922936-1204.jpg)
+
+---
+
+# Paper Walkthrough: Williams-Ceci et al. — The Mechanism
+
+&lt;div class="src"&gt;Williams-Ceci et al. 2026&lt;/div&gt;
+
+**How does biased autocomplete shift attitudes? The mechanism is not direct persuasion.**
+
+&lt;center&gt;
+&lt;div style="width:700px; height:350px"&gt;
+![](https://cdn.corenexis.com/f/2E6hJCHqsUv.png)
+
+---
+
+# Why Biased Autocomplete Is More Powerful Than Static Persuasion
+
+**Williams-Ceci et al. compare the AI autocomplete to static text nudges — and find autocomplete is stronger.**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Static text condition (control comparison)&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:1em; margin-bottom:0.3em;"&gt;Participants shown the same biased suggestions as static text — not as autocomplete, just as visible text on screen&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:1em;"&gt;Same information content; different modality of delivery&lt;/div&gt;
+    &lt;div class="box box-teal" style="margin-top:0.4em; font-size:1em;"&gt;&lt;strong&gt;Finding:&lt;/strong&gt; Static text produces a smaller attitude shift than autocomplete&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Why the mode of delivery matters&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.3em; font-size:1em;"&gt;&lt;strong&gt;Autocomplete prompts behavior:&lt;/strong&gt; users don't just read the suggestion — they accept it and write it, elaborating the viewpoint in their own words&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.3em; font-size:1em;"&gt;&lt;strong&gt;Behavior-attitude link:&lt;/strong&gt; writing about a viewpoint shapes attitude toward that viewpoint (classic cognitive dissonance / self-perception mechanism)&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:1em;"&gt;&lt;strong&gt;Not just accessibility:&lt;/strong&gt; the influence is not just about making certain information easier to access — the act of writing it matters&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://codingartistweb.com/wp-content/uploads/2021/12/autocomplete-01-1024x576.png)
+
+---
+
+class: warning-slide
+
+# ⚠️ Covert AI Influence: Why It's Different from Normal Persuasion
+
+**Williams-Ceci et al. identify what makes this form of influence particularly concerning.**
+
+**Normal persuasion:** A newspaper editorial, a political ad, a friend's argument — you know an attempt is being made to change your mind. You can evaluate the source, the argument, the evidence.
+
+&lt;br&gt;
+
+**AI autocomplete influence:** You are writing. The AI suggests completions. You accept them (possibly without much thought). You have just elaborated a viewpoint in your own words. Your attitude shifts — but you experienced this as your own writing, not as persuasion.
+
+&lt;br&gt;
+
+**What this means:**
+
+- Most participants in Williams-Ceci et al.'s study were **unaware** that the suggestions were biased
+- Most were **unaware** that their attitudes had been influenced
+- Even participants **warned before or after** the writing task showed the same attitude shift
+- The influence bypasses the normal defenses we use against persuasion
+
+&lt;br&gt;
+
+**This is not like reading a biased news article. It is more like having someone subtly complete your own thoughts for you — and then believing those thoughts were yours.**
+
+---
+
+# Warning Labels Don't Work
+
+&lt;div class="src"&gt;Williams-Ceci et al. 2026 · Study 2&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;What they tested&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em; font-size:1em;"&gt;&lt;strong&gt;Before warning:&lt;/strong&gt; "This writing assistant may have biases. Please be aware of this as you write."&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em; font-size:1em;"&gt;&lt;strong&gt;After warning:&lt;/strong&gt; "The suggestions you received may have been biased. Please adjust your responses accordingly."&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:1em;"&gt;&lt;strong&gt;No warning:&lt;/strong&gt; Standard control condition&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;What they found&lt;/div&gt;
+    &lt;div class="mono" style="font-size:0.76em;"&gt;
+Attitude shift vs. no-AI control:
+
+&lt;br&gt;
+
+No warning:      &lt;span class="hi-red"&gt;+0.23 standard deviations ✗&lt;/span&gt;
+&lt;br&gt;
+
+Before warning:  &lt;span class="hi-red"&gt;+0.21 standard deviations ✗&lt;/span&gt;
+&lt;br&gt;
+
+After warning:   &lt;span class="hi-red"&gt;+0.19 standard deviations ✗&lt;/span&gt;
+&lt;br&gt;
+
+
+&lt;span class="hi-grey"&gt;None significantly different from each other.
+&lt;br&gt;
+
+All significantly different from no-AI control.&lt;/span&gt;
+&lt;br&gt;
+
+&lt;span class="hi-amber"&gt;Warning: does not work.&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:1em; margin-top:0.3em;"&gt;The mechanism (behavior → attitude) operates before or after any cognitive correction the warning might prompt&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:200px; height:200px"&gt;
+![](https://www.pngall.com/wp-content/uploads/8/Vector-Warning-PNG-Image.png)
+
+---
+
+# AI Can Be Dangerous: Three Specific Threats
+
+**Williams-Ceci et al.'s findings connect to broader concerns about AI's impact on cognition and democracy.**
+
+&lt;div class="cols-3" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.4em;"&gt;🧠 Attitude shift&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;Biased autocomplete suggestions shift expressed attitudes in the direction of the AI's bias — consistently, across issues, across partisan directions. The effect is not trivial (0.23 SD) and is invisible to most users.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.4em;"&gt;✏️ Linguistic choices&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;Prior work (cited by Williams-Ceci et al.) shows AI assistants shape which words users choose — and word choices carry ideological content. "Border security" vs. "immigration control" vs. "keeping families out." The AI steers the vocabulary.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.4em;"&gt;🔄 Feedback loops&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;AI-generated text enters future training data. AI assistants steer users toward certain viewpoints. Those viewpoints enter the training corpus. The next model is more likely to generate those viewpoints. Homogenization compounds over time.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;div class="quote"&gt;The influence of AI writing assistants was stronger than similar suggestions presented as static text — showing the influence is not fully explained by making biased information more accessible.&lt;cite&gt;— Williams-Ceci et al. (2026)&lt;/cite&gt;&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:250px; height:250px"&gt;
+![](https://cdn.completeaitraining.com/news_images/teach-what-machines-can-t-why-language-learning-still-matters-in-the-ai-age_2025-11-05.jpg)
+
+---
+
+# Experimental Effects Depend on Awareness
+
+&lt;div class="src"&gt;Williams-Ceci et al. 2026 · connecting to prior work&lt;/div&gt;
+
+**The effectiveness of AI influence — in both directions (helpful and harmful) — depends on whether participants notice the AI's role.**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Awareness reduces (but doesn't eliminate) influence&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:1em; margin-bottom:0.3em;"&gt;Participants who correctly identified the AI suggestions as biased showed smaller attitude shifts than those who did not&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:1em; margin-bottom:0.3em;"&gt;But even aware participants still shifted — the behavior-attitude mechanism operates even when you consciously resist&lt;/div&gt;
+    &lt;div class="box box-amber" style="font-size:1em; margin-top:0.4em;"&gt;Awareness ≠ immunity. The mechanism does not require deception to operate — it requires only that you interact with the text.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Implications for the Argyle et al. design&lt;/div&gt;
+    &lt;div class="box box-teal" style="margin-bottom:0.3em; font-size:1em;"&gt;In Argyle et al., participants knew they were using an AI assistant — there was full transparency&lt;/div&gt;
+    &lt;div class="box box-teal" style="margin-bottom:0.3em; font-size:1em;"&gt;The AI assistant was designed to help, not to bias. Its suggestions were aimed at making the partner feel understood, not at changing content&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:1em; margin-top:0.3em;"&gt;But: the Williams-Ceci et al. finding implies that even a well-intentioned AI assistant could have covert attitude-shaping effects if its suggestions happen to be directionally biased — and it might not even know that they are&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+# In Conversation, Participants May Not Be Authentic
+
+&lt;div class="src"&gt;Heide-Jørgensen et al. 2025 · design discussion&lt;/div&gt;
+
+**A specific challenge for experiments using AI as conversational partner:**
+
+&lt;div class="box box-amber" style="margin:0.5em 0; font-size:0.88em;"&gt;
+  When participants know (or suspect) they are interacting with an AI, they may perform rather than respond authentically — treating the exchange as a formal debate exercise rather than a genuine conversation.
+&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;The demand effects concern&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:1em; margin-bottom:0.3em;"&gt;If participants think they are being evaluated on their debating quality, they may produce more formally correct responses than they would in real conversations&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:1em;"&gt;Heide-Jørgensen et al. are measuring "high-quality debate responses" — which may be the very thing participants perform when they know they're in a study&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Why this is particularly acute with AI&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:1em; margin-bottom:0.3em;"&gt;Human-to-human conversations have social stakes. Participants have an authentic interest in how they come across to another person.&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:1em; margin-bottom:0.3em;"&gt;Human-to-AI conversations may feel lower stakes — "the AI doesn't judge me" — and may elicit less authentic responses&lt;/div&gt;
+    &lt;div class="box box-teal" style="font-size:1em; margin-top:0.3em;"&gt;Alternatively: lower perceived stakes may elicit more honest responses, without social desirability pressure. Which direction matters is an open empirical question.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+# What Should Be Disclosed? The Ethics of Dynamic Materials
+
+**The disclosure dilemma is the sharpest ethical issue in this research area.**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;What Argyle et al. disclosed&lt;/div&gt;
+    &lt;div class="box box-green" style="font-size:1em; margin-bottom:0.3em;"&gt;Participants told they are receiving AI chat assistance&lt;/div&gt;
+    &lt;div class="box box-green" style="font-size:1em; margin-bottom:0.3em;"&gt;Conversation partner told one person has AI help&lt;/div&gt;
+    &lt;div class="box box-green" style="font-size:1em;"&gt;Full IRB approval; debrief after&lt;/div&gt;
+    &lt;div style="margin-top:0.5em; font-size:0.82em; color:#27ae60; font-weight:600;"&gt;Standard disclosure for assistive tool use&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;What Williams-Ceci et al. disclosed&lt;/div&gt;
+    &lt;div class="box box-amber" style="font-size:1em; margin-bottom:0.3em;"&gt;Participants told they are using a "writing assistant" — not that it is deliberately biased&lt;/div&gt;
+    &lt;div class="box box-amber" style="font-size:1em; margin-bottom:0.3em;"&gt;Some conditions: told about potential bias (before or after) — for the purpose of studying warning effectiveness&lt;/div&gt;
+    &lt;div class="box box-amber" style="font-size:1em;"&gt;Debrief after completion&lt;/div&gt;
+    &lt;div style="margin-top:0.5em; font-size:1em; color:#e67e22; font-weight:600;"&gt;Minimal deception research — requires IRB justification&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;&lt;div class="box box-red" style="font-size:1em;"&gt;&lt;strong&gt;The harder question:&lt;/strong&gt; Williams-Ceci et al. study covert influence in the lab to understand what happens in the wild — where AI writing assistants deploy biases without any disclosure at all. Is laboratory deception ethically acceptable when the purpose is to expose and document real-world deception?&lt;/div&gt;
+
+---
+
+class: casestudy
+
+# 📊 Case Study: The Disclosure Spectrum
+
+**Three scenarios — what disclosure is appropriate, and who decides?**
+
+&lt;br&gt;
+
+**Scenario 1: Research lab (Argyle et al.)**
+Academic experiment. Participants are Prolific workers. AI assistance is disclosed. Debrief occurs. IRB approved. No real-world consequences beyond the conversation itself.
+
+**Appropriate disclosure:** Full — participants know they're in a study, know they have AI assistance, know the partner knows.
+
+**Scenario 2: Platform testing (hypothetical)**
+A social media company tests whether AI-assisted conversations reduce toxicity on their platform. Millions of users. Some receive AI suggestions; others don't. No explicit disclosure to users.
+
+**Disclosure question:** Does a user consent to conversation improvement experiments when they agree to terms of service? What do those terms need to say?
+
+**Scenario 3: Real-world deployment (the Axios case + Williams-Ceci et al.)**
+A writing assistant with deliberate or accidental political bias is deployed to millions of users. No disclosure of the bias. No debrief. Permanent attitude shift at scale.
+
+**Disclosure question:** Should AI writing assistants be required to disclose their political biases — the way news organizations are required to disclose editorial perspectives?
+
+---
+
+class: debate
+
+# ⚖️ Debate: Should AI Conversation Assistants Be Deployed at Scale?
+
+**Argyle et al. end with a vision:** AI chat assistants that make online political discourse more civil and productive — deployed at scale across social media platforms.
+
+&lt;br&gt;
+
+**The optimistic case (Argyle et al.):**
+
+Political discourse is broken. AI can improve conversation quality, increase democratic reciprocity, and help people feel heard — without changing their underlying views. The tool is disclosed, assistive, and tested. The alternative is the status quo of divisive online politics.
+
+&lt;br&gt;
+
+**The pessimistic case (Williams-Ceci et al.):**
+
+We've just shown that biased AI suggestions shift attitudes covertly, and warnings don't work. We cannot guarantee that scale-deployed AI chat assistants would be unbiased — and if they aren't, they would homogenize political opinion at population scale, with no disclosure and no correction.
+
+&lt;br&gt;
+
+**What would make large-scale deployment safe?** Mandatory bias audits? User control over AI behavior? Disclosure requirements? No deployment until these standards are met?
+
+---
+
+# Three Threats to Democracy
+
+&lt;div class="cols-3" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.4em;"&gt;Homogenization&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;If AI assistants everywhere share the same biases (from shared training data), they push all political discourse in the same direction. Diversity of opinion — a democratic good — is compressed.&lt;br&gt;&lt;br&gt;&lt;em&gt;Williams-Ceci et al.: attitude shift is consistent across issues and partisan directions&lt;/em&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.4em;"&gt;Covert influence&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;Democratic legitimacy requires that citizens form their own views through deliberation. If AI covertly shapes what they write and think, the resulting "views" may not be authentically theirs.&lt;br&gt;&lt;br&gt;&lt;em&gt;Williams-Ceci et al.: most participants unaware of influence; warnings don't help&lt;/em&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.4em;"&gt;Weaponization&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;The same capabilities that Argyle et al. use to improve conversations could be used adversarially: an AI assistant that makes people sound nicer while steering them toward predetermined political conclusions.&lt;br&gt;&lt;br&gt;&lt;em&gt;The gap between Argyle et al. and Williams-Ceci et al. is who controls the AI and what objective it's given&lt;/em&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://www.americanprogress.org/wp-content/uploads/sites/2/2024/09/GettyImages-2175609364-CROPPED.jpg?w=1500)
+
+---
+
+class: discussion
+
+# 💬 Discussion Question 3
+
+**"The same capability that makes AI useful for democratic deliberation makes it dangerous."**
+
+Argyle et al.'s AI assistant and Williams-Ceci et al.'s biased autocomplete are technically similar. Both:
+- Read what participants are writing
+- Generate contextually appropriate suggestions
+- Shape the text that participants produce
+
+The difference is intent and transparency. Argyle et al.'s assistant tries to improve quality and is disclosed. Williams-Ceci et al.'s autocomplete is biased and covert.
+
+1. If the same technical system can be either beneficial (Argyle et al.) or dangerous (Williams-Ceci et al.) depending only on the objectives set by the developer — what does this imply for regulation? Should the regulation target the technology or the intent?
+
+2. Williams-Ceci et al. find warnings don't work. Argyle et al. find full disclosure is compatible with their study design. What level of disclosure would actually protect democratic deliberation — and is that level compatible with effective use of AI assistance?
+
+3. Heide-Jørgensen et al. show AI can systematically vary debate quality at scale. Should platforms be required to use AI to improve the quality of political discourse — or does this cross a line into manipulation of public deliberation?
+
+---
+
+# Ecological Validity: Does the Lab Generalize?
+
+**Generalization concerns lurking behind all three papers:**
+
+&lt;div class="cols-3" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Argyle et al.&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;&lt;strong&gt;Lab:&lt;/strong&gt; Prolific participants, assigned to political conversation, using an explicit AI assistant&lt;br&gt;&lt;br&gt;&lt;strong&gt;Real world:&lt;/strong&gt; Twitter/X users stumbling into arguments with strangers, unsolicited AI nudges in the background&lt;br&gt;&lt;br&gt;&lt;em&gt;Generalization concern: motivated and paid participants may be more receptive to AI assistance than organic online users&lt;/em&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Heide-Jørgensen et al.&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;&lt;strong&gt;Lab:&lt;/strong&gt; Denmark and UK; recruited participants; structured debate task&lt;br&gt;&lt;br&gt;&lt;strong&gt;Real world:&lt;/strong&gt; Social media comments, Reddit threads, organic political discourse with no structured format&lt;br&gt;&lt;br&gt;&lt;em&gt;Generalization concern: structured debate tasks may elicit more deliberate responses than real social media behavior&lt;/em&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Williams-Ceci et al.&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;&lt;strong&gt;Lab:&lt;/strong&gt; Prolific participants writing short essays with AI assistance&lt;br&gt;&lt;br&gt;&lt;strong&gt;Real world:&lt;/strong&gt; Millions of people using Google Docs, Microsoft Word, Gmail with AI autocomplete daily&lt;br&gt;&lt;br&gt;&lt;em&gt;Generalization concern: lab shows a small single-session effect — what happens with months of daily AI autocomplete use?&lt;/em&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://progressny.com/wp-content/uploads/2024/08/AI-in-the-Workplace-Concept-GettyImages-1501394097.jpg)
+
+---
+
+# Open Questions in Dynamic Materials Research
+
+**What we don't yet know — gaps these papers leave open:**
+
+&lt;div class="cols-2" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div&gt;
+    &lt;div class="box box-amber" style="margin-bottom:0.4em;"&gt;
+      &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Does the quality improvement persist?&lt;/div&gt;
+      Argyle et al. improve conversation quality in a single conversation. Does using AI assistance repeatedly change how people communicate long-term — or only in the moment?
+    &lt;/div&gt;
+    &lt;div class="box box-amber" style="margin-bottom:0.4em;"&gt;
+      &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Does attitude shift accumulate?&lt;/div&gt;
+      Williams-Ceci et al. study a single writing session. Does repeated exposure to biased autocomplete compound the effect — or do people adapt?
+    &lt;/div&gt;
+    &lt;div class="box box-amber"&gt;
+      &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Who is most affected?&lt;/div&gt;
+      Neither paper fully characterizes heterogeneous treatment effects. Are politically disengaged, uncertain, or low-knowledge participants more susceptible to both AI assistance and AI manipulation?
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div class="box box-amber" style="margin-bottom:0.4em;"&gt;
+      &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;What happens at population scale?&lt;/div&gt;
+      If 100 million people use the same AI writing assistant, and that assistant has a consistent bias, what happens to the distribution of expressed political opinion — not just individual attitudes?
+    &lt;/div&gt;
+    &lt;div class="box box-amber" style="margin-bottom:0.4em;"&gt;
+      &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Does cross-cultural generalization hold?&lt;/div&gt;
+      Heide-Jørgensen et al. run in Denmark and UK. Argyle et al. run in the US. Williams-Ceci et al. run on Prolific (US/UK). Do these effects hold in cultures with different norms around political discourse?
+    &lt;/div&gt;
+    &lt;div class="box box-amber"&gt;
+      &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;What makes AI assistance vs. manipulation?&lt;/div&gt;
+      The papers together imply a spectrum. Where exactly does "helpful suggestion" become "covert influence"? Is this a technical, ethical, or legal question?
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:100px; height:200px"&gt;
+![](https://tse1.mm.bing.net/th/id/OIP.n8c_iL-pbpEA_RxJuEP2LAHaKx?r=0&amp;rs=1&amp;pid=ImgDetMain&amp;o=7&amp;rm=3)
+
+---
+
+# The Democratic Stakes
+
+**Why does this matter beyond methodology?**
+
+&lt;div class="box box-red" style="margin:0.5em 0;"&gt;
+  &lt;strong&gt;The problem these papers collectively identify:&lt;/strong&gt; We now have the technical capability to influence political discourse at scale — improving its quality or degrading it — without participants knowing it's happening, without effective countermeasures, and without any regulatory framework governing its use.
+&lt;/div&gt;
+
+&lt;div class="cols-3" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;The optimistic scenario&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;AI assistance, transparently deployed with user consent, makes online political discourse more civil and deliberative — supporting democratic health without homogenizing opinion. (Argyle et al.'s vision)&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;The neutral scenario&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;AI is used by researchers to generate better experimental materials, making social science more efficient and rigorous — with appropriate disclosure in academic contexts. (Heide-Jørgensen et al.'s contribution)&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.3em;"&gt;The dystopian scenario&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;AI writing assistants with deliberate or accidental biases are deployed to billions of users. Political opinion is covertly shaped at population scale. Citizens believe they hold self-authored views. Democracy produces manufactured consensus. (Williams-Ceci et al.'s warning)&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-amber" style="margin-top:0.5em; font-size:1em; text-align:center;"&gt;&lt;strong&gt;All three scenarios are technically possible right now. Which one we get depends on governance decisions that haven't been made yet.&lt;/strong&gt;&lt;/div&gt;
+
+---
+
+# Disclosure Standards: What Should Be Required?
+
+**A practical framework — moving from what exists to what should exist:**
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th style="width:25%;"&gt;Context&lt;/th&gt;
+    &lt;th style="width:35%;"&gt;Current practice&lt;/th&gt;
+    &lt;th style="width:40%;"&gt;Proposed standard&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl-green"&gt;&lt;td&gt;&lt;strong&gt;Academic experiment&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;IRB-required disclosure; debrief after study completion&lt;/td&gt;&lt;td&gt;Full disclosure of AI role; IRB justification for any deception; mandatory debrief within session&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Platform A/B testing&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Terms of service consent; typically no specific AI disclosure&lt;/td&gt;&lt;td&gt;Explicit opt-in for AI-assisted communication features; right to opt out; outcome reporting to users&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Commercial AI writing tools&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Often no disclosure of political biases; general ToS mention of AI&lt;/td&gt;&lt;td&gt;Mandatory disclosure of any known political or ideological biases; regular third-party bias audits published publicly&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;News and polling&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Post-Axios: disclosure required when AI generates polling data&lt;/td&gt;&lt;td&gt;Extend to: disclosure when AI assists in writing news, opinion, or any politically relevant content&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl-red"&gt;&lt;td&gt;&lt;strong&gt;Political advertising&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;No consistent standards; some jurisdictions require "paid for by"&lt;/td&gt;&lt;td&gt;Mandatory disclosure when AI generates or materially assists political advertising content; registration of AI-generated content&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;center&gt;
+&lt;div style="width:450px; height:225px"&gt;
+![](https://a-us.storyblok.com/f/1018982/f98a280841/transparency-social-mod-1200x628.jpg)
+
+---
+
+# Dynamic Materials and IRB: Three Ethical Principles
+
+**Research using AI as an experimental actor requires ethical scrutiny beyond standard human subjects protocols.**
+
+&lt;div class="cols-3" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-teal"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;1. Proportional disclosure&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;The level of disclosure required is proportional to the potential for harm. Argyle et al. (no attitude change, assistive only) → minimal risk → standard disclosure. Williams-Ceci et al. (deliberate bias, covert influence) → higher risk → requires deception justification and robust debrief.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-teal"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;2. Ecological purpose&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;Withholding that suggestions are biased is ethically acceptable only when the research question requires it — and when the answer has sufficient scientific and social value. Williams-Ceci et al.'s deception is justified because they are documenting a real-world threat that cannot be studied with full disclosure.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-teal"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;3. Post-study restoration&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;If the study covertly shifted participants' attitudes, the debrief has an obligation to inform participants of this — and ideally to assess whether the attitude shift persists after disclosure. Williams-Ceci et al. find the shift persists even after warning; this is itself a finding that must be disclosed.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:275px; height:275px"&gt;
+![](https://static.vecteezy.com/system/resources/previews/015/398/862/original/ethics-and-values-vector.jpg)
+
+---
+
+# How All Three Papers Connect
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th style="width:22%;"&gt;Dimension&lt;/th&gt;
+    &lt;th style="width:26%;"&gt;Argyle et al.&lt;/th&gt;
+    &lt;th style="width:26%;"&gt;Heide-Jørgensen et al.&lt;/th&gt;
+    &lt;th style="width:26%;"&gt;Williams-Ceci et al.&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;AI's role&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Real-time conversation assistant&lt;/td&gt;&lt;td&gt;Material generator (debate openers)&lt;/td&gt;&lt;td&gt;Covert autocomplete suggester&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Disclosure&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Full — both parties know&lt;/td&gt;&lt;td&gt;Full — research context&lt;/td&gt;&lt;td&gt;Minimal — writing assistant only&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Intent&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Improve conversation quality&lt;/td&gt;&lt;td&gt;Generate experimental treatments&lt;/td&gt;&lt;td&gt;Demonstrate covert influence&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Effect on quality&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Positive ✓&lt;/td&gt;&lt;td&gt;Positive when conditions met ✓&lt;/td&gt;&lt;td&gt;N/A (different outcome)&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Effect on attitudes&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;None ✓&lt;/td&gt;&lt;td&gt;None ✓&lt;/td&gt;&lt;td&gt;Negative — shifts covertly ✗&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Democratic implication&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Promising — quality up, diversity preserved&lt;/td&gt;&lt;td&gt;Instructive — tells us what debate elements matter&lt;/td&gt;&lt;td&gt;Warning — covert influence at scale is possible&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Warning effectiveness&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;N/A&lt;/td&gt;&lt;td&gt;N/A&lt;/td&gt;&lt;td&gt;None — warnings don't mitigate&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:300px"&gt;
+![](https://miro.medium.com/v2/resize:fit:1024/1*l-ITo87Pz212WDh4Sq82VA.jpeg)
+
+---
+
+# The Personability-Persuasiveness Link
+
+&lt;div class="src"&gt;Argyle et al. 2023 · Williams-Ceci et al. 2026&lt;/div&gt;
+
+**Both papers illuminate a core property of LLMs: their outputs feel personal — and personability amplifies influence.**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Why LLMs feel personal&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em; font-size:1em;"&gt;LLMs generate text conditioned on the full context of the conversation — your previous messages, your word choices, your topics. Outputs naturally reflect what you said.&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:1em;"&gt;This is not empathy or theory of mind — it is pattern completion. But the result is text that feels tailored, not generic.&lt;/div&gt;
+    &lt;div style="margin-top:0.5em; font-weight:600; font-size:1em;"&gt;In Argyle et al. (positive)&lt;/div&gt;
+    &lt;div class="box box-teal" style="font-size:1em;"&gt;The suggestion references what the other person said → feels genuinely responsive → improves quality → partner feels heard&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;The same property in Williams-Ceci et al. (negative)&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.3em; font-size:1em;"&gt;The autocomplete suggestion continues the sentence you started → feels like your own thought → you elaborate it → you believe it&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:1em;"&gt;The AI's biased viewpoint became "your" viewpoint not through persuasion but through co-authorship&lt;/div&gt;
+    &lt;div style="margin-top:0.5em; font-weight:600; font-size:1em;"&gt;The general lesson&lt;/div&gt;
+    &lt;div class="box box-amber" style="font-size:1em;"&gt;Personability is the property that makes AI assistance valuable and AI manipulation effective. These are the same property with different objectives. You cannot have one without the other.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+# Key Numbers to Remember
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th style="width:20%; text-align:center;"&gt;Number&lt;/th&gt;
+    &lt;th style="width:45%;"&gt;What it measures&lt;/th&gt;
+    &lt;th style="width:35%;"&gt;Source&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl-green"&gt;&lt;td style="text-align:center; font-weight:700; color:#27ae60;"&gt;1,574&lt;/td&gt;&lt;td&gt;Participants in Argyle et al.'s RCT — live political conversations&lt;/td&gt;&lt;td&gt;Argyle et al.&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td style="text-align:center; font-weight:700; color:#27ae60;"&gt;1.6–2×&lt;/td&gt;&lt;td&gt;Increase in probability of high-quality debate response with all three positive elements&lt;/td&gt;&lt;td&gt;Heide-Jørgensen et al.&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl-green"&gt;&lt;td style="text-align:center; font-weight:700; color:#27ae60;"&gt;128&lt;/td&gt;&lt;td&gt;Treatment conditions in the Heide-Jørgensen et al. factorial design (simplified: 4 elements × 4 issues × 2 countries)&lt;/td&gt;&lt;td&gt;Heide-Jørgensen et al.&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td style="text-align:center; font-weight:700; color:#c0392b;"&gt;2,582&lt;/td&gt;&lt;td&gt;Participants across Williams-Ceci et al.'s two preregistered experiments&lt;/td&gt;&lt;td&gt;Williams-Ceci et al.&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td style="text-align:center; font-weight:700; color:#c0392b;"&gt;0.23 SD&lt;/td&gt;&lt;td&gt;Attitude shift produced by biased autocomplete (no warning condition)&lt;/td&gt;&lt;td&gt;Williams-Ceci et al.&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td style="text-align:center; font-weight:700; color:#c0392b;"&gt;0&lt;/td&gt;&lt;td&gt;Effect of warning on attitude shift (before or after) — warnings don't work&lt;/td&gt;&lt;td&gt;Williams-Ceci et al.&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td style="text-align:center; font-weight:700; color:#27ae60;"&gt;0&lt;/td&gt;&lt;td&gt;Effect on policy attitudes in both Argyle et al. and Heide-Jørgensen et al. — quality improves, minds don't change&lt;/td&gt;&lt;td&gt;Argyle et al.; Heide-Jørgensen et al.&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;center&gt;
+&lt;div style="width:450px; height:225px"&gt;
+![](https://mitchtublin.com/wp-content/uploads/2022/10/important-numbers.jpg)
+
+---
+
+# Dynamic Materials vs. Traditional Materials: A Decision Guide
+
+&lt;center&gt;
+&lt;div style="width:800px; height:400px"&gt;
+![](https://cdn.corenexis.com/f/Z1uNd7lUMss.png)
+
+---
+
+# Connecting to the Course Arc
+
+&lt;div class="cols-2" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:700; color:#1abc9c; margin-bottom:0.4em;"&gt;Connects backward to Weeks 1–9&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em;"&gt;&lt;strong&gt;Week 1 (LLMs as prediction machines):&lt;/strong&gt; Personability is a property of next-token prediction — the model completes what you start, in your style, in context. It's not understanding; it's completion.&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em;"&gt;&lt;strong&gt;Week 3 (Prompting):&lt;/strong&gt; Heide-Jørgensen et al. show that LLMs can be prompted to consistently implement specific discourse elements at scale — applied prompting for experimental design.&lt;/div&gt;
+    &lt;div class="box box-slate"&gt;&lt;strong&gt;Weeks 4–5 (Measurement and bias):&lt;/strong&gt; Williams-Ceci et al. show that biases in LLM outputs propagate into users' attitudes — the measurement bias problem inverted: now the model biases the human, not just the data.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.4em;"&gt;Points forward to Weeks 11–14&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em;"&gt;&lt;strong&gt;Week 11 (Persuasion):&lt;/strong&gt; Next week extends the Williams-Ceci et al. finding — when can AI explicitly persuade people? What are the limits? What does it mean for democracy?&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em;"&gt;&lt;strong&gt;Week 12 (AI and society):&lt;/strong&gt; The homogenization risk Williams-Ceci et al. identify connects directly to Sourati et al. (Week 14) on cognitive homogenization.&lt;/div&gt;
+    &lt;div class="box box-slate"&gt;&lt;strong&gt;Week 14 (Sycophancy and Productivity):&lt;/strong&gt; Cheng et al. on sycophantic AI connects directly to Argyle et al. — AI that makes you feel heard may also be AI that tells you what you want to hear.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:250px; height:250px"&gt;
+![](https://static.vecteezy.com/system/resources/previews/018/783/901/original/arrow-to-the-right-simple-flat-icon-arrow-icon-vector.jpg)
+
+---
+
+# Summary: The Three Papers in One Framework
+
+&lt;div class="cols-3" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div class="box box-teal"&gt;
+    &lt;div style="font-weight:700; color:#1abc9c; margin-bottom:0.4em; font-size:1em;"&gt;Argyle et al. (2023)&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      &lt;strong&gt;What:&lt;/strong&gt; AI chat assistant improves live political conversations&lt;br&gt;
+      &lt;strong&gt;How:&lt;/strong&gt; Real-time suggestions; participants accept/modify/ignore&lt;br&gt;
+      &lt;strong&gt;Effect:&lt;/strong&gt; Quality ↑, reciprocity ↑, tone ↑, attitudes: 0&lt;br&gt;
+      &lt;strong&gt;Disclosure:&lt;/strong&gt; Full — both parties know&lt;br&gt;
+      &lt;strong&gt;Lesson:&lt;/strong&gt; AI can improve discourse without changing minds
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-green"&gt;
+    &lt;div style="font-weight:700; color:#27ae60; margin-bottom:0.4em; font-size:1em;"&gt;Heide-Jørgensen et al. (2025)&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      &lt;strong&gt;What:&lt;/strong&gt; LLM generates 128 debate openers varying 4 elements&lt;br&gt;
+      &lt;strong&gt;How:&lt;/strong&gt; Factorial RCT; participants write responses&lt;br&gt;
+      &lt;strong&gt;Effect:&lt;/strong&gt; Evidence + tone + openness → 1.6–2× quality; partisanship: 0&lt;br&gt;
+      &lt;strong&gt;Disclosure:&lt;/strong&gt; Research context; AI role known&lt;br&gt;
+      &lt;strong&gt;Lesson:&lt;/strong&gt; What makes debates work — and it's not partisanship
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.4em; font-size:1em;"&gt;Williams-Ceci et al. (2026)&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      &lt;strong&gt;What:&lt;/strong&gt; Biased autocomplete shifts attitudes covertly&lt;br&gt;
+      &lt;strong&gt;How:&lt;/strong&gt; Two RCTs (N=2,582); biased suggestions during writing&lt;br&gt;
+      &lt;strong&gt;Effect:&lt;/strong&gt; Attitudes shift 0.23 SD; warnings don't help&lt;br&gt;
+      &lt;strong&gt;Disclosure:&lt;/strong&gt; Minimal — "writing assistant" only&lt;br&gt;
+      &lt;strong&gt;Lesson:&lt;/strong&gt; Covert AI influence is real, scalable, and warning-resistant
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://articient.com/cdn/shop/collections/traditonal-frames-516550.jpg?v=1754956701)
+
+---
+
+# Summary: Dynamic Materials — Promise and Peril
+
+&lt;div class="cols-2" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div class="box box-teal"&gt;
+    &lt;div style="font-weight:700; color:#1abc9c; margin-bottom:0.5em;"&gt;What dynamic materials can do&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      Make expensive experimental designs feasible — 128 treatment cells vs. hand-authoring (Heide-Jørgensen et al.)&lt;br&gt;
+      Improve conversation quality in live political discourse (Argyle et al.)&lt;br&gt;
+      Increase democratic reciprocity and feeling of being understood&lt;br&gt;
+      Scale deliberation-support interventions to online platforms&lt;br&gt;
+      Systematically vary debate elements to identify what works
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.5em;"&gt;What dynamic materials can threaten&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      Covertly shift attitudes through biased autocomplete — effect is real, invisible, and warning-resistant (Williams-Ceci et al.)&lt;br&gt;
+      Homogenize political opinion at scale if all AI shares the same biases&lt;br&gt;
+      Undermine authenticity of participant responses (demand effects)&lt;br&gt;
+      Enable adversarial manipulation — same tool, different intent&lt;br&gt;
+      Circumvent informed consent when not fully disclosed
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-amber" style="margin-top:0.6em; text-align:center; font-size:1em;"&gt;&lt;strong&gt;The core lesson:&lt;/strong&gt; Dynamic materials are not good or bad — they are powerful. Their effect on democracy depends entirely on who controls them, what objectives they are given, and whether their operation is transparent to participants.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:250px; height:250px"&gt;
+![](https://images.stockcake.com/public/7/1/4/714bd871-dfc8-4e7b-9094-485f989963af_large/digital-human-awakening-stockcake.jpg)
+
+---
+
+# Readings for This Unit
+
+&lt;div class="cols-3" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.5em;"&gt;AI improves discourse&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      Argyle, Bail, Busby et al. (2023)&lt;br&gt;
+      &lt;span style="color:#888; font-size:1em;"&gt;Leveraging AI for democratic discourse: Chat interventions can improve online political conversations at scale. &lt;em&gt;PNAS.&lt;/em&gt;&lt;/span&gt;&lt;br&gt;&lt;br&gt;
+      Heide-Jørgensen, Eady &amp; Rasmussen (2025)&lt;br&gt;
+      &lt;span style="color:#888; font-size:0.88em;"&gt;Understanding the success and failure of online political debate: Experimental evidence using large language models. &lt;em&gt;Science Advances.&lt;/em&gt;&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.5em;"&gt;AI threatens discourse&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      Williams-Ceci, Jakesch, Bhat et al. (2026)&lt;br&gt;
+      &lt;span style="color:#888; font-size:0.88em;"&gt;Biased AI writing assistants shift users' attitudes on societal issues. &lt;em&gt;Science Advances.&lt;/em&gt;&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.5em;"&gt;Next week&lt;/div&gt;
+    &lt;div style="line-height:1.9; color:#888; font-size:1em;"&gt;
+      costello_reducing_2024&lt;br&gt;
+      salvi_persuasiveness_2025&lt;br&gt;
+      argyle_persuasion_2025&lt;br&gt;
+      hackenburg_persuasion_2025&lt;br&gt;
+      argyle_testing_2025
+    &lt;/div&gt;
+    &lt;div style="margin-top:0.6em; font-size:1em; color:#555;"&gt;AI and persuasion: when does AI change minds?&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:175px; height:350px"&gt;
+![](https://hearthandpetals.com/wp-content/uploads/2024/09/wall_bookshelf_ideas_for_small_spaces-8.jpg)
+
+---
+
+class: inverse, center, middle
+
+# Questions?
+
+&lt;div style="color:#aaa; font-size:0.9em; margin-top:1em;"&gt;Week 10 · SOCY 1200: Introduction to Using AI to Study Society&lt;/div&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "16:9",
+  "slideNumberFormat": "%current% / %total%"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

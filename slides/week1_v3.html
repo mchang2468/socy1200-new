@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>SOCY 1200: Introduction to Using AI to Study Society</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Daniel Karell" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="yale.css" type="text/css" />
+    <link rel="stylesheet" href="yale-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# SOCY 1200: Introduction to Using AI to Study Society
+]
+.subtitle[
+## Unit 1: Introduction: Introduction to Course
+]
+.author[
+### Daniel Karell
+]
+.institute[
+### Yale University
+]
+.date[
+### Week 1
+]
+
+---
+
+
+
+
+&lt;style&gt;
+.remark-slide-content:not(.title-slide) {
+  font-size: 16px; padding: 1.8em 2.2em 1em;
+  color: #1a1a2e; background: #fafafa;
+}
+.remark-slide-content:not(.title-slide) h1 {
+  font-size: 2em; font-weight: 700; letter-spacing: -0.03em;
+  color: #1a1a2e; border-bottom: 3px solid #a67c00;
+  padding-bottom: 0.3em; margin-bottom: 0.7em;
+}
+.remark-slide-content:not(.title-slide) h2 { font-size:1.05em; color:#555; font-weight:500; }
+.remark-slide-content:not(.title-slide) p, .remark-slide-content:not(.title-slide) li { line-height:1.65; }
+.inverse:not(.title-slide) { background: #1a1a2e !important; }
+.inverse:not(.title-slide) h1, .inverse:not(.title-slide) h2, .inverse:not(.title-slide) h3 { color:white !important; border:none !important; }
+.inverse:not(.title-slide) h1 { font-size:1.9em !important; letter-spacing:-0.03em; }
+.inverse:not(.title-slide) h2 { color:#aaa !important; font-weight:400 !important; }
+.section-num:not(.title-slide) { display:inline-block; font-size:4em; font-weight:900; color:rgba(166,124,0,0.8); line-height:1; margin-bottom:0.1em; }
+.discussion { background: #0f3460 !important; }
+.discussion h1 { color: #f0c040 !important; border-bottom: 3px solid #f0c040 !important; }
+.discussion p, .discussion li { color: #e8e8f0 !important; line-height: 1.75 !important; }
+.discussion strong { color: #f0c040 !important; }
+.activity { background: #0a2e2e !important; }
+.activity h1 { color: #5fe0d0 !important; border-bottom: 3px solid #5fe0d0 !important; }
+.activity p, .activity li { color: #d5f5f0 !important; line-height:1.7 !important; }
+.activity strong { color: #5fe0d0 !important; }
+.casestudy { background: #0a1a2a !important; }
+.casestudy h1 { color: #66ccff !important; border-bottom: 3px solid #66ccff !important; }
+.casestudy p, .casestudy li { color: #ddeeff !important; line-height:1.7 !important; }
+.casestudy strong { color: #66ccff !important; }
+.warning-slide { background: #2a0a0a !important; }
+.warning-slide h1 { color: #ff8888 !important; border-bottom: 3px solid #ff8888 !important; }
+.warning-slide p, .warning-slide li { color: #ffd0d0 !important; line-height:1.7 !important; }
+.warning-slide strong { color: #ff8888 !important; }
+.box { border-radius:6px; padding:0.75em 1em; margin:0.4em 0; font-size:1em; line-height:1.6; }
+.box-teal   { background:#f0fafa; border-left:4px solid #1abc9c; color:#0c3030; }
+.box-red    { background:#fdf2f2; border-left:4px solid #c0392b; color:#3d0c0c; }
+.box-green  { background:#f0faf3; border-left:4px solid #27ae60; color:#0c3320; }
+.box-blue   { background:#f0f4ff; border-left:4px solid #2a5bd7; color:#0d1f5c; }
+.box-amber  { background:#fffbf0; border-left:4px solid #e67e22; color:#5c3400; }
+.box-slate  { background:#f4f5f7; border-left:4px solid #7f8c8d; color:#2c3e50; }
+.box-purple { background:#f5f0ff; border-left:4px solid #8e44ad; color:#2e0060; }
+.box-orange { background:#fef5ee; border-left:4px solid #d35400; color:#3d1500; }
+.box-gold   { background:#fbf6e8; border-left:4px solid #a67c00; color:#3d2e00; }
+.quote { border-left:5px solid #a67c00; background:white; border-radius:0 6px 6px 0; padding:0.7em 1.2em; font-size:1em; font-style:italic; color:#2c3e50; margin:0.6em 0; box-shadow:0 1px 4px rgba(0,0,0,0.07); }
+.quote cite { display:block; font-style:normal; font-size:1em; color:#a67c00; margin-top:0.3em; font-weight:600; }
+.cols-2 { display:grid; grid-template-columns:1fr 1fr; gap:1em; margin:0.5em 0; }
+.cols-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.9em; margin:0.5em 0; }
+.cols-4 { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:0.7em; margin:0.5em 0; }
+.step-row { display:flex; align-items:flex-start; gap:0.75em; margin-bottom:0.5em; }
+.step-num { flex-shrink:0; width:1.7em; height:1.7em; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1em; margin-top:0.05em; }
+.step-num.teal  { background:#1abc9c; color:white; }
+.step-num.blue  { background:#2a5bd7; color:white; }
+.step-num.green { background:#27ae60; color:white; }
+.step-num.amber { background:#e67e22; color:white; }
+.step-num.red   { background:#c0392b; color:white; }
+.step-num.grey  { background:#7f8c8d; color:white; }
+.step-num.gold  { background:#a67c00; color:white; }
+.step-body { font-size:1em; line-height:1.6; color:#2c3e50; padding-top:0.15em; }
+.styled-table { width:100%; border-collapse:collapse; font-size:1em; margin:0.5em 0; box-shadow:0 1px 6px rgba(0,0,0,0.08); }
+.styled-table thead tr { background:#1a1a2e; color:white; }
+.styled-table thead th { padding:0.6em 0.8em; text-align:left; font-weight:600; }
+.styled-table tbody tr:nth-child(even) { background:#f4f5f7; }
+.styled-table tbody tr:nth-child(odd) { background:white; }
+.styled-table tbody td { padding:0.55em 0.8em; color:#2c3e50; vertical-align:top; }
+.styled-table .hl      { background:#fbf6e8 !important; font-weight:600; }
+.styled-table .hl-red  { background:#fdf2f2 !important; }
+.styled-table .hl-green { background:#f0faf3 !important; }
+.badge { display:inline-block; border-radius:20px; padding:0.12em 0.65em; font-size:1em; font-weight:700; }
+.badge-teal   { background:#d5f5f0; color:#0e6b5a; }
+.badge-red    { background:#fde8e8; color:#922b21; }
+.badge-green  { background:#e8f8ee; color:#1e8449; }
+.badge-amber  { background:#fef3d0; color:#784212; }
+.badge-grey   { background:#eaecee; color:#515a5a; }
+.badge-gold   { background:#f3e6b8; color:#5c4600; }
+.mono { font-family:'Cascadia Code','Fira Code','Courier New',monospace; font-size:1em; background:#1e2433; color:#abb2bf; border-radius:6px; padding:0.8em 1.1em; line-height:1.85; margin:0.4em 0; }
+.mono .hi-blue   { color:#61afef; }
+.mono .hi-green  { color:#98c379; }
+.mono .hi-red    { color:#e06c75; }
+.mono .hi-amber  { color:#e5c07b; }
+.mono .hi-grey   { color:#636d83; }
+.mono .hi-gold   { color:#e0c068; }
+.src { display:inline-block; background:#1a1a2e; color:#FFFFFF; font-size:1em; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; border-radius:3px; padding:0.15em 0.55em; margin-bottom:0.45em; }
+.placeholder { color:#a67c00; font-style:italic; }
+blockquote { border:none; padding:0; margin:0; background:none; }
+&lt;/style&gt;
+
+# Welcome to SOCY 1200
+
+**Introduction to Using AI to Study Society**
+
+&lt;div class="box box-gold" style="margin-top:0.7em; text-align:center; font-size:1.1em;"&gt;Over the next 16 weeks, we'll study how AI — especially large language models — is changing the practice of social science, and what that means for society more broadly.&lt;/div&gt;
+
+&lt;div class="cols-3" style="margin-top:0.6em;"&gt;
+  &lt;div class="box box-slate" style="text-align:center;"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Not just AI&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.6;"&gt;This is a social science methods course that happens to use AI as its central case.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate" style="text-align:center;"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Not just methods&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.6;"&gt;We'll also study AI's effects on society — governments, knowledge, science, daily life.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate" style="text-align:center;"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Hands-on&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.6;"&gt;Expect paper walkthroughs, debates, case studies, and discussion every week.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:450px; height:225px"&gt;
+![](https://mycvcreator.com/administrator/postimages/65cbdec8afb9f9.81658669.jpeg)
+
+---
+
+# Course Code, Name, and Location
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th style="width:30%;"&gt;Item&lt;/th&gt;&lt;th style="width:70%;"&gt;Details&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Course code&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;SOCY 1200&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Course name&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Introduction to Using AI to Study Society&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Meeting days&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Tuesdays and Thursdays&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Meeting location&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;span class="placeholder"&gt;[Insert building and room number]&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Meeting time&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;1:30 PM - 2:20 PM&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Term&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Fall semester — Weeks 1 through 16, concluding with the reading and exam period&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+# Instructor Contact Information
+
+&lt;div class="cols-2" style="margin-top:0.6em;"&gt;
+  &lt;div class="box box-gold"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.5em; font-size:1.05em;"&gt;Daniel Karell&lt;/div&gt;
+    &lt;div style="line-height:1.9; font-size:1em;"&gt;
+      &lt;strong&gt;Email:&lt;/strong&gt; daniel.karell@yale.edu &lt;br&gt;
+      &lt;strong&gt;Office:&lt;/strong&gt; &lt;span class="placeholder"&gt;[Insert office location]&lt;/span&gt;&lt;br&gt;
+      &lt;strong&gt;Office hours:&lt;/strong&gt; &lt;span class="placeholder"&gt;[Insert days/times]&lt;/span&gt;&lt;br&gt;
+      &lt;strong&gt;Preferred contact method:&lt;/strong&gt; &lt;span class="placeholder"&gt;[Insert preference — email, course platform, etc.]&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.5em; font-size:1.05em;"&gt;Teaching support&lt;/div&gt;
+    &lt;div style="line-height:1.9; font-size:1em;"&gt;
+      &lt;strong&gt;TA(s)/CA(s):&lt;/strong&gt; &lt;span class="placeholder"&gt;[Insert name(s), if applicable]&lt;/span&gt;&lt;br&gt;
+      &lt;strong&gt;Response time:&lt;/strong&gt; &lt;span class="placeholder"&gt;[e.g., within 24–48 hours on weekdays]&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-teal" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;Please don't hesitate to reach out — questions about readings, assignments, or the material in general are always welcome, not just during office hours.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:200px; height:200px"&gt;
+![](https://static.vecteezy.com/system/resources/thumbnails/056/974/728/small_2x/young-man-and-woman-with-a-big-question-mark-people-communicating-making-a-choice-or-seeking-solution-to-a-problem-illustration-vector.jpg)
+
+---
+
+# Prerequisites
+
+&lt;div class="cols-2" style="margin-top:0.6em;"&gt;
+  &lt;div class="box box-blue"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Formal prerequisites&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;&lt;span class="placeholder"&gt;[Insert any required or recommended prior coursework — e.g., an introductory statistics or research methods course]&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-green"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Helpful, not required&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      Comfort with basic statistical reasoning&lt;br&gt;
+      No programming experience required — code and technical concepts will be explained as we go&lt;br&gt;
+      Curiosity about both social science methods &lt;em&gt;and&lt;/em&gt; AI's societal effects
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-amber" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;If you're unsure whether your background is a good fit, come talk to me during the first week — this course is designed to be accessible to students without a technical background.&lt;/div&gt;
+
+---
+
+# Required Course Materials
+
+&lt;div class="cols-2" style="margin-top:0.6em;"&gt;
+  &lt;div class="box box-gold"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Readings&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      No textbook — all readings are journal articles and select book chapters, posted &lt;span class="placeholder"&gt;[on the course platform / Canvas / etc.]&lt;/span&gt; ahead of each week&lt;br&gt;
+      Most weeks assign 3–5 papers
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Tools and access&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      A laptop for in-class activities involving AI tools&lt;br&gt;
+      Access to &lt;span class="placeholder"&gt;[specify any required AI tool accounts, e.g., a university-provided LLM account]&lt;/span&gt;&lt;br&gt;
+      No cost is expected beyond what the university already provides — flag it immediately if that's not the case for you
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-teal" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;All required materials will be freely accessible — please let me know right away if cost or access becomes a barrier at any point.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:250px; height:250px"&gt;
+![](https://cgmood.com/storage/previews/08-2019/5298/5298-10299.jpeg)
+
+---
+
+class: inverse, center, middle
+
+# The Five Units of This Course
+
+&lt;div style="color:#aaa; font-size:1em; margin-top:1em;"&gt;How the semester is organized, week by week&lt;/div&gt;
+
+---
+
+# Unit 1: Introduction
+
+&lt;div class="box box-gold" style="margin:0.6em 0; text-align:center; font-size:1.05em;"&gt;&lt;strong&gt;Weeks 1–2&lt;/strong&gt; — What is "AI" today, and how is it different from what came before?&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;What we'll cover&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;Modern AI vs. earlier AI; embeddings, attention, and transformer architecture; training data, fine-tuning, and instruction-tuning; alignment and its tradeoffs for research&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Why it comes first&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;Everything later in the course assumes a working understanding of what LLMs actually are and how they're built — this unit gives you that foundation&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:600px; height:300px"&gt;
+![](https://cdn.vectorstock.com/i/500p/26/97/artificial-intelligence-concept-technology-vector-35592697.jpg)
+
+---
+
+# Unit 2: Prompting
+
+&lt;div class="box box-gold" style="margin:0.6em 0; text-align:center; font-size:1.05em;"&gt;&lt;strong&gt;Weeks 3–5&lt;/strong&gt; — Prompting, with application to measurement&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;What we'll cover&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;What good prompting looks like; using AI to measure things about society in data; bias, systematic errors, and how to correct for them&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Why it matters&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;Prompting is a genuinely learnable skill, and increasingly central to how social scientists actually use AI in their research — this unit treats it as a methods topic, not a trick&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:600px; height:300px"&gt;
+![](https://ph-files.imgix.net/aef2db33-bc9d-4971-8fc6-28c28c682944.png?auto=compress&amp;codec=mozjpeg&amp;cs=strip&amp;auto=format&amp;fit=max)
+
+---
+
+# Unit 3: Synthetic People
+
+&lt;div class="box box-gold" style="margin:0.6em 0; text-align:center; font-size:1.05em;"&gt;&lt;strong&gt;Weeks 6–8&lt;/strong&gt; — Can AI stand in for human research participants?&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;What we'll cover&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;Silicon sampling and its appeal; its real limitations around variability and reproducibility; mixed-subjects designs and prediction-powered inference&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Why it matters&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;As traditional polling and survey research face real challenges, synthetic data is being adopted quickly — often faster than it's been validated&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:600px; height:300px"&gt;
+![](https://www.irix.my/newsroom/2024/img/massive-data-handling-capabilities.png)
+
+---
+
+# Unit 4: AI in Experiments
+
+&lt;div class="box box-gold" style="margin:0.6em 0; text-align:center; font-size:1.05em;"&gt;&lt;strong&gt;Weeks 9–11&lt;/strong&gt; — Using AI to design and administer experimental treatments&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;What we'll cover&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;A midterm review and exam; dynamically generated experimental materials; AI-conducted conversations as the treatment itself; how persuasive AI really is&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Why it matters&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;The same properties that make AI a powerful research tool for administering treatments make it a powerful — and understudied — persuasion technology outside the lab&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:550px; height:275px"&gt;
+![](https://static.vecteezy.com/system/resources/previews/067/197/215/non_2x/recruitment-nextgen-ux-asset-vector.jpg)
+
+---
+
+# Unit 5: AI and Society
+
+&lt;div class="box box-gold" style="margin:0.6em 0; text-align:center; font-size:1.05em;"&gt;&lt;strong&gt;Weeks 12–14&lt;/strong&gt; — Zooming out from methods to societal-scale effects&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;What we'll cover&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;Government influence over AI; bias in AI-generated encyclopedias; AI in online surveys; AI's effects on productivity, science, homogenization, and sycophancy&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Why it matters&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;This unit connects the methodological questions from earlier in the course to the largest-scale question of all: what happens to a society whose information ecosystem, research infrastructure, and daily habits are all shaped by the same few AI systems?&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-amber" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;Weeks 15–16 wrap up with catch-up, review, and the final exam.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:500px; height:250px"&gt;
+![](https://govfacts.org/wp-content/uploads/2025/09/GovFacts-Buildings.webp)
+
+---
+
+# Class Schedule at a Glance
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th style="width:16%;"&gt;Weeks&lt;/th&gt;&lt;th style="width:24%;"&gt;Unit&lt;/th&gt;&lt;th style="width:60%;"&gt;Notes&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;1–2&lt;/td&gt;&lt;td&gt;Introduction&lt;/td&gt;&lt;td&gt;Syllabus, then "Our AI era"&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;3–5&lt;/td&gt;&lt;td&gt;Prompting&lt;/td&gt;&lt;td&gt;Prompting fundamentals, measurement, bias &amp;amp; correction&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;6–8&lt;/td&gt;&lt;td&gt;Synthetic People&lt;/td&gt;&lt;td&gt;Silicon sampling, limitations; Week 8 is overflow/catch-up&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;9&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;td&gt;Review and in-class midterm exam&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;10–11&lt;/td&gt;&lt;td&gt;AI in Experiments&lt;/td&gt;&lt;td&gt;Dynamic materials, persuasion, talking to robots&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;12, 14&lt;/td&gt;&lt;td&gt;AI and Society&lt;/td&gt;&lt;td&gt;Governments/encyclopedias/surveys (12); productivity/homogenization/sycophancy (14)&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;13&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;td&gt;November recess, no readings&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;15–16&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;td&gt;Catch-up, review, and final exam&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class="box box-teal" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;A detailed, week-by-week reading schedule is posted separately and will be your primary reference throughout the semester.&lt;/div&gt;
+
+---
+
+# Homework Schedule
+
+&lt;div class="cols-2" style="margin-top:0.6em;"&gt;
+  &lt;div class="box box-gold"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Weekly readings&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;Due before each Tuesday and Thursday class listed on the schedule — come prepared to discuss, not just recognize, the papers&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Problem sets / assignments&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;&lt;span class="placeholder"&gt;[Insert number and cadence of assignments — e.g., one per unit, due the Friday after each unit concludes]&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Late work policy&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;&lt;span class="placeholder"&gt;[Insert late-submission policy]&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Where to submit&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;&lt;span class="placeholder"&gt;[Insert submission platform]&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:450px; height:225px"&gt;
+![](https://learningmole.com/wp-content/uploads/2025/02/v2-bronk-8mqnm.jpg)
+
+---
+
+# Office Hour Schedule
+
+&lt;div class="cols-2" style="margin-top:0.6em;"&gt;
+  &lt;div class="box box-gold"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Instructor office hours&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;&lt;span class="placeholder"&gt;[Insert days, times, and location or video-call link]&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Additional support&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;&lt;span class="placeholder"&gt;[Insert TA/CA office hours or drop-in support, if applicable]&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-teal" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;Office hours are for anything — clarifying a reading, talking through an assignment, or just discussing something AI-related that caught your attention that week. No question is too basic.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:325px; height:650px"&gt;
+![](https://fancyhouse-design.com/wp-content/uploads/2024/01/Amazing-modern-office-interior-design-integrates-units-for-efficient-business-operations.jpg)
+
+---
+
+# Assessments
+
+&lt;div class="cols-2" style="margin-top:0.6em;"&gt;
+  &lt;div class="box box-gold"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;What this course assesses&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      Midterm exam (Week 9)&lt;br&gt;
+      Final exam (Week 16, reading and exam period)&lt;br&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Format&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;&lt;span class="placeholder"&gt;[Insert exam format — e.g., short answer, essay, mix of both]&lt;/span&gt; covering material from the corresponding units, as reviewed in this course's dedicated review sessions&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-amber" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;Both exams are cumulative within their scope — the midterm covers Units 1–3, and the final covers all five units, with a dedicated Weeks 15–16 review beforehand.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:500px; height:250px"&gt;
+![](https://img.magnific.com/premium-photo/students-giving-exams-classroom_181203-27125.jpg)
+
+---
+
+# Grading
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th style="width:40%;"&gt;Component&lt;/th&gt;&lt;th style="width:30%;"&gt;Weight&lt;/th&gt;&lt;th style="width:30%;"&gt;Notes&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;Midterm exam&lt;/td&gt;&lt;td&gt;&lt;span class="placeholder"&gt;[%]&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Week 9, covers Units 1–3&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Final exam&lt;/td&gt;&lt;td&gt;&lt;span class="placeholder"&gt;[%]&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Cumulative, all five units&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;Problem sets&lt;/td&gt;&lt;td&gt;&lt;span class="placeholder"&gt;[%]&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span class="placeholder"&gt;[Insert details]&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Participation&lt;/td&gt;&lt;td&gt;&lt;span class="placeholder"&gt;[%]&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Discussion, in-class activities, debates&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class="box box-amber" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;&lt;span class="placeholder"&gt;Fill in exact percentages before distribution — weights above are placeholders illustrating the structure, not final values.&lt;/span&gt;&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://tse2.mm.bing.net/th/id/OIP.aDxkHFJFQGsPUPNfWLpGAgHaFj?r=0&amp;rs=1&amp;pid=ImgDetMain&amp;o=7&amp;rm=3)
+
+---
+
+# Policies and Regulations
+
+&lt;div class="cols-2" style="margin-top:0.6em;"&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Attendance&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;&lt;span class="placeholder"&gt;[Insert attendance policy]&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Late work&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;&lt;span class="placeholder"&gt;[Insert late-work policy]&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Accommodations&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;&lt;span class="placeholder"&gt;[Insert accommodations process, referencing university disability services]&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Academic integrity&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;Standard university academic integrity policies apply — see the following slide for how this specifically applies to AI use&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://www.spdceus.com/wp-content/uploads/2023/12/new_policies_23.jpeg)
+
+---
+
+class: casestudy
+
+# 📊 A Note on AI Use in This Course
+
+**This course studies AI — which raises an obvious question: how, if at all, should you use it in your own coursework?**
+
+&lt;br&gt;
+
+**The honest answer:** this policy is still being worked out across academia, and this course is no exception. Here's the current thinking, subject to updates as the semester progresses:
+
+&lt;br&gt;
+
+&lt;span class="placeholder"&gt;[Insert your specific policy here — e.g., permitted for brainstorming and clarifying concepts, not permitted for writing exam answers or problem set solutions without disclosure; any use must be cited]&lt;/span&gt;
+
+&lt;br&gt;
+
+**Why this deserves its own slide:** by Week 14, we'll read about sycophancy and homogenization — real risks of over-relying on AI for your own thinking. Treat this course as a chance to develop informed, deliberate judgment about when AI helps your learning and when it substitutes for it.
+
+---
+
+# Resources and Support
+
+&lt;div class="cols-2" style="margin-top:0.6em;"&gt;
+  &lt;div class="box box-teal"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Academic support&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      Yale Poorvu Center for Teaching and Learning&lt;br&gt;
+      Yale Libraries&lt;br&gt;
+      Your Friends and Family&lt;br&gt;
+      The Yale Community
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-blue"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Wellbeing support&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      Yale Mental Health and Counseling&lt;br&gt;
+      Yale Student Accessibility Services&lt;br&gt;
+      Your Friends and Family&lt;br&gt;
+      The Yale Community
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-gold" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;If something outside this course is affecting your ability to keep up, please reach out — to me, or directly to any of these resources. It's much easier to help early than late in the semester.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:500px; height:250px"&gt;
+![](https://img.magnific.com/premium-vector/group-psychotherapy-counseling-session-with-diverse-people-vector-art_1332476-374.jpg?w=826)
+
+---
+
+# What This Course Is (and Isn't)
+
+&lt;div class="cols-2" style="margin-top:0.6em;"&gt;
+  &lt;div class="box box-green"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;What this course is&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      - A social science methods course, using AI as its central, current case&lt;br&gt;
+      - A place to read real, recent, sometimes-still-contested research closely&lt;br&gt;
+      - A space for genuine debate — several weeks are built around structured disagreement
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;What this course isn't&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      - A computer science or machine learning course — we won't be building models from scratch&lt;br&gt;
+      - A course that takes a fixed ideological position on whether AI is "good" or "bad" for society&lt;br&gt;
+      - A course where the material is settled — several readings we'll cover were published in the last few months
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="quote" style="margin-top:0.5em;"&gt;Because this field moves so fast, some of what we read this semester may already be contested, revised, or even retracted by the time we discuss it — that's not a flaw in the course, it's part of what makes studying AI and society right now genuinely interesting.&lt;/div&gt;
+
+---
+
+class: discussion
+
+# 💬 Discussion: Your Own AI Use, Before We Start
+
+**Before we get into any papers, let's take stock of where the room already is.**
+
+&lt;br&gt;
+
+1. How often do you currently use AI tools (ChatGPT, Claude, or others) in your daily life or coursework? What do you mainly use them for?
+
+2. Has an AI tool ever surprised you — either by being much better, or much worse, than you expected at something?
+
+3. What's one question about AI and society you're hoping this course will help you answer by the end of the semester?
+
+&lt;br&gt;
+
+&lt;div class="box box-amber" style="font-size:1em;"&gt;There are no wrong answers here — the goal is just to surface what the room already thinks, so we can revisit these same questions at the end of the semester and see what's changed.&lt;/div&gt;
+
+---
+
+class: activity
+
+# ✏️ Activity: Meet Your Classmates
+
+**Find one or two people near you and introduce yourselves.**
+&lt;div class="box box-teal" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num teal"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;Name, year, and major or intended major&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num teal"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;One thing that made you want to take this course&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num amber"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;One AI tool you've used recently, and what you used it for&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num amber"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;Be ready to introduce your partner (not yourself) to the room in one sentence&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-teal" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;We'll come back to small groups often this semester — for debates, paper discussions, and case studies — so this is a good chance to start building those connections now.&lt;/div&gt;
+
+---
+
+# Before Next Class
+
+&lt;div class="cols-2" style="margin-top:0.6em;"&gt;
+  &lt;div class="box box-gold"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Read for Week 2: "Our AI Era"&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      - Bender, Gebru, McMillan-Major &amp;amp; Shmitchell — "On the Dangers of Stochastic Parrots"&lt;br&gt;
+      - McCoy, Yao, Friedman, Hardy &amp;amp; Griffiths — "Embers of Autoregression"&lt;br&gt;
+      - Plus additional readings on embeddings, fine-tuning, instruction-tuning, and alignment — see the full schedule
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;As you read, start thinking about&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      - What specifically makes today's AI different from earlier AI systems?&lt;br&gt;
+      - Come with one question or reaction to at least one of the readings — we'll open Week 2 with exactly that
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-teal" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;Full reading list and due dates are on the course schedule, posted separately.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://img.magnific.com/premium-photo/futuristic-ai-technology-business_441990-2557.jpg)
+
+---
+
+class: inverse, center, middle
+
+# Welcome aboard. Questions?
+
+&lt;div style="color:#aaa; font-size:1em; margin-top:1em;"&gt;Week 1 · SOCY 1200: Introduction to Using AI to Study Society&lt;/div&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "16:9",
+  "slideNumberFormat": "%current% / %total%"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

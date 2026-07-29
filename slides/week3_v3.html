@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>SOCY 1200: Introduction to Using AI to Study Society</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Daniel Karell" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="yale.css" type="text/css" />
+    <link rel="stylesheet" href="yale-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# SOCY 1200: Introduction to Using AI to Study Society
+]
+.subtitle[
+## Unit 2: Prompting, with Application to Measurement: The Promise of Prompts
+]
+.author[
+### Daniel Karell
+]
+.institute[
+### Yale University
+]
+.date[
+### Week 3
+]
+
+---
+
+
+
+
+&lt;style&gt;
+/* ═══════════════════════════════════════════════════
+   DESIGN SYSTEM — Week 3
+   ═══════════════════════════════════════════════════ */
+.remark-slide-content:not(.title-slide) {
+  font-size: 16px; padding: 1.8em 2.2em 1em;
+  color: #1a1a2e; background: #fafafa;
+}
+.remark-slide-content:not(.title-slide) h1 {
+  font-size: 2em; font-weight: 700; letter-spacing: -0.03em;
+  color: #1a1a2e; border-bottom: 3px solid #27ae60;
+  padding-bottom: 0.3em; margin-bottom: 0.7em;
+}
+.remark-slide-content:not(.title-slide) h2 { font-size:1.05em; color:#555; font-weight:500; }
+.remark-slide-content:not(.title-slide) p, .remark-slide-content:not(.title-slide) li { line-height:1.65; }
+
+/* Section dividers */
+.inverse:not(.title-slide) { background: #1a1a2e !important; }
+.inverse:not(.title-slide) h1, .inverse:not(.title-slide) h2, .inverse:not(.title-slide) h3 { color:white !important; border:none !important; }
+.inverse:not(.title-slide) h1 { font-size:1.9em !important; letter-spacing:-0.03em; }
+.inverse:not(.title-slide) h2 { color:#aaa !important; font-weight:400 !important; }
+.section-num:not(.title-slide) {
+  display:inline-block; font-size:4em; font-weight:900;
+  color:rgba(39,183,245,0.8); line-height:1; margin-bottom:0.1em;
+}
+
+/* Discussion slide */
+.discussion { background: #0f3460 !important; }
+.discussion h1 { color: #f0c040 !important; border-bottom: 3px solid #f0c040 !important; }
+.discussion p, .discussion li { color: #e8e8f0 !important; line-height: 1.75 !important; }
+.discussion strong { color: #f0c040 !important; }
+
+/* Paper walkthrough */
+.paper-walk { background: #1a3a1a !important; }
+.paper-walk h1 { color: #90ee90 !important; border-bottom: 3px solid #90ee90 !important; }
+.paper-walk p, .paper-walk li { color: #ddeedd !important; line-height:1.7 !important; }
+.paper-walk strong { color: #90ee90 !important; }
+
+/* Debate */
+.debate { background: #2a1a3a !important; }
+.debate h1 { color: #cc99ff !important; border-bottom: 3px solid #cc99ff !important; }
+.debate p, .debate li { color: #eeddff !important; line-height:1.7 !important; }
+.debate strong { color: #cc99ff !important; }
+
+/* Case study */
+.casestudy { background: #1a2a3a !important; }
+.casestudy h1 { color: #66ccff !important; border-bottom: 3px solid #66ccff !important; }
+.casestudy p, .casestudy li { color: #ddeeff !important; line-height:1.7 !important; }
+.casestudy strong { color: #66ccff !important; }
+
+/* Boxes */
+.box { border-radius:6px; padding:0.75em 1em; margin:0.4em 0; font-size:0.85em; line-height:1.6; }
+.box-green  { background:#f0faf3; border-left:4px solid #27ae60; color:#0c3320; }
+.box-red    { background:#fdf2f2; border-left:4px solid #c0392b; color:#3d0c0c; }
+.box-blue   { background:#f0f4ff; border-left:4px solid #2a5bd7; color:#0d1f5c; }
+.box-amber  { background:#fffbf0; border-left:4px solid #e67e22; color:#5c3400; }
+.box-slate  { background:#f4f5f7; border-left:4px solid #7f8c8d; color:#2c3e50; }
+.box-purple { background:#f5f0ff; border-left:4px solid #8e44ad; color:#2e0060; }
+
+/* Pull quote */
+.quote {
+  border-left:5px solid #27ae60; background:white;
+  border-radius:0 6px 6px 0; padding:0.7em 1.2em;
+  font-size:0.88em; font-style:italic; color:#2c3e50;
+  margin:0.6em 0; box-shadow:0 1px 4px rgba(0,0,0,0.07);
+}
+.quote cite { display:block; font-style:normal; font-size:0.82em; color:#27ae60; margin-top:0.3em; font-weight:600; }
+
+/* Grids */
+.cols-2 { display:grid; grid-template-columns:1fr 1fr; gap:1em; margin:0.5em 0; }
+.cols-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.9em; margin:0.5em 0; }
+.cols-4 { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:0.7em; margin:0.5em 0; }
+.cols-1-2 { display:grid; grid-template-columns:1fr 2fr; gap:1em; margin:0.5em 0; }
+.cols-2-1 { display:grid; grid-template-columns:2fr 1fr; gap:1em; margin:0.5em 0; }
+
+/* Steps */
+.step-row { display:flex; align-items:flex-start; gap:0.75em; margin-bottom:0.5em; }
+.step-num {
+  flex-shrink:0; width:1.7em; height:1.7em; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-weight:700; font-size:0.8em; margin-top:0.05em;
+}
+.step-num.green { background:#27ae60; color:white; }
+.step-num.blue  { background:#2a5bd7; color:white; }
+.step-num.amber { background:#e67e22; color:white; }
+.step-num.red   { background:#c0392b; color:white; }
+.step-num.grey  { background:#7f8c8d; color:white; }
+.step-body { font-size:0.83em; line-height:1.6; color:#2c3e50; padding-top:0.15em; }
+
+/* Table */
+.styled-table { width:100%; border-collapse:collapse; font-size:0.81em; margin:0.5em 0; box-shadow:0 1px 6px rgba(0,0,0,0.08); }
+.styled-table thead tr { background:#1a1a2e; color:white; }
+.styled-table thead th { padding:0.6em 0.8em; text-align:left; font-weight:600; }
+.styled-table tbody tr:nth-child(even) { background:#f4f5f7; }
+.styled-table tbody tr:nth-child(odd) { background:white; }
+.styled-table tbody td { padding:0.55em 0.8em; color:#2c3e50; vertical-align:top; }
+.styled-table .hl { background:#f0faf3 !important; font-weight:600; }
+.styled-table .hl-red { background:#fdf2f2 !important; }
+
+/* Badge */
+.badge { display:inline-block; border-radius:20px; padding:0.12em 0.65em; font-size:0.72em; font-weight:700; }
+.badge-green  { background:#e8f8ee; color:#1e8449; }
+.badge-red    { background:#fde8e8; color:#922b21; }
+.badge-blue   { background:#e8edff; color:#1a3fa0; }
+.badge-amber  { background:#fef3d0; color:#784212; }
+.badge-grey   { background:#eaecee; color:#515a5a; }
+
+/* Mono */
+.mono {
+  font-family:'Cascadia Code','Fira Code','Courier New',monospace;
+  font-size:0.78em; background:#1e2433; color:#abb2bf;
+  border-radius:6px; padding:0.8em 1.1em; line-height:1.85; margin:0.4em 0;
+}
+.mono .hi-blue  { color:#61afef; }
+.mono .hi-green { color:#98c379; }
+.mono .hi-red   { color:#e06c75; }
+.mono .hi-amber { color:#e5c07b; }
+.mono .hi-grey  { color:#636d83; }
+.mono .hi-white { color:#ffffff; }
+
+/* Source label */
+.src { display:inline-block; background:#1a1a2e; color:#FFFFFF; font-size:0.68em; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; border-radius:3px; padding:0.15em 0.55em; margin-bottom:0.45em; }
+
+.divider { height:2px; background:linear-gradient(to right, #27ae60, transparent); margin:0.5em 0; border:none; }
+blockquote { border:none; padding:0; margin:0; background:none; }
+&lt;/style&gt;
+
+# What We're Covering This Week
+
+&lt;div class="cols-3" style="margin-top:0.7em;"&gt;
+  &lt;div class="box box-green"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Part I · Prompting Basics&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;What prompting actually is&lt;br&gt;Why it's a design task, not a technical one&lt;br&gt;Why it's learnable — with principles&lt;br&gt;Prompt sensitivity and what it implies&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-green"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Part II · Prompting Methods&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;Chain-of-thought prompting&lt;br&gt;Few-shot prompting&lt;br&gt;When to use each&lt;br&gt;When to fine-tune instead&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-green"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Part III · Prompting Advice&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;Codebooks as promptbooks&lt;br&gt;Matching complexity to task&lt;br&gt;Explaining concepts clearly&lt;br&gt;Systematic errors&lt;br&gt;Multi-model workflows&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;**The running question for this week:**
+
+&lt;div class="box box-amber" style="text-align:center; font-size:0.9em; margin-top:0.3em;"&gt;If prompting is "just talking to the model," why do small phrasing changes produce dramatically different outputs — and what does that tell us about how these systems work?&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://media.cybernews.com/images/featured-big/2025/09/chatgpt-vs-claude.jpg)
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;I&lt;/div&gt;
+
+# Prompting: Definition and Overview
+## What is prompting and how should we think about doing it well?
+
+---
+
+# What Is a Prompt?
+
+Most people's first instinct: a prompt is a search query. Type something, get something back.
+
+&lt;div class="cols-2" style="margin-top:0.6em;"&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.4em;"&gt;❌ What most people assume&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;A prompt is like a Google search. The more specific, the better. The model reads the words and "looks up" the answer. Better vocabulary = better results.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-green"&gt;
+    &lt;div style="font-weight:700; color:#27ae60; margin-bottom:0.4em;"&gt;✓ What a prompt actually is&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;A prompt is a &lt;strong&gt;specification&lt;/strong&gt;: it defines the task, the concept, the output format, the edge cases, and the decision rules. It's a design brief — not a search query.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;**The contractor analogy:**
+
+&lt;div class="box box-slate" style="font-size:0.88em;"&gt;Imagine hiring a contractor to renovate your kitchen. "Make it nice" produces something. "Modern style, white cabinets, quartz countertops, no island, budget $30k, done by October" produces something very different. The first is a search query. The second is a specification. Prompting is the second kind of task.&lt;/div&gt;
+
+&lt;div class="quote"&gt;The prompt is less like a search query and more like a set of instructions to a contractor: vague input produces unpredictable output.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:200px; height:100px"&gt;
+![](https://media.istockphoto.com/id/1770579283/vector/specifications-specific.jpg?s=612x612&amp;w=0&amp;k=20&amp;c=WBUMpYb4kWse7_hgSi17CSVZ9xz1jNx1cA63iuXRaXg=)
+
+---
+
+# Prompting Is a Design Task, Not a Technical One
+
+&lt;div class="src"&gt;Stuhler et al. 2025 · Griswold et al. 2025&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;What the bottleneck is NOT&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.3em; font-size:0.83em;"&gt;✗ Technical skill or coding ability&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.3em; font-size:0.83em;"&gt;✗ Knowing the right "magic words"&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:0.83em;"&gt;✗ Access to the latest model&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;What the bottleneck IS&lt;/div&gt;
+    &lt;div class="box box-green" style="margin-bottom:0.3em; font-size:0.83em;"&gt;✓ Conceptual clarity: can you define what you're measuring?&lt;/div&gt;
+    &lt;div class="box box-green" style="margin-bottom:0.3em; font-size:0.83em;"&gt;✓ Theoretical grounding: what is the construct, and what is not the construct?&lt;/div&gt;
+    &lt;div class="box box-green" style="font-size:0.83em;"&gt;✓ Decision rules: what happens at the boundary cases?&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;&lt;div class="quote"&gt;These are skills social scientists already have. They are exactly the skills required to write a good codebook — and a good prompt is a good codebook.&lt;cite&gt;— Stuhler et al. (2025)&lt;/cite&gt;&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://assets-global.website-files.com/6303e4666b4176ea6388f805/6415e526c7afb784c85b7790_compelling-instructions-1200.jpg)
+
+---
+
+# Prompting Is a Learnable Skill
+
+Unlike technical wizardry, prompting has **learnable principles with evaluable outcomes**.
+
+&lt;div class="cols-3" style="margin-top:0.6em;"&gt;
+  &lt;div class="box box-green" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.4em; margin-bottom:0.3em;"&gt;📐&lt;/div&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Principled&lt;/div&gt;
+    &lt;div style="font-size:1.0em; line-height:1.7;"&gt;Clear principles exist: be specific, define concepts, decompose complex tasks, handle uncertainty, provide examples&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-green" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.4em; margin-bottom:0.3em;"&gt;🔬&lt;/div&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Evaluable&lt;/div&gt;
+    &lt;div style="font-size:1.0em; line-height:1.7;"&gt;Prompt quality can be tested against human-coded validation samples, sensitivity to wording, and intercoder reliability&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-green" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.4em; margin-bottom:0.3em;"&gt;📝&lt;/div&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Reportable&lt;/div&gt;
+    &lt;div style="font-size:1.0em; line-height:1.7;"&gt;Like any research design decision, prompts belong in the methods section — with the same justification norms as any other choice&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;&lt;div class="box box-amber" style="text-align:center; font-size:0.88em;"&gt;&lt;strong&gt;The test:&lt;/strong&gt; Would you be comfortable putting this exact prompt in your methods section? If not, revise it.&lt;/div&gt;
+
+---
+
+# Output Is Highly Sensitive to Prompts
+
+**Small phrasing changes produce large output changes.** This is not a minor technical issue — it is a fundamental property of how LLMs work.
+
+&lt;div class="mono" style="margin:0.5em 0;"&gt;
+&lt;span class="hi-grey"&gt;Same document. Same model. Different prompt phrasing.&lt;/span&gt;
+&lt;br&gt;
+Prompt A: &lt;span class="hi-amber"&gt;"Is this tweet positive or negative?"&lt;/span&gt;
+&lt;br&gt;
+Result:    &lt;span class="hi-red"&gt;POSITIVE  (67% of the time)&lt;/span&gt;
+&lt;br&gt;
+Prompt B: &lt;span class="hi-amber"&gt;"Does the author of this tweet express support or opposition?"&lt;/span&gt;
+&lt;br&gt;
+Result:    &lt;span class="hi-red"&gt;OPPOSITION  (71% of the time)&lt;/span&gt;
+&lt;br&gt;
+Prompt C: &lt;span class="hi-amber"&gt;"Code this tweet: SUPPORT, OPPOSE, or NEUTRAL toward police.
+           Explain your reasoning before giving a final code."&lt;/span&gt;
+           &lt;br&gt;
+Result:    &lt;span class="hi-green"&gt;OPPOSE with coherent reasoning  (89% agreement with human coders)&lt;/span&gt;
+&lt;/div&gt;
+
+--
+
+**Why does this happen?** Recall from Week 2: LLMs produce high-probability completions. Each phrasing changes which tokens are high-probability — which changes what the model "sees" as the likely completion.
+
+&lt;div class="box box-blue" style="margin-top:0.4em; font-size:0.84em;"&gt;Sensitivity to prompt wording is a red flag for fragile measurement. If minor changes reverse your findings, your prompt is not doing the conceptual work you need it to do.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:250px; height:125px"&gt;
+![](https://healthcaresuccess.com/wp-content/uploads/2017/10/shutterstock_364676015-768x543.jpg)
+
+---
+
+# Prompting vs. Fine-Tuning: The Core Trade-Off
+
+**When should you adjust your prompting — and when should you fine-tune?**
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th style="width:20%;"&gt;Dimension&lt;/th&gt;
+    &lt;th style="width:40%;"&gt;Prompting&lt;/th&gt;
+    &lt;th style="width:40%;"&gt;Fine-tuning&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Labeled data needed&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;0–20 examples (in the prompt)&lt;/td&gt;&lt;td&gt;100–10,000+ labeled examples&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Cost&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Low — pay per API call&lt;/td&gt;&lt;td&gt;High upfront; then cheaper per call&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Reproducibility&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;span class="badge badge-amber"&gt;Variable&lt;/span&gt; — prompt sensitivity, version drift&lt;/td&gt;&lt;td&gt;&lt;span class="badge badge-green"&gt;High&lt;/span&gt; — model weights are fixed&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Task specialization&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Good for general tasks; weaker for specialized ones&lt;/td&gt;&lt;td&gt;Excellent for highly specialized tasks&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Best for&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Piloting, low volume, general concepts&lt;/td&gt;&lt;td&gt;High volume, specialized constructs, published research&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Bottom line&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Start here&lt;/td&gt;&lt;td&gt;Graduate to this when you have data and need reliability&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+--
+
+&lt;br&gt;&lt;div class="box box-slate" style="font-size:0.84em;"&gt;Griswold et al. (2025): fine-tuning consistently outperforms even sophisticated prompting strategies when in-domain labeled data is available. Prompting is not a substitute for fine-tuning — it is a starting point.&lt;/div&gt;
+
+---
+
+class: discussion
+
+# 💬 Discussion Question 1
+
+**"Prompting is just talking to the model — anyone can do it."**
+
+&lt;br&gt;
+
+Stuhler et al. argue that prompting is a craft requiring the same skills as writing a research codebook — conceptual clarity, theoretical grounding, decision rules, worked examples.
+
+But prompting is also genuinely accessible: a first-year student can write a prompt that produces useful output within minutes.
+
+&lt;br&gt;
+
+**Is the accessibility of prompting a feature or a bug?**
+
+- Does the low barrier to entry lead to low-quality research?
+- Stuhler et al. say the bottleneck is conceptual clarity, not technical skill. Does that mean better social scientists automatically write better prompts?
+- How should methods courses teach prompting — as a technical skill, a design skill, or a theoretical skill?
+
+&lt;br&gt;
+
+**What standards should journals hold LLM-prompt-based research to?**
+
+---
+
+class: casestudy
+
+# 📊 Case Study: Stance Detection on Congressional Tweets
+
+&lt;div class="src" style="background:#1a2a3a; color:#66ccff;"&gt;Griswold et al. 2025&lt;/div&gt;
+
+**Research question:** How do U.S. Congress members express stance toward presidential candidates on Twitter during the 2020 election?
+
+&lt;br&gt;
+
+**Why this is hard:** Stance is subtler than sentiment. A tweet can be positive in tone while expressing opposition to a candidate. Context matters. Party affiliation shapes interpretation.
+
+&lt;br&gt;
+
+**The methodological contribution:** Griswold et al. systematically compare **four approaches** to this task:
+
+1. Lexicon-based models (VADER, SentiWordNet) — no learning required
+2. Supervised language models (BERT fine-tuned on stance data)
+3. Zero-shot LLMs (GPT-4 with task description only)
+4. Few-shot + chain-of-thought LLMs (GPT-4 with examples and reasoning steps)
+
+&lt;br&gt;
+
+**Follow along as we walk through their findings across the next several slides.**
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;II&lt;/div&gt;
+
+# Prompting Methods
+## Chain-of-thought, few-shot, and when to use what
+
+---
+
+# How Should Prompts Be Phrased?
+
+**Three core principles for phrasing that produces valid outputs:**
+
+&lt;div class="cols-3" style="margin-top:0.6em;"&gt;
+  &lt;div class="box box-green"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;1. Specify the task precisely&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;Not "analyze this text" but "classify this tweet as SUPPORT, OPPOSE, or NEUTRAL toward [specific target], using the definitions below."&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-green"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;2. Define your concepts&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;Don't assume the model shares your operationalization. "Positive" means different things in different contexts. "Police criticism" is not self-defining. Spell it out.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-green"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;3. Specify the output format&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;Tell the model exactly what to return: a single label, a probability, a label with explanation, a JSON object. The format shapes what gets computed.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;
+
+&lt;div class="cols-2" style="margin-top:0.3em;"&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; font-size:0.85em; margin-bottom:0.3em;"&gt;❌ Underspecified&lt;/div&gt;
+    &lt;div style="font-family:monospace; font-size:1em; line-height:1.6; color:#555;"&gt;"Is this tweet about the election positive or negative?"&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-green"&gt;
+    &lt;div style="font-weight:700; color:#27ae60; font-size:0.85em; margin-bottom:0.3em;"&gt;✓ Specified&lt;/div&gt;
+    &lt;div style="font-family:monospace; font-size:1em; line-height:1.6; color:#555;"&gt;"You are a political scientist coding tweets. Does the author of this tweet express SUPPORT, OPPOSITION, or NEUTRALITY toward Joe Biden's candidacy? Use only those three labels. If the tweet does not mention Biden, return NOT_APPLICABLE."&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+# Chain-of-Thought: Slowing Down the Model
+
+&lt;div class="src"&gt;Wei et al. 2023&lt;/div&gt;
+
+**The core insight:** LLMs are biased toward high-probability completions — which is often the *fast* answer, not the *correct* one. Chain-of-thought forces the model off the fast path.
+
+&lt;div class="mono" style="margin:0.5em 0;"&gt;
+&lt;span class="hi-grey"&gt;Standard prompting — model jumps to the answer&lt;/span&gt;
+&lt;br&gt;
+Q: The cafeteria had 23 apples. Used 20, bought 6 more. How many now?
+A: &lt;span class="hi-red"&gt;27&lt;/span&gt;   ← WRONG (fast, plausible, wrong)
+&lt;br&gt;
+&lt;span class="hi-grey"&gt;Chain-of-thought — model shows its work&lt;/span&gt;
+&lt;br&gt;
+Q: [same question]
+A: &lt;span class="hi-green"&gt;The cafeteria started with 23 apples. They used 20, leaving 23-20=3.
+   They bought 6 more, so 3+6=9. The answer is 9.&lt;/span&gt;   ← CORRECT
+&lt;/div&gt;
+
+--
+
+**Why does showing the work help?** Each reasoning step is now a *conditioning token* — it changes what the next token is high-probability. The model is predicting what comes after a coherent reasoning chain, not after a bare question.
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://miro.medium.com/v2/resize:fit:4800/format:webp/0*pt-VZGRkoBbMOAh6)
+
+---
+
+# Chain-of-Thought: Empirical Results
+
+&lt;div class="src"&gt;Wei et al. 2023&lt;/div&gt;
+
+&lt;table class="styled-table" style="margin-top:0.5em;"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th&gt;Task type&lt;/th&gt;
+    &lt;th&gt;Standard prompting&lt;/th&gt;
+    &lt;th&gt;Chain-of-thought&lt;/th&gt;
+    &lt;th&gt;Gain&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;Math word problems (GSM8K)&lt;/td&gt;&lt;td style="color:#c0392b;"&gt;18%&lt;/td&gt;&lt;td style="color:#27ae60; font-weight:600;"&gt;57%&lt;/td&gt;&lt;td&gt;+39pp&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Commonsense reasoning&lt;/td&gt;&lt;td style="color:#c0392b;"&gt;73%&lt;/td&gt;&lt;td style="color:#27ae60; font-weight:600;"&gt;83%&lt;/td&gt;&lt;td&gt;+10pp&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Symbolic reasoning&lt;/td&gt;&lt;td style="color:#c0392b;"&gt;59%&lt;/td&gt;&lt;td style="color:#27ae60; font-weight:600;"&gt;79%&lt;/td&gt;&lt;td&gt;+20pp&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;PaLM 540B on GSM8K&lt;/td&gt;&lt;td style="color:#c0392b;"&gt;Few-shot only&lt;/td&gt;&lt;td style="color:#27ae60; font-weight:600;"&gt;State-of-the-art&lt;/td&gt;&lt;td&gt;Surpasses fine-tuned GPT-3&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+--
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-blue"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Key condition&lt;/div&gt;
+    &lt;div style="font-size:0.83em; line-height:1.7;"&gt;Gains only emerge in &lt;strong&gt;sufficiently large models&lt;/strong&gt; (100B+ parameters). Smaller models show flat or negative effects. Chain-of-thought is an &lt;em&gt;emergent&lt;/em&gt; capability.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-amber"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;The zero-shot version&lt;/div&gt;
+    &lt;div style="font-size:0.83em; line-height:1.7;"&gt;Simply appending &lt;strong&gt;"Let's think step by step."&lt;/strong&gt; to a prompt improves performance substantially — no worked examples needed. Free performance gain on complex tasks.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://media.licdn.com/dms/image/v2/D5612AQE8f9ElBtAzpg/article-cover_image-shrink_720_1280/B56ZYQI2BdHoAM-/0/1744027476466?e=1784160000&amp;v=beta&amp;t=qxTSPuxKaEV86mhXqkBm8lImtdg_PxHPSBWoJ5pt7sI)
+
+---
+
+# Chain-of-Thought Applied to Social Science
+
+**The same logic applies to text classification.** For complex social science constructs, chain-of-thought forces the model to work through the decision as a trained coder would.
+
+&lt;div class="mono" style="margin:0.5em 0;"&gt;
+&lt;span class="hi-grey"&gt;WITHOUT chain-of-thought:&lt;/span&gt;
+&lt;br&gt;
+Prompt: "Code this tweet as SUPPORT, OPPOSE, or NEUTRAL toward police."
+&lt;br&gt;
+Tweet: "These officers put their lives on the line every day but the
+        department keeps cutting their budget. Sad."
+&lt;br&gt;
+Model:  &lt;span class="hi-amber"&gt;SUPPORT&lt;/span&gt;  (jumped to surface reading)
+&lt;br&gt;
+&lt;span class="hi-grey"&gt;WITH chain-of-thought:&lt;/span&gt;
+&lt;br&gt;
+Prompt: "Code this tweet. FIRST: identify any evaluative language. SECOND: determine what is being evaluated. THIRD: assess
+         whether the evaluation is positive, negative, or mixed.
+         FINALLY: assign SUPPORT, OPPOSE, or NEUTRAL."
+&lt;br&gt;
+Model:  &lt;span class="hi-green"&gt;&lt;br&gt;FIRST: 'put their lives on the line' (positive of officers),
+        'cutting their budget' (negative of department action).
+        &lt;br&gt;SECOND: Officers are evaluated positively; department policy
+        negatively. &lt;br&gt;THIRD: Mixed, but the criticism is structural,
+        not of police themselves.
+        &lt;br&gt;FINALLY: SUPPORT (with note: budget criticism is systemic)&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:200px; height:100px"&gt;
+![](https://media.wired.com/photos/5926608ecfe0d93c4742ffdc/3:2/w_2240,c_limit/Fusion-Hybrid-Responder_03-4x3.jpg)
+
+---
+
+# Few-Shot Prompting: Examples as Implicit Definitions
+
+**Few-shot prompting:** Include labeled examples in the prompt — not just a task description.
+
+&lt;div class="mono" style="margin:0.5em 0;"&gt;
+&lt;span class="hi-grey"&gt;Zero-shot (no examples):&lt;/span&gt;
+"Classify this tweet as SUPPORT, OPPOSE, or NEUTRAL toward police."
+Tweet: [text]
+&lt;br&gt;
+&lt;span class="hi-grey"&gt;Few-shot (3 examples):&lt;/span&gt;
+"Classify each tweet as SUPPORT, OPPOSE, or NEUTRAL toward police.
+&lt;br&gt;
+&lt;span class="hi-blue"&gt;Tweet: 'Proud of our officers keeping the streets safe.' → SUPPORT&lt;/span&gt;
+&lt;br&gt;
+&lt;span class="hi-red"&gt;Tweet: 'Another day, another police killing with no accountability.' → OPPOSE&lt;/span&gt;
+&lt;br&gt;
+&lt;span class="hi-amber"&gt;Tweet: 'Police presence at the event seemed appropriate.' → NEUTRAL&lt;/span&gt;
+
+&lt;br&gt;
+Tweet: [new text] → "
+&lt;/div&gt;
+
+--
+
+**Why examples help:** Each example teaches the model *your* operationalization — not its default interpretation. The examples act as implicit definitions of the boundary between categories.
+
+&lt;div class="box box-green" style="margin-top:0.4em; font-size:0.84em;"&gt;&lt;strong&gt;Rule of thumb from Griswold et al.:&lt;/strong&gt; 5–10 good examples substantially improve performance on specialized tasks, often matching models trained on hundreds of labeled documents. Always try few-shot before fine-tuning.&lt;/div&gt;
+
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://shelf.io/wp-content/uploads/2024/07/what-is-few-shot-prompting-.jpg.webp)
+
+---
+
+# Case Study Results: What Griswold et al. Found
+
+&lt;div class="src"&gt;Griswold et al. 2025 · Congressional tweets on 2020 candidates&lt;/div&gt;
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th&gt;Method&lt;/th&gt;
+    &lt;th&gt;Accuracy vs. human labels&lt;/th&gt;
+    &lt;th&gt;Stance specificity&lt;/th&gt;
+    &lt;th&gt;Recommended when&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl-red"&gt;&lt;td&gt;&lt;strong&gt;Lexicon-based (VADER)&lt;/strong&gt;&lt;/td&gt;&lt;td style="color:#c0392b;"&gt;~52%&lt;/td&gt;&lt;td&gt;Captures sentiment, not stance&lt;/td&gt;&lt;td&gt;Almost never for stance&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Zero-shot LLM (GPT-4)&lt;/strong&gt;&lt;/td&gt;&lt;td style="color:#e67e22;"&gt;~71%&lt;/td&gt;&lt;td&gt;Better — understands target&lt;/td&gt;&lt;td&gt;Piloting; low stakes&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Few-shot LLM (GPT-4 + examples)&lt;/strong&gt;&lt;/td&gt;&lt;td style="color:#e67e22;"&gt;~78%&lt;/td&gt;&lt;td&gt;Good; examples help at edges&lt;/td&gt;&lt;td&gt;Limited labeled data&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Chain-of-thought LLM&lt;/strong&gt;&lt;/td&gt;&lt;td style="color:#27ae60;"&gt;~80%&lt;/td&gt;&lt;td&gt;Best zero-shot-family&lt;/td&gt;&lt;td&gt;Complex, theory-laden tasks&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Fine-tuned BERT (in-domain)&lt;/strong&gt;&lt;/td&gt;&lt;td style="color:#27ae60; font-weight:700;"&gt;~87%&lt;/td&gt;&lt;td&gt;Excellent on trained targets&lt;/td&gt;&lt;td&gt;High volume; labeled data exists&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+--
+
+&lt;br&gt;&lt;div class="quote"&gt;Complex prompting strategies lead to improvements over pretrained models but underperform tuning approaches. Prompting is a floor, not a ceiling.&lt;cite&gt;— Griswold et al. (2025)&lt;/cite&gt;&lt;/div&gt;
+
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://www.pewresearch.org/wp-content/uploads/2020/02/FT_20.02.10_CandidateSnapshot_feature.jpg)
+
+---
+
+# When to Use Which Strategy: A Decision Framework
+
+&lt;center&gt;
+&lt;div style="width:580px; height:580px"&gt;
+![](https://cdn.corenexis.com/f/y3rdc3amAqV.png)
+
+---
+
+class: debate
+
+# ⚖️ Debate: Does Chain-of-Thought Actually Help — or Does It Just Confabulate More Fluently?
+
+**The case for chain-of-thought:**
+
+Wei et al. show striking accuracy gains on math, logic, and symbolic reasoning tasks. The model's intermediate steps are often correct and informative. The mechanism is theoretically grounded: forcing intermediate steps changes the probability distribution over outputs.
+
+&lt;br&gt;
+
+**The skeptical case:**
+
+- LLMs can generate plausible-sounding reasoning steps that are actually post-hoc rationalizations of the output they were going to produce anyway.
+- "Reasoning traces" can be internally consistent and still wrong — just wrong more elaborately.
+- In social science applications, a confident but incorrect chain of reasoning may be more misleading than a simple wrong label.
+
+&lt;br&gt;
+
+**Does showing the model's work make you more confident in the output — or does it just make the error harder to catch?**
+
+---
+
+class: discussion
+
+# 💬 Discussion Question 2
+
+**Few-shot examples as implicit operationalizations.**
+
+&lt;br&gt;
+
+Griswold et al. find that including 5–10 examples in a prompt substantially improves stance detection. The examples do more than illustrate — they *define* what the model treats as the category boundary.
+
+&lt;br&gt;
+
+- If your 5 examples happen to all come from one party's tweets, you've inadvertently operationalized stance relative to that party's rhetorical style.
+- If your examples overrepresent easy cases, the model learns to classify easy cases well and fails on hard ones.
+- If your examples reflect your own political priors, the model will learn those priors.
+
+&lt;br&gt;
+
+**Questions:**
+
+1. Who should choose the few-shot examples in a published study, and how should that choice be documented?
+2. Is including few-shot examples a form of researcher degrees of freedom that needs to be pre-registered?
+3. Should examples be selected randomly from a stratified sample — or purposively? What are the trade-offs?
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;III&lt;/div&gt;
+
+# Prompting Advice
+## Codebooks, complexity, concepts, and errors
+
+---
+
+# Codebooks as Promptbooks
+
+&lt;div class="src"&gt;Stuhler et al. 2025 · "From Codebooks to Promptbooks"&lt;/div&gt;
+
+**The central argument:** Social scientists already have the skills to write excellent prompts — because prompt design and codebook design require the same intellectual work.
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;What a good codebook contains&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;Definition of the concept being coded&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;Inclusion and exclusion criteria&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;Decision rules for ambiguous cases&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;Worked examples (positive and negative)&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;5&lt;/span&gt;&lt;div class="step-body"&gt;Explicit handling of edge cases&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;What a good prompt contains&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;Definition of the concept being coded&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;Inclusion and exclusion criteria&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;Decision rules for ambiguous cases&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;Few-shot examples (positive and negative)&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;5&lt;/span&gt;&lt;div class="step-body"&gt;Explicit handling of edge cases&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="quote" style="margin-top:0.6em;"&gt;The conversion from codebook to promptbook is nearly mechanical. The hard intellectual work was already done in the codebook.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://images.theconversation.com/files/45159/original/rptgtpxd-1396254731.jpg?ixlib=rb-4.1.0&amp;q=30&amp;auto=format&amp;w=600&amp;h=400&amp;fit=crop&amp;dpr=2)
+
+---
+
+# Paper Walkthrough: Stuhler et al. (2025)
+
+&lt;div class="src"&gt;stuhler_promptbooks_2025 · 19th-century German newspaper obituaries&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;The research task&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:0.83em; margin-bottom:0.4em;"&gt;Extract biographical information (occupation, age, origin, social class) from a large corpus of 19th-century German-language newspaper obituaries.&lt;/div&gt;
+    &lt;div class="box box-amber" style="font-size:0.83em; margin-bottom:0.4em;"&gt;&lt;strong&gt;Challenge:&lt;/strong&gt; Historical language, ambiguous occupational categories, multilingual text, no existing labeled dataset.&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:0.83em;"&gt;&lt;strong&gt;Why LLMs?&lt;/strong&gt; Traditional NLP tools fail on historical German. Human coding of thousands of obituaries is prohibitively expensive.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;Their promptbook approach&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;Develop a sociological typology of 19th-century German occupations&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;Write definitions for each occupational category with historical context&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;Add examples drawn from the actual corpus — including ambiguous cases&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;Add decision rules: "If occupation is unclear, return AMBIGUOUS"&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;5&lt;/span&gt;&lt;div class="step-body"&gt;Test against expert-coded validation sample; iterate on failures&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://www.deutschland.de/sites/default/files/styles/image_container/public/media/image/germany-media-newspaper-magazine-press-freedom-print.jpg?itok=rrF-cc2g)
+
+---
+
+# Stuhler et al.: What They Found
+
+&lt;div class="src"&gt;Stuhler et al. 2025&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;What worked well&lt;/div&gt;
+    &lt;div class="box box-green" style="margin-bottom:0.3em; font-size:0.83em;"&gt;Clear, bounded categories with concrete historical examples performed well&lt;/div&gt;
+    &lt;div class="box box-green" style="margin-bottom:0.3em; font-size:0.83em;"&gt;Open-source models (Mistral, LLaMA) achieved competitive performance with GPT-4 on well-defined tasks&lt;/div&gt;
+    &lt;div class="box box-green" style="font-size:0.83em;"&gt;The promptbook approach transferred to new corpora with minimal re-prompting&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;The key finding about concept clarity&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:0.83em; margin-bottom:0.4em;"&gt;The promptbook &lt;strong&gt;broke down at the same places human coders disagreed&lt;/strong&gt;. Unclear categories in the codebook became unclear categories in the prompt — and ambiguous outputs from the model.&lt;/div&gt;
+    &lt;div class="box box-amber" style="font-size:0.83em;"&gt;&lt;strong&gt;Lesson:&lt;/strong&gt; Prompting cannot rescue an underspecified concept. If trained human coders disagree, the model will too — and it won't tell you it's confused.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="quote" style="margin-top:0.5em;"&gt;If the concept is unclear to humans, it will be unclear to the model. The promptbook is only as good as the codebook it came from.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://www.cs.jhu.edu/wp-content/uploads/2022/12/bigstock-Future-Artificial-Intelligence-349070134-980x654.jpg)
+
+---
+
+# Prompts Must Match Task Complexity
+
+**Not all tasks require the same prompt architecture.** Mismatch in either direction is a problem.
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th style="width:22%;"&gt;Task type&lt;/th&gt;
+    &lt;th style="width:25%;"&gt;Characteristics&lt;/th&gt;
+    &lt;th style="width:30%;"&gt;Appropriate prompt&lt;/th&gt;
+    &lt;th style="width:23%;"&gt;Common mistake&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Simple&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:0.85em; font-weight:400;"&gt;Binary, clear, objective&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Has this article mentioned a protest event?&lt;/td&gt;&lt;td&gt;Short, direct: task + label options + output format&lt;/td&gt;&lt;td&gt;Over-engineering; long prompts confuse simple tasks&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Moderate&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:0.85em; font-weight:400;"&gt;Multi-class, some theory&lt;/span&gt;&lt;/td&gt;&lt;td&gt;What is the policy domain of this bill?&lt;/td&gt;&lt;td&gt;Role + definitions + output format + uncertainty handling&lt;/td&gt;&lt;td&gt;No definitions; model applies its own domain scheme&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Complex&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:0.85em; font-weight:400;"&gt;Multi-dimensional, theory-dependent&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Is this covert racism? (Dávila et al.)&lt;/td&gt;&lt;td&gt;Full codebook-style: theory + typology + chain-of-thought + examples&lt;/td&gt;&lt;td&gt;Treating it like a simple task; no theoretical grounding&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+--
+
+&lt;br&gt;&lt;div class="box box-red" style="font-size:0.84em;"&gt;&lt;strong&gt;Underspecifying a complex task&lt;/strong&gt; is the most common prompting mistake in social science applications. The model will produce output — it just won't be measuring what you think it's measuring.&lt;/div&gt;
+
+---
+
+# Concepts Must Be Clearly Explained
+
+**If you don't define your concept, the model will apply its own definition — and you won't know it.**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;Example: "Sentiment"&lt;/div&gt;
+    &lt;div class="box box-amber" style="font-size:0.83em; margin-bottom:0.3em;"&gt;Does "positive" mean the author is happy? The subject is portrayed favorably? The outcome is good? The rhetoric is optimistic?&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:0.83em;"&gt;GPT-4's default interpretation of "sentiment" may not match yours. Without a definition, you're measuring &lt;em&gt;the model's operationalization&lt;/em&gt;, not yours.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;Example: "Police criticism" (Crowl et al.)&lt;/div&gt;
+    &lt;div class="box box-amber" style="font-size:0.83em; margin-bottom:0.3em;"&gt;Does it mean criticism of individual officers? Departments? Policing as a system? Funding levels? Use of force? Racial bias?&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:0.83em;"&gt;A prompt that says "does this article criticize police?" measures something — but what it measures depends entirely on what the model's training data says about police criticism.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;&lt;div class="box box-blue" style="font-size:0.84em; text-align:center;"&gt;&lt;strong&gt;Rule:&lt;/strong&gt; Define every substantive term in your prompt that has more than one reasonable interpretation. If you'd define it in a codebook, define it in the prompt.&lt;/div&gt;
+
+---
+
+# Paper Walkthrough: Dávila et al. (2026) — Theory-First Prompting
+
+&lt;div class="src"&gt;dávila_racism_2026 · Classifying overt and covert racism in Ecuadorian tweets&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;The challenge&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:0.83em; margin-bottom:0.3em;"&gt;&lt;strong&gt;Overt racism:&lt;/strong&gt; slurs, direct dehumanization → lexical signal, relatively detectable&lt;/div&gt;
+    &lt;div class="box box-amber" style="font-size:0.83em; margin-bottom:0.3em;"&gt;&lt;strong&gt;Covert racism:&lt;/strong&gt; coded language, dog whistles, rhetorical deflection → context-dependent, historically embedded, subtle&lt;/div&gt;
+    &lt;div class="box box-blue" style="font-size:0.83em;"&gt;Covert racism requires understanding Ecuadorian racial history, indigenous land rights politics, and specific rhetorical strategies — none of which are in GPT-4's training data at depth&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;Their theory-first process&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Literature review:&lt;/strong&gt; Latin American racial sociology, Ecuador-specific racial formations&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Typology:&lt;/strong&gt; Overt vs. covert × target group × rhetorical strategy&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Operationalization:&lt;/strong&gt; Each cell of the typology with corpus examples&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Model:&lt;/strong&gt; Fine-tuned XLM-RoBERTa (cross-lingual) on labeled corpus&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;5&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Validation:&lt;/strong&gt; Expert human coders; outperforms general-purpose LLMs&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:500px; height:250px"&gt;
+![](https://www.pcma.org/wp-content/uploads/2024/09/Quito-Ecuador.jpg)
+
+---
+
+# Dávila et al.: The General Lesson
+
+&lt;div class="src"&gt;dávila_racism_2026&lt;/div&gt;
+
+**The harder the concept, the more theoretical work goes into the prompt — before you touch the model.**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.4em;"&gt;❌ The common approach&lt;/div&gt;
+    &lt;div style="font-family:monospace; font-size:0.78em; line-height:1.6; margin-bottom:0.4em;"&gt;"Classify this tweet as racist or not racist."&lt;/div&gt;
+    &lt;div style="font-size:0.82em; line-height:1.7;"&gt;This is measuring GPT-4's operationalization of racism — which reflects Western, English-language training data and has no knowledge of Ecuadorian indigenous politics, racial history, or specific rhetorical moves.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-green"&gt;
+    &lt;div style="font-weight:700; color:#27ae60; margin-bottom:0.4em;"&gt;✓ Dávila et al.'s approach&lt;/div&gt;
+    &lt;div style="font-size:0.82em; line-height:1.7;"&gt;Extensive theoretical grounding before any prompting. A typology derived from racial sociology. Examples drawn from the specific corpus. A fine-tuned model trained on expert-coded labels.&lt;br&gt;&lt;br&gt;The model came last. The theory came first.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="quote" style="margin-top:0.6em;"&gt;Theory must come before prompting, not after. Prompting cannot substitute for thinking carefully about what your construct means.&lt;/div&gt;
+
+---
+
+# LLM Errors Are Systematic, Not Random
+
+**This is one of the most important methodological facts about LLM-based measurement.**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-green"&gt;
+    &lt;div style="font-weight:700; color:#27ae60; margin-bottom:0.4em;"&gt;Random errors&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:0.85em;"&gt;Cancel out across many observations&lt;br&gt;Don't bias estimates&lt;br&gt;Reduce statistical power&lt;br&gt;More data → less noise&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.4em;"&gt;Systematic errors (what LLMs have)&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:0.85em;"&gt;Cluster in predictable ways&lt;br&gt;Bias estimates in a consistent direction&lt;br&gt;Cannot be corrected by averaging&lt;br&gt;More data → more biased estimates&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;**LLM errors cluster by:**
+
+&lt;div class="cols-4" style="margin-top:0.3em; font-size:0.82em;"&gt;
+  &lt;div class="box box-slate" style="text-align:center;"&gt;Demographic characteristics of the text subject&lt;/div&gt;
+  &lt;div class="box box-slate" style="text-align:center;"&gt;Rhetorical register (irony, satire, coded language)&lt;/div&gt;
+  &lt;div class="box box-slate" style="text-align:center;"&gt;Topic domain and training data coverage&lt;/div&gt;
+  &lt;div class="box box-slate" style="text-align:center;"&gt;Text type and genre&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-red" style="margin-top:0.5em; font-size:0.84em;"&gt;A model that is 88% accurate overall may be 60% accurate on the exact documents most relevant to your hypothesis. The 88% is hiding a validity crisis.&lt;/div&gt;
+
+---
+
+# Why Systematic Errors Matter: A Concrete Example
+
+**Scenario:** Using an LLM to classify news coverage of police as critical vs. non-critical.
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th&gt;Document subset&lt;/th&gt;
+    &lt;th&gt;LLM accuracy&lt;/th&gt;
+    &lt;th&gt;Research implication&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Overall&lt;/strong&gt;&lt;/td&gt;&lt;td style="color:#27ae60; font-weight:600;"&gt;88% ✓&lt;/td&gt;&lt;td&gt;Looks fine in aggregate&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl-red"&gt;&lt;td&gt;&lt;strong&gt;Police violence against Black residents&lt;/strong&gt;&lt;/td&gt;&lt;td style="color:#c0392b; font-weight:600;"&gt;61% ✗&lt;/td&gt;&lt;td&gt;If racial disparities are your hypothesis, 88% is misleading&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Police union negotiations&lt;/strong&gt;&lt;/td&gt;&lt;td style="color:#27ae60;"&gt;93% ✓&lt;/td&gt;&lt;td&gt;High accuracy where it matters less&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Ironic/satirical criticism&lt;/strong&gt;&lt;/td&gt;&lt;td style="color:#c0392b;"&gt;54% ✗&lt;/td&gt;&lt;td&gt;Satire is systematically misclassified as non-critical&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+--
+
+&lt;br&gt;**The minimum standard:** Report accuracy separately for the subgroup of documents most directly relevant to your research question. Not just overall accuracy.
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://media.istockphoto.com/id/1369150014/vector/breaking-news-with-world-map-background-vector.jpg?s=612x612&amp;w=0&amp;k=20&amp;c=9pR2-nDBhb7cOvvZU_VdgkMmPJXrBQ4rB1AkTXxRIKM=)
+
+---
+
+# Multi-Model and Multi-Agent Workflows
+
+**When and how should multiple models be used together?**
+
+&lt;div class="cols-3" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-blue"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;🔄 Sequential pipeline&lt;/div&gt;
+    &lt;div style="font-size:0.8em; line-height:1.7;"&gt;Model 1 extracts entities → Model 2 classifies them → Model 3 summarizes. Each model is specialized for one subtask. Use when your task has natural decomposable stages.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-blue"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;🗳️ Ensemble / majority vote&lt;/div&gt;
+    &lt;div style="font-size:0.8em; line-height:1.7;"&gt;Run the same prompt on 3+ models; take the majority label. Use when you're uncertain which model is best or want to assess robustness across model choice.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-blue"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;✅ Critic-reviser&lt;/div&gt;
+    &lt;div style="font-size:0.8em; line-height:1.7;"&gt;Model 1 produces a draft classification; Model 2 is prompted to critique and correct it. Use for complex tasks where a single model's first response is unreliable.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;&lt;div class="box box-amber" style="font-size:0.84em;"&gt;&lt;strong&gt;Key caution:&lt;/strong&gt; Multi-model workflows multiply the error surface. Each model can introduce its own systematic biases, and those biases may compound rather than cancel. More models ≠ more accuracy. Document and validate each stage separately.&lt;/div&gt;
+
+---
+
+# When to Use Multi-Model Approaches
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th&gt;Use case&lt;/th&gt;
+    &lt;th&gt;Approach&lt;/th&gt;
+    &lt;th&gt;Why&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;Assessing robustness of findings to model choice&lt;/td&gt;&lt;td&gt;Ensemble / majority vote&lt;/td&gt;&lt;td&gt;Yang et al. show LLM choice changes conclusions in 37% of cases; testing multiple models is minimum standard&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Complex extraction (entity recognition → classification)&lt;/td&gt;&lt;td&gt;Sequential pipeline&lt;/td&gt;&lt;td&gt;Specialized smaller models outperform general large models on subtasks&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Quality control / catching errors&lt;/td&gt;&lt;td&gt;Critic-reviser&lt;/td&gt;&lt;td&gt;Asking a model to critique its own first response catches some errors&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl-red"&gt;&lt;td&gt;Saving money by using a cheap model to pre-filter&lt;/td&gt;&lt;td&gt;Two-stage pipeline&lt;/td&gt;&lt;td&gt;Use with extreme caution — pre-filtering errors propagate to the second stage&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;center&gt;
+&lt;div style="width:600px; height:350px"&gt;
+![](https://cdn.prod.website-files.com/6583e2b6af21ee3aa85c3013/67fd2b492003effefd407f34_Agentic%20AI%20Multi-Agent.jpg)
+
+---
+
+class: casestudy
+
+# 📊 Case Study: Dávila et al. Workflow End-to-End
+
+**Let's trace the full research pipeline from concept to model.**
+
+&lt;br&gt;
+
+**Stage 1 — Conceptual:** Read the racial sociology literature on Ecuador. Identify that racism in Ecuador operates through specific coded references to indigenous land rights, "civilization" vs. "backwardness," and anti-protest framing. These are not in GPT-4's training data as racism.
+
+**Stage 2 — Typology:** Construct a 2×4 matrix: {Overt, Covert} × {Direct slur, Dehumanization, Coded inferiority, Structural deflection}.
+
+**Stage 3 — Labeling:** Three expert raters code 3,000 tweets using the typology. Achieve κ = 0.78 intercoder reliability.
+
+**Stage 4 — Model training:** Fine-tune XLM-RoBERTa on the labeled dataset. The cross-lingual model handles Spanish and Quechua code-switching.
+
+**Stage 5 — Evaluation:** Compare XLM-R-Racismo to GPT-4 zero-shot on held-out test set. XLM-R-Racismo wins on covert racism by 18 F1 points. GPT-4 zero-shot nearly matches on overt racism.
+
+**Lesson:** For concepts that require specialized cultural knowledge, fine-tuned specialized models outperform general-purpose LLMs — because the concept itself requires knowledge the general model doesn't have.
+
+---
+
+class: discussion
+
+# 💬 Discussion Question 3
+
+**"The prompt is only as good as the theory behind it."**
+
+&lt;br&gt;
+
+Dávila et al. demonstrate that classifying covert racism in Ecuadorian tweets requires deep knowledge of Ecuadorian racial history, indigenous politics, and specific rhetorical strategies — knowledge that is not available in standard LLM training data.
+
+&lt;br&gt;
+
+**Questions:**
+
+1. What other social science constructs would require the same kind of cultural or theoretical depth before prompting? What makes a construct "hard" in this sense vs. "easy"?
+
+2. Stuhler et al. found their prompts broke down where human coders also disagreed. Does this mean the model is behaving correctly — that it's appropriately uncertain — or does it mean the codebook wasn't good enough?
+
+3. Dávila et al. collected 3,000 expert-coded tweets before training their model. If that's the gold standard, when is it actually worth using LLMs at all compared to training a supervised classifier from scratch?
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;IV&lt;/div&gt;
+
+# Synthesis
+## Principles, checklists, and looking forward
+
+---
+
+# The Full Prompting Workflow
+
+&lt;center&gt;
+&lt;div style="width:380px; height:380px"&gt;
+![](https://cdn.corenexis.com/f/qb0qh89i8gw.png)
+
+---
+
+# The Prompting Checklist
+
+Before finalizing a prompt for a measurement task:
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th style="width:5%;"&gt;✓&lt;/th&gt;&lt;th&gt;Criterion&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;☐&lt;/td&gt;&lt;td&gt;The task is described clearly enough that a new RA could follow it without asking questions&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;☐&lt;/td&gt;&lt;td&gt;Every substantive term is &lt;strong&gt;defined&lt;/strong&gt;, not just named&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;☐&lt;/td&gt;&lt;td&gt;Inclusion and exclusion criteria are explicit&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;☐&lt;/td&gt;&lt;td&gt;The output format is specified (label, probability, label + explanation)&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;☐&lt;/td&gt;&lt;td&gt;Uncertainty is handled ("if unclear, return AMBIGUOUS")&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;☐&lt;/td&gt;&lt;td&gt;Boundary cases are addressed in the prompt&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;☐&lt;/td&gt;&lt;td&gt;Few-shot examples cover the full range of categories (not just easy cases)&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;☐&lt;/td&gt;&lt;td&gt;I have piloted on a sample and audited errors by the subgroup most relevant to my hypothesis&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;☐&lt;/td&gt;&lt;td&gt;&lt;strong&gt;I would not be embarrassed to include this exact prompt in my methods section&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+# What the Four Papers Together Establish
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th&gt;Paper&lt;/th&gt;&lt;th&gt;Core contribution to prompting&lt;/th&gt;&lt;th&gt;Key lesson&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Wei et al. (2023)&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Chain-of-thought prompting elicits reasoning&lt;/td&gt;
+      &lt;td&gt;Showing intermediate steps dramatically improves complex tasks; "think step by step" is a free gain&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Stuhler et al. (2025)&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Codebooks → promptbooks for information extraction&lt;/td&gt;
+      &lt;td&gt;Social scientists already have the skills; the bottleneck is conceptual clarity, not technical ability&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Griswold et al. (2025)&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Systematic comparison of prompting strategies for stance detection&lt;/td&gt;
+      &lt;td&gt;Complex prompting beats zero-shot but underperforms fine-tuning; few-shot is the best prompting-family option&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class="hl"&gt;
+      &lt;td&gt;&lt;strong&gt;Dávila et al. (2026)&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Theory-first pipeline for classifying overt and covert racism&lt;/td&gt;
+      &lt;td&gt;Hard concepts require deep theory before any model; cultural knowledge not in training data requires fine-tuning&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://img.magnific.com/premium-vector/research-paper-flat-illustration_120816-12171.jpg)
+
+---
+
+# The Things Prompting Cannot Fix
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em; color:#c0392b;"&gt;Prompting CANNOT fix:&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.3em; font-size:0.83em;"&gt;An underspecified research question or construct&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.3em; font-size:0.83em;"&gt;Systematic demographic bias baked into model weights&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.3em; font-size:0.83em;"&gt;Domain gaps (thin training data coverage of your corpus)&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.3em; font-size:0.83em;"&gt;Cultural or historical knowledge not in training data&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:0.83em;"&gt;Version instability of proprietary models&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em; color:#27ae60;"&gt;Prompting CAN address:&lt;/div&gt;
+    &lt;div class="box box-green" style="margin-bottom:0.3em; font-size:0.83em;"&gt;Output format and structure&lt;/div&gt;
+    &lt;div class="box box-green" style="margin-bottom:0.3em; font-size:0.83em;"&gt;Task decomposition via chain-of-thought&lt;/div&gt;
+    &lt;div class="box box-green" style="margin-bottom:0.3em; font-size:0.83em;"&gt;Disambiguation of ambiguous concepts&lt;/div&gt;
+    &lt;div class="box box-green" style="margin-bottom:0.3em; font-size:0.83em;"&gt;Calibration via few-shot examples&lt;/div&gt;
+    &lt;div class="box box-green" style="font-size:0.83em;"&gt;Explicit handling of anticipated edge cases&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="quote" style="margin-top:0.6em;"&gt;The prompt is as good as the thinking behind it. No more, no less.&lt;/div&gt;
+
+---
+
+# Summary: The Three-Part Prompting Framework
+
+&lt;div class="cols-3" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-green"&gt;
+    &lt;div style="font-size:1.3em; text-align:center; margin-bottom:0.3em;"&gt;🎨&lt;/div&gt;
+    &lt;div style="font-weight:700; color:#27ae60; text-align:center; margin-bottom:0.5em;"&gt;Design&lt;/div&gt;
+    &lt;div style="font-size:0.8em; line-height:1.8;"&gt;Prompting is a design task&lt;br&gt;Theory before model&lt;br&gt;Codebooks → promptbooks&lt;br&gt;Complexity must match task&lt;br&gt;&lt;span style="color:#888; font-size:0.9em;"&gt;Stuhler et al. · Dávila et al.&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-blue"&gt;
+    &lt;div style="font-size:1.3em; text-align:center; margin-bottom:0.3em;"&gt;⚙️&lt;/div&gt;
+    &lt;div style="font-weight:700; color:#2a5bd7; text-align:center; margin-bottom:0.5em;"&gt;Methods&lt;/div&gt;
+    &lt;div style="font-size:0.8em; line-height:1.8;"&gt;Chain-of-thought for complex tasks&lt;br&gt;Few-shot to teach operationalization&lt;br&gt;Fine-tune when you have data&lt;br&gt;Know when each strategy wins&lt;br&gt;&lt;span style="color:#888; font-size:0.9em;"&gt;Wei et al. · Griswold et al.&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-amber"&gt;
+    &lt;div style="font-size:1.3em; text-align:center; margin-bottom:0.3em;"&gt;⚠️&lt;/div&gt;
+    &lt;div style="font-weight:700; color:#e67e22; text-align:center; margin-bottom:0.5em;"&gt;Limits&lt;/div&gt;
+    &lt;div style="font-size:0.8em; line-height:1.8;"&gt;Errors are systematic, not random&lt;br&gt;Audit by subgroup, not overall&lt;br&gt;Can't fix underspecified concepts&lt;br&gt;Can't fix structural bias&lt;br&gt;&lt;span style="color:#888; font-size:0.9em;"&gt;Stuhler et al. · Griswold et al.&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:500px; height:250px"&gt;
+![](https://clipground.com/images/2-3-process-clipart-1.png)
+
+---
+
+# Readings for This Unit
+
+&lt;div class="cols-2" style="margin-top:0.5em; font-size:0.82em;"&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.5em;"&gt;Chain-of-thought and foundations&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      Wei et al. (2023)&lt;br&gt;
+      &lt;span style="color:#888; font-size:0.88em;"&gt;Chain-of-thought prompting elicits reasoning in large language models&lt;/span&gt;&lt;br&gt;&lt;br&gt;
+      Griswold, Robbins &amp; Pollard (2025)&lt;br&gt;
+      &lt;span style="color:#888; font-size:0.88em;"&gt;Stay tuned: improving sentiment analysis and stance detection using LLMs&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.5em;"&gt;Codebooks, complexity, and theory&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      Stuhler, Dang Ton &amp; Ollion (2025)&lt;br&gt;
+      &lt;span style="color:#888; font-size:0.88em;"&gt;From codebooks to promptbooks: extracting information from text with generative LLMs&lt;/span&gt;&lt;br&gt;&lt;br&gt;
+      Dávila Gordillo, Timoneda &amp; Vallejo Vera (2026)&lt;br&gt;
+      &lt;span style="color:#888; font-size:0.88em;"&gt;Machines do see color: using LLMs to classify overt and covert racism in text&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-green" style="margin-top:0.7em; text-align:center; font-size:0.84em;"&gt;
+  &lt;strong&gt;Next week:&lt;/strong&gt; Application of Prompts to Measurement&lt;br&gt;
+  &lt;span style="color:#888; font-size:0.9em;"&gt;burnham_debate_2025 · halterman_codebook_2025 · crowl_measuring_2025 · vafa_wage_2025 · benoit_political_2025 · chae_text_2025 · yang_annotation_2025 · jeon_demographics_2026&lt;/span&gt;
+&lt;/div&gt;
+
+---
+
+class: inverse, center, middle
+
+# Questions?
+
+&lt;div style="color:#aaa; font-size:0.9em; margin-top:1em;"&gt;Week 3 · SOCY 1200: Introduction to Using AI to Study Society&lt;/div&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "16:9",
+  "slideNumberFormat": "%current% / %total%"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

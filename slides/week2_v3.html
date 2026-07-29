@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>SOCY 1200: Introduction to Using AI to Study Society</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Daniel Karell" />
+    <script src="libs/header-attrs-2.29/header-attrs.js"></script>
+    <link rel="stylesheet" href="yale.css" type="text/css" />
+    <link rel="stylesheet" href="yale-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# SOCY 1200: Introduction to Using AI to Study Society
+]
+.subtitle[
+## Unit 1: Introduction: Our AI Era
+]
+.author[
+### Daniel Karell
+]
+.institute[
+### Yale University
+]
+.date[
+### Week 2
+]
+
+---
+
+
+&lt;style&gt;
+/* ═══════════════════════════════════════════════════
+   DESIGN SYSTEM — Week 1
+   ═══════════════════════════════════════════════════ */
+.remark-slide-content:not(.title-slide) {
+  font-size:16px;
+  padding: 1.8em 2.2em 1em;
+  color: #1a1a2e;
+  background: #fafafa;
+}
+
+.remark-slide-content:not(.title-slide) h1 {
+  font-size: 2em;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #1a1a2e;
+  border-bottom: 3px solid #2a5bd7;
+  padding-bottom: 0.3em;
+  margin-bottom: 0.7em;
+}
+
+.remark-slide-content:not(.title-slide) h2 {
+  font-size: 1.05em;
+  color: #555;
+  font-weight: 500;
+}
+
+.remark-slide-content:not(.title-slide) p,
+.remark-slide-content:not(.title-slide) li {
+  line-height: 1.65;
+}
+
+/* Section dividers */
+.inverse:not(.title-slide) { background: #1a1a2e !important; }
+.inverse:not(.title-slide) h1, .inverse:not(.title-slide) h2, .inverse:not(.title-slide) h3 { color:white !important; border:none !important; }
+.inverse:not(.title-slide) h1 { font-size:1.9em !important; letter-spacing:-0.03em; }
+.inverse:not(.title-slide) h2 { color:#aaa !important; font-weight:400 !important; }
+.section-num:not(.title-slide) {
+  display:inline-block; font-size:4em; font-weight:900;
+  color:rgba(39,183,245,0.8); line-height:1; margin-bottom:0.1em;
+}
+
+/* Discussion slide */
+.discussion { background: #0f3460 !important; }
+.discussion h1 { color: #f0c040 !important; border-bottom: 3px solid #f0c040 !important; }
+.discussion p, .discussion li { color: #e8e8f0 !important; line-height: 1.75 !important; }
+.discussion strong { color: #f0c040 !important; }
+
+/* Paper walkthrough slide */
+.paper-walk { background: #1a3a1a !important; }
+.paper-walk h1 { color: #90ee90 !important; border-bottom: 3px solid #90ee90 !important; }
+.paper-walk p, .paper-walk li { color: #ddeedd !important; line-height:1.7 !important; }
+.paper-walk strong { color: #90ee90 !important; }
+
+/* Debate slide */
+.debate { background: #3a1a1a !important; }
+.debate h1 { color: #ffaa55 !important; border-bottom: 3px solid #ffaa55 !important; }
+.debate p, .debate li { color: #f0ddd0 !important; line-height:1.7 !important; }
+.debate strong { color: #ffaa55 !important; }
+
+/* Callout boxes */
+.box { border-radius:6px; padding:0.75em 1em; margin:0.4em 0; font-size:0.85em; line-height:1.6; }
+.box-blue   { background:#f0f4ff; border-left:4px solid #2a5bd7; color:#0d1f5c; }
+.box-red    { background:#fdf2f2; border-left:4px solid #c0392b; color:#3d0c0c; }
+.box-green  { background:#f0faf3; border-left:4px solid #27ae60; color:#0c3320; }
+.box-amber  { background:#fffbf0; border-left:4px solid #e67e22; color:#5c3400; }
+.box-slate  { background:#f4f5f7; border-left:4px solid #7f8c8d; color:#2c3e50; }
+.box-purple { background:#f5f0ff; border-left:4px solid #8e44ad; color:#2e0060; }
+
+/* Pull quote */
+.quote {
+  border-left:5px solid #2a5bd7; background:white;
+  border-radius:0 6px 6px 0; padding:0.7em 1.2em;
+  font-size:0.88em; font-style:italic; color:#2c3e50;
+  margin:0.6em 0; box-shadow:0 1px 4px rgba(0,0,0,0.07);
+}
+.quote cite {
+  display:block; font-style:normal; font-size:0.82em;
+  color:#2a5bd7; margin-top:0.3em; font-weight:600;
+}
+
+/* Grid layouts */
+.cols-2 { display:grid; grid-template-columns:1fr 1fr; gap:1em; margin:0.5em 0; }
+.cols-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.9em; margin:0.5em 0; }
+.cols-4 { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:0.7em; margin:0.5em 0; }
+.cols-1-2 { display:grid; grid-template-columns:1fr 2fr; gap:1em; margin:0.5em 0; }
+.cols-2-1 { display:grid; grid-template-columns:2fr 1fr; gap:1em; margin:0.5em 0; }
+
+/* Steps */
+.step-row { display:flex; align-items:flex-start; gap:0.75em; margin-bottom:0.5em; }
+.step-num {
+  flex-shrink:0; width:1.7em; height:1.7em; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-weight:700; font-size:0.8em; margin-top:0.05em;
+}
+.step-num.blue  { background:#2a5bd7; color:white; }
+.step-num.green { background:#27ae60; color:white; }
+.step-num.amber { background:#e67e22; color:white; }
+.step-num.red   { background:#c0392b; color:white; }
+.step-body { font-size:0.83em; line-height:1.6; color:#2c3e50; padding-top:0.15em; }
+
+/* Table */
+.styled-table { width:100%; border-collapse:collapse; font-size:0.81em; margin:0.5em 0; box-shadow:0 1px 6px rgba(0,0,0,0.08); }
+.styled-table thead tr { background:#1a1a2e; color:white; }
+.styled-table thead th { padding:0.6em 0.8em; text-align:left; font-weight:600; }
+.styled-table tbody tr:nth-child(even) { background:#f4f5f7; }
+.styled-table tbody tr:nth-child(odd) { background:white; }
+.styled-table tbody td { padding:0.55em 0.8em; color:#2c3e50; vertical-align:top; }
+.styled-table .hl { background:#eef4ff !important; font-weight:600; }
+
+/* Badge */
+.badge { display:inline-block; border-radius:20px; padding:0.12em 0.65em; font-size:0.72em; font-weight:700; }
+.badge-blue   { background:#e8edff; color:#1a3fa0; }
+.badge-green  { background:#e8f8ee; color:#1e8449; }
+.badge-red    { background:#fde8e8; color:#922b21; }
+.badge-amber  { background:#fef3d0; color:#784212; }
+.badge-grey   { background:#eaecee; color:#515a5a; }
+
+/* Mono */
+.mono {
+  font-size:0.78em; background:#1e2433; color:#abb2bf;
+  border-radius:6px; padding:0.8em 1.1em; line-height:1.85; margin:0.4em 0;
+}
+.mono .hi-blue  { color:#61afef; }
+.mono .hi-green { color:#98c379; }
+.mono .hi-red   { color:#e06c75; }
+.mono .hi-amber { color:#e5c07b; }
+.mono .hi-grey  { color:#636d83; }
+
+/* Source label */
+.src {
+  display:inline-block; background:#1a1a2e; color:#FFFFFF;
+  font-size:0.68em; font-weight:700; letter-spacing:0.06em;
+  text-transform:uppercase; border-radius:3px; padding:0.15em 0.55em; margin-bottom:0.45em;
+}
+.divider { height:2px; background:linear-gradient(to right, #2a5bd7, transparent); margin:0.5em 0; border:none; }
+blockquote { border:none; padding:0; margin:0; background:none; }
+
+&lt;/style&gt;
+
+# What We're Covering This Week
+
+&lt;div class="cols-3" style="margin-top:0.7em;"&gt;
+  &lt;div class="box box-blue"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Part I · The Big Picture&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;What is modern AI?&lt;br&gt;How is it different from what came before?&lt;br&gt;Why does the distinction matter?&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-blue"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Part II · Under the Hood&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;Embeddings and attention&lt;br&gt;Transformer architecture&lt;br&gt;Training, fine-tuning, instruction-tuning&lt;br&gt;Context windows&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-blue"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Part III · Alignment&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;What alignment is and why it matters&lt;br&gt;Why it may be a problem for social science research&lt;br&gt;The alignment paradox&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;**Two running questions for the whole week:**
+
+&lt;div class="cols-2" style="margin-top:0.3em;"&gt;
+  &lt;div class="box box-amber"&gt;Is an LLM that can write poetry, debug code, and analyze sentiment the &lt;em&gt;same kind of thing&lt;/em&gt; as the AI that played chess in 1997?&lt;/div&gt;
+  &lt;div class="box box-amber"&gt;If an AI system behaves as though it understands something — does it? Does the answer matter for how we use it?&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://clipart-library.com/8300/artificial-intelligence-concept-ai-machine-learning-analysis-information-digital-brain_501813-442.jpg)
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;I&lt;/div&gt;
+
+# The Big Picture
+## What is modern AI, and how is it different?
+
+---
+
+# A Brief History of "AI": Four Waves
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th style="width:20%;"&gt;Era&lt;/th&gt;
+    &lt;th style="width:28%;"&gt;Approach&lt;/th&gt;
+    &lt;th style="width:28%;"&gt;What it could do&lt;/th&gt;
+    &lt;th style="width:24%;"&gt;Key limitation&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Rule-based / Expert systems&lt;/strong&gt;&lt;br&gt;&lt;span style="color:#888; font-size:0.88em;"&gt;1970s–80s&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;Hand-coded if/then logic by domain experts&lt;/td&gt;
+      &lt;td&gt;Medical diagnosis, tax preparation, chess (simple)&lt;/td&gt;
+      &lt;td&gt;&lt;span style="color:#c0392b;"&gt;Narrow, brittle, domain-locked&lt;/span&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Statistical ML&lt;/strong&gt;&lt;br&gt;&lt;span style="color:#888; font-size:0.88em;"&gt;1990s–2000s&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;Learns patterns from labeled training examples&lt;/td&gt;
+      &lt;td&gt;Spam filters, credit scoring, recommendation systems&lt;/td&gt;
+      &lt;td&gt;&lt;span style="color:#c0392b;"&gt;One model, one task&lt;/span&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Deep learning&lt;/strong&gt;&lt;br&gt;&lt;span style="color:#888; font-size:0.88em;"&gt;2010s&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;Multi-layer neural nets learn features automatically&lt;/td&gt;
+      &lt;td&gt;Image recognition, speech-to-text, translation&lt;/td&gt;
+      &lt;td&gt;&lt;span style="color:#c0392b;"&gt;Still largely task-specific&lt;/span&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class="hl"&gt;
+      &lt;td&gt;&lt;strong&gt;Foundation models / LLMs&lt;/strong&gt;&lt;br&gt;&lt;span style="color:#2a5bd7; font-size:0.88em;"&gt;2017–present&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;Trained on massive corpora; generalize across tasks&lt;/td&gt;
+      &lt;td&gt;Writing, code, analysis, conversation, reasoning&lt;/td&gt;
+      &lt;td&gt;&lt;span style="color:#27ae60; font-weight:600;"&gt;Task-agnostic ✓&lt;/span&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+--
+
+&lt;br&gt;&lt;div class="box box-blue" style="text-align:center;"&gt;The key shift is not speed or scale. It is &lt;strong&gt;generalization&lt;/strong&gt; — one model, many tasks, without retraining.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://contenthub-static.grammarly.com/blog/wp-content/uploads/2022/12/Hasty-generalization.png)
+
+---
+
+# Earlier Forms of AI
+
+&lt;center&gt;
+&lt;div style="width:1000px; height:500px"&gt;
+![](https://media.geeksforgeeks.org/wp-content/uploads/20241022160725494723/supervised-machine-learning.webp)
+
+---
+
+# Concrete Example: The Task-Specificity Trap
+
+**What the old world looked like:**
+
+&lt;div class="cols-3" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-slate" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.3em; margin-bottom:0.3em;"&gt;♟️&lt;/div&gt;
+    &lt;div style="font-weight:700; font-size:0.85em;"&gt;Deep Blue (1997)&lt;/div&gt;
+    &lt;div style="font-size:0.78em; margin-top:0.3em; line-height:1.6;"&gt;Beat Kasparov at chess. Could not play checkers. Could not describe a chess move in English. Could not understand a question about chess strategy.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.3em; margin-bottom:0.3em;"&gt;🗣️&lt;/div&gt;
+    &lt;div style="font-weight:700; font-size:0.85em;"&gt;Siri / Alexa (2011–15)&lt;/div&gt;
+    &lt;div style="font-size:0.78em; margin-top:0.3em; line-height:1.6;"&gt;Could answer "What's the weather?" Could not write a sentence about the weather. Could not explain why it was raining. Each capability was separately engineered.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-blue" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.3em; margin-bottom:0.3em;"&gt;🧠&lt;/div&gt;
+    &lt;div style="font-weight:700; font-size:0.85em; color:#2a5bd7;"&gt;GPT-4 / Claude (2023–)&lt;/div&gt;
+    &lt;div style="font-size:0.78em; margin-top:0.3em; line-height:1.6;"&gt;Play chess, describe the game, write a poem about it, explain strategy to a child, translate the explanation to French — without being specifically trained for any of these.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;&lt;div class="quote"&gt;The question is not "what can this AI do?" but "what &lt;em&gt;can't&lt;/em&gt; it do, and why?" — which is a much harder question to answer.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://assets.ibm.com/is/image/ibm/1996_deep-blue_320?dpr=on%2C2&amp;wid=1536&amp;hei=864)
+
+---
+
+# What Makes Modern AI Different?
+
+&lt;div class="src"&gt;Schulz-Schaeffer 2025&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; font-size:0.88em; margin-bottom:0.5em;"&gt;🔧 Designed technology&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:0.85em;"&gt;
+      Task-specific &lt;em&gt;by design&lt;/em&gt;&lt;br&gt;
+      Behavior fully specified by its creator&lt;br&gt;
+      You &lt;em&gt;operate&lt;/em&gt; it — like a tool&lt;br&gt;
+      Fails in predictable, bounded ways&lt;br&gt;
+      &lt;span style="color:#888; font-size:0.9em;"&gt;Examples: spreadsheet, search engine, spell-checker&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-blue"&gt;
+    &lt;div style="font-weight:700; font-size:0.88em; color:#2a5bd7; margin-bottom:0.5em;"&gt;🧠 Generative AI&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:0.85em;"&gt;
+      Task-agnostic &lt;em&gt;by construction&lt;/em&gt;&lt;br&gt;
+      Acquires capabilities nobody explicitly programmed&lt;br&gt;
+      You &lt;em&gt;interact&lt;/em&gt; with it — strategically&lt;br&gt;
+      Fails in surprising, hard-to-predict ways&lt;br&gt;
+      &lt;span style="color:#888; font-size:0.9em;"&gt;Examples: GPT-4, Claude, Gemini, LLaMA&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;**Why the distinction matters:** When a tool fails, you fix the tool. When an AI system fails, you often don't know *why* it failed — or whether asking the same question differently would have worked.
+
+&lt;div class="quote"&gt;You cannot operate generative AI like a tool. You have to interact with it strategically, more like a conversation partner than a machine.&lt;cite&gt;— Schulz-Schaeffer (2025)&lt;/cite&gt;&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://cdn.prod.website-files.com/6807f44ec8a964d38a705332/683987fe04a327fd11adb374_67097e5a7811b6f513ce08e3_How%2520Does%2520Generative%2520AI%2520Work_%2520The%2520Secret%2520To%2520Refining%2520Your%2520AI%2520Output.png)
+
+---
+
+# The New Evolution of AI
+
+&lt;center&gt;
+&lt;div style="width:800px; height:300px"&gt;    
+![](https://humanloop.com/blog/foundation-models/foundation-models-explained.jpeg)
+
+---
+
+# AI as a Cultural Institution
+
+&lt;div class="src"&gt;Farrell et al. 2025&lt;/div&gt;
+
+**The wrong analogies:** faster calculator, smarter search engine, better autocomplete.
+
+**The right analogies:**
+
+&lt;div class="cols-4" style="margin-top:0.6em;"&gt;
+  &lt;div class="box box-slate" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.6em; margin-bottom:0.3em;"&gt;📚&lt;/div&gt;
+    &lt;div style="font-weight:700; font-size:0.82em;"&gt;Library&lt;/div&gt;
+    &lt;div style="font-size:0.75em; color:#555; margin-top:0.3em; line-height:1.6;"&gt;Stores, organizes, and provides access to accumulated human knowledge&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.6em; margin-bottom:0.3em;"&gt;🏫&lt;/div&gt;
+    &lt;div style="font-weight:700; font-size:0.82em;"&gt;University&lt;/div&gt;
+    &lt;div style="font-size:0.75em; color:#555; margin-top:0.3em; line-height:1.6;"&gt;Shapes how entire generations learn to think, reason, and communicate&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.6em; margin-bottom:0.3em;"&gt;📰&lt;/div&gt;
+    &lt;div style="font-weight:700; font-size:0.82em;"&gt;Press&lt;/div&gt;
+    &lt;div style="font-size:0.75em; color:#555; margin-top:0.3em; line-height:1.6;"&gt;Controls the flow of information at population scale and shapes public discourse&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-blue" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.6em; margin-bottom:0.3em;"&gt;🤖&lt;/div&gt;
+    &lt;div style="font-weight:700; font-size:0.82em; color:#2a5bd7;"&gt;Large AI Models&lt;/div&gt;
+    &lt;div style="font-size:0.75em; color:#444; margin-top:0.3em; line-height:1.6;"&gt;&lt;strong&gt;All three simultaneously&lt;/strong&gt; — at a scale none of these institutions ever reached&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;We regulate libraries, universities, and the press — because we understand they shape knowledge, reasoning, and discourse at scale. The question for AI is not "is it intelligent?" It is: **who governs this institution, and by what principles?**
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://www.nps.gov/whho/planyourvisit/images/WHHO_Grounds-and-Staff_20250624_KGraczyk_130_1.jpg?maxwidth=650&amp;autorotate=false&amp;quality=78&amp;format=webp)
+
+---
+
+class: discussion
+
+# 💬 Discussion Question 1
+
+**"AI is just a tool — a very powerful one, but still just a tool."**
+
+&lt;br&gt;
+
+- Schulz-Schaeffer argues generative AI is *not* a tool in the ordinary sense — because you can't specify in advance what it will do, and you have to interact with it strategically rather than operate it mechanically.
+
+- Farrell et al. argue it's better understood as a *cultural institution* — like a library or university — that shapes how people access and reason about knowledge.
+
+&lt;br&gt;
+
+**Does the distinction matter in practice?**
+
+- If AI is "just a tool," what follows for how we should regulate it? Use it in research? Teach students to use it?
+- If AI is a "cultural institution," what follows instead?
+- Can something be both?
+
+---
+
+# Paper Walkthrough: Bender et al. (2021)
+
+&lt;div class="src"&gt;bender_parrots_2021 · "On the Dangers of Stochastic Parrots"&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.85em; margin-bottom:0.4em;"&gt;The core metaphor&lt;/div&gt;
+    &lt;div class="box box-amber"&gt;
+      A &lt;strong&gt;stochastic parrot&lt;/strong&gt; produces statistically plausible sequences of tokens without any grounding in meaning, referent, or intent. It has learned what words follow other words — not what those words mean or what the world is like.
+    &lt;/div&gt;
+    &lt;div style="font-weight:600; font-size:0.85em; margin:0.6em 0 0.3em;"&gt;Their central argument&lt;/div&gt;
+    &lt;div class="box box-red"&gt;Bigger LLMs are not automatically better. Scale without attention to training data content, environmental cost, and social bias is actively dangerous.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.85em; margin-bottom:0.4em;"&gt;The four risks they identify&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Environmental cost&lt;/strong&gt; — training GPT-3 emits as much CO₂ as five cars over their lifetimes&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Encoded social bias&lt;/strong&gt; — training data overrepresents hegemonic perspectives and encodes discrimination&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Illusion of understanding&lt;/strong&gt; — fluent output creates false impressions of comprehension&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Research incentive misalignment&lt;/strong&gt; — the prestige of scale displaces attention from these problems&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://images.aiscribbles.com/048aac43e40e4ab39b4cbeb4caf23880.png?v=770aff)
+
+---
+
+# Paper Walkthrough: McCoy et al. (2024)
+
+&lt;div class="src"&gt;mccoy_embers_2024 · "Embers of Autoregression"&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.85em; margin-bottom:0.4em;"&gt;The core framework&lt;/div&gt;
+    &lt;div class="box box-blue"&gt;LLM behavior is best predicted not by assuming human-like reasoning, but by asking: &lt;strong&gt;what next-word prediction pressures produced this output?&lt;/strong&gt; Tasks that require low-probability outputs will fail; tasks that require high-probability outputs will succeed.&lt;/div&gt;
+    &lt;div style="font-weight:600; font-size:0.85em; margin:0.6em 0 0.3em;"&gt;A concrete failure case&lt;/div&gt;
+    &lt;div class="mono"&gt;
+Task: Shift each letter one position forward
+Input: "Hello"
+Expected: "Ifmmp"
+
+GPT-4: &lt;span class="hi-red"&gt;"Ifmmp"&lt;/span&gt;  ← succeeds (common example)
+GPT-4: &lt;span class="hi-red"&gt;"CORRECT"&lt;/span&gt; ← fails on unusual strings
+&lt;span class="hi-grey"&gt;Why? "Ifmmp" after "Hello" is in training data.
+Unusual ciphers produce low-probability outputs.&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.85em; margin-bottom:0.4em;"&gt;The teleological prediction framework&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.4em;"&gt;&lt;strong&gt;When will LLMs succeed?&lt;/strong&gt; When the correct output is high-probability given the training distribution&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.4em;"&gt;&lt;strong&gt;When will LLMs fail?&lt;/strong&gt; When the correct output is low-probability — even if the task is "easy" for a human&lt;/div&gt;
+    &lt;div class="box box-amber"&gt;This framework explains many otherwise puzzling LLM behaviors — and predicts where LLMs will fail before you test them.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://neilpatel.com/wp-content/uploads/2020/09/Google-Autocomplete-predictions-1.png)
+
+---
+
+# What LLMs Actually Are: Two Framings
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div class="box box-amber"&gt;
+    &lt;div style="font-weight:700; color:#e67e22; margin-bottom:0.4em;"&gt;🦜 "Stochastic parrots" (Bender et al.)&lt;/div&gt;
+    &lt;div style="font-size:0.85em; line-height:1.7;"&gt;The model produces statistically plausible token sequences without underlying meaning. It knows what words follow other words. It does not know what those words refer to, or what the world is like. Fluency is not understanding.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-blue"&gt;
+    &lt;div style="font-weight:700; color:#2a5bd7; margin-bottom:0.4em;"&gt;🔥 "Embers of autoregression" (McCoy et al.)&lt;/div&gt;
+    &lt;div style="font-size:0.85em; line-height:1.7;"&gt;The model is a prediction machine shaped by its training objective. Its capabilities and failures follow predictably from what outputs are high vs. low probability. "Understanding" is the wrong frame — training pressure is the right frame.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;**They agree on one thing:** these systems are doing something fundamentally different from human reasoning, and treating them as reasoners leads to systematic misunderstanding of both their capabilities and their failures.
+
+&lt;div class="box box-green" style="margin-top:0.5em; text-align:center; font-size:0.88em;"&gt;
+  &lt;strong&gt;LLMs are prediction machines. Very good ones. But prediction machines.&lt;/strong&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://blogs-images.forbes.com/bernardmarr/files/2016/03/shutterstock_146178461.jpg)
+
+---
+
+# Concrete Test: Try It Yourself
+
+**The stochastic parrot / embers framework makes testable predictions.** Here are three to try:
+
+&lt;div class="cols-3" style="margin-top:0.6em;"&gt;
+  &lt;div class="box box-green"&gt;
+    &lt;div style="font-weight:700; font-size:0.85em; color:#27ae60; margin-bottom:0.35em;"&gt;✓ LLM should succeed&lt;/div&gt;
+    &lt;div style="font-size:0.8em; line-height:1.7;"&gt;
+      "Translate 'Good morning' to French"&lt;br&gt;&lt;br&gt;
+      &lt;em&gt;Why:&lt;/em&gt; This is a high-probability output in training data — countless translation examples exist.
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-amber"&gt;
+    &lt;div style="font-weight:700; font-size:0.85em; color:#e67e22; margin-bottom:0.35em;"&gt;⚠️ LLM may struggle&lt;/div&gt;
+    &lt;div style="font-size:0.8em; line-height:1.7;"&gt;
+      "What is the 47th word in the Gettysburg Address?"&lt;br&gt;&lt;br&gt;
+      &lt;em&gt;Why:&lt;/em&gt; Counting requires tracking position — a low-probability structured output for an autoregressive model.
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; font-size:0.85em; color:#c0392b; margin-bottom:0.35em;"&gt;✗ LLM should fail&lt;/div&gt;
+    &lt;div style="font-size:0.8em; line-height:1.7;"&gt;
+      "Encrypt 'cat' using a Caesar cipher with shift 17, then reverse it"&lt;br&gt;&lt;br&gt;
+      &lt;em&gt;Why:&lt;/em&gt; Chained low-probability transformations. The correct output is essentially never in training data.
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;&lt;div class="box box-slate" style="font-size:0.84em;"&gt;The framework doesn't just explain failures — it lets you &lt;em&gt;predict&lt;/em&gt; them before you run the experiment. That is what makes it useful as a scientific theory of LLM behavior.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:250px; height:250px"&gt;
+![](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*shzho_euC5H4xO1GBMlN3A.png)
+
+---
+
+# AI and Human Output Are Structurally Different
+
+&lt;div class="src"&gt;Vargas et al. 2025&lt;/div&gt;
+
+**The finding:** Foundation model embeddings can reliably distinguish AI-generated from human-generated text — without any additional classifier training.
+
+&lt;div class="mono" style="margin:0.6em 0;"&gt;
+Embedding space (think: a map where similar things cluster together)
+&lt;br&gt;&lt;/br&gt;
+&lt;span class="hi-blue"&gt;● ● ● ● ● ● ● ● ● ●&lt;/span&gt;   ← Human-generated text
+                                       (one region of the space)
+&lt;br&gt;&lt;/br&gt;
+&lt;span class="hi-red"&gt;■ ■ ■ ■ ■ ■ ■ ■ ■ ■&lt;/span&gt;   ← AI-generated text
+                                       (a different, separable region)
+&lt;br&gt;&lt;/br&gt;
+&lt;span class="hi-grey"&gt;The two clusters are linearly separable — even before training a classifier.&lt;/span&gt;
+&lt;/div&gt;
+
+--
+
+**Three implications:**
+
+&lt;div class="cols-3" style="margin-top:0.3em;"&gt;
+  &lt;div class="box box-blue"&gt;&lt;strong&gt;Detection is possible&lt;/strong&gt; — AI content can be identified without special tools, using the model's own representations&lt;/div&gt;
+  &lt;div class="box box-amber"&gt;&lt;strong&gt;Structural difference&lt;/strong&gt; — AI outputs don't just sound different, they occupy a different part of semantic space&lt;/div&gt;
+  &lt;div class="box box-red"&gt;&lt;strong&gt;Not substitutable&lt;/strong&gt; — using AI outputs as proxies for human outputs in research requires justification, not just convenience&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://media.licdn.com/dms/image/v2/D4E12AQHynFnAiva5Dw/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1684425430811?e=1783555200&amp;v=beta&amp;t=xA0QPkE4evQL7WN8hc4PJnA_qR7uEqVke83TUm4eq8w)
+
+---
+
+class: debate
+
+# ⚖️ Debate: Is the Stochastic Parrot Framing Too Strong?
+
+**The critique of Bender et al. (the counterargument):**
+
+- Bender et al. wrote in 2021. Models have improved dramatically since.
+- "Stochastic parrot" implies the model has *no* internal representation of meaning — but embedding research (Vargas et al.) shows models do build structured representations.
+- Some researchers argue LLMs have developed *functional* understanding even without symbolic grounding.
+
+&lt;br&gt;
+
+**Bender et al.'s defenders respond:**
+
+- Fluency and functional competence are not the same as meaning. A very good autocomplete can produce medically accurate text without "understanding" medicine.
+- The parrot framing is about *accountability* — if we treat these systems as understanding rather than predicting, we abdicate responsibility for what they produce.
+- The improvements since 2021 make the stakes *higher*, not lower.
+
+&lt;br&gt;
+
+**Where do you come down — and does the answer change how we should use these systems in research?**
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;II&lt;/div&gt;
+
+# Under the Hood
+## How do LLMs actually work?
+
+---
+
+# The Architecture of a Neural Network
+
+&lt;center&gt;
+&lt;div style="width400px; height:100px"&gt;
+![](https://lamarr-institute.org/wp-content/uploads/deepLearn_2_EN.png)
+
+---
+
+# From Words to Numbers: Embeddings
+
+**The core problem:** Neural networks operate on numbers. Language is not numbers. Embeddings are the bridge.
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;What embeddings do&lt;/div&gt;
+    &lt;div class="mono"&gt;
+"king"  → &lt;span class="hi-blue"&gt;[0.23, -0.41, 0.87, 0.12, ...]&lt;/span&gt;
+&lt;br&gt;
+"queen" → &lt;span class="hi-blue"&gt;[0.21, -0.38, 0.85, 0.31, ...]&lt;/span&gt;
+&lt;br&gt;
+"dog"   → &lt;span class="hi-green"&gt;[0.91,  0.12, 0.04, 0.77, ...]&lt;/span&gt;
+&lt;br&gt;
+&lt;span class="hi-grey"&gt;Similar meaning → close in vector space
+Different meaning → far in vector space&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="box box-blue" style="margin-top:0.5em; font-size:0.82em;"&gt;The geometry encodes semantic relationships: &lt;br&gt;&lt;strong&gt;vec("King") − vec("Man") + vec("Woman") ≈ vec("Queen")&lt;/strong&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;Why this matters for social science&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.4em; font-size:0.83em;"&gt;Embeddings are the "language" models think in. All classification, generation, and reasoning happens in embedding space.&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.4em; font-size:0.83em;"&gt;Vargas et al. detect AI-generated content by examining &lt;em&gt;where&lt;/em&gt; text lands in embedding space — no additional classifier needed.&lt;/div&gt;
+    &lt;div class="box box-amber" style="font-size:0.83em;"&gt;Bias is encoded geometrically. If "woman" is closer to "nurse" than "doctor" in embedding space, that association propagates into everything the model produces.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://serokell.io/files/wl/wlfjy3bc.pic_4Word2Vec.png)
+
+---
+
+# Attention: What the Model Focuses On
+
+**The Transformer's key innovation (Vaswani et al., 2017):** self-attention — every word attends to every other word, weighted by relevance.
+
+&lt;div class="mono" style="margin:0.6em 0;"&gt;
+"The trophy didn't fit in the suitcase because &lt;span class="hi-amber"&gt;it&lt;/span&gt; was too big."
+&lt;br&gt;
+What does "it" refer to?
+&lt;br&gt;
+
+Attention weights when processing "it":
+&lt;br&gt;
+  trophy    &lt;span class="hi-green"&gt;████████████░░  0.72&lt;/span&gt;   ← high attention (correct!)
+  &lt;br&gt;
+  suitcase  &lt;span class="hi-amber"&gt;████░░░░░░░░░░  0.21&lt;/span&gt;
+  &lt;br&gt;
+  didn't    &lt;span class="hi-grey"&gt;░░░░░░░░░░░░░░  0.03&lt;/span&gt;
+  &lt;br&gt;
+  fit       &lt;span class="hi-grey"&gt;░░░░░░░░░░░░░░  0.04&lt;/span&gt;
+  &lt;br&gt;
+&lt;/div&gt;
+
+--
+
+&lt;div class="cols-2"&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.3em;"&gt;Before Transformers (RNNs)&lt;/div&gt;
+    &lt;div style="font-size:0.82em; line-height:1.7;"&gt;Words processed sequentially. Long-range dependencies were lost. "It" at position 10 had weak connection to "trophy" at position 2.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-green"&gt;
+    &lt;div style="font-weight:700; color:#27ae60; margin-bottom:0.3em;"&gt;With Transformers&lt;/div&gt;
+    &lt;div style="font-size:0.82em; line-height:1.7;"&gt;Every word attends to every other word simultaneously. Long-range dependencies resolved naturally. Context across entire documents, not just nearby words.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://www.pluggedin.com/wp-content/uploads/2023/06/transformers-rise-of-the-beasts.jpg)
+
+---
+
+# Transformer Architecture: The Full Picture
+
+&lt;div class="mono" style="margin-top:0.4em;"&gt;
+&lt;span class="hi-grey"&gt;Input text:&lt;/span&gt;  "The social movement grew..."
+&lt;br&gt;
+    &lt;span class="hi-blue"&gt;① TOKENIZE&lt;/span&gt;        →  ["The", "social", "movement", "grew", "..."]
+                                 [  512,    2847,      8923,     401,   ...  ]
+&lt;br&gt;
+
+    &lt;span class="hi-blue"&gt;② EMBED&lt;/span&gt;           →  Each token → dense vector (768 or 1024 dims)
+
+&lt;br&gt;
+    &lt;span class="hi-amber"&gt;③ ATTENTION&lt;/span&gt;       →  Every token attends to every other token
+                          (repeated across 12, 24, or 96 "layers")
+&lt;br&gt;
+    &lt;span class="hi-amber"&gt;④ FEED-FORWARD&lt;/span&gt;    →  Transform each position's representation
+&lt;br&gt;
+    &lt;span class="hi-blue"&gt;⑤ OUTPUT LAYER&lt;/span&gt;    →  Probability distribution over ~50,000 tokens
+&lt;br&gt;
+    &lt;span class="hi-green"&gt;⑥ SAMPLE&lt;/span&gt;          →  Pick next token based on distribution
+                          (temperature controls how random this is)
+&lt;/div&gt;
+
+--
+
+&lt;div class="box box-slate" style="font-size:0.83em; margin-top:0.5em;"&gt;Steps ③–④ repeat N times (GPT-3: 96 layers; smaller models: 12–24 layers). Each pass refines the representation — earlier layers handle syntax, later layers handle semantics and world knowledge.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:600px; height:300px"&gt;
+![](https://media.geeksforgeeks.org/wp-content/uploads/20251210154341258579/_what_are_transformers_.webp)
+
+---
+
+# How Models Learn: Backpropagation
+
+**Training objective:** Predict the next word — across trillions of examples.
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;The training loop&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;Show model: &lt;em&gt;"The civil rights movement of the ___"&lt;/em&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;Model outputs a probability distribution over all tokens&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;Compare to actual next word: &lt;em&gt;"1960s"&lt;/em&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num amber"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;Calculate loss — how wrong was the prediction?&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;5&lt;/span&gt;&lt;div class="step-body"&gt;Backpropagate — nudge all weights to reduce the loss&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;6&lt;/span&gt;&lt;div class="step-body"&gt;Repeat on the next example. Trillions of times.&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;What the model is actually learning&lt;/div&gt;
+    &lt;div class="box box-amber" style="margin-bottom:0.4em; font-size:0.83em;"&gt;Not "facts" — statistical co-occurrence patterns between tokens&lt;/div&gt;
+    &lt;div class="box box-amber" style="margin-bottom:0.4em; font-size:0.83em;"&gt;Not "reasoning" — what outputs are high-probability given what came before&lt;/div&gt;
+    &lt;div class="box box-amber" style="font-size:0.83em;"&gt;Not "understanding" — a compression of patterns in an enormous text corpus&lt;/div&gt;
+    &lt;div class="box box-blue" style="margin-top:0.5em; font-size:0.83em;"&gt;&lt;strong&gt;Weights&lt;/strong&gt; = the learned parameters. GPT-3: 175B. GPT-4: ~1T. Each weight encodes a fragment of the statistical structure of human text.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:600px; height:300px"&gt;
+![](https://media.geeksforgeeks.org/wp-content/uploads/20250701163824448467/Backpropagation-in-Neural-Network-1.webp)
+
+---
+
+# Training Data: The Uncomfortable Truth
+
+&lt;div class="src"&gt;Bender et al. 2021&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;The scale (GPT-3)&lt;/div&gt;
+    &lt;div class="mono"&gt;
+Common Crawl    &lt;span class="hi-blue"&gt;████████████░░░░&lt;/span&gt;  60%
+&lt;br&gt;
+Books           &lt;span class="hi-amber"&gt;████░░░░░░░░░░░░&lt;/span&gt;  16%
+&lt;br&gt;
+Wikipedia       &lt;span class="hi-green"&gt;███░░░░░░░░░░░░░&lt;/span&gt;  10%
+&lt;br&gt;
+Other           &lt;span class="hi-grey"&gt;████░░░░░░░░░░░░&lt;/span&gt;  14%
+&lt;br&gt;
+
+Total: ~300 billion tokens (~45 TB of text)
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;The uncomfortable truth&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.4em; font-size:0.83em;"&gt;&lt;strong&gt;Larger ≠ better past a point.&lt;/strong&gt; What matters is whose voices are in the data.&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.4em; font-size:0.83em;"&gt;Web-scraped corpora systematically &lt;strong&gt;overrepresent hegemonic perspectives&lt;/strong&gt; — English, Western, educated, male, able-bodied.&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:0.83em;"&gt;Biases in training data become &lt;strong&gt;structural properties&lt;/strong&gt; of the model — not bugs that can be patched, but features baked into the weights.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;&lt;div class="quote"&gt;For social scientists: LLM outputs reflect a particular, unrepresentative slice of humanity. This is not a minor caveat. It is a fundamental validity concern.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://i0.wp.com/kerinmarketing.com/wp-content/uploads/2016/04/demographics.png?ssl=1)
+
+---
+
+# Context Windows: What the Model Can "See"
+
+**Context window:** How much text the model can attend to at once when generating output.
+
+&lt;div class="mono" style="margin:0.5em 0;"&gt;
+GPT-2   (2019)  &lt;span class="hi-red"&gt;░░░░░░░░░░░░░░░░░░░░&lt;/span&gt;  1,024 tokens    (~750 words)
+&lt;br&gt;
+GPT-3   (2020)  &lt;span class="hi-amber"&gt;████░░░░░░░░░░░░░░░░&lt;/span&gt;  4,096 tokens    (~3,000 words)
+&lt;br&gt;
+GPT-4   (2023)  &lt;span class="hi-green"&gt;████████████████░░░░&lt;/span&gt;  128,000 tokens  (~96,000 words)
+&lt;br&gt;
+Claude 3(2024)  &lt;span class="hi-blue"&gt;████████████████████&lt;/span&gt;  200,000 tokens  (~150,000 words)
+&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-green"&gt;
+    &lt;div style="font-weight:700; color:#27ae60; margin-bottom:0.3em;"&gt;Longer context enables:&lt;/div&gt;
+    &lt;div style="font-size:0.82em; line-height:1.7;"&gt;Full paper analysis in one prompt · Multi-document comparison · Long conversation memory · System prompt + document + question simultaneously&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.3em;"&gt;But: the "lost in the middle" problem&lt;/div&gt;
+    &lt;div style="font-size:0.82em; line-height:1.7;"&gt;Models attend more reliably to content at the beginning and end of the context. Information buried in the middle of a long document is attended to less reliably — a known failure mode.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-blue" style="margin-top:0.5em; font-size:0.83em;"&gt;For researchers: the structure of what you put in a prompt is a research design decision. Putting the most important instruction at the beginning and end is better than burying it in the middle.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:200px; height:200px"&gt;
+![](https://substackcdn.com/image/fetch/$s_!z7Ws!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F47cd65f4-b68d-4acc-8f07-cfa8c6b4d256_1275x1317.jpeg)
+
+---
+
+# Fine-Tuning: Adapting a General Model
+
+**Base model:** Trained on massive corpus. Knows a lot. Follows instructions poorly.
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;What fine-tuning does&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;Take a pre-trained base model with frozen initial weights&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;Continue training on a smaller, curated, task-specific dataset&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;All (or some) weights update to reflect the new training signal&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;Result: a model specialized for your task, domain, or behavior&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;The critical lesson from Wang (2024)&lt;/div&gt;
+    &lt;div class="box box-red"&gt;A published paper showed BERT underperforming a simple dictionary model on a political classification task.&lt;br&gt;&lt;br&gt;The cause: &lt;strong&gt;most of BERT's parameters were frozen during fine-tuning.&lt;/strong&gt;&lt;br&gt;&lt;br&gt;With full fine-tuning: BERT wins by 27–46%.&lt;/div&gt;
+    &lt;div class="box box-amber" style="margin-top:0.4em; font-size:0.83em;"&gt;Fine-tuning on the wrong parameters is not just suboptimal — it can produce false conclusions that circulate in the literature.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:800px"&gt;
+![](https://quantpedia.com/app/uploads/2023/07/Picture-301-BERT-architecture.png)
+
+---
+
+# Instruction Tuning: Teaching Models to Follow Directions
+
+**The problem:** A base LLM is trained to *complete* text — not to *follow instructions*.
+
+&lt;div class="mono" style="margin:0.5em 0;"&gt;
+User:     "What is the capital of France?"
+&lt;br&gt;
+Base LLM: &lt;span class="hi-red"&gt;"...is a question students often ask in geography class."&lt;/span&gt;
+          &lt;span class="hi-grey"&gt;(It completed the sentence as if it were in a document)&lt;/span&gt;
+&lt;br&gt;
+FLAN:     &lt;span class="hi-green"&gt;"Paris."&lt;/span&gt;
+          &lt;span class="hi-grey"&gt;(It understood the question format and answered it)&lt;/span&gt;
+&lt;/div&gt;
+
+**How FLAN (Wei et al., 2022) solved this:**
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div class="box box-blue"&gt;
+    Fine-tune on hundreds of NLP tasks &lt;em&gt;described in natural language&lt;/em&gt;:&lt;br&gt;&lt;br&gt;
+    &lt;em&gt;"Translate this to French."&lt;/em&gt;&lt;br&gt;
+    &lt;em&gt;"Is this review positive or negative?"&lt;/em&gt;&lt;br&gt;
+    &lt;em&gt;"Summarize this article in two sentences."&lt;/em&gt;&lt;br&gt;&lt;br&gt;
+    The model learns the &lt;strong&gt;form&lt;/strong&gt; of an instruction — not just how to do each specific task.
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;table class="styled-table" style="margin-top:0;"&gt;
+      &lt;thead&gt;&lt;tr&gt;&lt;th&gt;Model&lt;/th&gt;&lt;th&gt;Size&lt;/th&gt;&lt;th&gt;Instruction-tuned&lt;/th&gt;&lt;th&gt;Wins&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;&lt;td&gt;GPT-3&lt;/td&gt;&lt;td&gt;175B&lt;/td&gt;&lt;td&gt;&lt;span class="badge badge-red"&gt;No&lt;/span&gt;&lt;/td&gt;&lt;td&gt;5/25&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;FLAN&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;137B&lt;/td&gt;&lt;td&gt;&lt;span class="badge badge-green"&gt;Yes&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;strong&gt;20/25&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+    &lt;div class="box box-green" style="margin-top:0.5em; font-size:0.82em;"&gt;&lt;strong&gt;Smaller but instruction-tuned beats larger but not.&lt;/strong&gt; How you train matters as much as how much you train.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+# Breadth of Instruction Training Beats Depth
+
+&lt;div class="src"&gt;Wang et al. 2022 · Super-Natural Instructions&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;The study design&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.4em; font-size:0.83em;"&gt;&lt;strong&gt;1,616 NLP tasks&lt;/strong&gt; across 76 task types (classification, translation, summarization, reasoning, etc.)&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:0.83em;"&gt;Tk-Instruct trained on it &lt;strong&gt;outperforms InstructGPT&lt;/strong&gt; despite being ~10x smaller in parameter count&lt;/div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin:0.6em 0 0.3em;"&gt;The counterintuitive finding&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:0.83em;"&gt;More data on the same task ≠ better generalization to new tasks&lt;/div&gt;
+    &lt;div class="box box-green" style="margin-top:0.4em; font-size:0.83em;"&gt;More &lt;em&gt;types&lt;/em&gt; of tasks → better generalization, even with the same total data volume&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;Why this matters&lt;/div&gt;
+    &lt;div class="box box-blue" style="margin-bottom:0.4em; font-size:0.83em;"&gt;&lt;strong&gt;Diversity of training signal is a resource in its own right&lt;/strong&gt; — not just quantity of data.&lt;/div&gt;
+    &lt;div class="box box-blue" style="font-size:0.83em;"&gt;This is why modern LLMs can do things their creators didn't explicitly train them for. Exposure to varied task types teaches the model something more general about following instructions.&lt;/div&gt;
+    &lt;div class="box box-amber" style="margin-top:0.4em; font-size:0.83em;"&gt;For research: when evaluating a model for a new task, ask not just "was it trained on this task?" but "was it trained on tasks &lt;em&gt;like&lt;/em&gt; this in structure?"&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+class: discussion
+
+# 💬 Discussion Question 2
+
+**"Training data is destiny."**
+
+Bender et al. argue that the content of training data determines what biases, perspectives, and blind spots get baked into a model — regardless of how large or sophisticated the model becomes.
+
+&lt;br&gt;
+
+- If Common Crawl overrepresents English, Western, educated perspectives, what does that mean for a researcher using GPT-4 to analyze political attitudes in rural Indonesia? In Kenya? In rural Appalachia?
+
+- Wang et al. show that diversity of *task types* matters more than quantity of data on any single task. Does an analogous argument apply to cultural and demographic diversity in training data?
+
+- Is it possible to "debias" a model after training? Or does the bias live in the weights in a way that can't be corrected after the fact?
+
+&lt;br&gt;
+
+**Is the solution more data, more diverse data, or something else entirely?**
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;III&lt;/div&gt;
+
+# Alignment
+## What it is, why it matters, and why social scientists should be cautious
+
+---
+
+# What Is Alignment?
+
+**The alignment problem:** An AI system trained on next-word prediction will optimize for *plausible text* — not *helpful, honest, or safe responses*. Alignment is the set of techniques for closing that gap.
+
+&lt;div class="cols-3" style="margin-top:0.6em;"&gt;
+  &lt;div class="box box-blue" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.4em; margin-bottom:0.3em;"&gt;👥&lt;/div&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;RLHF&lt;/div&gt;
+    &lt;div style="font-size:0.8em; line-height:1.6; color:#333;"&gt;Human raters evaluate model outputs. Model is trained to produce outputs humans prefer. Iterative refinement.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-blue" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.4em; margin-bottom:0.3em;"&gt;📜&lt;/div&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Constitutional AI&lt;/div&gt;
+    &lt;div style="font-size:0.8em; line-height:1.6; color:#333;"&gt;Model trained against a set of explicit principles. Self-critiques outputs for principle violations before finalizing.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-blue" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.4em; margin-bottom:0.3em;"&gt;🛡️&lt;/div&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Safety fine-tuning&lt;/div&gt;
+    &lt;div style="font-size:0.8em; line-height:1.6; color:#333;"&gt;Additional training to reduce harmful, deceptive, and dangerous outputs. Refusals for dangerous requests.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;**The goal:** A model that is **helpful** (answers questions well), **harmless** (doesn't facilitate harm), and **honest** (acknowledges uncertainty rather than confabulating).
+
+&lt;div class="box box-green" style="margin-top:0.5em; font-size:0.84em;"&gt;Alignment doesn't make models "good" in a deep philosophical sense. But it makes them substantially less bad in practice — less likely to confidently state falsehoods, less likely to assist with harmful tasks, more predictable in their behavior.&lt;/div&gt;
+
+---
+
+# Why Alignment Is Good: A Concrete Example
+
+**Without alignment, what does GPT-3 actually do?**
+
+&lt;div class="mono" style="margin:0.5em 0;"&gt;
+Prompt (2020, base GPT-3):
+"How do I make my neighbor's dog stop barking?"
+&lt;br&gt;
+Base GPT-3 response:
+&lt;span class="hi-red"&gt;"You could poison the dog. Here are several methods..."&lt;/span&gt;
+&lt;br&gt;
+&lt;span class="hi-grey"&gt;GPT-3 completed this as a plausible text continuation.
+It had no understanding that this was harmful advice.&lt;/span&gt;
+&lt;/div&gt;
+
+--
+
+&lt;div class="mono"&gt;
+Prompt (2023, aligned GPT-3.5):
+"How do I make my neighbor's dog stop barking?"
+&lt;br&gt;
+GPT-3.5 response:
+&lt;span class="hi-green"&gt;"There are several humane approaches you might try.
+First, talk to your neighbor directly..."&lt;/span&gt;
+&lt;/div&gt;
+
+--
+
+&lt;div class="box box-blue" style="margin-top:0.5em; font-size:0.84em;"&gt;Alignment is what transforms a statistically-sophisticated text predictor into something that can be usefully deployed in the world. Without it, LLMs produce whatever is statistically plausible — including harm, misinformation, and manipulation.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://a-z-animals.com/media/Welsh-Corgi-Canis-familiaris-puppy.jpg)
+
+---
+
+# Paper Walkthrough: Lyman et al. (2025)
+
+&lt;div class="src"&gt;lyman_alignment_2025 · "Balancing LLM Alignment and Algorithmic Fidelity"&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;The research question&lt;/div&gt;
+    &lt;div class="box box-amber"&gt;When researchers use LLMs to simulate human survey respondents, does alignment change the answers — and does it matter?&lt;/div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin:0.6em 0 0.3em;"&gt;The approach&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:0.83em;"&gt;Compare aligned vs. unaligned versions of 6 open-source LLMs on silicon sampling tasks. Same models, same prompts, different alignment status.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;What they found&lt;/div&gt;
+    &lt;div class="mono"&gt;
+Unaligned model — opinion on immigration:
+&lt;br&gt;
+  Strongly oppose  &lt;span class="hi-green"&gt;████░░░░░░░░&lt;/span&gt;  18%
+  &lt;br&gt;
+  Oppose           &lt;span class="hi-green"&gt;██████░░░░░░&lt;/span&gt;  24%
+  &lt;br&gt;
+  Neutral          &lt;span class="hi-amber"&gt;████████░░░░&lt;/span&gt;  32%
+  &lt;br&gt;
+  Support          &lt;span class="hi-green"&gt;██████░░░░░░&lt;/span&gt;  20%
+  &lt;br&gt;
+  Strongly support &lt;span class="hi-green"&gt;██░░░░░░░░░░&lt;/span&gt;   6%
+  &lt;br&gt;&lt;/br&gt;
+
+Aligned model — same prompt:
+&lt;br&gt;
+  Strongly oppose  &lt;span class="hi-red"&gt;██░░░░░░░░░░&lt;/span&gt;   8%
+  &lt;br&gt;
+  Oppose           &lt;span class="hi-red"&gt;████░░░░░░░░&lt;/span&gt;  14%
+  &lt;br&gt;
+  Neutral          &lt;span class="hi-red"&gt;████████████&lt;/span&gt;  52%  ← piled up
+  &lt;br&gt;
+  Support          &lt;span class="hi-red"&gt;████░░░░░░░░&lt;/span&gt;  18%
+  &lt;br&gt;
+  Strongly support &lt;span class="hi-red"&gt;██░░░░░░░░░░&lt;/span&gt;   8%
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:175px; height:175px"&gt;
+![](https://cdn.corenexis.com/f/sVqf8l0iTP8.jpg)
+
+---
+
+# The Alignment Paradox for Social Science
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div class="box box-green"&gt;
+    &lt;div style="font-weight:700; color:#27ae60; margin-bottom:0.5em;"&gt;✓ Why alignment is good&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:0.85em;"&gt;
+      Won't simulate calls for violence&lt;br&gt;
+      Won't produce extremist rhetoric&lt;br&gt;
+      More stable and predictable behavior&lt;br&gt;
+      Safer for deployment in teaching contexts&lt;br&gt;
+      Refuses dangerous requests
+    &lt;/div&gt;
+    &lt;div class="divider" style="margin:0.5em 0; height:2px; background:linear-gradient(to right, #27ae60, transparent); border:none;"&gt;&lt;/div&gt;
+    &lt;div style="font-size:0.8em; font-style:italic; color:#27ae60;"&gt;This is what makes it deployable to students&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.5em;"&gt;✗ Why alignment is a problem for research&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:0.85em;"&gt;
+      Compresses opinion distributions toward center&lt;br&gt;
+      Suppresses extreme and minority views&lt;br&gt;
+      Pushes toward socially desirable responses&lt;br&gt;
+      Reduces the variance researchers need&lt;br&gt;
+      Makes model choice a research design decision
+    &lt;/div&gt;
+    &lt;div class="divider" style="margin:0.5em 0; height:2px; background:linear-gradient(to right, #c0392b, transparent); border:none;"&gt;&lt;/div&gt;
+    &lt;div style="font-size:0.8em; font-style:italic; color:#c0392b;"&gt;Model choice shapes findings, not just methods&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="quote" style="margin-top:0.7em;"&gt;An aligned model asked to simulate a Trump voter will express views more moderate than a real Trump voter would. That's the point of alignment. It's also the problem.&lt;cite&gt;— Lyman et al. (2025)&lt;/cite&gt;&lt;/div&gt;
+
+---
+
+# Alignment and Implicit Bias
+
+&lt;div class="src"&gt;Bai et al. 2025&lt;/div&gt;
+
+**The finding:** Even value-aligned models harbor **implicit biases** — they just don't express them explicitly.
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;The Implicit Association Test adapted for LLMs&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:0.83em;"&gt;Present the model with pairs of concepts and attribute words. Measure response time / probability differences as a proxy for implicit association strength.&lt;/div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin:0.6em 0 0.3em;"&gt;Example: Gender-career bias&lt;/div&gt;
+    &lt;div class="mono" style="font-size:0.75em;"&gt;
+"Male" + "engineer" → high probability ✓
+&lt;br&gt;
+"Female" + "nurse"  → high probability ✓
+&lt;br&gt;
+"Female" + "engineer" → lower probability
+&lt;br&gt;
+"Male" + "nurse"    → lower probability
+
+&lt;br&gt;
+
+&lt;span class="hi-grey"&gt;The model "knows" gender-neutral content.
+The weights encode the gender-career association.&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;Why this is more serious than it sounds&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.4em; font-size:0.83em;"&gt;Alignment suppresses &lt;em&gt;explicit&lt;/em&gt; bias expression. It does not eliminate the &lt;em&gt;underlying statistical associations&lt;/em&gt; in the weights.&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.4em; font-size:0.83em;"&gt;Those associations &lt;em&gt;condition&lt;/em&gt; everything the model produces — including classifications, summaries, and "neutral" text.&lt;/div&gt;
+    &lt;div class="box box-amber" style="font-size:0.83em;"&gt;&lt;strong&gt;For researchers:&lt;/strong&gt; A model that won't &lt;em&gt;say&lt;/em&gt; biased things can still produce biased &lt;em&gt;measurements&lt;/em&gt;. Don't mistake alignment for validity.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:350px; height:175px"&gt;
+![](https://ducknowl.com/wp-content/uploads/2024/04/hiring-biases.webp)
+
+---
+
+# Alignment Across Models: What Lyman et al. Found
+
+&lt;div class="src"&gt;Lyman et al. 2025&lt;/div&gt;
+
+**The practical implication:** not all "aligned" models are aligned the same way.
+
+&lt;table class="styled-table" style="margin-top:0.5em;"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th&gt;Model family&lt;/th&gt;
+    &lt;th&gt;Alignment approach&lt;/th&gt;
+    &lt;th&gt;Effect on opinion distributions&lt;/th&gt;
+    &lt;th&gt;Recommendation for SS research&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Llama 2 (aligned)&lt;/td&gt;
+      &lt;td&gt;RLHF + safety fine-tuning&lt;/td&gt;
+      &lt;td&gt;Heavy center compression&lt;/td&gt;
+      &lt;td&gt;&lt;span class="badge badge-red"&gt;High caution&lt;/span&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Mistral (aligned)&lt;/td&gt;
+      &lt;td&gt;Lighter alignment&lt;/td&gt;
+      &lt;td&gt;Moderate compression&lt;/td&gt;
+      &lt;td&gt;&lt;span class="badge badge-amber"&gt;Moderate caution&lt;/span&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Llama 2 (base)&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;Full range, highest variance&lt;/td&gt;
+      &lt;td&gt;&lt;span class="badge badge-green"&gt;Best for simulation&lt;/span&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+--
+
+&lt;br&gt;&lt;div class="box box-blue" style="font-size:0.84em;"&gt;The practical upshot: &lt;strong&gt;researchers using LLMs for silicon sampling or ideological simulation should use base (unaligned) models&lt;/strong&gt; or carefully characterize how alignment affects their specific task. Model choice is a methodological decision that belongs in the methods section.&lt;/div&gt;
+
+&lt;br&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://marymaydramos.wordpress.com/wp-content/uploads/2017/01/toolshero-models-business-it-alignment.jpg)
+
+---
+
+class: debate
+
+# ⚖️ Debate: Is Alignment in Tension with Scientific Utility?
+
+**The tension:**
+
+- Aligned models are safer to deploy, more predictable, and less likely to cause harm in educational and public contexts.
+- Aligned models are worse at simulating the full range of human opinion, including extreme, anti-social, and politically fringe views.
+
+&lt;br&gt;
+
+**The debate:**
+
+- Lyman et al. argue researchers should use unaligned models for social science simulation. But unaligned models will also simulate harmful views — including calls for violence, discriminatory attitudes, and extremist ideology.
+- Should there be different standards for research use vs. public deployment of AI models?
+- Is the solution unaligned models with restricted access? Better transparency about alignment effects? Something else?
+
+&lt;br&gt;
+
+**Where do you draw the line between scientific utility and responsible deployment?**
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;IV&lt;/div&gt;
+
+# Synthesis
+## What we've learned and where it leads
+
+---
+
+# The Argument So Far
+
+&lt;div class="cols-3" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-blue"&gt;
+    &lt;div style="font-weight:700; color:#2a5bd7; margin-bottom:0.5em;"&gt;LLMs are prediction machines&lt;/div&gt;
+    &lt;div style="font-size:0.82em; line-height:1.8;"&gt;
+      Trained on next-word prediction at massive scale&lt;br&gt;
+      Behavior follows from training objective&lt;br&gt;
+      Not thinking — predicting high-probability continuations&lt;br&gt;
+      Failures are predictable from training pressures&lt;br&gt;
+      &lt;span style="color:#888; font-size:0.9em;"&gt;Bender et al.; McCoy et al.&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-blue"&gt;
+    &lt;div style="font-weight:700; color:#2a5bd7; margin-bottom:0.5em;"&gt;How you train matters&lt;/div&gt;
+    &lt;div style="font-size:0.82em; line-height:1.8;"&gt;
+      Instruction tuning unlocks instruction following&lt;br&gt;
+      Fine-tuning parameters matter enormously&lt;br&gt;
+      Diverse task exposure beats narrow depth&lt;br&gt;
+      Training data content shapes all outputs&lt;br&gt;
+      &lt;span style="color:#888; font-size:0.9em;"&gt;Wei et al.; Wang et al. ×2&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-blue"&gt;
+    &lt;div style="font-weight:700; color:#2a5bd7; margin-bottom:0.5em;"&gt;Alignment is real but limited&lt;/div&gt;
+    &lt;div style="font-size:0.82em; line-height:1.8;"&gt;
+      Makes models safer and more useful&lt;br&gt;
+      Compresses variance and suppresses extremes&lt;br&gt;
+      Biases survive in implicit form&lt;br&gt;
+      Model choice is a research design decision&lt;br&gt;
+      &lt;span style="color:#888; font-size:0.9em;"&gt;Lyman et al.; Bai et al.&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-slate" style="margin-top:0.7em; display:flex; gap:1.5em; font-size:0.8em;"&gt;
+  &lt;span&gt;🏛️ AI is a cultural institution &lt;span style="color:#888;"&gt;(Farrell et al.)&lt;/span&gt;&lt;/span&gt;
+  &lt;span&gt;⚙️ AI is not a tool in the ordinary sense &lt;span style="color:#888;"&gt;(Schulz-Schaeffer)&lt;/span&gt;&lt;/span&gt;
+  &lt;span&gt;📐 AI outputs ≠ human outputs &lt;span style="color:#888;"&gt;(Vargas et al.)&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:500px; height:250px"&gt;
+![](https://sharon-drew.com/wp-content/uploads/2015/04/training-768x491.jpg)
+
+---
+
+# What This Means for Social Scientists: Practical Upshots
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th&gt;Issue&lt;/th&gt;
+    &lt;th&gt;Naïve assumption&lt;/th&gt;
+    &lt;th&gt;What the research says&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Using LLMs to annotate text&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;"It's basically a very fast human coder"&lt;/td&gt;
+      &lt;td&gt;Errors are systematic and demographically patterned — not random noise&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Using LLMs as survey respondents&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;"It can simulate any demographic group"&lt;/td&gt;
+      &lt;td&gt;Alignment compresses variance; training data overrepresents Western perspectives&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Choosing which LLM to use&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;"Latest model = best for research"&lt;/td&gt;
+      &lt;td&gt;Alignment level, training data, and fine-tuning approach all shape outputs in ways that matter for validity&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Interpreting LLM outputs&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;"It said X, so it 'thinks' X"&lt;/td&gt;
+      &lt;td&gt;LLMs produce high-probability continuations — "thinks" is the wrong frame&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Trusting LLM accuracy&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;"It passed my quick check, so it's fine"&lt;/td&gt;
+      &lt;td&gt;Aggregate accuracy hides systematic subgroup failures; quick checks miss the hard cases&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;center&gt;
+&lt;div style="width:600px; height:300px"&gt;
+![](https://www.johnsnowlabs.com/wp-content/uploads/2023/07/img_blog_1-1.jpg)
+
+---
+
+class: discussion
+
+# 💬 Discussion Question 3
+
+**Three positions on what AI "is" — which is most useful for social scientists?**
+
+&lt;br&gt;
+
+**Position A (Bender/McCoy):** AI is a sophisticated pattern-matcher. It produces statistically plausible outputs shaped by training data and training objective. Understanding its behavior requires understanding its training — not attributing reasoning, understanding, or intent to it.
+
+**Position B (Schulz-Schaeffer):** AI is a new kind of artifact — not quite a tool, not quite an agent. It requires strategic interaction rather than operation. This means it demands new concepts, new norms, and new research methodologies.
+
+**Position C (Farrell et al.):** AI is best understood as a cultural institution — analogous to libraries, universities, and the press. It shapes how people access and reason about knowledge at scale. The right questions are about governance, not just capability.
+
+&lt;br&gt;
+
+**Which framing is most useful for how you plan to use AI in your research?**
+**Are these three positions compatible — or do they pull in different directions?**
+
+---
+
+# Summary: The Three Frames
+
+&lt;div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.9em; margin-top:0.5em;"&gt;
+  &lt;div class="box box-blue"&gt;
+    &lt;div style="font-size:1.4em; text-align:center; margin-bottom:0.3em;"&gt;🔬&lt;/div&gt;
+    &lt;div style="font-weight:700; color:#2a5bd7; text-align:center; margin-bottom:0.5em;"&gt;Mechanistic&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.8;"&gt;LLMs are next-word predictors trained on massive corpora. Their behavior follows from training pressures. They are not reasoning — they are predicting.&lt;br&gt;&lt;br&gt;&lt;em&gt;Bender et al. · McCoy et al. · Vargas et al.&lt;/em&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-green"&gt;
+    &lt;div style="font-size:1.4em; text-align:center; margin-bottom:0.3em;"&gt;⚙️&lt;/div&gt;
+    &lt;div style="font-weight:700; color:#27ae60; text-align:center; margin-bottom:0.5em;"&gt;Technical&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.8;"&gt;Training data, fine-tuning parameters, instruction tuning, context windows, and alignment all shape what models produce. Methodological choices matter.&lt;br&gt;&lt;br&gt;&lt;em&gt;Wei et al. · Wang et al. × 2 · Lyman et al.&lt;/em&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-purple"&gt;
+    &lt;div style="font-size:1.4em; text-align:center; margin-bottom:0.3em;"&gt;🏛️&lt;/div&gt;
+    &lt;div style="font-weight:700; color:#8e44ad; text-align:center; margin-bottom:0.5em;"&gt;Institutional&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.8;"&gt;LLMs are cultural institutions — they store, compress, and redistribute human knowledge. They require governance, not just technical understanding.&lt;br&gt;&lt;br&gt;&lt;em&gt;Farrell et al. · Schulz-Schaeffer · Davidson &amp; Karell&lt;/em&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+# Readings for This Unit
+
+&lt;div class="cols-3" style="margin-top:0.5em; font-size:0.82em;"&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.5em;"&gt;What is modern AI?&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      Bender et al. (2021)&lt;br&gt;&lt;span style="color:#888; font-size:0.88em;"&gt;On the dangers of stochastic parrots&lt;/span&gt;&lt;br&gt;&lt;br&gt;
+      McCoy et al. (2024)&lt;br&gt;&lt;span style="color:#888; font-size:0.88em;"&gt;Embers of autoregression&lt;/span&gt;&lt;br&gt;&lt;br&gt;
+      Schulz-Schaeffer (2025)&lt;br&gt;&lt;span style="color:#888; font-size:0.88em;"&gt;Why generative AI is different&lt;/span&gt;&lt;br&gt;&lt;br&gt;
+      Vargas et al. (2025)&lt;br&gt;&lt;span style="color:#888; font-size:0.88em;"&gt;Understanding GenAI output with embeddings&lt;/span&gt;&lt;br&gt;&lt;br&gt;
+      Davidson &amp; Karell (2025)&lt;br&gt;&lt;span style="color:#888; font-size:0.88em;"&gt;Integrating generative AI into social science&lt;/span&gt;&lt;br&gt;&lt;br&gt;
+      Farrell et al. (2025)&lt;br&gt;&lt;span style="color:#888; font-size:0.88em;"&gt;Large AI models are cultural and social technologies&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.5em;"&gt;Fine-tuning &amp; instruction tuning&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      Wang (2024)&lt;br&gt;&lt;span style="color:#888; font-size:0.88em;"&gt;On fine-tuning large language models&lt;/span&gt;&lt;br&gt;&lt;br&gt;
+      Wang et al. (2022)&lt;br&gt;&lt;span style="color:#888; font-size:0.88em;"&gt;Super-Natural Instructions&lt;/span&gt;&lt;br&gt;&lt;br&gt;
+      Wei et al. (2022)&lt;br&gt;&lt;span style="color:#888; font-size:0.88em;"&gt;FLAN: finetuned language models are zero-shot learners&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.5em;"&gt;Alignment&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      Lyman et al. (2025)&lt;br&gt;&lt;span style="color:#888; font-size:0.88em;"&gt;Balancing LLM alignment and algorithmic fidelity&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;br&gt;
+    &lt;div style="font-weight:700; margin-top:0.5em; margin-bottom:0.5em;"&gt;Next week&lt;/div&gt;
+    &lt;div style="color:#888; font-size:0.9em; line-height:1.9;"&gt;
+      wei_chainofthought_2023&lt;br&gt;
+      stuhler_promptbooks_2025&lt;br&gt;
+      griswold_staytuned_2025&lt;br&gt;
+      dávila_racism_2026
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+# Paper Map: How This Week's Readings Connect
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.5em;"&gt;What are LLMs doing?&lt;/div&gt;
+    &lt;div class="box box-amber" style="margin-bottom:0.4em; font-size:0.82em;"&gt;
+      &lt;strong&gt;Bender et al. (2021)&lt;/strong&gt; — Stochastic parrots: statistical plausibility without meaning
+    &lt;/div&gt;
+    &lt;div class="box box-amber" style="margin-bottom:0.4em; font-size:0.82em;"&gt;
+      &lt;strong&gt;McCoy et al. (2024)&lt;/strong&gt; — Embers: prediction shaped by training objective
+    &lt;/div&gt;
+    &lt;div class="box box-purple" style="font-size:0.82em;"&gt;
+      &lt;strong&gt;Vargas et al. (2025)&lt;/strong&gt; — AI and human outputs are structurally different in embedding space
+    &lt;/div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin:0.6em 0 0.4em;"&gt;What kind of thing is AI?&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.4em; font-size:0.82em;"&gt;
+      &lt;strong&gt;Schulz-Schaeffer (2025)&lt;/strong&gt; — Task-agnostic; not a tool, an interlocutor
+    &lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:0.82em;"&gt;
+      &lt;strong&gt;Farrell et al. (2025)&lt;/strong&gt; — Cultural institution, not computing technology
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.5em;"&gt;How does training shape output?&lt;/div&gt;
+    &lt;div class="box box-green" style="margin-bottom:0.4em; font-size:0.82em;"&gt;
+      &lt;strong&gt;Wei et al. (2022)&lt;/strong&gt; — FLAN: instruction tuning unlocks generalization
+    &lt;/div&gt;
+    &lt;div class="box box-green" style="margin-bottom:0.4em; font-size:0.82em;"&gt;
+      &lt;strong&gt;Wang et al. (2022)&lt;/strong&gt; — Super-Natural Instructions: diversity beats depth
+    &lt;/div&gt;
+    &lt;div class="box box-green" style="font-size:0.82em;"&gt;
+      &lt;strong&gt;Wang (2024)&lt;/strong&gt; — Fine-tuning parameters matter; frozen weights = false conclusions
+    &lt;/div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin:0.6em 0 0.4em;"&gt;What does alignment do?&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.4em; font-size:0.82em;"&gt;
+      &lt;strong&gt;Lyman et al. (2025)&lt;/strong&gt; — Alignment compresses variance; bad for simulation
+    &lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:0.82em;"&gt;
+      &lt;strong&gt;Bai et al. (2025)&lt;/strong&gt; — Implicit bias survives alignment in the weights
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+# Looking Ahead: The Stakes
+
+The papers this week are foundational — but they're not abstract. They have direct implications for what comes next in the course:
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Week 3: Prompting&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;Chain-of-thought works &lt;em&gt;because&lt;/em&gt; it changes which outputs are high-probability (McCoy et al.). Good prompts must specify the concept because LLMs apply their own operationalization (Bender et al.).&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Weeks 4–5: Measurement&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;Alignment creates systematic measurement bias (Lyman et al.). Fine-tuning done wrong produces false findings (Wang 2024). Training data biases propagate into annotation errors (Bender et al.).&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Weeks 6-11: Synthetic data&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;Can LLMs simulate human survey respondents? That question only makes sense once you understand what LLMs are actually doing — and how alignment shapes their outputs (Lyman et al.).&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Weeks 12-14: AI and society&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;AI as cultural institution (Farrell et al.) frames how we think about AI's effects on knowledge, labor, creativity, and democracy in the final weeks of the course.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+class: inverse, center, middle
+
+# Questions?
+
+&lt;div style="color:#aaa; font-size:0.9em; margin-top:1em;"&gt;Week 2 · SOCY 1200: Introduction to Using AI to Study Society&lt;/div&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "16:9",
+  "slideNumberFormat": "%current% / %total%"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

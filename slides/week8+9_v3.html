@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>SOCY 1200: Introduction to Using AI to Study Society</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Daniel Karell" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="yale.css" type="text/css" />
+    <link rel="stylesheet" href="yale-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# SOCY 1200: Introduction to Using AI to Study Society
+]
+.subtitle[
+## Midterm Review
+]
+.author[
+### Daniel Karell
+]
+.institute[
+### Yale University
+]
+.date[
+### Weeks 8 and 9
+]
+
+---
+
+
+
+
+&lt;style&gt;
+.remark-slide-content:not(.title-slide) {
+  font-size: 16px; padding: 1.8em 2.2em 1em;
+  color: #1a1a2e; background: #fafafa;
+}
+.remark-slide-content:not(.title-slide) h1 {
+  font-size: 2em; font-weight: 700; letter-spacing: -0.03em;
+  color: #1a1a2e; border-bottom: 3px solid #555;
+  padding-bottom: 0.3em; margin-bottom: 0.7em;
+}
+.remark-slide-content:not(.title-slide) h2 { font-size:1.05em; color:#555; font-weight:500; }
+.remark-slide-content:not(.title-slide) p, .remark-slide-content:not(.title-slide) li { line-height:1.65; }
+
+/* Section dividers */
+.inverse:not(.title-slide) { background: #1a1a2e !important; }
+.inverse:not(.title-slide) h1, .inverse:not(.title-slide) h2, .inverse:not(.title-slide) h3 { color:white !important; border:none !important; }
+.inverse:not(.title-slide) h1 { font-size:1.9em !important; letter-spacing:-0.03em; }
+.inverse:not(.title-slide) h2 { color:#aaa !important; font-weight:400 !important; }
+.section-num:not(.title-slide) { display:inline-block; font-size:4em; font-weight:900; color:rgba(39,183,245,0.8); line-height:1; margin-bottom:0.1em; }
+
+/* Unit color themes */
+.unit1 { background: #1a1f3a !important; }
+.unit1 h1 { color: #7ab3ff !important; border-bottom: 3px solid #7ab3ff !important; }
+.unit1 p, .unit1 li { color: #d0dcff !important; line-height:1.75 !important; }
+.unit1 strong { color: #a8d0ff !important; }
+
+.unit2 { background: #1a2e1a !important; }
+.unit2 h1 { color: #90ee90 !important; border-bottom: 3px solid #90ee90 !important; }
+.unit2 p, .unit2 li { color: #c8eec8 !important; line-height:1.75 !important; }
+.unit2 strong { color: #90ee90 !important; }
+
+.unit3 { background: #2e1a2e !important; }
+.unit3 h1 { color: #ddaaff !important; border-bottom: 3px solid #ddaaff !important; }
+.unit3 p, .unit3 li { color: #eedaff !important; line-height:1.75 !important; }
+.unit3 strong { color: #ddaaff !important; }
+
+/* Activity slide */
+.activity { background: #1a2a1a !important; }
+.activity h1 { color: #f0e040 !important; border-bottom: 3px solid #f0e040 !important; }
+.activity p, .activity li { color: #f5f0c8 !important; line-height:1.75 !important; }
+.activity strong { color: #f0e040 !important; }
+.activity table { color: #FFFFFF;}
+
+/* Review question slide */
+.rq { background: #2a1a0a !important; }
+.rq h1 { color: #ffcc66 !important; border-bottom: 3px solid #ffcc66 !important; }
+.rq p, .rq li { color: #f0e8d0 !important; line-height:1.75 !important; }
+.rq strong { color: #ffcc66 !important; }
+
+/* Reveal answer slide */
+.answer { background: #0a2a0a !important; }
+.answer h1 { color: #88ff88 !important; border-bottom: 3px solid #88ff88 !important; }
+.answer p, .answer li { color: #c8eec8 !important; line-height:1.75 !important; }
+.answer strong { color: #88ff88 !important; }
+.answer table {color: #FFFFFF}
+
+/* Boxes */
+.box { border-radius:6px; padding:0.75em 1em; margin:0.4em 0; font-size:0.85em; line-height:1.6; }
+.box-blue   { background:#f0f4ff; border-left:4px solid #2a5bd7; color:#0d1f5c; }
+.box-green  { background:#f0faf3; border-left:4px solid #27ae60; color:#0c3320; }
+.box-red    { background:#fdf2f2; border-left:4px solid #c0392b; color:#3d0c0c; }
+.box-amber  { background:#fffbf0; border-left:4px solid #e67e22; color:#5c3400; }
+.box-slate  { background:#f4f5f7; border-left:4px solid #7f8c8d; color:#2c3e50; }
+.box-purple { background:#f5f0ff; border-left:4px solid #8e44ad; color:#2e0060; }
+.box-teal   { background:#f0fafa; border-left:4px solid #16a085; color:#0c3030; }
+.box-orange { background:#fef5ee; border-left:4px solid #d35400; color:#3d1500; }
+
+/* Pull quote */
+.quote { border-left:5px solid #7f8c8d; background:white; border-radius:0 6px 6px 0; padding:0.7em 1.2em; font-size:0.88em; font-style:italic; color:#2c3e50; margin:0.6em 0; box-shadow:0 1px 4px rgba(0,0,0,0.07); }
+
+/* Grid layouts */
+.cols-2 { display:grid; grid-template-columns:1fr 1fr; gap:1em; margin:0.5em 0; }
+.cols-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.9em; margin:0.5em 0; }
+.cols-4 { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:0.7em; margin:0.5em 0; }
+
+/* Steps */
+.step-row { display:flex; align-items:flex-start; gap:0.75em; margin-bottom:0.5em; }
+.step-num { flex-shrink:0; width:1.7em; height:1.7em; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.2em; margin-top:0.05em; }
+.step-num.blue   { background:#2a5bd7; color:white; }
+.step-num.green  { background:#27ae60; color:white; }
+.step-num.orange { background:#d35400; color:white; }
+.step-num.red    { background:#c0392b; color:white; }
+.step-num.grey   { background:#7f8c8d; color:white; }
+.step-body { font-size:1.2em; line-height:1.6; color:#FFFFFF; padding-top:0.15em; }
+
+/* Table */
+.styled-table { width:100%; border-collapse:collapse; font-size:0.81em; margin:0.5em 0; box-shadow:0 1px 6px rgba(0,0,0,0.08); }
+.styled-table thead tr { background:#1a1a2e; color:white; }
+.styled-table thead th { padding:0.6em 0.8em; text-align:left; font-weight:600; }
+.styled-table tbody tr:nth-child(even) { background:#f4f5f7; }
+.styled-table tbody tr:nth-child(odd) { background:white; }
+.styled-table tbody td { padding:0.55em 0.8em; color:#2c3e50; vertical-align:top; }
+.styled-table .hl { background:#fffbf0 !important; font-weight:600; }
+
+/* Badge */
+.badge { display:inline-block; border-radius:20px; padding:0.12em 0.65em; font-size:0.72em; font-weight:700; }
+.badge-blue   { background:#e8edff; color:#1a3fa0; }
+.badge-green  { background:#e8f8ee; color:#1e8449; }
+.badge-red    { background:#fde8e8; color:#922b21; }
+.badge-amber  { background:#fef3d0; color:#784212; }
+.badge-grey   { background:#eaecee; color:#515a5a; }
+
+/* Mono */
+.mono { font-family:'Cascadia Code','Fira Code','Courier New',monospace; font-size:0.78em; background:#1e2433; color:#abb2bf; border-radius:6px; padding:0.8em 1.1em; line-height:1.85; margin:0.4em 0; }
+.mono .hi-blue   { color:#61afef; }
+.mono .hi-green  { color:#98c379; }
+.mono .hi-red    { color:#e06c75; }
+.mono .hi-amber  { color:#e5c07b; }
+.mono .hi-grey   { color:#636d83; }
+.mono .hi-white  { color:#ffffff; }
+
+/* Source label */
+.src { display:inline-block; background:#1a1a2e; color:#FFFFFF; font-size:0.68em; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; border-radius:3px; padding:0.15em 0.55em; margin-bottom:0.45em; }
+
+/* Unit label pills */
+.u1 { background:#ddeeff; color:#1a3f7a; border-radius:4px; padding:0.1em 0.5em; font-size:0.75em; font-weight:700; }
+.u2 { background:#ddffdd; color:#1a4a1a; border-radius:4px; padding:0.1em 0.5em; font-size:0.75em; font-weight:700; }
+.u3 { background:#eedaff; color:#4a1a6a; border-radius:4px; padding:0.1em 0.5em; font-size:0.75em; font-weight:700; }
+
+blockquote { border:none; padding:0; margin:0; background:none; }
+&lt;/style&gt;
+
+# Review Plan
+
+&lt;div class="cols-3" style="margin-top:0.7em;"&gt;
+  &lt;div class="box box-blue" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.5em; margin-bottom:0.3em;"&gt;🔵&lt;/div&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Unit 1 · Introduction&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.8;"&gt;Weeks 2–3&lt;br&gt;What are LLMs?&lt;br&gt;How do they work?&lt;br&gt;What kind of thing is AI?&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-green" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.5em; margin-bottom:0.3em;"&gt;🟢&lt;/div&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Unit 2 · Prompting&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.8;"&gt;Weeks 3–5&lt;br&gt;Prompting as design&lt;br&gt;Measurement with AI&lt;br&gt;Bias and correction&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-purple" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.5em; margin-bottom:0.3em;"&gt;🟣&lt;/div&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Unit 3 · Synthetic People&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.8;"&gt;Weeks 6–7&lt;br&gt;Silicon sampling&lt;br&gt;Limitations&lt;br&gt;PPI and SSDataBench&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;**Review Format:**
+
+&lt;div class="cols-3" style="margin-top:0.3em; font-size:1em;"&gt;
+  &lt;div class="box box-slate" style="text-align:center;"&gt;📖 Concept review slides&lt;br&gt;Key ideas, papers, findings&lt;/div&gt;
+  &lt;div class="box box-amber" style="text-align:center;"&gt;⚡ Quick activities&lt;br&gt;Think-pair-share, ranking, matching&lt;/div&gt;
+  &lt;div class="box box-slate" style="text-align:center;"&gt;❓ Review questions&lt;br&gt;Exam-style; answers revealed after&lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+# The Master Concept Map: How Everything Connects
+
+&lt;div class="cols-3" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:700; color:#2a5bd7; margin-bottom:0.4em;"&gt;&lt;span class="u1"&gt;UNIT 1&lt;/span&gt; Introduction&lt;/div&gt;
+    &lt;div class="box box-blue" style="margin-bottom:0.25em; font-size:1em;"&gt;LLMs are prediction machines (Bender, McCoy)&lt;/div&gt;
+    &lt;div class="box box-blue" style="margin-bottom:0.25em; font-size:1em;"&gt;Not tools — cultural institutions (Farrell, Schulz-Schaeffer)&lt;/div&gt;
+    &lt;div class="box box-blue" style="margin-bottom:0.25em; font-size:1em;"&gt;Training shapes everything (Bender, Wang, Wei)&lt;/div&gt;
+    &lt;div class="box box-blue" style="font-size:0.92em;"&gt;Alignment: good for users, bad for researchers (Lyman)&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:700; color:#27ae60; margin-bottom:0.4em;"&gt;&lt;span class="u2"&gt;UNIT 2&lt;/span&gt; Prompting&lt;/div&gt;
+    &lt;div class="box box-green" style="margin-bottom:0.25em; font-size:1em;"&gt;Prompting is design, not magic (Stuhler, Griswold)&lt;/div&gt;
+    &lt;div class="box box-green" style="margin-bottom:0.25em; font-size:1em;"&gt;Measurement: scale but not validity (Yang, Burnham)&lt;/div&gt;
+    &lt;div class="box box-green" style="margin-bottom:0.25em; font-size:1em;"&gt;Errors are systematic, not random (Ashwin, Bai, Germani)&lt;/div&gt;
+    &lt;div class="box box-green" style="font-size:0.92em;"&gt;Correction requires knowing the error (Maranca, DSL)&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:700; color:#8e44ad; margin-bottom:0.4em;"&gt;&lt;span class="u3"&gt;UNIT 3&lt;/span&gt; Synthetic People&lt;/div&gt;
+    &lt;div class="box box-purple" style="margin-bottom:0.25em; font-size:1em;"&gt;Silicon sampling: means right, variance wrong (Argyle, Bisbee)&lt;/div&gt;
+    &lt;div class="box box-purple" style="margin-bottom:0.25em; font-size:1em;"&gt;National ≠ local; rare subgroups fail (Bollen)&lt;/div&gt;
+    &lt;div class="box box-purple" style="margin-bottom:0.25em; font-size:1em;"&gt;PPI: use as predictor, not simulator (Broska)&lt;/div&gt;
+    &lt;div class="box box-purple" style="font-size:0.92em;"&gt;Statistical realism requires SSDataBench (Xie et al.)&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-amber" style="margin-top:0.6em; text-align:center; font-size:1em;"&gt;&lt;strong&gt;The through-line:&lt;/strong&gt; LLMs are powerful but systematically biased. Every unit adds a new layer of what that means — and what to do about it.&lt;/div&gt;
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;I&lt;/div&gt;
+
+# Unit 1 Review
+## Introduction: What LLMs are and how they work
+#### Weeks 2–3
+
+---
+
+class: unit1
+
+# Unit 1 · Core Ideas
+
+**The five things you must know from the introduction:**
+
+1. **LLMs are prediction machines** — they produce the statistically most likely next token given training. They are not reasoning, not understanding, not thinking. (Bender et al.; McCoy et al.)
+
+2. **Task-agnostic by construction** — modern LLMs generalize across tasks without retraining. This makes them categorically different from prior AI systems. (Schulz-Schaeffer)
+
+3. **Training data is destiny** — what's in the training data shapes everything: biases, capabilities, blind spots. More data ≠ better data. (Bender et al.)
+
+4. **Fine-tuning matters more than model size** — instruction-tuned smaller models beat larger untuned ones. How you train shapes outputs as much as what you train. (Wei et al.; Wang et al.)
+
+5. **Alignment is a layer, not a fix** — alignment suppresses explicit bias but does not eliminate implicit bias. It creates the paradox: useful for users, problematic for researchers who need the full distribution of human opinion. (Lyman et al.; Bai et al.)
+
+&lt;center&gt;
+&lt;div style="width:200px; height:100px"&gt;
+![](https://opendatascience.com/wp-content/uploads/2023/08/Shutterstock_2298186725.jpg)
+
+---
+
+class: rq
+
+# ❓ Review Question 1
+
+&lt;center&gt;
+**The "stochastic parrot" (Bender et al.) and "embers of autoregression" (McCoy et al.) framings agree on one thing and differ on emphasis. What do they agree on? What does each add?**
+
+&lt;br&gt;
+
+***Take 2 minutes to write a 3-sentence answer before we discuss.***
+
+&lt;center&gt;
+&lt;div style="width:500px; height:250px"&gt;
+![](https://imgcdn.stablediffusionweb.com/2024/9/12/c32ddcee-f306-4cfd-8745-55d4c1698316.jpg)
+
+---
+
+class: answer
+
+# ✅ Answer: Review Question 1
+
+**What they agree on:**
+Both hold that LLMs are NOT reasoning or understanding in any meaningful sense. They produce statistically plausible outputs without genuine comprehension of what those outputs mean or refer to.
+
+&lt;br&gt;
+
+**What Bender et al. add:**
+The "stochastic parrot" framing emphasizes the *content* problem: what is in the training data encodes biases, and the model reproduces them at scale without awareness. It is a warning about accountability and social harm.
+
+&lt;br&gt;
+
+**What McCoy et al. add:**
+The "embers" framing emphasizes the *predictive* problem: LLM behavior follows from training pressure. Tasks requiring low-probability outputs will fail; high-probability tasks will succeed. This makes failures **predictable** — a powerful scientific contribution.
+
+&lt;br&gt;
+
+**The key synthesis:** Bender tells us *what's in the parrot*. McCoy tells us *when the parrot will fail*. Together: LLMs encode biased content, and you can predict where that bias will show up.
+
+---
+
+class: unit1
+
+# Unit 1 · Key Paper Findings
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th style="width:28%;"&gt;Paper&lt;/th&gt;
+    &lt;th style="width:72%;"&gt;The one finding you must know&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Bender et al. (2021)&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; color:#888;"&gt;Stochastic parrots&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Training data content shapes biases baked into model weights — scale without diversity amplifies harm rather than correcting it&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;McCoy et al. (2024)&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; color:#888;"&gt;Embers&lt;/span&gt;&lt;/td&gt;&lt;td&gt;LLM capabilities and failures are predictable from training pressures: high-probability outputs succeed; low-probability outputs fail systematically&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Wei et al. (2022)&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; color:#888;"&gt;FLAN&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Instruction-tuning on diverse task types unlocks generalization: a smaller instruction-tuned model beats a larger untuned one on 20/25 benchmarks&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Wang et al. (2022)&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; color:#888;"&gt;Super-Natural Instructions&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Diversity of task types matters more than quantity: breadth of training distribution → better zero-shot generalization&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Lyman et al. (2025)&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; color:#888;"&gt;Alignment paradox&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Aligned models compress opinion distributions toward the center — making them safer for users but biased for research requiring the full range of human attitudes&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;center&gt;
+&lt;div style="width:275px; height:275px"&gt;
+![](https://starterenglish.com/wp-content/uploads/2024/03/stack-of-papers.jpeg)
+
+---
+
+class: activity
+
+# ⚡ Activity 1: Concept Sorting
+
+**In pairs (3 minutes): assign each item to a column. Be ready to defend your choices.**
+
+&lt;br&gt;
+
+| Item | "LLMs understand this" | "LLMs predict this" | "LLMs cannot do this" |
+|---|---|---|---|
+| Translate "hello" to French | | | |
+| Count the letters in "strawberry" | | | |
+| Write a poem about loneliness | | | |
+| Apply a Caesar cipher with shift 17 to unusual text | | | |
+| Identify the emotional tone of a tweet | | | |
+| Prove a novel mathematical theorem | | | |
+
+&lt;br&gt;
+
+&lt;center&gt;
+**After sorting: which column best captures what LLMs are *actually* doing in each case?**
+
+**What is the distinction between "understanding" vs. "predicting"?**
+
+&lt;center&gt;
+&lt;div style="width:200px; height:100px"&gt;
+![](https://img.magnific.com/premium-vector/illustration-vector-graphic-cartoon-character-skills_516790-385.jpg?w=740)
+
+---
+
+class: unit1
+
+# Unit 1 · The Three Framings
+
+**Three different but compatible ways to understand what AI is — each leads to different questions:**
+
+&lt;div class="cols-3" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-blue"&gt;
+    &lt;div style="font-weight:700; color:#2a5bd7; margin-bottom:0.4em;"&gt;🔬 Mechanistic&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.8;"&gt;Next-word predictors trained on massive corpora. Capabilities follow from training pressures. Failures are predictable.&lt;br&gt;&lt;br&gt;&lt;em&gt;Best for: understanding why it works and why it fails&lt;/em&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-green"&gt;
+    &lt;div style="font-weight:700; color:#27ae60; margin-bottom:0.4em;"&gt;⚙️ Technical&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.8;"&gt;Training data, fine-tuning parameters, context windows, alignment — all shape output. Methodological choices matter enormously.&lt;br&gt;&lt;br&gt;&lt;em&gt;Best for: designing studies and choosing tools&lt;/em&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-purple"&gt;
+    &lt;div style="font-weight:700; color:#8e44ad; margin-bottom:0.4em;"&gt;🏛️ Institutional&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.8;"&gt;LLMs are cultural institutions — like libraries and universities — that shape how society accesses and reasons about knowledge.&lt;br&gt;&lt;br&gt;&lt;em&gt;Best for: understanding societal implications&lt;/em&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="quote" style="margin-top:0.6em;"&gt;You need all three framings. A mechanistic understanding without the institutional framing misses what's at stake. An institutional framing without the mechanistic one produces bad research design.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:250px; height:250px"&gt;
+![](https://images-static.nykaa.com/media/catalog/product/0/f/0f7b339ASPWT25204-1.jpg)
+
+---
+
+class: rq
+
+# ❓ Review Question 2
+
+&lt;center&gt;
+
+**Explain in 2–3 sentences why Lyman et al.'s finding about alignment is specifically a problem for social science research — even though alignment makes LLMs safer and more useful in general.**
+
+&lt;br&gt;
+
+***Take 90 seconds before we discuss.***
+
+&lt;center&gt;
+&lt;div style="width:350px; height:350px"&gt;
+![](https://miro.medium.com/v2/resize:fit:740/1*MpbHxKjFIUUwL8oyHXPD-A.jpeg)
+
+---
+
+class: answer
+
+# ✅ Answer: Review Question 2
+
+**The core tension:**
+
+Alignment makes LLMs safer by suppressing extreme, harmful, or antisocial outputs. This is good for most users — you don't want your chatbot endorsing violence.
+
+**But for social science**, researchers often need the full range of human opinion — including extreme, fringe, and minority views. If you're studying political polarization, you need the model to simulate what an actual Trump voter or an actual progressive activist would say — not a moderated, aligned version of those views.
+
+**The specific problem:** Lyman et al. show that aligned models compress opinion distributions toward the center. When you use an aligned model to simulate survey respondents, you get responses that are systematically more moderate than real humans would give. The result: you underestimate polarization, underestimate partisan differences, and produce research that mischaracterizes the distribution of human political attitudes.
+
+**Bottom line:** Alignment optimizes for safety. Research often needs variance. These goals conflict.
+
+&lt;center&gt;
+&lt;div style="width:175px; height:175px"&gt;
+![](https://media.istockphoto.com/id/464577284/photo/3d-illustration-of-the-earth-on-white-background.jpg?s=612x612&amp;w=0&amp;k=20&amp;c=5exxsOihKHkBluQP_gSQ7YvWZe4FG6vu26Z9EZSRJjE=)
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;II&lt;/div&gt;
+
+# Unit 2 Review
+## Prompting, Measurement, and Bias
+#### Weeks 3–5
+
+---
+
+class: unit2
+
+# Unit 2 · Core Ideas (Part A: Prompting)
+
+**The five things you must know about prompting:**
+
+1. **Prompting is a design task, not a technical one** — the bottleneck is conceptual clarity, not coding skill. A good prompt is a good codebook. (Stuhler et al.)
+
+2. **Output is highly sensitive to prompt wording** — small changes can produce large changes in output. This is a red flag for fragile measurement, not just a nuisance. (Griswold et al.)
+
+3. **Chain-of-thought works by changing probability** — adding "let's think step by step" makes the correct output more probable by conditioning on intermediate reasoning steps. (Wei et al.)
+
+4. **Few-shot examples are implicit definitions** — they teach the model *your* operationalization, not its default one. Example quality matters more than quantity. (Griswold et al.)
+
+5. **Prompting cannot fix structural bias** — bias lives in the weights; the prompt affects the outputs but does not reach the weights. You cannot prompt your way out of demographic stereotyping. (Jeon et al.; Bai et al.)
+
+&lt;center&gt;
+&lt;div style="width:225px; height:200px"&gt;
+![](https://media.licdn.com/dms/image/v2/D5612AQHp-i7H-ZzolQ/article-cover_image-shrink_720_1280/B56Zhyv7vKHUAM-/0/1754271825418?e=2147483647&amp;v=beta&amp;t=4l-Qm52WuJrMW9tsTCf6Ehbt20LdE-BY1l_66feKZtM)
+
+---
+
+class: activity
+
+# ⚡ Activity 2: Prompt Diagnosis
+
+**In groups of 3 (4 minutes): identify what is wrong with each prompt. Then write a one-line fix.**
+
+&lt;br&gt;
+
+**Prompt A:** *"Is this tweet positive or negative?"*
+
+**Prompt B:** *"Classify this news article about police as critical or supportive."*
+
+**Prompt C:** *"Read this Rohingya refugee interview and code the respondent's aspirations."*
+
+**Prompt D:** *"You are a survey respondent. Answer as a typical American would."*
+
+&lt;br&gt;
+
+**For each prompt:**
+* What concept is underspecified? 
+* What bias or error is this likely to produce? 
+* What would you add to fix it?
+
+---
+
+class: unit2
+
+# Unit 2 · Core Ideas (Part B: Measurement)
+
+**The five things you must know about AI measurement:**
+
+1. **Scale is no longer the constraint — validity is** — LLMs make large-N text classification trivially easy. The hard question is whether you're measuring what you think you are. (Benoit et al.; Halterman &amp; Keith)
+
+2. **37% of conclusions change with model substitution** — switching LLMs reverses findings in more than one third of published studies. The finding is partly a property of the model, not the data. (Yang et al.)
+
+3. **Errors are systematic, not random** — random errors average out; systematic errors bias estimates in predictable directions. LLM errors cluster by demographic content, text type, and rhetorical register. (Week 4 framework)
+
+4. **Label clarity determines model selection** — for well-defined constructs, purpose-built small models (DEBATE) match or beat GPT-4. For fuzzy constructs, larger models have the advantage. (Burnham et al.)
+
+5. **Supervised fine-tuning is the gold standard** — zero-shot → few-shot → fine-tuning: each step costs more but gains more validity. When you have labeled data, fine-tune. (Chae &amp; Davidson)
+
+---
+
+class: rq
+
+# ❓ Review Question 3
+
+**Yang et al. find that 37% of published LLM-annotation studies reach different conclusions when a different model is used. What does this number tell us — and what should journals require as a result?**
+&lt;center&gt;
+&lt;br&gt;
+
+Take 2 minutes. Try to give: (1) what it tells us, (2) at least two specific journal requirements it implies.
+
+&lt;center&gt;
+&lt;div style="width:600px; height:300px"&gt;
+![](https://www.thinkai.cz/wp-content/uploads/2024/04/Main-image-1.jpg)
+
+---
+
+class: answer
+
+# ✅ Answer: Review Question 3
+
+**What 37% tells us:**
+
+In more than one third of LLM-annotation studies, the choice of which model to use determines whether the finding is statistically significant, null, or even reversed. This means the "finding" is partly a product of measurement choice — not just data. The analogy: if switching survey instruments reversed your conclusions 37% of the time, we would not trust survey research.
+
+**What journals should require:**
+
+1. **Report exact model version** — not just "GPT-4" but "gpt-4-0613" — because models update without notice and the same name ≠ the same model at different times
+
+2. **Test model substitution sensitivity** — re-run with at least one other model; report whether conclusions hold. Treat this like a robustness check.
+
+3. **Report intercoder reliability (LLM vs. human)** — not just "the model agreed with humans X% of the time" but a proper reliability coefficient
+
+4. **Archive raw LLM outputs** — not just the final labels but the raw outputs alongside the dataset, so others can reproduce
+
+5. **Report accuracy by theoretically relevant subgroup** — aggregate accuracy hides subgroup failures
+
+---
+
+class: unit2
+
+# Unit 2 · Core Ideas (Part C: Bias and Correction)
+
+**The five things you must know about bias and correction:**
+
+1. **Bias is demographically patterned in aligned models** — Bai et al.'s IAT-style measures reveal implicit bias across race, gender, religion, and health — even in models that pass standard bias benchmarks. Alignment suppresses explicit bias, not implicit structure.
+
+2. **Covert bias is harder to detect than overt bias** — overt bias shows up in what the model says; covert bias shows up in how demographics condition what gets classified as what. Requires designed audits to detect.
+
+3. **LLMs have a home culture** — Tan et al.: models trained on Western-dominant corpora apply Western frameworks by default. Cross-cultural research is fundamentally threatened unless cultural alignment is addressed.
+
+4. **Errors fall on marginalized populations** — Ashwin et al.: errors cluster on populations underrepresented in training data — precisely the populations researchers most need to study carefully.
+
+5. **Error correction requires knowing the error structure** — Maranca et al.'s DSL: standard regression assumes random error; AI errors are non-random. You must estimate the error structure from a validation sample and apply a correction. You cannot eliminate human coding; you can only reduce how much you need.
+
+---
+
+class: activity
+
+# ⚡ Activity 3: Error Taxonomy
+
+**Individually (2 minutes): classify each scenario as (A) random error, (B) systematic measurement bias, or (C) cultural framework mismatch. Then compare with a neighbor.**
+
+&lt;br&gt;
+
+1. An LLM classifying political stance misclassifies 12% of tweets at random across all categories and authors.
+
+2. An LLM classifying political stance of tweets by women attributes more liberal views than the women actually express — consistently, across all models tested.
+
+3. An LLM used to code qualitative interviews with Rohingya refugees systematically codes their aspirations as "safety-focused" regardless of what they actually express.
+
+4. An LLM assessing appropriateness of interpersonal conflict resolution in Japanese corporate settings evaluates responses against American norms of directness.
+
+5. An LLM misclassifies 8% of documents about policy debates, with errors uniformly distributed across topic areas.
+
+&lt;br&gt;
+
+**Which types can be corrected by better prompting? Which require different approaches?**
+
+---
+
+class: rq
+
+# ❓ Review Question 4
+&lt;center&gt;
+**Explain the "cruel irony" Ashwin et al. identify in LLM annotation of data from marginalized populations. What do they recommend instead of general-purpose LLMs?**
+
+&lt;br&gt;
+
+&lt;center&gt;
+&lt;div style="width:600px; height:300px"&gt;
+![](https://static.wixstatic.com/media/86e7f7_b323119f46704fe5bf14334407a1f017~mv2.jpg/v1/fill/w_2560,h_1440,al_c,q_90/file.jpg)
+
+---
+
+class: answer
+
+# ✅ Answer: Review Question 4
+
+**The cruel irony (two sentences):**
+
+Marginalized, non-Western, and underrepresented populations are the groups most likely to be the focus of research requiring careful, high-quality measurement — and they are also the populations for which LLM training data is thinnest, most distorted, and least representative. So the tool fails most precisely where accuracy matters most.
+
+**What Ashwin et al. recommend:**
+
+1. **Expert-code a representative subsample** — not crowdworkers; trained sociologists who understand the population, language, and cultural context
+
+2. **Train a bespoke supervised model** on that expert-coded subsample — not a general-purpose LLM, which has no calibrated representation of this population
+
+3. **Apply the fine-tuned model** to the full corpus — it now learns *your* operationalization from *your* data, with errors that reflect your corpus rather than a generic training distribution biased against your population
+
+4. **Audit by subgroup** — especially the population of primary theoretical interest
+
+**The deeper point:** You cannot substitute a general model for specialized knowledge. Cultural and population expertise must be embedded in the training data, not just the prompt.
+
+---
+
+class: unit2
+
+# Unit 2 · The Bias Audit and Validity Checklist
+
+**The seven questions to ask of any LLM measurement study:**
+
+&lt;div class="cols-2" style="margin-top:0.4em; font-size:0.83em;"&gt;
+  &lt;div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Conceptual validity:&lt;/strong&gt; Is the construct theoretically defined — not just named?&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Operationalization:&lt;/strong&gt; Does the model's operationalization match yours — or is it applying its own definition?&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Validation sample:&lt;/strong&gt; Is accuracy evaluated against a representative human-coded sample — not just easy cases?&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Subgroup accuracy:&lt;/strong&gt; Is accuracy reported for the subgroup of texts most relevant to your hypothesis?&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;5&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Error structure:&lt;/strong&gt; Are errors audited for systematic patterns — or just reported as aggregate accuracy?&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;6&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Model substitution:&lt;/strong&gt; Do findings hold across ≥2 model versions — or does the conclusion change with the model?&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;7&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Demographic bias:&lt;/strong&gt; For text with implied demographics, has the Jeon et al. / Bai et al. bias been tested?&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:250px; height:250px"&gt;
+![](https://cdn.vectorstock.com/i/500p/95/68/people-frequently-asked-questions-around-question-vector-28839568.jpg)
+
+---
+
+class: activity
+
+# ⚡ Activity 4: Spot the Problem
+
+**You are reviewing a manuscript. Read the excerpt and identify every methodological problem you can. (3 minutes, pairs.)**
+
+&lt;br&gt;
+
+&gt; "We used GPT-4 to classify 45,000 social media posts about police from 2018–2023 as either critical or supportive. Overall classification accuracy was 87% compared to a random sample of 200 human-coded posts. We find that criticism of police increased significantly after 2020 (β = 0.23, p &lt; 0.001). Our code is available on GitHub."
+
+&lt;br&gt;
+
+**Problems to find (there are at least 6). For each: what's wrong, and what should the authors have done instead?**
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://www.newhavenindependent.org/wp-content/uploads/2026/01/yale123123.jpg)
+
+---
+
+class: answer
+
+# ✅ Answer: Activity 4 — The Six Problems
+
+1. **"GPT-4" is not a model version** — which GPT-4? gpt-4-0613? gpt-4-turbo? These are different models with different behaviors.
+
+2. **87% aggregate accuracy hides subgroup failures** — if the research question is about post-2020 criticism (which likely involves racial justice content), accuracy on that specific subset must be reported separately.
+
+3. **The validation sample (N=200) is not described as representative** — is it stratified across years? Across topics? Across tone? "Random sample" is ambiguous.
+
+4. **No model substitution sensitivity test** — Yang et al.: 37% of conclusions change with model substitution. This study does not test whether the β = 0.23 holds under a different model.
+
+5. **No error audit** — are errors random or systematic? If the model systematically misclassifies ironic or satirical criticism as supportive (a known failure), the post-2020 finding may be an artifact.
+
+6. **No demographic bias test** — police criticism is heavily racialized content. Jeon et al. show models have demographic shortcuts. Was this tested?
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;III&lt;/div&gt;
+
+# Unit 3 Review
+## Synthetic People: Silicon Sampling
+#### Weeks 6–7
+
+---
+
+class: unit3
+
+# Unit 3 · Core Ideas (Part A: What Silicon Sampling Is)
+
+**The five things you must know about silicon sampling:**
+
+1. **The core idea** — condition an LLM on a sociodemographic backstory and ask it to respond as that person would to survey questions. Term coined by Argyle et al. (2023).
+
+2. **Algorithmic fidelity** — Argyle et al.'s concept: when properly conditioned, GPT-3 reproduces group-level attitude distributions with r ≈ 0.85–0.92 versus ANES. This goes beyond surface similarity.
+
+3. **Why it's tempting** — traditional polling is in crisis: response rates below 6%, national probability samples costing $100k+. Silicon sampling costs pennies.
+
+4. **The interchangeability assumption** — most silicon sampling studies assume LLM outputs and human outputs can be treated as the same thing. This assumption is empirically false.
+
+5. **It's already being used commercially** — Weatherby &amp; Recht: the Axios maternal health case. Companies like Aaru sell synthetic polling to campaigns. The practice is ahead of its validation.
+
+---
+
+class: unit3
+
+# Unit 3 · Core Ideas (Part B: Limitations)
+
+**The five things you must know about silicon sampling's failures:**
+
+1. **Variance compression** — Bisbee et al.: silicon samples get the mean right but compress distributions. SDs ~50% smaller than real surveys. Regression coefficients are attenuated.
+
+2. **Nationally representative, locally blind** — Bollen et al.: GenAI correlates well with national surveys (r ≈ 0.65–0.71) but poorly with local community views (r ≈ 0.22–0.34). Subgroup prompting makes it worse.
+
+3. **Many subgroups challenge LLMs** — performance degrades with specificity. The rare, intersectionally-defined subgroups most useful for research are exactly where fidelity is lowest.
+
+4. **Not reproducible** — Bisbee et al.: same prompt produces different results over 3 months as models silently update. Silicon samples are not stable research instruments.
+
+5. **Not widely validated** — Argyle et al. is one study, one model, one outcome type. The conditions under which fidelity holds vs. fails are not well-characterized.
+
+---
+
+class: rq
+
+# ❓ Review Question 5
+
+**Bisbee et al. show that silicon samples get the mean right but fail on variance. Why does this matter for regression-based inference specifically? Give an example.**
+
+&lt;br&gt;
+
+Take 2 minutes. Your answer should include: (1) the mechanism, (2) a concrete example of how the regression conclusion would be wrong.
+
+&lt;center&gt;
+&lt;div style="width:600px; height:300px"&gt;
+![](https://www.unite.ai/wp-content/uploads/2024/12/Apple-Silicon-Chips.webp)
+
+---
+
+class: answer
+
+# ✅ Answer: Review Question 5
+
+**The mechanism:**
+
+Regression coefficients depend on variance in both the predictor and the outcome. When variance is compressed — as it systematically is in silicon samples — the estimated regression coefficients are attenuated toward zero. This is not random noise; it is a systematic bias in the direction of finding smaller effects.
+
+**The formula (intuition):**
+
+β̂ = Cov(X, Y) / Var(X). If Var(X) is inflated by compression (or Var(Y) is compressed), β̂ is biased downward.
+
+**A concrete example:**
+
+Real ANES data: Regress feeling thermometer toward immigrants on race (Black vs. white). Find β = +12.3 (Black respondents feel significantly warmer toward immigrants).
+
+Silicon data (same question, same conditioning): β = +3.1, not significant.
+
+**The wrong conclusion:** A researcher using silicon data would conclude that race has a small, non-significant effect on immigration attitudes. The real finding is a large, highly significant effect. The policy implication is completely different. The error is not noise — it is a consistent directional bias that misleads in a predictable way.
+
+---
+
+class: unit3
+
+# Unit 3 · Core Ideas (Part C: PPI and Statistical Realism)
+
+**The five things you must know about solutions:**
+
+1. **LLMs as predictors, not simulators** — Broska et al.'s key reframing. Don't ask: "are LLM outputs equivalent to human outputs?" Ask: "how well do LLM predictions correlate with human outputs, and how can we use that correlation efficiently?"
+
+2. **Prediction-powered inference (PPI)** — combine LLM predictions (large, cheap) with human observations (small, expensive) to produce valid estimates with proper confidence intervals. Validity guaranteed regardless of LLM accuracy.
+
+3. **The PPI correlation (ρ)** — measures how informative LLM predictions are. Effective N = N_human + ρ² × N_llm. When ρ = 0.7, 100 humans + 1,000 LLM predictions gives ~590 effective observations.
+
+4. **Statistical realism vs. surface plausibility** — Xie et al. / SSDataBench: "looks realistic" is not enough. Synthetic data must reproduce univariate distributions, bivariate associations, life event sequences, and multivariate regression patterns.
+
+5. **Typological compression** — LLMs collapse heterogeneous distributions into a small number of idealized types. The more diverse the real-world distribution, the worse the LLM performs at reproducing it.
+
+---
+
+class: rq
+
+# ❓ Review Question 6
+
+**A researcher wants to study the effect of a news story on immigration attitudes. They have a budget of $2,000 total. How would Broska et al.'s PPI framework suggest they proceed? What would a pure silicon sampling approach do, and why is it inferior?**
+
+&lt;br&gt;
+&lt;center&gt;
+&lt;div style="width:600px; height:300px"&gt;
+![](https://cdn.wmnf.org/wp-content/uploads/2024/05/US-Citizenship-and-immigration-services-migrants-by-Sundry-Photography-via-iStock-for-WMNF-News-scaled.jpg)
+
+---
+
+class: answer
+
+# ✅ Answer: Review Question 6
+
+**Pure silicon sampling approach (inferior):**
+
+Generate 5,000 LLM personas, expose half to the news story, measure attitude shift using LLM outputs. Cost: ~$50. Problem: the interchangeability assumption fails. Variance is compressed, regression coefficients are attenuated, and the estimated treatment effect is wrong in a predictable direction (toward zero).
+
+**Broska et al.'s PPI approach:**
+
+Step 1: Generate N=3,000 LLM predictions for both treatment and control personas. Cost: ~$30.
+
+Step 2: Use the remaining ~$1,970 to recruit ~50–100 real human participants (Prolific, $15–$20/person, ~90 minutes). Randomly assign to treatment and control.
+
+Step 3: Estimate the PPI correlation (ρ) from the human-LLM overlap in the validation sample.
+
+Step 4: Apply PPI correction using the full LLM prediction set and the human validation sample → valid ATE estimate with proper confidence intervals.
+
+**Why it's better:** PPI guarantees valid inference regardless of how accurate the LLM is. The human sample anchors the estimate to ground truth. The LLM predictions amplify statistical power when ρ is moderate-to-high (which it often is for behavioral experiments in Broska et al.'s domain).
+
+---
+
+class: activity
+
+# ⚡ Activity 5: Silicon Sampling Decision Tree
+
+**Working in groups (4 minutes): for each research scenario, decide whether silicon sampling is (A) appropriate as-is, (B) appropriate within a PPI mixed design, or (C) not appropriate — use real surveys instead. Defend your answer.**
+
+&lt;br&gt;
+
+1. Estimating mean approval ratings for Medicare-for-all across 5 U.S. demographic groups (national sample)
+
+2. Understanding community perceptions of neighborhood safety in a specific city's minority-majority neighborhoods
+
+3. Piloting survey question wording before fielding a real survey
+
+4. Regressing immigration attitudes on education, race, and income using synthetic data
+
+5. Generating synthetic respondents for a behavioral experiment on how news framing affects moral judgment
+
+6. Estimating political attitudes in rural Kenya for a comparative politics study
+
+---
+
+class: unit3
+
+# Unit 3 · SSDataBench: What Gets Tested
+
+**The five statistical dimensions Xie et al. benchmark:**
+
+&lt;div class="cols-2" style="margin-top:0.4em; font-size:1em;"&gt;
+  &lt;div&gt;
+    &lt;div class="box box-purple" style="margin-bottom:0.3em;"&gt;&lt;strong&gt;1. Univariate distributions&lt;/strong&gt; — Does the LLM produce the right distribution shape, not just the right mean? Skewness, kurtosis, tail behavior?&lt;/div&gt;
+    &lt;div class="box box-purple" style="margin-bottom:0.3em;"&gt;&lt;strong&gt;2. Bivariate associations&lt;/strong&gt; — Does education-income correlation have the right magnitude? Or just the right direction?&lt;/div&gt;
+    &lt;div class="box box-purple"&gt;&lt;strong&gt;3. Multivariate regression&lt;/strong&gt; — Do regression coefficients match real survey-based regressions in both direction and size?&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div class="box box-purple" style="margin-bottom:0.3em;"&gt;&lt;strong&gt;4. Life event sequence distributions&lt;/strong&gt; — Do synthetic career, health, or family trajectories follow realistic patterns — or idealized canonical ones?&lt;/div&gt;
+    &lt;div class="box box-purple"&gt;&lt;strong&gt;5. Sequence-covariate associations&lt;/strong&gt; — Does education predict career trajectory type with the right magnitude? Or does compression erase the relationship?&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-amber" style="margin-top:0.5em; font-size:1em;"&gt;&lt;strong&gt;The bottom line from Xie et al.:&lt;/strong&gt; LLMs pass the eye test on all five. They fail statistically on all five — though categorical &gt; continuous, and well-represented groups &gt; marginalized groups.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:200px; height:200px"&gt;
+![](https://img.magnific.com/premium-vector/statistics-data-analysis_24908-4213.jpg)
+
+---
+
+class: rq
+
+# ❓ Review Question 7
+
+**Xie et al. find that LLMs handle categorical distributions better than continuous ones. Explain why, and give one example of a social science research design that would be safer vs. one that would be more problematic to use with synthetic data because of this difference.**
+
+&lt;center&gt;
+&lt;div style="width:700px; height:350px"&gt;
+![](https://img.magnific.com/premium-vector/pie-chart-documents-reports-infographic_9493-68385.jpg)
+
+---
+
+class: answer
+
+# ✅ Answer: Review Question 7
+
+**Why categorical works better:**
+
+Categorical variables have natural, discrete boundaries — "college degree or not," "married or divorced," "Democrat or Republican." The model can learn these distinctions clearly from training data, where these categories appear frequently and distinctly. There is no "between" category to be compressed toward.
+
+Continuous variables have no natural boundaries. When the model is uncertain, it defaults to the center — which compresses the distribution. Alignment compounds this by discouraging extreme outputs. The result: income, attitude scales, health scores, and other continuous measures are systematically less variable than real data.
+
+**Safer design (categorical outcome):**
+
+A study using silicon samples to estimate the proportion of each demographic group that holds a college degree. The binary distinction is well-learned; the result would approximate reality reasonably.
+
+**More problematic design (continuous outcome):**
+
+A study using silicon samples to estimate the distribution of income across demographic groups and then regress income on education. The income distribution will be compressed, the regression coefficients will be attenuated, and the finding will systematically underestimate the income return to education.
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;IV&lt;/div&gt;
+
+# Synthesis
+## Connecting the three units
+
+---
+
+# The Course Arc: One Argument in Three Parts
+
+&lt;div class="cols-3" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-blue"&gt;
+    &lt;div style="font-weight:700; color:#2a5bd7; margin-bottom:0.5em;"&gt;&lt;span class="u1"&gt;UNIT 1&lt;/span&gt; What are these systems?&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.8;"&gt;
+      Not reasoners — predictors.&lt;br&gt;
+      Not tools — cultural institutions.&lt;br&gt;
+      Training shapes everything.&lt;br&gt;
+      Alignment solves one problem and creates another.&lt;br&gt;&lt;br&gt;
+      &lt;em&gt;→ The foundation for everything that follows&lt;/em&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-green"&gt;
+    &lt;div style="font-weight:700; color:#27ae60; margin-bottom:0.5em;"&gt;&lt;span class="u2"&gt;UNIT 2&lt;/span&gt; How do we use them to measure?&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.8;"&gt;
+      Prompting is design; codebooks are promptbooks.&lt;br&gt;
+      37% of conclusions are model-dependent.&lt;br&gt;
+      Errors are systematic and demographically patterned.&lt;br&gt;
+      Correction requires knowing the error structure.&lt;br&gt;&lt;br&gt;
+      &lt;em&gt;→ You can use LLMs for measurement — carefully&lt;/em&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-purple"&gt;
+    &lt;div style="font-weight:700; color:#8e44ad; margin-bottom:0.5em;"&gt;&lt;span class="u3"&gt;UNIT 3&lt;/span&gt; Can they simulate humans?&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.8;"&gt;
+      Means: yes. Distributions: no.&lt;br&gt;
+      National: sort of. Local: no.&lt;br&gt;
+      As predictors (PPI): valid. As simulators: invalid.&lt;br&gt;
+      Statistical realism requires SSDataBench, not eye tests.&lt;br&gt;&lt;br&gt;
+      &lt;em&gt;→ With the right framework: carefully, yes&lt;/em&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;br&gt;
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://cdn.packtpub.com/article-hub/articles/56a08a7e-8bc7-46ee-bde4-a589fcf8e07e_iStock-1661931487.jpg)
+
+---
+
+# The One-Sentence Summary of Each Paper: Unit 1
+&lt;div style="font-weight:700; color:#2a5bd7; margin-bottom:0.3em;"&gt;&lt;span class="u1"&gt;UNIT 1&lt;/span&gt;&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.2em;"&gt;&lt;strong&gt;Bender et al.:&lt;/strong&gt; LLMs produce plausible text without understanding meaning, at massive environmental cost, encoding societal bias.&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.2em;"&gt;&lt;strong&gt;McCoy et al.:&lt;/strong&gt; LLM failures are predictable — the model fails when the correct output is low-probability.&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.2em;"&gt;&lt;strong&gt;Wei et al. (FLAN):&lt;/strong&gt; Instruction-tuning on diverse task types produces better zero-shot generalization than scale alone.&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.2em;"&gt;&lt;strong&gt;Wang et al.:&lt;/strong&gt; Task diversity beats task quantity in instruction-tuning.&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.2em;"&gt;&lt;strong&gt;Lyman et al.:&lt;/strong&gt; Alignment compresses opinion distributions — making LLMs safer but worse for social science simulation.&lt;/div&gt;
+    
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://www.afcea.org/sites/default/files/styles/4_3_medium/public/2025-07/F1_ArmyLLMPhotoMain.jpeg?h=4b373b67&amp;itok=pVpVe6lo)
+
+---
+
+# The One-Sentence Summary of Each Paper: Unit 2
+&lt;div style="font-weight:700; color:#27ae60; margin:0.5em 0 0.3em;"&gt;&lt;span class="u2"&gt;UNIT 2 — Prompting&lt;/span&gt;&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.2em;"&gt;&lt;strong&gt;Stuhler et al.:&lt;/strong&gt; Codebooks are promptbooks — social scientists already have the skills to write good prompts.&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.2em;"&gt;&lt;strong&gt;Griswold et al.:&lt;/strong&gt; Sophisticated prompting beats zero-shot but underperforms fine-tuning; few-shot is the best prompting-family option.&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.2em;"&gt;&lt;strong&gt;Wei et al. (CoT):&lt;/strong&gt; Chain-of-thought prompting dramatically improves complex task performance in large models.&lt;/div&gt;
+    &lt;div class="box box-slate"&gt;&lt;strong&gt;Dávila et al.:&lt;/strong&gt; Theory must come before prompting; hard cultural concepts require fine-tuning, not clever prompts.&lt;/div&gt;
+    
+&lt;div style="font-weight:700; color:#27ae60; margin-bottom:0.3em;"&gt;&lt;span class="u2"&gt;UNIT 2 — Measurement and Bias&lt;/span&gt;&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.2em;"&gt;&lt;strong&gt;Yang et al.:&lt;/strong&gt; Model choice changes conclusions in 37% of cases — LLM annotation is less reliable than assumed.&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.2em;"&gt;&lt;strong&gt;Burnham et al.:&lt;/strong&gt; Purpose-built DEBATE model matches GPT-4 on well-defined political classification tasks.&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.2em;"&gt;&lt;strong&gt;Bai et al.:&lt;/strong&gt; Aligned models still harbor implicit demographic bias detectable with IAT-style measures.&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.2em;"&gt;&lt;strong&gt;Germani et al.:&lt;/strong&gt; Attributing statements to Chinese individuals lowers LLM agreement scores across all models.&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.2em;"&gt;&lt;strong&gt;Ashwin et al.:&lt;/strong&gt; LLM errors are non-random — they fall on marginalized, underrepresented populations.&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.2em;"&gt;&lt;strong&gt;Maranca et al.:&lt;/strong&gt; DSL corrects non-classical AI measurement error using a small human-coded validation sample.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+# The One-Sentence Summary of Each Paper: Unit 3
+
+&lt;div style="font-weight:700; color:#8e44ad; margin:0.5em 0 0.3em;"&gt;&lt;span class="u3"&gt;UNIT 3&lt;/span&gt;&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.2em;"&gt;&lt;strong&gt;Argyle et al.:&lt;/strong&gt; GPT-3 conditioned on demographics produces group-level attitudes with high fidelity (r ≈ 0.85–0.92).&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.2em;"&gt;&lt;strong&gt;Bisbee et al.:&lt;/strong&gt; Silicon samples get means right but compress variance and produce wrong regression coefficients.&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.2em;"&gt;&lt;strong&gt;Bollen et al.:&lt;/strong&gt; GenAI is nationally representative but locally blind — fails on local community views.&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.2em;"&gt;&lt;strong&gt;Broska et al.:&lt;/strong&gt; PPI framework lets you use LLM predictions as noisy signals anchored to human validation.&lt;/div&gt;
+    &lt;div class="box box-slate"&gt;&lt;strong&gt;Xie et al.:&lt;/strong&gt; LLMs compress heterogeneity into typological structures; SSDataBench benchmarks statistical realism.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:500px; height:250px"&gt;
+![](https://www.bloomenergy.com/wp-content/uploads/ai-data-center.jpg)
+
+---
+
+class: activity
+
+# ⚡ Activity 6: Paper Matching
+
+**Individually (3 minutes): match each finding to the paper that produced it. Then check with a partner.**
+
+&lt;br&gt;
+
+| Finding | Paper |
+|---|---|
+| 1. Model substitution changes conclusions in 37% of cases | |
+| 2. Chain-of-thought: +39pp on math word problems | |
+| 3. Attributing statements to Chinese sources lowers agreement | |
+| 4. Effective N = N_human + ρ² × N_llm | |
+| 5. Variance compressed to ~50% of real surveys | |
+| 6. Error structure must be estimated before correction | |
+| 7. Group-level attitude fidelity: r ≈ 0.85–0.92 | |
+| 8. GenAI vs. local residents: r ≈ 0.22–0.34 | |
+
+
+*Papers: Yang et al. · Wei et al. (CoT) · Germani et al. · Broska et al. · Bisbee et al. · Maranca et al. · Argyle et al. · Bollen et al.*
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://capturerevisited.org/wp-content/uploads/2020/03/papers.jpg)
+
+---
+
+class: answer
+
+# ✅ Answer: Activity 6
+
+| Finding | Paper |
+|---|---|
+| 1. Model substitution changes conclusions in 37% of cases | **Yang et al.** |
+| 2. Chain-of-thought: +39pp on math word problems | **Wei et al. (CoT)** |
+| 3. Attributing statements to Chinese sources lowers agreement | **Germani et al.** |
+| 4. Effective N = N_human + ρ² × N_llm | **Broska et al.** |
+| 5. Variance compressed to ~50% of real surveys | **Bisbee et al.** |
+| 6. Error structure must be estimated before correction | **Maranca et al.** |
+| 7. Group-level attitude fidelity: r ≈ 0.85–0.92 | **Argyle et al.** |
+| 8. GenAI vs. local residents: r ≈ 0.22–0.34 | **Bollen et al.** |
+
+&lt;br&gt;
+&lt;center&gt;
+&lt;div style="width:250px; height:250px"&gt;
+![](https://image.made-in-china.com/202f0j00MELoBQiJHGgs/Invoice-Receipt-Continuous-Form-Printer-Office-Printing-A4-Copy-Carbonless-Paper-Customize-Factory.webp)
+
+---
+
+# Key Numbers for the Midterm
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th style="width:15%;"&gt;Number&lt;/th&gt;
+    &lt;th style="width:45%;"&gt;What it measures&lt;/th&gt;
+    &lt;th style="width:40%;"&gt;Source&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td style="font-weight:700; color:#c0392b;"&gt;37%&lt;/td&gt;&lt;td&gt;Studies where model substitution changes the conclusion&lt;/td&gt;&lt;td&gt;Yang et al.&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td style="font-weight:700; color:#27ae60;"&gt;0.85–0.92&lt;/td&gt;&lt;td&gt;Correlation between silicon samples and ANES group means (r)&lt;/td&gt;&lt;td&gt;Argyle et al.&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td style="font-weight:700; color:#c0392b;"&gt;~50%&lt;/td&gt;&lt;td&gt;Degree of variance compression in silicon samples vs. real surveys&lt;/td&gt;&lt;td&gt;Bisbee et al.&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td style="font-weight:700; color:#27ae60;"&gt;0.65–0.71&lt;/td&gt;&lt;td&gt;GenAI vs. national survey correlation on neighborhood ratings&lt;/td&gt;&lt;td&gt;Bollen et al.&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td style="font-weight:700; color:#c0392b;"&gt;0.22–0.34&lt;/td&gt;&lt;td&gt;GenAI vs. local residents correlation on neighborhood ratings&lt;/td&gt;&lt;td&gt;Bollen et al.&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td style="font-weight:700; color:#2a5bd7;"&gt;N_eff = N_h + ρ²N_l&lt;/td&gt;&lt;td&gt;PPI effective sample size formula&lt;/td&gt;&lt;td&gt;Broska et al.&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td style="font-weight:700; color:#27ae60;"&gt;5&lt;/td&gt;&lt;td&gt;Statistical dimensions in SSDataBench&lt;/td&gt;&lt;td&gt;Xie et al.&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td style="font-weight:700; color:#c0392b;"&gt;+39pp&lt;/td&gt;&lt;td&gt;Chain-of-thought improvement on math word problems (GSM8K)&lt;/td&gt;&lt;td&gt;Wei et al. (CoT)&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td style="font-weight:700; color:#2a5bd7;"&gt;20/25&lt;/td&gt;&lt;td&gt;Tasks where FLAN outperforms larger GPT-3&lt;/td&gt;&lt;td&gt;Wei et al. (FLAN)&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;center&gt;
+&lt;div style="width:350px; height:175px"&gt;
+![](https://media.istockphoto.com/id/1078638780/vector/table-with-numerical-data-and-red-graph-line.jpg?s=170667a&amp;w=0&amp;k=20&amp;c=7XHKQBMUPPn86W77uIjauEqwZ3t9Yljcy7geihVhl8c=)
+
+---
+
+class: rq
+
+# ❓ Review Question 8
+
+**Integrate across all three units: explain in 4–5 sentences why the following statement is wrong, and what the correct version would be.**
+
+&lt;br&gt;
+
+*"AI makes social science research faster, cheaper, and more reliable. We can now use LLMs to classify text, simulate survey respondents, and test hypotheses — all without the expense of human coding or polling."*
+
+&lt;br&gt;
+
+Take 3 minutes to write before we discuss.
+
+&lt;center&gt;
+&lt;div style="width:250px; height:250px"&gt;
+![](https://tse2.mm.bing.net/th/id/OIP.2tdIOAnCFx8JEhetOFKxTAHaHa?r=0&amp;rs=1&amp;pid=ImgDetMain&amp;o=7&amp;rm=3)
+
+---
+
+class: answer
+
+# ✅ Answer: Review Question 8
+
+**What's wrong — line by line:**
+
+"Faster and cheaper" — true for *generating data*, not for *validating it*. Measurement without validation is not research; it is noise with confidence intervals.
+
+"More reliable" — false. Yang et al.: 37% of conclusions change with model substitution. LLM annotation is systematically *less* reliable than human coding, not more.
+
+"Classify text" — partially true, but only with validation samples, subgroup accuracy audits, and model substitution tests. Errors are systematic, not random, and correct downstream inference requires DSL-style correction (Maranca et al.).
+
+"Simulate survey respondents" — false as stated. Silicon samples get means right but compress variance, produce wrong regression coefficients, and fail on local populations, rare subgroups, and reproducibility. The interchangeability assumption fails.
+
+**The correct version:**
+
+AI makes generating candidate data faster and cheaper. But validity, reliability, and correct inference still require human validation samples, designed audits, bias correction, and — for synthetic respondents — the PPI framework. The constraint is no longer scale; it is validity. And validity requires more methodological rigor than traditional survey research, not less.
+
+---
+
+# Five Topics That Will Be on the Midterm
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div class="box box-amber" style="margin-bottom:0.4em;"&gt;
+      &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;1. Mechanism-level explanations&lt;/div&gt;
+      &lt;div style="font-size:1em; line-height:1.7;"&gt;Not just "LLMs have bias" but &lt;em&gt;why&lt;/em&gt; — training data, alignment, prediction pressure. Be able to explain the mechanism behind each finding.&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="box box-amber" style="margin-bottom:0.4em;"&gt;
+      &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;2. Applying concepts to new scenarios&lt;/div&gt;
+      &lt;div style="font-size:1em; line-height:1.7;"&gt;You'll be given a research scenario and asked to identify problems, recommend approaches, or predict failure modes. Use the frameworks from each unit.&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="box box-amber"&gt;
+      &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;3. Paper attribution&lt;/div&gt;
+      &lt;div style="font-size:1em; line-height:1.7;"&gt;Know which paper produced which finding. "37% of conclusions" is Yang et al. "r ≈ 0.85–0.92" is Argyle et al. "Means right, variance wrong" is Bisbee et al.&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div class="box box-amber" style="margin-bottom:0.4em;"&gt;
+      &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;4. Cross-unit integration&lt;/div&gt;
+      &lt;div style="font-size:1em; line-height:1.7;"&gt;The units are connected. Alignment (Unit 1) explains variance compression (Unit 3). Systematic errors (Unit 2) explain why interchangeability fails (Unit 3). The DSL framework (Unit 2) and PPI (Unit 3) solve analogous problems in different contexts.&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="box box-amber"&gt;
+      &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;5. Distinguishing what can and cannot be fixed&lt;/div&gt;
+      &lt;div style="font-size:1em; line-height:1.7;"&gt;You can fix: prompt wording, few-shot examples, validation sample design, error correction via DSL/PPI. You cannot fix: structural bias in weights via prompting, local blindness via subgroup prompting, variance compression without a correction framework, reproducibility with proprietary models.&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:250px; height:250px"&gt;
+![](https://cdn.vectorstock.com/i/preview-1x/07/29/exam-form-icon-outline-paper-check-vector-42860729.jpg)
+
+---
+
+class: activity
+
+# ⚡ Activity 7: Synthesize It
+
+**One final activity. In groups of 3–4 (5 minutes):**
+
+You are designing a study to estimate how media framing of immigration affects attitudes across five demographic groups (education × party ID × region). You have $5,000.
+
+**Design the study. Your design must answer:**
+
+1. Can any part of this use silicon sampling? Which part, and why?
+2. What validation does silicon sampling require before you trust the data?
+3. If you use LLM annotation of media stories, what are the minimum methodological standards?
+4. Where are the highest-risk failure modes — and what do you do about them?
+
+**After 5 minutes: each group presents their design in 60 seconds.**
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://igvlaw.com/wp-content/uploads/2017/06/uscitizenshipservices.jpg)
+
+---
+
+# What to Study for the Midterm
+
+&lt;div class="cols-3" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;&lt;span class="u1"&gt;UNIT 1 priority list&lt;/span&gt;&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      Stochastic parrot vs. embers framing&lt;br&gt;
+      Task-agnosticism vs. task-specificity&lt;br&gt;
+      What fine-tuning is and when it matters&lt;br&gt;
+      The alignment paradox for SS research&lt;br&gt;
+      Three framings: mechanistic, technical, institutional
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;&lt;span class="u2"&gt;UNIT 2 priority list&lt;/span&gt;&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      Prompting = codebook design&lt;br&gt;
+      Chain-of-thought mechanism&lt;br&gt;
+      Yang et al. 37% finding and what it implies&lt;br&gt;
+      Random vs. systematic error distinction&lt;br&gt;
+      Overt vs. covert bias&lt;br&gt;
+      DSL framework (4 steps)&lt;br&gt;
+      The 7 validity checklist items
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;&lt;span class="u3"&gt;UNIT 3 priority list&lt;/span&gt;&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      Algorithmic fidelity (Argyle et al.)&lt;br&gt;
+      Interchangeability assumption and why it fails&lt;br&gt;
+      Variance compression and its consequences&lt;br&gt;
+      National vs. local accuracy (Bollen et al.)&lt;br&gt;
+      PPI formula and what ρ measures&lt;br&gt;
+      SSDataBench 5 dimensions&lt;br&gt;
+      Typological compression
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:500px; height:250px"&gt;
+![](https://web.library.yale.edu/sites/default/files/yale_bass_library550.jpg)
+
+---
+
+class: inverse, center, middle
+
+# Questions?
+
+# Good luck on the midterm!
+
+&lt;div style="color:#aaa; font-size:0.9em; margin-top:1em;"&gt;Weeks 8 and 9 · SOCY 1200: Introduction to Using AI to Study Society&lt;/div&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "16:9",
+  "slideNumberFormat": "%current% / %total%"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

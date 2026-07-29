@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>SOCY 1200: Introduction to Using AI to Study Society</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Daniel Karell" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="yale.css" type="text/css" />
+    <link rel="stylesheet" href="yale-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# SOCY 1200: Introduction to Using AI to Study Society
+]
+.subtitle[
+## Weeks 15–16: Final Review
+]
+.author[
+### Daniel Karell
+]
+.institute[
+### Yale University
+]
+.date[
+### Weeks 15–16
+]
+
+---
+
+
+
+
+&lt;style&gt;
+.remark-slide-content:not(.title-slide) {
+  font-size: 16px; padding: 1.8em 2.2em 1em;
+  color: #1a1a2e; background: #fafafa;
+}
+.remark-slide-content:not(.title-slide) h1 {
+  font-size: 2em; font-weight: 700; letter-spacing: -0.03em;
+  color: #1a1a2e; border-bottom: 3px solid #4b3f8f;
+  padding-bottom: 0.3em; margin-bottom: 0.7em;
+}
+.remark-slide-content:not(.title-slide) h2 { font-size:1.05em; color:#555; font-weight:500; }
+.remark-slide-content:not(.title-slide) p, .remark-slide-content:not(.title-slide) li { line-height:1.65; }
+.inverse:not(.title-slide) { background: #1a1a2e !important; }
+.inverse:not(.title-slide) h1, .inverse:not(.title-slide) h2, .inverse:not(.title-slide) h3 { color:white !important; border:none !important; }
+.inverse:not(.title-slide) h1 { font-size:1.9em !important; letter-spacing:-0.03em; }
+.inverse:not(.title-slide) h2 { color:#aaa !important; font-weight:400 !important; }
+.section-num:not(.title-slide) { display:inline-block; font-size:4em; font-weight:900; color:rgba(75,63,143,0.8); line-height:1; margin-bottom:0.1em; }
+.discussion { background: #0f3460 !important; }
+.discussion h1 { color: #f0c040 !important; border-bottom: 3px solid #f0c040 !important; }
+.discussion p, .discussion li { color: #e8e8f0 !important; line-height: 1.75 !important; }
+.discussion strong { color: #f0c040 !important; }
+.paper-walk { background: #1a3a1a !important; }
+.paper-walk h1 { color: #90ee90 !important; border-bottom: 3px solid #90ee90 !important; }
+.paper-walk p, .paper-walk li { color: #ddeedd !important; line-height:1.7 !important; }
+.paper-walk strong { color: #90ee90 !important; }
+.debate { background: #1a1a2e !important; }
+.debate h1 { color: #ffcc66 !important; border-bottom: 3px solid #ffcc66 !important; }
+.debate p, .debate li { color: #f0e8d0 !important; line-height:1.7 !important; }
+.debate strong { color: #ffcc66 !important; }
+.casestudy { background: #0a1a2a !important; }
+.casestudy h1 { color: #66ccff !important; border-bottom: 3px solid #66ccff !important; }
+.casestudy p, .casestudy li { color: #ddeeff !important; line-height:1.7 !important; }
+.casestudy strong { color: #66ccff !important; }
+.warning-slide { background: #2a0a0a !important; }
+.warning-slide h1 { color: #ff8888 !important; border-bottom: 3px solid #ff8888 !important; }
+.warning-slide p, .warning-slide li { color: #ffd0d0 !important; line-height:1.7 !important; }
+.warning-slide strong { color: #ff8888 !important; }
+.activity { background: #0a2e2e !important; }
+.activity h1 { color: #5fe0d0 !important; border-bottom: 3px solid #5fe0d0 !important; }
+.activity p, .activity li { color: #d5f5f0 !important; line-height:1.7 !important; }
+.activity strong { color: #5fe0d0 !important; }
+.box { border-radius:6px; padding:0.75em 1em; margin:0.4em 0; font-size:1em; line-height:1.6; }
+.box-teal   { background:#f0fafa; border-left:4px solid #1abc9c; color:#0c3030; }
+.box-red    { background:#fdf2f2; border-left:4px solid #c0392b; color:#3d0c0c; }
+.box-green  { background:#f0faf3; border-left:4px solid #27ae60; color:#0c3320; }
+.box-blue   { background:#f0f4ff; border-left:4px solid #2a5bd7; color:#0d1f5c; }
+.box-amber  { background:#fffbf0; border-left:4px solid #e67e22; color:#5c3400; }
+.box-slate  { background:#f4f5f7; border-left:4px solid #7f8c8d; color:#2c3e50; }
+.box-purple { background:#f5f0ff; border-left:4px solid #8e44ad; color:#2e0060; }
+.box-orange { background:#fef5ee; border-left:4px solid #d35400; color:#3d1500; }
+.box-indigo { background:#f1f0fa; border-left:4px solid #4b3f8f; color:#1f1a45; }
+.quote { border-left:5px solid #4b3f8f; background:white; border-radius:0 6px 6px 0; padding:0.7em 1.2em; font-size:1em; font-style:italic; color:#2c3e50; margin:0.6em 0; box-shadow:0 1px 4px rgba(0,0,0,0.07); }
+.quote cite { display:block; font-style:normal; font-size:1em; color:#4b3f8f; margin-top:0.3em; font-weight:600; }
+.cols-2 { display:grid; grid-template-columns:1fr 1fr; gap:1em; margin:0.5em 0; }
+.cols-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.9em; margin:0.5em 0; }
+.cols-4 { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:0.7em; margin:0.5em 0; }
+.step-row { display:flex; align-items:flex-start; gap:0.75em; margin-bottom:0.5em; }
+.step-num { flex-shrink:0; width:1.7em; height:1.7em; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1em; margin-top:0.05em; }
+.step-num.teal   { background:#1abc9c; color:white; }
+.step-num.blue   { background:#2a5bd7; color:white; }
+.step-num.green  { background:#27ae60; color:white; }
+.step-num.amber  { background:#e67e22; color:white; }
+.step-num.red    { background:#c0392b; color:white; }
+.step-num.grey   { background:#7f8c8d; color:white; }
+.step-num.indigo { background:#4b3f8f; color:white; }
+.step-body { font-size:1em; line-height:1.6; color:#2c3e50; padding-top:0.15em; }
+.styled-table { width:100%; border-collapse:collapse; font-size:0.8em; margin:0.5em 0; box-shadow:0 1px 6px rgba(0,0,0,0.08); }
+.styled-table thead tr { background:#1a1a2e; color:white; }
+.styled-table thead th { padding:0.6em 0.8em; text-align:left; font-weight:600; }
+.styled-table tbody tr:nth-child(even) { background:#f4f5f7; }
+.styled-table tbody tr:nth-child(odd) { background:white; }
+.styled-table tbody td { padding:0.55em 0.8em; color:#2c3e50; vertical-align:top; }
+.styled-table .hl      { background:#f1f0fa !important; font-weight:600; }
+.styled-table .hl-red  { background:#fdf2f2 !important; }
+.styled-table .hl-green { background:#f0faf3 !important; }
+.badge { display:inline-block; border-radius:20px; padding:0.12em 0.65em; font-size:1em; font-weight:700; }
+.badge-teal   { background:#d5f5f0; color:#0e6b5a; }
+.badge-red    { background:#fde8e8; color:#922b21; }
+.badge-green  { background:#e8f8ee; color:#1e8449; }
+.badge-amber  { background:#fef3d0; color:#784212; }
+.badge-grey   { background:#eaecee; color:#515a5a; }
+.badge-blue   { background:#e8edff; color:#1a3fa0; }
+.badge-indigo { background:#e3e0f5; color:#2e2566; }
+.mono { font-family:'Cascadia Code','Fira Code','Courier New',monospace; font-size:1em; background:#1e2433; color:#abb2bf; border-radius:6px; padding:0.8em 1.1em; line-height:1.85; margin:0.4em 0; }
+.mono .hi-blue   { color:#61afef; }
+.mono .hi-green  { color:#98c379; }
+.mono .hi-red    { color:#e06c75; }
+.mono .hi-amber  { color:#e5c07b; }
+.mono .hi-grey   { color:#636d83; }
+.mono .hi-white  { color:#ffffff; }
+.mono .hi-teal   { color:#56b6c2; }
+.mono .hi-indigo { color:#a99ee0; }
+.src { display:inline-block; background:#1a1a2e; color:#FFFFFF; font-size:1em; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; border-radius:3px; padding:0.15em 0.55em; margin-bottom:0.45em; }
+blockquote { border:none; padding:0; margin:0; background:none; }
+&lt;/style&gt;
+
+# Welcome to Final Review
+
+**This review covers all five units of the course, in preparation for the final exam.**
+
+&lt;div class="cols-3" style="margin-top:0.6em;"&gt;
+  &lt;div class="box box-indigo"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Unit 1 · Introduction&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;What modern AI is, how it works, alignment&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-indigo"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Unit 2 · Prompting&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;Prompting for measurement, bias, correction&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-indigo"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Unit 3 · Synthetic People&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;Silicon sampling, limitations, mixed designs&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-indigo"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Unit 4 · AI in Experiments&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;Dynamic materials, persuasion, conversation&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-indigo"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Unit 5 · AI and Society&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;Governments, encyclopedias, surveys, productivity, homogenization, sycophancy&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-amber"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;This review's format&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;Key ideas → review questions → short activities, unit by unit&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:250px; height:250px"&gt;
+![](https://tse4.mm.bing.net/th/id/OIP.6ai-FZLnh3HUID_TmWWPrQHaHa?r=0&amp;rs=1&amp;pid=ImgDetMain&amp;o=7&amp;rm=3)
+
+---
+
+# How to Use This Review
+
+&lt;div class="cols-2" style="margin-top:0.6em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;What each unit section contains&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num indigo"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Key ideas recap:&lt;/strong&gt; the load-bearing concepts and findings from that unit's weeks, condensed&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num indigo"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Review questions:&lt;/strong&gt; the kind of question you should be able to answer cold on the exam&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num indigo"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Short activity:&lt;/strong&gt; a quick, active way to test whether you actually know the material — not just recognize it&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;How to use it well&lt;/div&gt;
+    &lt;div class="box box-teal" style="margin-bottom:0.3em; font-size:1em;"&gt;Try to answer each review question &lt;em&gt;before&lt;/em&gt; looking at the key ideas slide again — testing yourself beats re-reading&lt;/div&gt;
+    &lt;div class="box box-teal" style="margin-bottom:0.3em; font-size:1em;"&gt;Do the activities with a partner if you can — explaining a concept out loud exposes gaps that silent review hides&lt;/div&gt;
+    &lt;div class="box box-teal" style="font-size:1em;"&gt;Pay special attention to studies that appear in more than one unit's synthesis — those are the connective-tissue ideas most likely to show up in a comparative exam question&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-amber" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;This review assumes you've done the readings — it's a structured refresher and self-test, not a substitute for the original weekly material.&lt;/div&gt;
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;I&lt;/div&gt;
+
+# Unit 1: Introduction
+## What is modern AI, and how does it work?
+
+---
+
+# Key Ideas: What Makes Modern AI Different
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-indigo"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Old AI vs. modern AI&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      - Modern AI (LLMs, generative AI, foundation models) is &lt;strong&gt;task-agnostic&lt;/strong&gt; — skilled at generalizing from prior experience, rather than built for one narrow task&lt;br&gt;
+      - This generality is the key shift from earlier, narrow AI systems
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;What LLMs fundamentally are&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      - Prediction machines: very good at predicting the next token, trained to function exactly the way they were trained&lt;br&gt;
+      - This framing (vs. "understanding" or "reasoning") matters for how we interpret their outputs
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="quote" style="margin-top:0.5em;"&gt;The debate over whether LLMs are "stochastic parrots" merely recombining training data, or whether they show genuine emergent generalization, runs underneath everything else this unit covers.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:450px; height:225px"&gt;
+![](https://media.licdn.com/dms/image/v2/D5612AQHk4wChIAN6tg/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1738838611739?e=2147483647&amp;v=beta&amp;t=R_lgrByjHADaBag7c7cIMRP8DLC3QnhyAFKcF6w_M84)
+
+---
+
+# Key Ideas: Under the Hood
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th style="width:26%;"&gt;Concept&lt;/th&gt;&lt;th style="width:74%;"&gt;What to remember&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Embeddings &amp;amp; attention&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;How models represent meaning numerically and weigh which parts of input matter most&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Transformer architecture&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;The underlying structure that made today's LLMs possible&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Backpropagation, weights, predictions&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;How a model learns from error and adjusts its internal parameters&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Training data size &amp;amp; diversity&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Larger training datasets do &lt;strong&gt;not&lt;/strong&gt; always lead to better models — diversity and quality matter, not just volume&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Fine-tuning&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Needs to target the right parameters for optimal performance — more fine-tuning isn't automatically better&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Context windows&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Condition what the model predicts; shape what "counts" as available information for a given output&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Instruction-tuning&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Adapts a base prediction model to follow user instructions specifically&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+# Key Ideas: Alignment — Good or Bad for Research?
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-green"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Why alignment is good&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      - Reduces harmful, offensive, or dangerous outputs&lt;br&gt;
+      - Makes models more useful and predictable for everyday use&lt;br&gt;
+      - Builds public and institutional trust in deployed systems
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Why alignment may not be ideal for social science research&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      - Alignment can suppress the very variation researchers want to study or measure&lt;br&gt;
+      - A model trained to give safe, agreeable, "helpful" answers may not represent the diversity of real human opinion&lt;br&gt;
+      - This tension foreshadows this course's later units on homogenization and sycophancy
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-amber" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;Hold onto this tension — a model built to be a good &lt;em&gt;product&lt;/em&gt; (safe, agreeable) is not automatically a good &lt;em&gt;research instrument&lt;/em&gt; (representative, variable, honest about disagreement).&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:200px; height:200px"&gt;
+![](https://media.istockphoto.com/vectors/teamwork-direction-vector-id165738999?k=20&amp;m=165738999&amp;s=612x612&amp;w=0&amp;h=FFq1ZF59_1q67XJMBbPC54seawEkbbf25hkUcXMvGiA=)
+
+---
+
+class: discussion
+
+# 💬 Review Questions: Unit 1
+
+&lt;br&gt;
+
+1. What does it mean to say modern LLMs are "task-agnostic," and why is this the key distinction from earlier AI systems?
+
+2. Explain the difference between fine-tuning and instruction-tuning. Why does fine-tuning need to target the "right parameters" rather than simply training longer or on more data?
+
+3. Give one reason alignment is beneficial for a commercial AI product, and one reason it could be a problem for a social scientist trying to use that same AI system as a research instrument.
+
+4. Why might a larger training dataset fail to produce a better model? What matters more than sheer size?
+
+&lt;center&gt;
+&lt;div style="width:350px; height:175px"&gt;
+![](https://static.vecteezy.com/system/resources/previews/039/672/079/large_2x/asked-questions-people-around-question-marks-business-discussion-to-solve-problem-concept-business-people-employee-ask-questions-with-question-mark-signs-vector.jpg)
+
+---
+
+class: activity
+
+# ✏️ Activity: Unit 1 — Explain It Like a Colleague
+
+**In 60 seconds, explain the following to a partner — without looking at your notes:**
+
+&lt;br&gt;
+
+&lt;div class="cols-2" style="margin-top:0.3em;"&gt;
+  &lt;div class="box box-teal" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;
+  &lt;div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num teal"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;The difference between prompting, fine-tuning, and instruction-tuning — as if explaining to a colleague who understands "AI" only as a buzzword&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num teal"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;Why context windows matter for what a model can and can't "know" during a single conversation&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+  &lt;div class="box box-teal" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num amber"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;One concrete way alignment could distort a research finding, if a researcher didn't account for it&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-teal" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;&lt;strong&gt;Self-check:&lt;/strong&gt; if you had to pause, look something up, or use a vague phrase like "it just does prediction stuff," that's a sign to revisit that specific concept before the exam.&lt;/div&gt;
+
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;II&lt;/div&gt;
+
+# Unit 2: Prompting
+## With application to measurement
+
+---
+
+# Key Ideas: Prompting Fundamentals
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-indigo"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;What prompting is&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      - Closer to a design task than a technical one&lt;br&gt;
+      - A learnable skill — output is highly sensitive to how a prompt is phrased&lt;br&gt;
+      - Choosing between adjusting prompts vs. fine-tuning depends on the problem and resources available
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Core techniques&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      &lt;strong&gt;Chain-of-thought:&lt;/strong&gt; slows the model down, often improving results&lt;br&gt;
+      &lt;strong&gt;Few-shot prompting:&lt;/strong&gt; sometimes effective, not universally&lt;br&gt;
+      &lt;strong&gt;Codebooks:&lt;/strong&gt; make prompting more effective and systematic
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="quote" style="margin-top:0.5em;"&gt;A recurring theme: prompts need to match the task's complexity, concepts must be clearly explained, and LLM errors are systematic — not random — which is what makes them correctable.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:450px; height:225px"&gt;
+![](https://media.istockphoto.com/id/1488231021/photo/artificial-intelligence-new-age-human-concept.jpg?s=170667a&amp;w=0&amp;k=20&amp;c=PRrmEL7DFc_EYaWiega-4_FmrR31m19_n1qMFda_1Y4=)
+
+---
+
+# Key Ideas: Prompting for Measurement
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th style="width:32%;"&gt;Concept&lt;/th&gt;&lt;th style="width:68%;"&gt;What to remember&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Classification &amp;amp; annotation&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;LLMs make text classification and annotation much easier — but reliability is lower than most researchers assume&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Non-random errors&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Errors in LLM data annotation are systematic, not random — this is a serious problem because it can bias downstream conclusions in a consistent direction&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Demographic bias in annotation&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;LLMs show stereotypical demographic biases specifically when annotating political data&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Zero-shot vs. few-shot&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Zero-shot works best with conceptual clarity in the task; few-shot prompting helps when that clarity is harder to achieve&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Fine-tuned BERT vs. larger LLMs&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;A fine-tuned BERT classifier with high label clarity can outperform much larger general-purpose models&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Validity requirements&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;High validity measurement requires high accuracy on well-defined constructs — vague constructs undermine validity regardless of model accuracy&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+# Key Ideas: Bias, Errors, and Correction
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;The bias problem&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      - LLM bias is demographically patterned — not random noise&lt;br&gt;
+      - Covert bias is harder to detect than overt bias&lt;br&gt;
+      - LLMs are not culturally neutral&lt;br&gt;
+      - Errors tend to fall disproportionately on marginalized, underrepresented, and foreign populations
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-teal"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Correcting for it&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      - Correction requires knowing the &lt;em&gt;systemic&lt;/em&gt; causes and patterns of errors — not just their existence&lt;br&gt;
+      - Design-based supervised learning (DSL) approaches can help statistically correct for known bias patterns&lt;br&gt;
+      - Better raw model performance does not automatically mean better research conclusions
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-amber" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;Replication is a persistent challenge in this space — a major reason LLM-based measurement research can be almost impossible to replicate exactly.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://sourcesofinsight.com/wp-content/uploads/2023/09/Biases-Library.jpg)
+
+---
+
+class: discussion
+
+# 💬 Review Questions: Unit 2
+
+&lt;br&gt;
+
+1. Why is it a bigger problem for LLM annotation errors to be systematic rather than random? What kind of downstream research conclusion could this distort?
+
+2. When would zero-shot prompting be preferable to few-shot prompting for a classification task — and when would the reverse be true?
+
+3. A researcher finds that a fine-tuned BERT classifier outperforms a much larger, more "capable" LLM on their specific annotation task. What does this suggest about the relationship between general model capability and task-specific measurement validity?
+
+4. What is the difference between overt and covert bias in LLM outputs, and why is covert bias the harder methodological problem?
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://media.istockphoto.com/id/1219428315/vector/asking-questions-around-a-huge-question-mark.jpg?s=170667a&amp;w=0&amp;k=20&amp;c=OM60ym0vU94vcZP-hH-B0V_iH97lFo2SXmtv0AwOW08=)
+
+---
+
+class: activity
+
+# ✏️ Activity: Unit 2 — Prompt Critique
+
+**Below is a deliberately weak research prompt. Identify at least three specific flaws, and rewrite it.**
+
+&lt;div class="mono" style="margin:0.5em 0; font-size:1em;"&gt;
+&lt;span class="hi-grey"&gt;"Classify this social media post as positive or negative."&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div class="box box-teal" style="font-size:1em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Questions to guide your critique&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num teal"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;Is the construct ("positive"/"negative") clearly and unambiguously defined?&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num teal"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;Is there a codebook or set of examples the model can anchor to?&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num teal"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;Does the task's complexity match the sophistication of the prompt?&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em; color:#FFFFFF;"&gt;Bonus challenge&lt;/div&gt;
+    &lt;div class="box box-teal" style="font-size:1em;"&gt;Add a chain-of-thought instruction and a few-shot example to your rewrite — then explain in one sentence what each addition is meant to fix&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://menervadigital.com/wp-content/uploads/2025/01/social-media.jpg)
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;III&lt;/div&gt;
+
+# Unit 3: Synthetic People
+## Can AI stand in for human research participants?
+
+---
+
+# Key Ideas: Silicon Sampling
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-indigo"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;What it is and why it's appealing&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      - Silicon sampling: using LLMs to generate synthetic human-like responses in place of, or alongside, real survey/experiment participants&lt;br&gt;
+      - LLMs can relatively accurately emulate responses from specific demographic groups&lt;br&gt;
+      - Traditional polling is struggling (declining response rates, cost), making synthetic alternatives appealing&lt;br&gt;
+      - Synthetic data can be more representative at larger scopes than small human samples
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;The core limitations&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      - Plausibility of a generated opinion is not the same as validity for research purposes&lt;br&gt;
+      - Synthetic data is representative &lt;em&gt;on average&lt;/em&gt;, but struggles to replicate real human variability&lt;br&gt;
+      - Prompts spanning many subgroups at once are especially challenging for LLMs&lt;br&gt;
+      - Synthetic data has low reproducibility and has been widely used without being widely validated
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="quote" style="margin-top:0.4em;"&gt;A forward-looking risk raised in this unit: what happens if future LLMs are trained partly on synthetic data generated by earlier LLMs? This is the same contamination/feedback-loop concern that reappears in Unit 5.&lt;/div&gt;
+
+---
+
+# Key Ideas: Limitations and Solutions
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th style="width:30%;"&gt;Concept&lt;/th&gt;&lt;th style="width:70%;"&gt;What to remember&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Mixed experimental designs&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Combine human and synthetic data to maintain validity — most useful when traditional data collection is expensive&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Predictors vs. simulators&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;LLMs tend to function better as predictors of human responses than as simulators that fully replicate human response processes&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Prediction-powered inference (PPI)&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;A statistical framework for combining a small amount of costly human-labeled data with a larger amount of AI-generated data, while maintaining valid inference&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Categorical vs. continuous&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;LLMs handle categorical distributions better than continuous ones — a practical constraint on what synthetic data can be trusted for&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Calibration&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Human validation samples are needed to calibrate synthetic data for maximum validity — synthetic data should not be trusted "as is"&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Demographic unevenness&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;LLMs produce better synthetic data for well-represented demographic groups, and worse data for underrepresented ones&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+class: discussion
+
+# 💬 Review Questions: Unit 3
+
+&lt;br&gt;
+
+1. What is the difference between a synthetic dataset being "plausible" and being "valid" for research purposes? Why does the distinction matter?
+
+2. Explain why synthetic data can be representative on average while still failing to capture real human variability. What kind of research question would this failure mode be especially damaging for?
+
+3. What is prediction-powered inference, and what problem does it solve that pure silicon sampling does not?
+
+4. Why does silicon sampling tend to work better for well-represented demographic groups than underrepresented ones — and what does this imply about who might be harmed by over-reliance on synthetic data?
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://www.geeky-gadgets.com/wp-content/uploads/2024/02/Advanced-AI-data-analysis-with-DatakuAI.jpg)
+
+---
+
+class: activity
+
+# ✏️ Activity: Unit 3 — Design Check
+
+**For each research scenario below, decide: full silicon sampling, a mixed-subjects design, or human-only data collection? Justify your choice in one sentence.**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Scenario A&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;A well-studied, well-represented national population's general attitude toward a familiar consumer product, needed quickly and cheaply for a pilot study&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Scenario B&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;A rare, marginalized subgroup's nuanced, individually varying emotional response to a sensitive and unfamiliar policy proposal&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate" style="grid-column: span 2;"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Scenario C&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;A large-scale study needing both statistical power across many subgroups &lt;em&gt;and&lt;/em&gt; defensible causal validity, where full human data collection is prohibitively expensive but some funding for a smaller human validation sample exists&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-teal" style="margin-top:0.4em; text-align:center; font-size:1em;"&gt;Compare your reasoning with a partner — did you weigh cost, variability, and validity the same way?&lt;/div&gt;
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;IV&lt;/div&gt;
+
+# Unit 4: AI in Experiments
+## Dynamic materials, persuasion, and conversation as treatment
+
+---
+
+# Key Ideas: Dynamic Materials
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-green"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Advantages&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      - Increases feasibility of experimental designs that would be too labor-intensive with human-generated materials&lt;br&gt;
+      - AI can improve the quality of political discussions in experiments&lt;br&gt;
+      - High-quality debates should be evidence-based and respectful in tone&lt;br&gt;
+      - Personable AI outputs increase persuasiveness
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Limitations&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      - AI can be dangerous by shifting political opinions, linguistic choices, and thought patterns&lt;br&gt;
+      - Biased autocomplete recommendations can alter perspectives in non-natural ways&lt;br&gt;
+      - Effects depend on whether participants notice AI's biases&lt;br&gt;
+      - Participants may give inauthentic responses if they mistake a casual conversation for a formal debate&lt;br&gt;
+      - Open question: how much disclosure is owed to participants about AI-generated content?
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://st2.depositphotos.com/49078592/49482/i/450/depositphotos_494823056-stock-photo-sign-displaying-social-experiment-business.jpg)
+
+---
+
+# Key Ideas: Persuasiveness — The Four Studies Recap
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th style="width:18%;"&gt;Study&lt;/th&gt;&lt;th style="width:41%;"&gt;Headline finding&lt;/th&gt;&lt;th style="width:41%;"&gt;Key numbers&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Costello et al.&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Personalized AI dialogue durably reduces conspiracy belief&lt;/td&gt;&lt;td&gt;~20% belief reduction, held at 2-month follow-up&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Salvi et al.&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Personalized GPT-4 outperforms humans in live debate&lt;/td&gt;&lt;td&gt;64.4% win rate; 81.2% higher odds of persuading&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Hackenburg et al.&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Post-training and prompting drive persuasiveness — at a cost to accuracy&lt;/td&gt;&lt;td&gt;+51% (post-training), +27% (prompting); persuasion↑ → accuracy↓&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Argyle et al.&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Customization and elaboration did NOT clearly beat a generic message&lt;/td&gt;&lt;td&gt;Null result — a useful counterweight to the other three&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class="box box-indigo" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;&lt;strong&gt;Remember the shared mechanism:&lt;/strong&gt; AI can address every specific claim a person raises, exhaustively and personalized to them — something no human debater can sustain at the same scale or speed.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://www.thinktank.gr/blog/wp-content/uploads/2025/07/chat-gpt-image.webp)
+
+---
+
+# Key Ideas: Differences in Conversation
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-teal"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Why conversation is different&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      - People treat conversations with AI more seriously and with more focus than they treat static text&lt;br&gt;
+      - Turn-taking, personal address, and forced elaboration all plausibly deepen engagement
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-amber"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;But it's not a settled law&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      - Hackenburg et al. found dialogue beat static messages&lt;br&gt;
+      - Argyle et al. found interactive elaboration did &lt;em&gt;not&lt;/em&gt; clearly beat a static message&lt;br&gt;
+      - "Conversation beats static text" is an empirical, context-dependent claim — not a given
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-red" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;Consent is a live tension throughout this unit: how much must participants be told about an AI's persuasive goal, or its accuracy-persuasiveness tradeoff, without undermining the very effect being measured?&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:300px"&gt;
+![](https://www.freevector.com/uploads/vector/preview/94036/vecteezychat-gpt-similar-illustrationdp0323_generated.jpg)
+
+---
+
+class: discussion
+
+# 💬 Review Questions: Unit 4
+
+&lt;br&gt;
+
+1. Name the four persuasion studies from this unit and, for each, state the single most important number or finding you'd want to cite on an exam.
+
+2. Explain the persuasion–accuracy tradeoff documented by Hackenburg et al. Why is this more concerning than simply "AI can be very persuasive"?
+
+3. Argyle et al. found a null result for customization and elaboration. How does this complicate a simple narrative of "AI persuasion works because of personalization"?
+
+4. What does it mean for a conversational AI treatment to raise new consent questions that a static vignette wouldn't? Give one specific example.
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://media.istockphoto.com/id/1453966873/photo/white-question-mark-in-front-of-blue-wall.jpg?s=170667a&amp;w=0&amp;k=20&amp;c=4ALgSvRu9arXbgqKD1QQg_32xZvV5jRjTmua4uJ0pBQ=)
+
+---
+
+class: activity
+
+# ✏️ Activity: Unit 4 — Match the Study to the Finding
+
+**Without looking back, match each finding to its study (Costello et al., Salvi et al., Hackenburg et al., or Argyle et al.):**
+
+&lt;div class="cols-2" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div class="box box-slate"&gt;A. "Personalization didn't help human debaters, even with the same demographic data AI had access to."&lt;/div&gt;
+  &lt;div class="box box-slate"&gt;B. "A ~20% belief reduction held up two months later."&lt;/div&gt;
+  &lt;div class="box box-slate"&gt;C. "Post-training boosted persuasiveness by up to 51%, but reduced factual accuracy."&lt;/div&gt;
+  &lt;div class="box box-slate"&gt;D. "Interactive elaboration did not clearly outperform a generic static message."&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-teal" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;Check your answers against the recap table two slides back — how many did you get right without looking?&lt;/div&gt;
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;V&lt;/div&gt;
+
+# Unit 5: AI and Society
+## Governments, encyclopedias, surveys, productivity, homogenization, and sycophancy
+
+---
+
+# Key Ideas: Governments and Encyclopedias
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th style="width:20%;"&gt;Study&lt;/th&gt;&lt;th style="width:40%;"&gt;Headline finding&lt;/th&gt;&lt;th style="width:40%;"&gt;Key numbers&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Waight et al.&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;State media control shapes LLM training data and outputs, even with no AI-specific policy&lt;/td&gt;&lt;td&gt;41× overrepresentation; ~80% pro-government shift from just 6,400 documents; effect tracks press freedom by query language&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Yasseri &amp;amp; Mohammadi&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;AI encyclopedias (Grokipedia) relocate bias rather than remove it&lt;/td&gt;&lt;td&gt;17,790 matched pairs; rightward shift concentrated in religion/history/lit/art; ~20 vs. ~35 references per 1,000 words&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-indigo"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Direct vs. indirect government control&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;Direct = laws, licensing, mandated guardrails. Indirect = controlling the media environment that gets scraped into training data — no AI policy needed at all, and much harder to detect.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-purple"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;"AI-corrected" ≠ "unbiased"&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;Grokipedia was built to fix Wikipedia's alleged bias — but bias didn't disappear, it moved to specific topics and became less contestable (no visible edit history).&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:250px; height:250px"&gt;
+![](https://1000logos.net/wp-content/uploads/2017/05/Wikipedia-logos.jpg)
+
+---
+
+# Key Ideas: Surveys and Contamination
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Westwood — the core threat&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      - An autonomous AI agent evaded survey-bot detection 99.8% of the time&lt;br&gt;
+      - 10–52 fake responses (at ~5¢ each) could have flipped major 2024 election polls&lt;br&gt;
+      - The agent could infer a researcher's hypothesis and bias answers to confirm it — targeted bias, not random noise
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;O'Grady — the arms race&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      - Detection methods are consistently outpaced by model capability gains&lt;br&gt;
+      - Publishing a new detector teaches future agents what to defeat&lt;br&gt;
+      - "AI threatens to upend online social science research" — not just complicate it
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-amber" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;&lt;strong&gt;The contamination feedback loop:&lt;/strong&gt; AI-shaped media, encyclopedia content, and survey data all re-enter the pool that future models and future research treat as ground truth — the problem compounds rather than staying contained.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:250px; height:250px"&gt;
+![](https://cdn-icons-png.flaticon.com/512/10728/10728257.png)
+
+---
+
+# Key Ideas: Productivity and Science
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th style="width:20%;"&gt;Study&lt;/th&gt;&lt;th style="width:40%;"&gt;Headline finding&lt;/th&gt;&lt;th style="width:40%;"&gt;Key numbers&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Daniotti et al.&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;GenAI coding tools boost productivity — for senior developers only&lt;/td&gt;&lt;td&gt;3.6% commit boost; $23–38B/year (US); zero measurable benefit for early-career developers, despite highest adoption&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Hao et al.&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;AI expands individual scientific impact but contracts collective focus&lt;/td&gt;&lt;td&gt;3.02× papers, 4.84× citations, 1.37 yrs earlier leadership — vs. −4.63% topic diversity, −22% engagement&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class="box box-indigo" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;&lt;strong&gt;The shared pattern:&lt;/strong&gt; both studies show individual-level metrics improving while a group- or field-level metric moves in the opposite direction — a recurring structure across this whole unit.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:450px; height:225px"&gt;
+![](https://img.magnific.com/premium-photo/software-developer-working-computer-illustrating-technology-coding-programming_87543-51420.jpg)
+
+---
+
+# Key Ideas: Homogenization and Sycophancy
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th style="width:20%;"&gt;Study&lt;/th&gt;&lt;th style="width:40%;"&gt;Headline finding&lt;/th&gt;&lt;th style="width:40%;"&gt;Key numbers&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Sourati et al.&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;LLM training itself, not just biased data, amplifies homogenization&lt;/td&gt;&lt;td&gt;Opinion synthesis — the prediction objective mechanically favors frequent, generalizable patterns, even after RLHF/fine-tuning&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Wenger &amp;amp; Kenett&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;All LLMs homogenize — not just one model&lt;/td&gt;&lt;td&gt;102 humans vs. 22 LLMs; LLM variability far lower across three creativity tasks (effect size up to 1.8)&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl-red"&gt;&lt;td&gt;&lt;strong&gt;Cheng et al.&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Sycophancy is prevalent, harmful, and self-reinforcing&lt;/td&gt;&lt;td&gt;49% more affirming than humans; 51% vs. 0% on AITA cases; distorts judgment yet is preferred by users&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class="box box-red" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;&lt;strong&gt;The unifying idea for this unit's back half:&lt;/strong&gt; AI appears optimized for individual satisfaction (an agreeable answer, a fluent response) rather than communal diversity or accountability — and market incentives don't naturally correct for this, since users prefer the very features that cause the harm.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://fxis.ai/edu/wp-content/uploads/2025/05/sycophancy.webp)
+
+---
+
+class: discussion
+
+# 💬 Review Questions: Unit 5
+
+&lt;br&gt;
+
+1. Explain the difference between direct and indirect government influence over LLMs (Waight et al.). Why is the indirect channel arguably harder to regulate?
+
+2. What does it mean that Grokipedia "relocates" bias rather than removing it? Where specifically did Yasseri and Mohammadi find the divergence concentrated?
+
+3. Westwood's central number is a 99.8% detection-evasion rate. Explain why this threatens survey research specifically, and what makes AI-driven demand effects worse than ordinary bot noise.
+
+4. Daniotti et al. and Hao et al. both show individual gains alongside collective costs. State this pattern in one general sentence, then apply it to Cheng et al.'s sycophancy findings — does the same pattern hold there?
+
+5. Why does Wenger and Kenett's finding that homogenization holds across 22 different LLMs matter more than a finding about just one model?
+
+&lt;center&gt;
+&lt;div style="width:250px; height:125px"&gt;
+![](https://www.billwarch.com/uploadedFiles/File/news_Image_1525389919.jpg)
+
+---
+
+class: activity
+
+# ✏️ Activity: Unit 5 — Stat Recall Sprint
+
+**Set a 90-second timer. Without notes, write down as many of these numbers as you can recall, and which study each belongs to:**
+
+&lt;div class="cols-2" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div class="box box-slate"&gt;41× &amp;nbsp;·&amp;nbsp; ~80% &amp;nbsp;·&amp;nbsp; 17,790 &amp;nbsp;·&amp;nbsp; 99.8%&lt;/div&gt;
+  &lt;div class="box box-slate"&gt;10–52 &amp;nbsp;·&amp;nbsp; 3.6% &amp;nbsp;·&amp;nbsp; 3.02× &amp;nbsp;·&amp;nbsp; 4.84×&lt;/div&gt;
+  &lt;div class="box box-slate"&gt;−4.63% &amp;nbsp;·&amp;nbsp; −22% &amp;nbsp;·&amp;nbsp; 49% &amp;nbsp;·&amp;nbsp; 51% vs. 0%&lt;/div&gt;
+  &lt;div class="box box-slate"&gt;22 (LLMs) &amp;nbsp;·&amp;nbsp; 102 (humans) &amp;nbsp;·&amp;nbsp; 1.37 years&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-teal" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;Then check yourself against the four recap slides you just reviewed. Numbers you couldn't place are your highest-priority re-read before the exam.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:350px; height:175px"&gt;
+![](https://img.magnific.com/premium-vector/experimental-laboratory-analysis-information_999616-2081.jpg)
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;VI&lt;/div&gt;
+
+# Cross-Unit Synthesis
+## The threads that run through the whole course
+
+---
+
+# Five Threads Running Through the Course
+
+&lt;div class="cols-2" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div class="box box-indigo"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;1. Individual benefit vs. collective cost&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;Daniotti et al., Hao et al., and Cheng et al. all show a gain at the individual level paired with a cost at the group or societal level.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-indigo"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;2. Bias is relocated, not removed&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;Unit 2's demographic annotation bias, Waight et al.'s state-media influence, and Yasseri &amp;amp; Mohammadi's Grokipedia findings all show bias persisting in new, often less visible forms.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-indigo"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;3. Plausible ≠ valid&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;Unit 3's silicon sampling critique, Unit 4's persuasion-accuracy tradeoff, and Cheng et al.'s "trusted but distorting" sycophancy findings all separate what &lt;em&gt;feels&lt;/em&gt; convincing from what is actually accurate or representative.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-indigo"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;4. Contamination and feedback loops&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;Unit 3's worry about training on synthetic data and Unit 5's contamination feedback loop (Westwood, Waight, Grokipedia) describe the same underlying dynamic: AI output re-entering the pool treated as ground truth.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-indigo" style="grid-column: span 2;"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;5. Conversation and personalization as a double-edged tool&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;The same adaptivity that makes AI a powerful research instrument (Unit 4's dynamic materials, Unit 3's silicon sampling) is what makes it a powerful, hard-to-regulate persuasion and homogenization technology outside the lab.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+# Every Study at a Glance: Unit 1 — Introduction
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th style="width:24%;"&gt;Study&lt;/th&gt;&lt;th style="width:76%;"&gt;One-line finding&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Bender, Gebru, McMillan-Major &amp;amp; Shmitchell (2021)&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; font-weight:400;"&gt;bender_parrots_2021&lt;/span&gt;&lt;/td&gt;&lt;td&gt;The "stochastic parrots" critique: LLMs are statistical pattern-matchers producing fluent text without genuine understanding — bigger models aren't automatically safer or more meaningful&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;McCoy, Yao, Friedman, Hardy &amp;amp; Griffiths (2024)&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; font-weight:400;"&gt;mccoy_embers_2024&lt;/span&gt;&lt;/td&gt;&lt;td&gt;"Embers of autoregression": LLM accuracy is systematically shaped by the probability of the task and output, not just correctness — e.g., GPT-4 was 97% accurate counting to 30 but only 17% accurate counting to 29&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Schulz-Schaeffer et al.&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; font-weight:400;"&gt;schulz-schaeffer_different_2025&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Situates today's LLMs within the longer history of "AI," arguing what's different now is task-agnostic generalization, not just raw capability&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Vargas et al.&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; font-weight:400;"&gt;vargas_embedding_2025&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Examines embeddings and representation learning as the technical foundation for how LLMs encode meaning&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Davidson et al.; Farrell et al.&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; font-weight:400;"&gt;davidson_integrating_2025; farrell_social_2025&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Address integrating LLMs into social-scientific research practice and their broader social implications&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Wang et al. (2024); Wang et al. (2022); Wei et al. (2022)&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; font-weight:400;"&gt;wang_finetuning_2024; wang_instructions_2022; wei_finetuned_2022&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Establish why fine-tuning and instruction-tuning matter: Wei et al.'s FLAN work shows instruction-tuned models generalize as zero-shot learners to unseen tasks&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Lyman et al.&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; font-weight:400;"&gt;lyman_alignment_2025&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Explains alignment and weighs its benefits (safety, usability) against its costs for social-science applications (suppressed variation)&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class="box box-indigo" style="margin-top:0.4em; text-align:center; font-size:0.9em;"&gt;Bender et al. and McCoy et al. are the two most citable, specific findings from this unit — know both cold.&lt;/div&gt;
+
+---
+
+# Every Study at a Glance: Unit 2 — Prompting
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th style="width:24%;"&gt;Study&lt;/th&gt;&lt;th style="width:76%;"&gt;One-line finding&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Wei et al. (2022)&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; font-weight:400;"&gt;wei_chainofthought_2023&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Introduces chain-of-thought prompting: asking a model to reason step-by-step measurably improves accuracy on complex tasks&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Stuhler et al.; Griswold et al.&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; font-weight:400;"&gt;stuhler_promptbooks_2025; griswold_staytuned_2025&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Develop and test "promptbook" approaches — codebook-like structures that make prompting more systematic and reproducible&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Dávila et al.&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; font-weight:400;"&gt;dávila_racism_2026&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Case study in how prompt design affects the detection of sensitive constructs (e.g., racism) in text classification&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Burnham et al.; Halterman et al.&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; font-weight:400;"&gt;burnham_debate_2025; halterman_codebook_2025&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Apply codebook-style prompting to political-text measurement tasks, testing reliability against human coders&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Crowl et al.; Vafa et al.; Benoit et al.&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; font-weight:400;"&gt;crowl_measuring_2025; vafa_wage_2025; benoit_political_2025&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Apply LLM-based measurement to specific social-science constructs (e.g., wages, political text), testing validity against known benchmarks&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Chae et al.; Yang et al.; Jeon et al.&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; font-weight:400;"&gt;chae_text_2025; yang_annotation_2025; jeon_demographics_2026&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Document LLM performance and demographic bias patterns in text classification and annotation tasks&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Ashwin et al.; Bai et al.; Germani et al.; Tan et al.&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; font-weight:400;"&gt;ashwin_qualitative_2025; bai_biased_2025; germani_bias_2025; tan_cultural_2026&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Document demographically patterned and cultural bias in LLM outputs, including covert bias harder to detect than overt bias&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Barrie et al.; Bisbee et al.&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; font-weight:400;"&gt;barrie_replication_2025; bisbee_gold_2025&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Examine why LLM-based measurement research is difficult to replicate, and what "gold standard" comparison requires&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Maranca et al.&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; font-weight:400;"&gt;maranca_dsl_2025&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Develops design-based supervised learning (DSL) methods to statistically correct for known LLM measurement bias&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+# Every Study at a Glance: Unit 3 — Synthetic People
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th style="width:24%;"&gt;Study&lt;/th&gt;&lt;th style="width:76%;"&gt;One-line finding&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Argyle, Busby, Fulda, Gubler, Rytting &amp;amp; Wingate (2023)&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; font-weight:400;"&gt;argyle_simulate_2023&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Foundational silicon-sampling paper: shows LLMs conditioned on demographic backstories can approximate the response distributions of specific human subgroups&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Weatherby et al.&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; font-weight:400;"&gt;weatherby_silicon_2026&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Assesses silicon sampling's promise against traditional polling's declining response rates and rising costs&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Bisbee et al. (2024)&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; font-weight:400;"&gt;bisbee_replacements_2024&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Tests whether synthetic respondents can fully replace human respondents — finds synthetic data captures central tendencies but not individual-level variability&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Bollen et al.&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; font-weight:400;"&gt;bollen_biases_2025&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Documents systematic biases in silicon-sampled data, especially for underrepresented demographic subgroups&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Broska et al.&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; font-weight:400;"&gt;broska_mixedsubjects_2025&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Develops mixed-subjects experimental designs and prediction-powered inference, combining costly human data with abundant synthetic data while preserving valid inference&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Xie et al.&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; font-weight:400;"&gt;xie_realism_2026&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Tests how well synthetic data replicates real human response distributions, and what statistical validation (beyond a surface "eye test") requires&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class="box box-indigo" style="margin-top:0.5em; text-align:center; font-size:0.95em;"&gt;Argyle et al. (2023) is the paper to know best in this unit — it's the founding demonstration that the rest of Unit 3's critiques and refinements respond to.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://assets.seobotai.com/cdn-cgi/image/quality=75,w=1536,h=1024/syntellia.io/692103c69c1061ed16212f98-1763780032859.jpg)
+
+---
+
+# Every Study at a Glance: Unit 4 — AI in Experiments
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th style="width:22%;"&gt;Study&lt;/th&gt;&lt;th style="width:78%;"&gt;One-line finding&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Argyle et al. (2023)&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; font-weight:400;"&gt;argyle_conversation_2023&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Demonstrates using AI to dynamically generate experimental materials (e.g., debate content) at a scale infeasible for human-written stimuli&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Williams-Ceci et al. (2026)&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; font-weight:400;"&gt;williams-ceci_attitudes_2026&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Shows AI-generated content can shift political attitudes and linguistic choices, sometimes without participants noticing the influence&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Heide-Jørgensen et al. (2025)&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; font-weight:400;"&gt;heidejorgensen_debate_2025&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Finds AI-generated debate content improves discussion quality when evidence-based and respectful in tone&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Costello, Pennycook &amp;amp; Rand (2024)&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Personalized AI dialogue durably (2 months) reduces conspiracy belief by ~20%&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Salvi, Horta Ribeiro, Gallotti &amp;amp; West (2025)&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Personalized GPT-4 beats humans in live debate 64.4% of the time (81.2% higher odds)&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Hackenburg, Tappin, Hewitt et al. (2025)&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Post-training (+51%) and prompting (+27%) boost persuasion — at a measurable cost to factual accuracy&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Argyle, Busby, Gubler et al. (2025)&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Message customization and interactive elaboration did NOT clearly outperform a generic static message — a key null result&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class="box box-red" style="margin-top:0.5em; text-align:center; font-size:0.95em;"&gt;Note Argyle appears twice in this unit under two different papers (2023 dynamic materials; 2025 persuasion) — don't conflate them on the exam.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://img.magnific.com/premium-vector/students-programming-swarm-robotics-robotics-lab-illustration_1033579-48470.jpg)
+
+---
+
+# Every Study at a Glance: Unit 5 — AI and Society
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th style="width:22%;"&gt;Study&lt;/th&gt;&lt;th style="width:78%;"&gt;One-line finding&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Waight, Yang, Yuan et al. (2026)&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;State media control shapes LLM training data and outputs (41× overrepresentation; ~80% pro-government shift from 6,400 documents)&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Yasseri &amp;amp; Mohammadi (2026)&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Grokipedia relocates, rather than removes, Wikipedia's bias — concentrated in religion/history/lit/art, fewer citations per word&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Westwood (2025)&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;AI survey agents evade detection 99.8% of the time; 10–52 fake responses could have flipped a national election poll&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;O'Grady (2026)&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Detection is a losing arms race — published detectors teach future agents what to defeat&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Daniotti, Wachs, Feng &amp;amp; Neffke (2026)&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;GenAI coding gains (3.6% commits; $23–38B/yr) accrue only to senior developers, not early-career adopters&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Hao, Xu, Li &amp;amp; Evans (2026)&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Individual scientific impact expands (3.02× papers, 4.84× citations); collective topic diversity and engagement contract (−4.63%, −22%)&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Sourati, Ziabari &amp;amp; Dehghani (2026)&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;LLM training itself, not just biased data, mechanically amplifies homogenization of thought and expression&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Wenger &amp;amp; Kenett (2026)&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;All 22 tested LLMs homogenize creative output relative to 102 humans — not a single-model problem&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Cheng, Lee, Khadpe et al. (2026)&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Sycophancy is prevalent (49% more affirming than humans), harmful (distorts judgment), and self-reinforcing (users prefer it)&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;center&gt;
+&lt;div style="width:200px; height:200px"&gt;
+![](https://img.magnific.com/premium-photo/digital-native-image-ai-generative_1015532-152.jpg)
+
+---
+
+class: activity
+
+# ✏️ Cross-Unit Activity: Build Your Own Connection
+
+**Pick two studies from different units. In 2–3 sentences, explain a genuine conceptual link between them — not just "they're both about AI."**
+
+&lt;br&gt;
+
+&lt;div class="box box-teal" style="margin:0.5em 0;"&gt;
+  &lt;strong&gt;Example to get you started:&lt;/strong&gt; Unit 3's finding that silicon sampling is representative "on average" but poor at capturing variability connects to Unit 5's Wenger &amp;amp; Kenett finding that LLMs produce homogeneous creative outputs — both describe the same underlying failure: AI systems compress a population's real diversity into a narrower band, even when their average output looks reasonable.
+&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em; font-size:1em;"&gt;
+  &lt;div class="box box-slate"&gt;Try: Costello et al. (Unit 4) ↔ Cheng et al. (Unit 5) — both involve AI shaping a person's beliefs about themselves or the world through conversation. What's the same? What's different?&lt;/div&gt;
+  &lt;div class="box box-slate"&gt;Try: Unit 2's DSL bias-correction methods ↔ Unit 3's prediction-powered inference — both combine imperfect AI output with a smaller trusted human benchmark. What's the shared statistical logic?&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:350px; height:175px"&gt;
+![](https://img.magnific.com/premium-vector/communication-connecting-line-pattern-design-vector-illustration_824086-1847.jpg)
+
+---
+
+class: warning-slide
+
+# ⚠️ Common Exam Pitfalls to Avoid
+
+&lt;br&gt;
+
+1. **Confusing "AI is persuasive" with "AI is accurate."** Hackenburg et al.'s tradeoff is a direct rebuttal to any answer that treats these as the same thing.
+
+2. **Treating homogenization as a training-data problem alone.** Sourati et al.'s key contribution is that the training &lt;em&gt;process itself&lt;/em&gt; amplifies it, beyond just what's in the data.
+
+3. **Forgetting the null results.** Argyle et al.'s finding that customization/elaboration didn't clearly help is easy to forget amid three studies that found large effects — but it's exactly the kind of nuance a strong exam answer includes.
+
+4. **Missing the individual/collective distinction.** Several of this course's most important findings (Hao et al., Daniotti et al., Cheng et al.) only make sense once you separate the individual-level result from the collective-level result.
+
+5. **Citing a finding without its number.** "AI is very persuasive" is a much weaker answer than "personalized GPT-4 beat human debaters 64.4% of the time (Salvi et al.)."
+
+---
+
+# Self-Assessment Checklist
+
+**Can you explain each of these out loud, in your own words, without notes?**
+
+&lt;div class="cols-2" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num indigo"&gt;☐&lt;/span&gt;&lt;div class="step-body"&gt;Why modern LLMs are called "task-agnostic," and what that has to do with alignment's tradeoffs for research&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num indigo"&gt;☐&lt;/span&gt;&lt;div class="step-body"&gt;Why systematic (non-random) LLM annotation errors are a bigger problem than random noise&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num indigo"&gt;☐&lt;/span&gt;&lt;div class="step-body"&gt;The difference between plausibility and validity in silicon sampling&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num indigo"&gt;☐&lt;/span&gt;&lt;div class="step-body"&gt;What prediction-powered inference solves that pure synthetic data doesn't&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num indigo"&gt;☐&lt;/span&gt;&lt;div class="step-body"&gt;The persuasion–accuracy tradeoff, and which study documented it&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num indigo"&gt;☐&lt;/span&gt;&lt;div class="step-body"&gt;The difference between direct and indirect government influence over LLMs&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num indigo"&gt;☐&lt;/span&gt;&lt;div class="step-body"&gt;Why "use a different model" doesn't fix LLM homogenization&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num indigo"&gt;☐&lt;/span&gt;&lt;div class="step-body"&gt;Why sycophancy persists even though it's known to be harmful&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-amber" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;Any unchecked box is your cue for where to spend the next study session.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:150px; height:300px"&gt;
+![](https://th.bing.com/th/id/R.3d1a2f21fcea13836736e0ca0504ef4d?rik=cCLCXCXOTku5Zg&amp;pid=ImgRaw&amp;r=0)
+
+---
+
+# Practice Round: Rapid-Fire Identification
+
+**For each finding, name the study — no notes.**
+
+&lt;div class="cols-2" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div class="box box-slate"&gt;"A fine-tuned BERT classifier with high label clarity can outperform a much larger model."&lt;/div&gt;
+  &lt;div class="box box-slate"&gt;"An AI agent evaded survey-bot detection 99.8% of the time."&lt;/div&gt;
+  &lt;div class="box box-slate"&gt;"Sociodemographic personalization didn't help human debaters."&lt;/div&gt;
+  &lt;div class="box box-slate"&gt;"3.02× more papers, 4.84× more citations, but −4.63% topic diversity."&lt;/div&gt;
+  &lt;div class="box box-slate"&gt;"State-scripted news appeared 41× more often than Wikipedia in the training corpus."&lt;/div&gt;
+  &lt;div class="box box-slate"&gt;"LLM responses cluster far more tightly than human responses across 22 different models."&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://www.pinclipart.com/picdir/middle/204-2049293_image-of-a-research-paper-with-five-icons.png)
+
+---
+
+# Practice Round: Short-Answer Warm-Up
+
+**Give yourself 90 seconds per question. Full sentences, not just keywords.**
+
+&lt;br&gt;
+
+1. What is the difference between overt and covert bias in LLM outputs?
+
+2. Why might synthetic (silicon-sampled) data be "representative on average" but still misleading for a specific research question?
+
+3. Explain, in one sentence, what "relocating bias" means using either the Grokipedia or the alignment example.
+
+4. What is the persuasion–accuracy tradeoff, and which study found it?
+
+5. Why does market pressure fail to correct AI sycophancy on its own?
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://th.bing.com/th/id/R.3471cc2021da9cd8c2aac7d8298919c0?rik=es58HFT44H5GXw&amp;pid=ImgRaw&amp;r=0)
+
+---
+
+# Where to Focus Your Remaining Study Time
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Historically higher-difficulty areas&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      - The technical vocabulary of Unit 1 (embeddings, attention, backpropagation) — know what each term refers to, not just that it exists&lt;br&gt;
+      - The specific numbers from Unit 4 and Unit 5's studies — vague answers score lower than answers with the actual figures&lt;br&gt;
+      - Distinguishing the four Unit 4 persuasion studies from each other, since they can blur together
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-teal"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;High-value connective material&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      - The individual-vs-collective pattern (Unit 5) — this shows up in comparative questions across multiple studies&lt;br&gt;
+      - The "bias is relocated, not removed" thread — connects Units 2, 5&lt;br&gt;
+      - Any study that appears on more than one of this review's recap slides
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-amber" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;If you only have time to re-read one thing before the exam, make it the "Every Study at a Glance" table a few slides back.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:125px; height:250px"&gt;
+![](https://th.bing.com/th/id/R.274e7a3a9b6f768bd2140ec67a7964f6?rik=Pe53LQNqhDVdxw&amp;riu=http%3a%2f%2fgetwallpapers.com%2fwallpaper%2ffull%2f5%2ff%2f9%2f1394147-free-download-hourglass-wallpaper-1080x1920.jpg&amp;ehk=Gjjxec8ySEMbLvWpDs4k5PIbJzgpEPeGFh4L0TIu5F4%3d&amp;risl=&amp;pid=ImgRaw&amp;r=0)
+
+---
+
+# Concept Check: Units 1–3 (True or False)
+
+&lt;div class="cols-2" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div class="box box-slate"&gt;1. Larger training datasets always produce better LLMs.&lt;/div&gt;
+  &lt;div class="box box-slate"&gt;2. Chain-of-thought prompting speeds up generation while improving accuracy.&lt;/div&gt;
+  &lt;div class="box box-slate"&gt;3. Alignment is unambiguously good for social science research applications.&lt;/div&gt;
+  &lt;div class="box box-slate"&gt;4. LLM annotation errors tend to be random rather than systematic.&lt;/div&gt;
+  &lt;div class="box box-slate"&gt;5. Silicon-sampled data is representative on average but weaker on capturing variability.&lt;/div&gt;
+  &lt;div class="box box-slate"&gt;6. Prediction-powered inference requires zero human-labeled data to work.&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-red" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;All six statements above are &lt;strong&gt;false&lt;/strong&gt; (or false as stated) — if any felt true to you, that's a flag to revisit the relevant key-ideas slide.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:250px; height:150px"&gt;
+![](https://img.magnific.com/premium-vector/true-false-check-mark-cross-vector-stock-illustration_100456-11416.jpg)
+
+---
+
+# Concept Check: Units 4–5 (True or False)
+
+&lt;div class="cols-2" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div class="box box-slate"&gt;1. Argyle et al. found that message customization clearly outperformed a generic message.&lt;/div&gt;
+  &lt;div class="box box-slate"&gt;2. Hackenburg et al. found persuasiveness and factual accuracy moved in the same direction.&lt;/div&gt;
+  &lt;div class="box box-slate"&gt;3. Government influence over LLMs always requires an explicit AI-specific law.&lt;/div&gt;
+  &lt;div class="box box-slate"&gt;4. Grokipedia's bias was spread evenly across all topic categories.&lt;/div&gt;
+  &lt;div class="box box-slate"&gt;5. Westwood's detection-evasion rate was roughly 50%, comparable to chance.&lt;/div&gt;
+  &lt;div class="box box-slate"&gt;6. Users in Cheng et al. rated sycophantic AI responses as lower quality despite the distortion.&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-red" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;All six statements above are &lt;strong&gt;false&lt;/strong&gt; — Argyle's customization was a null result, Hackenburg's tradeoff runs in opposite directions, indirect government influence needs no explicit law, Grokipedia's shift concentrated in specific topics, Westwood's evasion rate was 99.8%, and users &lt;em&gt;preferred&lt;/em&gt; sycophantic responses despite the distortion.&lt;/div&gt;
+
+---
+
+# Exam Strategy Tips
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-indigo"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Before you write anything&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      - Identify which unit(s) a question is drawing on — many strong answers connect two units, so don't answer too narrowly&lt;br&gt;
+      - If a number is central to a finding, include it — precision signals real command of the material
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-teal"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;While you write&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      - Name the study, not just "a study showed..." — attribution matters&lt;br&gt;
+      - When a finding has a nuance or null result attached (like Argyle et al.), mention it — it shows you're not oversimplifying&lt;br&gt;
+      - For comparative questions, organize your answer around the axis of comparison, not just a list of facts about each study
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-amber" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;A strong exam answer usually looks like: &lt;em&gt;claim → supporting study and number → why it matters / what it connects to&lt;/em&gt;.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:500px; height:250px"&gt;
+![](https://d3pnpe87i1fkwu.cloudfront.net/wp-content/uploads/2022/06/Inbound-Plays.png)
+
+---
+
+class: activity
+
+# ✏️ Group Study Activity: Divide and Conquer
+
+**If you're studying with classmates, this structure covers all five units efficiently in one session.**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-teal" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;
+  &lt;div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num teal"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;Assign each person one or two units from this review&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num teal"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;Each person prepares to teach their unit's key ideas &lt;em&gt;from memory&lt;/em&gt; in 3–4 minutes, including at least two specific numbers&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-teal" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;
+  &lt;div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num amber"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;After each mini-lecture, the group asks one review question from this deck's discussion slides&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num amber"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;Finish with the cross-unit activity: as a group, generate two more connections beyond the ones in this review&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-teal" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;Teaching a concept out loud is one of the most effective ways to find the gaps in your own understanding before the exam does.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://static.vecteezy.com/system/resources/previews/047/785/482/non_2x/an-illustration-of-a-diverse-group-of-students-studying-together-around-a-table-they-are-using-books-laptops-and-other-materials-to-learn-free-vector.jpg)
+
+---
+
+# The Course Arc, One More Time
+
+&lt;div class="cols-2" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num indigo"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Unit 1&lt;/strong&gt; established what modern AI actually is — a task-agnostic prediction system, shaped by training data and alignment choices&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num indigo"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Unit 2&lt;/strong&gt; asked how to use that system responsibly to measure things about society — and where its errors systematically fall&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num indigo"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Unit 3&lt;/strong&gt; asked whether AI could stand in for human participants entirely — and found real, specific limits&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num indigo"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Unit 4&lt;/strong&gt; turned AI into the experimental treatment itself — conversation as a research tool, and as a persuasion technology&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num indigo"&gt;5&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Unit 5&lt;/strong&gt; zoomed out to society-wide scale — governments, knowledge systems, research infrastructure, science, and daily use, all shaped by the same underlying technology&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="quote" style="margin-top:0.5em;"&gt;Across all five units, one question keeps resurfacing in different forms: when AI's output is fluent, convincing, and individually satisfying, how do we tell whether it's also valid, representative, and good for us collectively?&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:600px; height:300px"&gt;
+![](https://www.clipartmax.com/png/middle/321-3210320_path-clip-art.png)
+
+---
+
+class: inverse, center, middle
+
+# Questions?
+# Good luck on the final exam!
+# Thank you for a wonderful semester!
+
+&lt;div style="color:#aaa; font-size:1em; margin-top:1em;"&gt;Weeks 15–16 · SOCY 1200: Introduction to Using AI to Study Society&lt;/div&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "16:9",
+  "slideNumberFormat": "%current% / %total%"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

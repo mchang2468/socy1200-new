@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>SOCY 1200: Introduction to Using AI to Study Society</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Daniel Karell" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="yale.css" type="text/css" />
+    <link rel="stylesheet" href="yale-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# SOCY 1200: Introduction to Using AI to Study Society
+]
+.subtitle[
+## Unit 5: AI and Society: The Effects of AI in Society
+]
+.author[
+### Daniel Karell
+]
+.institute[
+### Yale University
+]
+.date[
+### Week 14
+]
+
+---
+
+
+
+
+&lt;style&gt;
+.remark-slide-content:not(.title-slide) {
+  font-size: 16px; padding: 1.8em 2.2em 1em;
+  color: #1a1a2e; background: #fafafa;
+}
+.remark-slide-content:not(.title-slide) h1 {
+  font-size: 2em; font-weight: 700; letter-spacing: -0.03em;
+  color: #1a1a2e; border-bottom: 3px solid #a8541f;
+  padding-bottom: 0.3em; margin-bottom: 0.7em;
+}
+.remark-slide-content:not(.title-slide) h2 { font-size:1.05em; color:#555; font-weight:500; }
+.remark-slide-content:not(.title-slide) p, .remark-slide-content:not(.title-slide) li { line-height:1.65; }
+.inverse:not(.title-slide) { background: #1a1a2e !important; }
+.inverse:not(.title-slide) h1, .inverse:not(.title-slide) h2, .inverse:not(.title-slide) h3 { color:white !important; border:none !important; }
+.inverse:not(.title-slide) h1 { font-size:1.9em !important; letter-spacing:-0.03em; }
+.inverse:not(.title-slide) h2 { color:#aaa !important; font-weight:400 !important; }
+.section-num:not(.title-slide) { display:inline-block; font-size:4em; font-weight:900; color:rgba(168,84,31,0.8); line-height:1; margin-bottom:0.1em; }
+.discussion { background: #0f3460 !important; }
+.discussion h1 { color: #f0c040 !important; border-bottom: 3px solid #f0c040 !important; }
+.discussion p, .discussion li { color: #e8e8f0 !important; line-height: 1.75 !important; }
+.discussion strong { color: #f0c040 !important; }
+.paper-walk { background: #1a3a1a !important; }
+.paper-walk h1 { color: #90ee90 !important; border-bottom: 3px solid #90ee90 !important; }
+.paper-walk p, .paper-walk li { color: #ddeedd !important; line-height:1.7 !important; }
+.paper-walk strong { color: #90ee90 !important; }
+.debate { background: #1a1a2e !important; }
+.debate h1 { color: #ffcc66 !important; border-bottom: 3px solid #ffcc66 !important; }
+.debate p, .debate li { color: #f0e8d0 !important; line-height:1.7 !important; }
+.debate strong { color: #ffcc66 !important; }
+.casestudy { background: #0a1a2a !important; }
+.casestudy h1 { color: #66ccff !important; border-bottom: 3px solid #66ccff !important; }
+.casestudy p, .casestudy li { color: #ddeeff !important; line-height:1.7 !important; }
+.casestudy strong { color: #66ccff !important; }
+.warning-slide { background: #2a0a0a !important; }
+.warning-slide h1 { color: #ff8888 !important; border-bottom: 3px solid #ff8888 !important; }
+.warning-slide p, .warning-slide li { color: #ffd0d0 !important; line-height:1.7 !important; }
+.warning-slide strong { color: #ff8888 !important; }
+.box { border-radius:6px; padding:0.75em 1em; margin:0.4em 0; font-size:0.85em; line-height:1.6; }
+.box-teal   { background:#f0fafa; border-left:4px solid #1abc9c; color:#0c3030; }
+.box-red    { background:#fdf2f2; border-left:4px solid #c0392b; color:#3d0c0c; }
+.box-green  { background:#f0faf3; border-left:4px solid #27ae60; color:#0c3320; }
+.box-blue   { background:#f0f4ff; border-left:4px solid #2a5bd7; color:#0d1f5c; }
+.box-amber  { background:#fffbf0; border-left:4px solid #e67e22; color:#5c3400; }
+.box-slate  { background:#f4f5f7; border-left:4px solid #7f8c8d; color:#2c3e50; }
+.box-purple { background:#f5f0ff; border-left:4px solid #8e44ad; color:#2e0060; }
+.box-orange { background:#fef5ee; border-left:4px solid #d35400; color:#3d1500; }
+.box-rust   { background:#fbf1ea; border-left:4px solid #a8541f; color:#3d2008; }
+.quote { border-left:5px solid #a8541f; background:white; border-radius:0 6px 6px 0; padding:0.7em 1.2em; font-size:0.88em; font-style:italic; color:#2c3e50; margin:0.6em 0; box-shadow:0 1px 4px rgba(0,0,0,0.07); }
+.quote cite { display:block; font-style:normal; font-size:0.82em; color:#a8541f; margin-top:0.3em; font-weight:600; }
+.cols-2 { display:grid; grid-template-columns:1fr 1fr; gap:1em; margin:0.5em 0; }
+.cols-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.9em; margin:0.5em 0; }
+.cols-4 { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:0.7em; margin:0.5em 0; }
+.step-row { display:flex; align-items:flex-start; gap:0.75em; margin-bottom:0.5em; }
+.step-num { flex-shrink:0; width:1.7em; height:1.7em; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.8em; margin-top:0.05em; }
+.step-num.teal  { background:#1abc9c; color:white; }
+.step-num.blue  { background:#2a5bd7; color:white; }
+.step-num.green { background:#27ae60; color:white; }
+.step-num.amber { background:#e67e22; color:white; }
+.step-num.red   { background:#c0392b; color:white; }
+.step-num.grey  { background:#7f8c8d; color:white; }
+.step-num.rust  { background:#a8541f; color:white; }
+.step-body { font-size:0.83em; line-height:1.6; color:#2c3e50; padding-top:0.15em; }
+.styled-table { width:100%; border-collapse:collapse; font-size:0.81em; margin:0.5em 0; box-shadow:0 1px 6px rgba(0,0,0,0.08); }
+.styled-table thead tr { background:#1a1a2e; color:white; }
+.styled-table thead th { padding:0.6em 0.8em; text-align:left; font-weight:600; }
+.styled-table tbody tr:nth-child(even) { background:#f4f5f7; }
+.styled-table tbody tr:nth-child(odd) { background:white; }
+.styled-table tbody td { padding:0.55em 0.8em; color:#2c3e50; vertical-align:top; }
+.styled-table .hl      { background:#fbf1ea !important; font-weight:600; }
+.styled-table .hl-red  { background:#fdf2f2 !important; }
+.styled-table .hl-green { background:#f0faf3 !important; }
+.badge { display:inline-block; border-radius:20px; padding:0.12em 0.65em; font-size:0.72em; font-weight:700; }
+.badge-teal   { background:#d5f5f0; color:#0e6b5a; }
+.badge-red    { background:#fde8e8; color:#922b21; }
+.badge-green  { background:#e8f8ee; color:#1e8449; }
+.badge-amber  { background:#fef3d0; color:#784212; }
+.badge-grey   { background:#eaecee; color:#515a5a; }
+.badge-blue   { background:#e8edff; color:#1a3fa0; }
+.badge-rust   { background:#f3ddc9; color:#7a3814; }
+.mono { font-family:'Cascadia Code','Fira Code','Courier New',monospace; font-size:0.78em; background:#1e2433; color:#abb2bf; border-radius:6px; padding:0.8em 1.1em; line-height:1.85; margin:0.4em 0; }
+.mono .hi-blue   { color:#61afef; }
+.mono .hi-green  { color:#98c379; }
+.mono .hi-red    { color:#e06c75; }
+.mono .hi-amber  { color:#e5c07b; }
+.mono .hi-grey   { color:#636d83; }
+.mono .hi-white  { color:#ffffff; }
+.mono .hi-teal   { color:#56b6c2; }
+.mono .hi-rust   { color:#e0a170; }
+.src { display:inline-block; background:#1a1a2e; color:#FFFFFF; font-size:0.68em; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; border-radius:3px; padding:0.15em 0.55em; margin-bottom:0.45em; }
+blockquote { border:none; padding:0; margin:0; background:none; }
+&lt;/style&gt;
+
+# What We're Covering This Week
+
+&lt;div class="cols-3" style="margin-top:0.7em;"&gt;
+  &lt;div class="box box-rust"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Part I · Productivity Boosts&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;Daniotti et al.: who benefits from AI coding tools&lt;br&gt;Hao et al.: AI expands individual scientists' impact&lt;br&gt;...but contracts science's collective focus&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-rust"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Part II · Homogenization&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;Sourati et al.: how and why LLMs homogenize thought&lt;br&gt;Wenger &amp;amp; Kenett: all LLMs converge, not just one&lt;br&gt;Why using a "different" model doesn't fix it&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-rust"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Part III · Sycophancy&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;Cheng et al.: AI affirms harmful actions 49% more than humans&lt;br&gt;Why sycophancy is addictive and persistent&lt;br&gt;Individual satisfaction vs. communal diversity&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;**The central tension for this week:**
+
+&lt;div class="box box-amber" style="text-align:center; font-size:1em;"&gt;AI use in daily life delivers real, measurable individual benefits — more output, more citations, more agreeable interactions. But this week's evidence suggests those individual gains often come paired with collective costs: narrower science, flatter thought, and eroded accountability. The person using AI and the society made up of AI users may be optimizing for different things entirely.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:200px; height:100px"&gt;
+![](https://cdni.iconscout.com/illustration/premium/thumb/businessman-holding-balance-pros-and-cons-on-it-9055285-7382379.png)
+
+---
+
+# The Five Studies — A Map
+
+&lt;div class="cols-2" style="margin-top:0.4em; font-size:1em;"&gt;
+  &lt;div class="box box-rust"&gt;
+    &lt;div style="font-weight:700; color:#a8541f; margin-bottom:0.5em;"&gt;Daniotti, Wachs, Feng &amp;amp; Neffke (2026)&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;"Who is using AI to code? Global diffusion and impact of generative AI"&lt;br&gt;&lt;br&gt;
+    &lt;strong&gt;Venue:&lt;/strong&gt; Science &amp;nbsp;·&amp;nbsp; 30M+ commits, 160,097 developers, 6 countries&lt;br&gt;
+    &lt;strong&gt;Key finding:&lt;/strong&gt; Productivity gains accrue only to senior-level developers&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-amber"&gt;
+    &lt;div style="font-weight:700; color:#e67e22; margin-bottom:0.5em;"&gt;Hao, Xu, Li &amp;amp; Evans (2026)&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;"Artificial intelligence tools expand scientists' impact but contract science's focus"&lt;br&gt;&lt;br&gt;
+    &lt;strong&gt;Venue:&lt;/strong&gt; Nature &amp;nbsp;·&amp;nbsp; 41.3 million papers, 1980–2025&lt;br&gt;
+    &lt;strong&gt;Key finding:&lt;/strong&gt; Individual scientists gain; the collective field narrows&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-blue"&gt;
+    &lt;div style="font-weight:700; color:#2a5bd7; margin-bottom:0.5em;"&gt;Sourati, Ziabari &amp;amp; Dehghani (2026)&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;"The homogenizing effect of large language models on human expression and thought"&lt;br&gt;&lt;br&gt;
+    &lt;strong&gt;Venue:&lt;/strong&gt; Trends in Cognitive Sciences (Opinion)&lt;br&gt;
+    &lt;strong&gt;Key finding:&lt;/strong&gt; LLM training and design mechanically favor dominant patterns&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-purple"&gt;
+    &lt;div style="font-weight:700; color:#8e44ad; margin-bottom:0.5em;"&gt;Wenger &amp;amp; Kenett (2026)&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;"Large language models are homogeneously creative"&lt;br&gt;&lt;br&gt;
+    &lt;strong&gt;Venue:&lt;/strong&gt; PNAS Nexus &amp;nbsp;·&amp;nbsp; 102 humans vs. 22 LLMs&lt;br&gt;
+    &lt;strong&gt;Key finding:&lt;/strong&gt; LLMs resemble each other far more than humans resemble each other&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-red" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;
+  &lt;strong&gt;Cheng, Lee, Khadpe, Yu, Han &amp;amp; Jurafsky (2026)&lt;/strong&gt; — "Sycophantic AI decreases prosocial intentions and promotes dependence" · Science · 11 models, N=11,587 (prevalence) + N=2,405 (experiments) · AI affirms users' actions 49% more than humans, even when harmful
+&lt;/div&gt;
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;I&lt;/div&gt;
+
+# Productivity Boosts
+## Who actually benefits when AI enters daily work?
+
+---
+
+# Daniotti et al.: The Core Finding
+
+&lt;div class="src"&gt;Daniotti, Wachs, Feng &amp;amp; Neffke 2026 · Science · 30M+ commits, 160,097 developers, 6 countries&lt;/div&gt;
+
+&lt;div class="box box-rust" style="margin:0.5em 0;"&gt;
+  &lt;strong&gt;Central finding:&lt;/strong&gt; Generative AI coding tools have diffused rapidly worldwide and measurably boost productivity and technical exploration — but these gains accrue almost exclusively to senior-level developers. Early-career developers, despite adopting the tools most enthusiastically, show no statistically significant benefit.
+&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Why this is hard to measure&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:0.9em;"&gt;Self-reported survey data on AI use is unreliable — people underreport usage, especially at work, to avoid judgment. Experiments typically treat "having access" to AI as equivalent to "using" it, without measuring actual intensity of use.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;The methodological innovation&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;Rather than asking developers whether they use AI, the authors built a classifier that detects AI-generated code directly from the digital trace itself — sidestepping self-report bias entirely.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://media.istockphoto.com/vectors/programming-design-concept-vector-id947663966?k=20&amp;m=947663966&amp;s=612x612&amp;w=0&amp;h=JUMJJkuDL6c9vReaJVL3Y4pDvJtqMzSVVYiJ6CSE-8A=)
+
+---
+
+class: paper-walk
+
+# Paper Walkthrough: Daniotti et al. — Detecting AI-Generated Code at Scale
+
+&lt;div class="src"&gt;Daniotti et al. 2026&lt;/div&gt;
+
+&lt;div class="box box-blue" style="margin-top:0.3em; font-size:1em;"&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num rust"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;Train a neural classifier to distinguish human-written from AI-generated Python functions, using human-written code paired with synthetic AI-generated equivalents built by chaining two LLMs together&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num rust"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;Apply the classifier to more than 30 million commits from 160,097 developers across the US, France, Germany, India, China, and Russia (2019–2024)&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num rust"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;For 100,097 US developers, use fixed-effects models — comparing the &lt;em&gt;same&lt;/em&gt; developer's output as their own AI usage changes over time — to estimate causal-style effects&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;Break results down by career stage, gender, and country&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-blue" style="margin-top:0.3em; font-size:1em;"&gt;The fixed-effects design is the key methodological move: by comparing a developer against their own past output rather than against other developers, the design controls for stable individual differences in skill or motivation.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:200px; height:200px"&gt;
+![](https://th.bing.com/th/id/R.b1c66d2b33344feb0f619c5804026f44?rik=Z1uP%2bdIli64kfg&amp;pid=ImgRaw&amp;r=0)
+
+---
+
+# Results: Global Diffusion of GenAI Coding Tools
+
+&lt;div class="src"&gt;Daniotti et al. 2026 · Share of Python functions written with substantial AI support, end of 2024&lt;/div&gt;
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th style="width:20%;"&gt;Country&lt;/th&gt;&lt;th style="width:20%;"&gt;Share AI-assisted&lt;/th&gt;&lt;th style="width:60%;"&gt;Note&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;United States&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;~29%&lt;/td&gt;&lt;td&gt;Early lead, but narrowing over time&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Germany&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;~24%&lt;/td&gt;&lt;td&gt;Closing in on the US&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;France&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;~23%&lt;/td&gt;&lt;td&gt;Closing in on the US&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl-red"&gt;&lt;td&gt;&lt;strong&gt;India&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Substantial, rapid catch-up&lt;/td&gt;&lt;td&gt;Growth rate outpaces the early leaders&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;China, Russia&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Still lagging&lt;/td&gt;&lt;td&gt;Adoption slower than the other four countries&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class="box box-rust" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;In the US sample, there was no significant gender difference in adoption — but early-career developers used genAI more often than senior-level developers, setting up the paper's central puzzle.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://dataguy.in/wp-content/uploads/2025/04/vibe-coding.jpg)
+
+---
+
+# Results: Productivity Gains Accrue Only to Senior Developers
+
+&lt;div class="src"&gt;Daniotti et al. 2026 · Fixed-effects estimates, US sample&lt;/div&gt;
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th style="width:26%;"&gt;Outcome&lt;/th&gt;&lt;th style="width:37%;"&gt;Senior-level developers&lt;/th&gt;&lt;th style="width:37%;"&gt;Early-career developers&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl-green"&gt;&lt;td&gt;&lt;strong&gt;Commit rate (output)&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Increases with genAI adoption&lt;/td&gt;&lt;td&gt;No statistically significant change&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl-green"&gt;&lt;td&gt;&lt;strong&gt;New library use (exploration)&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Increases — expands into unfamiliar technical domains&lt;/td&gt;&lt;td&gt;No statistically significant change&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Adoption rate&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Lower&lt;/td&gt;&lt;td&gt;Higher — the most frequent, enthusiastic users&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class="box box-red" style="margin-top:0.5em; text-align:center; font-size:1.05em;"&gt;At current adoption levels, genAI is estimated to boost quarterly commit output by &lt;strong&gt;3.6%&lt;/strong&gt; — translating into a conservative &lt;strong&gt;$23–38 billion&lt;/strong&gt; in yearly value for the US economy alone. Almost none of that measured benefit reaches the developers using the tools most.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:500px; height:250px"&gt;
+![](https://logolook.net/wp-content/uploads/2022/12/GitHub-Logo.png)
+
+---
+
+class: casestudy
+
+# 📊 Case Study: The Puzzle of the Enthusiastic Non-Beneficiary
+
+**Early-career developers are the heaviest adopters of genAI coding tools — and the group that benefits least. Why?**
+
+&lt;br&gt;
+
+**One candidate explanation the authors raise:** rather than closing the skill gap between junior and senior developers, genAI may be widening it. If senior developers already have the judgment to direct, verify, and integrate AI-generated code effectively, the tool acts as a genuine multiplier on their existing expertise. If early-career developers lack that judgment yet, the same tool may not translate into better decisions about what to build or how.
+
+&lt;br&gt;
+
+**What the paper does NOT resolve:** whether early-career developers who lean on AI now are also failing to build the underlying skills that senior developers already have — a question the authors explicitly flag as creating "substantial uncertainty" about career development in the software sector.
+
+&lt;br&gt;
+
+**Why this matters beyond software:** if a similarly skilled-dependent pattern holds in other AI-augmented professions, the group most eager to adopt AI tools may not be the group best positioned to benefit from them.
+
+---
+
+# Hao et al.: The Core Finding
+
+&lt;div class="src"&gt;Hao, Xu, Li &amp;amp; Evans 2026 · Nature · 41,298,433 papers, 1980–2025, six natural science fields&lt;/div&gt;
+
+&lt;div class="box box-amber" style="margin:0.5em 0;"&gt;
+  &lt;strong&gt;Central finding:&lt;/strong&gt; Scientists who use AI in their research see substantial individual career benefits. But collectively, AI adoption is associated with a narrowing of the range of topics science as a whole explores, and less engagement between scientists — an expansion of individual impact paired with a contraction of collective reach.
+&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Why this scale matters&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;41.3 million papers spanning 45 years lets the authors distinguish a genuine field-wide shift from a temporary fad or a single discipline's idiosyncrasy.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;What counts as "AI-augmented"&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;A fine-tuned language model classifier (F1 = 0.875 against expert-labeled data) identifies papers that use AI as a research tool — deliberately excluding computer science and math, the fields that develop AI methods themselves, to isolate AI's effect as an &lt;em&gt;input&lt;/em&gt; to other sciences.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:450px; height:225px"&gt;
+![](https://img.magnific.com/premium-photo/biology-laboratory-nature-science-plants-with-biochemistry-structure-green-leaves-nature-background_1028938-161219.jpg?w=740)
+
+---
+
+class: paper-walk
+
+# Paper Walkthrough: Hao et al. — Measuring AI-Augmented Research at Scale
+
+&lt;div class="src"&gt;Hao et al. 2026&lt;/div&gt;
+
+&lt;div class="box box-blue" style="margin-top:0.3em; font-size:1em;"&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num amber"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;Gather 41.3 million papers from OpenAlex, spanning biology, medicine, chemistry, physics, materials science, and geology (1980–2025)&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num amber"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;Fine-tune a BERT-based classifier to identify AI-augmented research, validated against expert-labeled data&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num amber"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;Measure individual-level outcomes: publication rate, citations received, and time to becoming a project leader, comparing AI-adopting scientists to non-adopters&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;Separately measure collective-level outcomes: the diversity of topics studied across the field, and the density of collaborative engagement between scientists&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-blue" style="margin-top:0.3em; font-size:1em;"&gt;The design's key strength is measuring both levels — individual and collective — in the same study. Most prior work on AI-and-science measured one or the other, making it easy to miss exactly the tension this paper documents.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:350px; height:175px"&gt;
+![](https://i.pinimg.com/736x/6f/a2/4a/6fa24a60411ce6ab80524b33772ed0cd.jpg)
+
+---
+
+# Results: Individual Gains vs. Collective Contraction
+
+&lt;div class="src"&gt;Hao et al. 2026&lt;/div&gt;
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th style="width:34%;"&gt;Level&lt;/th&gt;&lt;th style="width:33%;"&gt;Metric&lt;/th&gt;&lt;th style="width:33%;"&gt;Effect of AI adoption&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl-green"&gt;&lt;td rowspan="3"&gt;&lt;strong&gt;Individual scientist&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Publication rate&lt;/td&gt;&lt;td&gt;&lt;strong&gt;3.02×&lt;/strong&gt; more papers&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl-green"&gt;&lt;td&gt;Citations received&lt;/td&gt;&lt;td&gt;&lt;strong&gt;4.84×&lt;/strong&gt; more citations&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl-green"&gt;&lt;td&gt;Time to project leadership&lt;/td&gt;&lt;td&gt;&lt;strong&gt;1.37 years&lt;/strong&gt; earlier&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl-red"&gt;&lt;td rowspan="2"&gt;&lt;strong&gt;Collective science&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Diversity of topics studied&lt;/td&gt;&lt;td&gt;&lt;strong&gt;−4.63%&lt;/strong&gt; shrinkage&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl-red"&gt;&lt;td&gt;Scientist-to-scientist engagement&lt;/td&gt;&lt;td&gt;&lt;strong&gt;−22%&lt;/strong&gt; decrease&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class="box box-rust" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;Every individual-level number points up; every collective-level number points down. This is the paper's central paradox, not a coincidence of unrelated findings.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:350px; height:175px"&gt;
+![](https://melresearch.co.uk/wp-content/uploads/2024/10/AI-COding.png)
+
+---
+
+# The Science Paradox: Personal Advancement vs. Collective Progress
+
+&lt;div class="src"&gt;Hao et al. 2026&lt;/div&gt;
+
+&lt;div class="box box-red" style="margin:0.5em 0;"&gt;
+  &lt;strong&gt;Why the collective narrows:&lt;/strong&gt; AI-augmented work moves collectively toward areas richest in existing data — the topics where AI tools already work well — rather than exploring new or data-sparse areas. With reduced follow-on engagement between scientists, AI tools seem to &lt;em&gt;automate&lt;/em&gt; established fields rather than &lt;em&gt;explore&lt;/em&gt; new ones.
+&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Why this is a genuine tension, not just a tradeoff&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;Every individual scientist rationally adopting AI to advance their own career can, in aggregate, produce a field that explores less — a collective-action problem embedded in an ostensibly beneficial technology.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;The authors' own framing&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;This "highlights a tension between personal advancement and collective scientific progress" — echoing the classic incentive misalignment problem in economics, now showing up inside the practice of science itself.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:200px; height:400px"&gt;
+![](https://static.vecteezy.com/system/resources/previews/018/876/356/large_2x/funnel-infographic-presentation-template-free-png.png)
+
+---
+
+class: discussion
+
+# 💬 Discussion Question 1
+
+**"AI productivity gains are significantly greater for senior-level developers, and AI helps individual scientists but not the scientific community as a whole — what should be done about this?"**
+
+&lt;br&gt;
+
+1. Daniotti et al. find AI widens, rather than closes, the productivity gap between junior and senior developers. If this pattern holds across professions, what kinds of interventions (training, tool design, workplace policy) might change that — and which of them are within an individual worker's control versus requiring employer or platform-level action?
+
+2. Hao et al. show individual scientists benefit enormously from AI while the collective field narrows. Should funding agencies or journals build incentives that explicitly reward exploring understudied, data-sparse topics — even though AI tools work best on well-established, data-rich ones?
+
+3. Both papers describe genuine tensions between individual and collective outcomes. Is this a new problem created by AI, or a familiar collective-action problem (like overfishing or traffic congestion) that AI has simply made newly visible and measurable?
+
+---
+
+# AI Might Be Undermining the Learning Process
+
+&lt;div class="src"&gt;Synthesizing Daniotti et al. 2026 and Sourati et al. 2026&lt;/div&gt;
+
+&lt;div class="box box-rust" style="margin:0.5em 0;"&gt;
+  &lt;strong&gt;Connecting the dots:&lt;/strong&gt; Daniotti et al. show early-career developers — the heaviest AI users — gain no measurable benefit. Sourati et al. independently raise a cognitive mechanism that could explain why: outsourcing the &lt;em&gt;process&lt;/em&gt; of reasoning to an AI, not just its output, may prevent the kind of active, personalized internalization that builds skill in the first place.
+&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;A historical echo&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;Sourati et al. open with Plato's concern, in the &lt;em&gt;Phaedrus&lt;/em&gt;, that writing would weaken memory — and note that externalizing knowledge to the internet can inflate people's confidence in what they actually know.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Why LLMs may be different in degree&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;Earlier tools (books, search engines) required a learner to internalize and apply what they found. Sourati et al. argue LLMs generate the &lt;em&gt;entire reasoning process&lt;/em&gt; on the user's behalf — a categorically deeper form of offloading.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="quote" style="margin-top:0.4em;"&gt;If a junior developer's habitual move is to ask AI rather than work through a problem themselves, the tool may be quietly removing the very repetitions that would have built their expertise.&lt;cite&gt;— synthesis, not a direct quote from either paper&lt;/cite&gt;&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://static.vecteezy.com/system/resources/previews/023/218/474/original/laptop-with-graduation-cap-and-books-on-wooden-table-against-gradient-background-ai-generate-free-photo.jpg)
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;II&lt;/div&gt;
+
+# Homogenization
+## Same tool, same outputs, same thoughts?
+
+---
+
+# Sourati et al.: The Core Finding
+
+&lt;div class="src"&gt;Sourati, Ziabari &amp;amp; Dehghani 2026 · Trends in Cognitive Sciences (Opinion)&lt;/div&gt;
+
+&lt;div class="box box-blue" style="margin:0.5em 0;"&gt;
+  &lt;strong&gt;Central argument:&lt;/strong&gt; Cognitive diversity — in language, perspective, and reasoning — is essential to creativity and collective intelligence. As LLMs become deeply embedded in daily life, they risk standardizing that diversity: reflecting and reinforcing dominant styles while marginalizing alternative voices and reasoning strategies.
+&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Why this piece is different from the others&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;This is a synthesis (Opinion) article, not a single new experiment — it draws together evidence from linguistics, psychology, cognitive science, and computer science to build a unified argument.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;The philosophical backdrop&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;The authors invoke John Stuart Mill's argument that sound judgment requires exposure to every variety of opinion — "no wise man ever acquired his wisdom in any mode but this." LLM-driven homogenization threatens exactly that precondition for wisdom.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:450px; height:225px"&gt;
+![](https://media.licdn.com/dms/image/sync/v2/D4E27AQEWAwfd1dtEcw/articleshare-shrink_1280_800/B4EZiei7JfGYAQ-/0/1755006612321?e=2147483647&amp;v=beta&amp;t=PNo6umoxd9bLcjZRrLYmqRiQX5mu3HUPUfPpMFLPpA0)
+
+---
+
+class: paper-walk
+
+# Paper Walkthrough: Sourati et al. — Three Dimensions of Diversity
+
+&lt;div class="src"&gt;Sourati et al. 2026&lt;/div&gt;
+
+**The paper organizes the evidence around three distinct dimensions of human cognitive diversity that LLMs can flatten.**
+
+&lt;div class="box box-amber" style="margin-top:0.4em; font-size:1em;"&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Stylistic variation:&lt;/strong&gt; the distinct ways individuals and communities use language — word choice, register, dialect, rhythm&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Perspective:&lt;/strong&gt; the substantive viewpoints, values, and framings people bring to a topic, often rooted in culture and identity&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Reasoning strategies:&lt;/strong&gt; the different cognitive approaches people use to work through a problem — not just what conclusion they reach, but how they get there&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-amber" style="margin-top:0.4em; font-size:1em;"&gt;A key distinction the authors draw: earlier technologies (books, search engines) required active internalization by the learner. LLMs generate complete reasoning and articulation on the user's behalf — collapsing the boundary between external tool and internal cognition itself.&lt;/div&gt;
+
+---
+
+# Mechanism: Why Training Itself Amplifies Homogenization
+
+&lt;div class="src"&gt;Sourati et al. 2026 — item 6: homogenization is a consequence of how LLMs are trained&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;It's not just biased training data...&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      Training corpora overrepresent dominant languages and ideologies&lt;br&gt;
+      This alone would produce some skew in outputs
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;...it's amplified by the training process itself&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      The core objective — predicting the statistically likely next token — mechanically favors patterns that are frequent and easily generalizable&lt;br&gt;
+      This remains the dominant driver of model behavior even after alignment steps like supervised fine-tuning and RLHF&lt;br&gt;
+      The result: minority representations get smoothed over, not just underrepresented
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="quote" style="margin-top:0.5em;"&gt;What begins as statistical pattern learning becomes a generative force that privileges central tendencies while marginalizing rare expressions, alternative reasoning styles, and culturally specific voices.&lt;cite&gt;— Sourati et al. (2026)&lt;/cite&gt;&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:350px; height:1750px"&gt;
+![](https://cdn.thecollector.com/wp-content/uploads/2023/09/most-spoken-languages-in-world.jpg?width=2560&amp;height=1440&amp;quality=100&amp;dpr=2)
+
+---
+
+# The Uneven Center: Whose Norms Become "Default"?
+
+&lt;div class="src"&gt;Sourati et al. 2026&lt;/div&gt;
+
+&lt;div class="box box-red" style="margin:0.5em 0;"&gt;
+  &lt;strong&gt;Critical point:&lt;/strong&gt; this narrowing does not trend toward a neutral center — it trends toward a historically uneven one, shaped by the norms of English-speaking, Global North, and socioeconomically advantaged populations. LLMs tend to reproduce perspectives and writing styles that mirror Western, liberal, high-income, highly educated speakers, presenting them as the unmarked default.
+&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Identity prompting doesn't fix it&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;Even when a model is explicitly prompted to adopt a specific identity, it often produces an out-group stereotype rather than an authentic in-group perspective — flattening a demographic group into "essentialized," fixed representations rather than capturing real heterogeneity.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;An illustrative case from the paper&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;Asked to represent the views of a person with impaired vision on immigration, a model's response leaned on stereotyped, essentialized framing of that identity — rather than authentic variation among people who share that trait.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://media.istockphoto.com/id/1157549716/photo/man-holding-laptop-and-drinking-coffee-outdoors.jpg?s=170667a&amp;w=0&amp;k=20&amp;c=RYfUJ9DBHVaoimnZems4gQv5Py1hPrDsZwwqUXsm_UU=)
+
+---
+
+# Wenger &amp;amp; Kenett: The Core Finding
+
+&lt;div class="src"&gt;Wenger &amp;amp; Kenett 2026 · PNAS Nexus · 102 humans vs. 22 LLMs, three creativity tasks&lt;/div&gt;
+
+&lt;div class="box box-purple" style="margin:0.5em 0;"&gt;
+  &lt;strong&gt;Central finding:&lt;/strong&gt; LLM responses to standardized creativity tasks are far more similar to each other than human responses are to each other — even after controlling for confounding variables. This holds not for one specific model, but across a broad, diverse set of 22 different LLMs. It is not a "ChatGPT problem" — it is an "LLM problem."
+&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;The open question this paper resolves&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;Prior studies showed a &lt;em&gt;single&lt;/em&gt; LLM (usually GPT-4) narrows creative outputs. But maybe that was just because one model has a limited range — would using many different LLMs restore diversity?&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Why the answer matters&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;If homogenization is a property of individual models, the fix is "use more models." If it's a property of LLMs in general — the finding here — that fix doesn't work.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:700px; height:350px"&gt;
+![](https://cdn.sologo.ai/2025/0218/20250218064857679.png)
+
+---
+
+class: paper-walk
+
+# Paper Walkthrough: Wenger &amp;amp; Kenett — Testing 22 LLMs Against 102 Humans
+
+&lt;div class="src"&gt;Wenger &amp;amp; Kenett 2026&lt;/div&gt;
+
+&lt;div class="box box-blue" style="margin-top:0.3em; font-size:1em;"&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num rust"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;Administer three standard divergent-thinking creativity tasks to 102 human participants and 22 different LLMs: the Alternative Uses Task (AUT), the Divergent Association Task (DAT), and Forward Flow (FF)&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num rust"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;Score each individual response for &lt;strong&gt;originality&lt;/strong&gt; — its semantic distance from the prompt itself&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num rust"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;Separately score &lt;strong&gt;population-level variability&lt;/strong&gt; — the semantic distance between different respondents' answers to the same prompt&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;Visualize response clustering using dimensionality reduction (t-SNE) on response embeddings&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-blue" style="margin-top:0.3em; font-size:1em;"&gt;The originality/variability distinction is the paper's key methodological move: a population can score just as "original" on average while still being far less diverse — originality asks how far each response is from the prompt; variability asks how far responses are from &lt;em&gt;each other&lt;/em&gt;.&lt;/div&gt;
+
+---
+
+# Results: LLM vs. Human Variability Across Three Creativity Tasks
+
+&lt;div class="src"&gt;Wenger &amp;amp; Kenett 2026&lt;/div&gt;
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th style="width:16%;"&gt;Task&lt;/th&gt;&lt;th style="width:28%;"&gt;Individual originality&lt;/th&gt;&lt;th style="width:28%;"&gt;Population variability&lt;/th&gt;&lt;th style="width:28%;"&gt;Interpretation&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;AUT&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; font-weight:400;"&gt;Alternative Uses Task&lt;/span&gt;&lt;/td&gt;&lt;td&gt;LLMs slightly higher (small effect)&lt;/td&gt;&lt;td&gt;LLMs much lower — effect size 1.8&lt;/td&gt;&lt;td&gt;LLMs are at least as "original" individually, but far more alike as a group&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;DAT&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; font-weight:400;"&gt;Divergent Association Task&lt;/span&gt;&lt;/td&gt;&lt;td&gt;LLMs slightly higher (effect size 0.77)&lt;/td&gt;&lt;td&gt;LLMs much lower&lt;/td&gt;&lt;td&gt;Same pattern: individually fine, collectively homogeneous&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl-red"&gt;&lt;td&gt;&lt;strong&gt;FF&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; font-weight:400;"&gt;Forward Flow&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Humans slightly higher (effect size 0.52)&lt;/td&gt;&lt;td&gt;LLMs much lower&lt;/td&gt;&lt;td&gt;Even where humans "win" on originality, LLMs still cluster more tightly as a group&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class="box box-purple" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;The pattern holds across all three tasks: individual-level creativity scores are roughly comparable between humans and LLMs, but population-level variability is dramatically and consistently lower for LLMs.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:350px; height:175px"&gt;
+![](https://www.bu.edu/files/2019/09/resized-iStock-1158476263.jpg)
+
+---
+
+# Visualizing Homogeneity: What the Clustering Shows
+
+&lt;div class="src"&gt;Wenger &amp;amp; Kenett 2026 — t-SNE visualization of response embeddings&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;The method&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;Each response (human or LLM) is converted into a high-dimensional embedding capturing its meaning, then projected down into two dimensions for visualization using t-SNE — a standard technique for viewing high-dimensional data.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;What the picture shows&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;LLM responses visibly cluster tightly together in this space, while human responses spread much more broadly — a direct visual confirmation of the statistical variability results.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="quote" style="margin-top:0.5em;"&gt;This visualization confirms the behavior observed statistically: LLM responses "cluster" in feature space, providing further evidence of low LLM response variability.&lt;cite&gt;— Wenger &amp;amp; Kenett (2026)&lt;/cite&gt;&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:350px; height:175px"&gt;
+![](https://cdn.corenexis.com/f/qwWPlHr6QQd.png)
+
+---
+
+# Why Using a "Different" Model Doesn't Solve It
+
+&lt;div class="src"&gt;Wenger &amp;amp; Kenett 2026 — item 7: all LLMs homogenize&lt;/div&gt;
+
+&lt;div class="box box-red" style="margin:0.5em 0;"&gt;
+  &lt;strong&gt;The uncomfortable implication:&lt;/strong&gt; recent work on "feature universality" across LLMs — the finding that different models tend to develop similar internal representations — suggests that using multiple different models will not solve the homogenization problem, because the models are converging on similar internal structure in the first place.
+&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;What this rules out&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;"Just use a variety of AI tools" is a natural first instinct for preserving diversity — this finding suggests it's not a real solution, since the tools converge on similar outputs regardless.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;The stakes, per the authors&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;Humans who rely on LLMs as creative partners — regardless of which model — may be driven toward similar "creative" outputs, resulting in a collective narrowing of creativity across an entire population of users.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:500px; height:250px"&gt;
+![](https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img/https://www.techfinitive.com/wp-content/uploads/2024/05/8324e3f7-bb3f-491e-a610-30a48daf7462.jpeg)
+
+---
+
+class: casestudy
+
+# 📊 Case Study: A Classroom Full of the Same "Original" Idea
+
+**Wenger &amp;amp; Kenett cite prior work showing that students over-rely on LLM-generated suggestions during creative ideation, rather than engaging their own, more effortful cognitive strategies.**
+
+&lt;br&gt;
+
+**Play this forward:** imagine an entire class asked to brainstorm solutions to an open-ended problem, each student consulting the same (or a functionally similar) LLM for ideas. Individually, each student's idea might score well on originality compared to a blank page. Collectively, per Wenger &amp;amp; Kenett's variability finding, the class's ideas may cluster far more tightly than they would have without AI assistance — a room that looks individually creative but is collectively homogeneous.
+
+&lt;br&gt;
+
+**Why this is easy to miss in practice:** a teacher grading each submission individually would likely never notice the collective narrowing — it's only visible at the population level, exactly the level Wenger and Kenett's variability metric is designed to capture.
+
+&lt;br&gt;
+
+**The open question:** does this dynamic already show up in any of your own group work or classroom brainstorming when everyone has access to the same AI tools?
+
+---
+
+class: discussion
+
+# 💬 Discussion Question 2
+
+**"LLMs homogenize outputs and cognitive processes, this is a consequence of how they're trained, and it holds across all LLMs — what follows from that?"**
+
+&lt;br&gt;
+
+1. Sourati et al. argue that homogenization trends toward a specific (Western, high-income, highly-educated) center, not a neutral one. Does that change how you'd weigh the costs and benefits of homogenization compared to if it trended toward a genuinely neutral average?
+
+2. Wenger &amp;amp; Kenett show the homogenization problem persists across 22 different models. If "use a different model" isn't a real fix, what would an actual mitigation look like — model design changes, usage norms, something else entirely?
+
+3. Sourati et al. note that some standardization can be beneficial (reducing bias against nonstandard dialects, improving coordination). Where should the line be drawn between "helpful standardization" and "harmful homogenization" — and who should get to draw it?
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;III&lt;/div&gt;
+
+# Sycophancy
+## When AI tells you what you want to hear
+
+---
+
+# Cheng et al.: The Core Finding
+
+&lt;div class="src"&gt;Cheng, Lee, Khadpe, Yu, Han &amp;amp; Jurafsky 2026 · Science · 11 models, N=11,587 (prevalence) + N=2,405 (experiments)&lt;/div&gt;
+
+&lt;div class="box box-red" style="margin:0.5em 0;"&gt;
+  &lt;strong&gt;Central finding:&lt;/strong&gt; Sycophancy is both prevalent and harmful. Across 11 leading AI models, AI systems affirmed users' actions 49% more often than humans on average — including in cases involving deception, illegality, or other clear harms. Even a single sycophantic interaction measurably distorted people's judgment about a real conflict in their own lives.
+&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;A new, broader definition&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;Prior work measured sycophancy narrowly — agreeing with a false factual claim. Cheng et al. introduce &lt;strong&gt;social sycophancy&lt;/strong&gt;: a model's general affirmation of the user's actions, perspective, and self-image, which can occur even while technically disagreeing with an explicit statement.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Why this matters now specifically&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;Advice and support are now among the most common AI use cases. Nearly a third of US teens report talking to AI instead of humans for "serious conversations," and nearly half of American adults under 30 have sought relationship advice from AI.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://commons.wikimedia.org/wiki/Special:FilePath/Thumbs%20up%20icon.svg)
+
+---
+
+class: paper-walk
+
+# Paper Walkthrough: Cheng et al. — Measuring Social Sycophancy Across 11 Models
+
+&lt;div class="src"&gt;Cheng et al. 2026 · Study 1&lt;/div&gt;
+
+&lt;div class="box box-blue" style="margin-top:0.3em; font-size:1em;"&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;Evaluate 11 production LLMs: four proprietary (OpenAI, Anthropic, Google) and seven open-weight (Meta Llama-3, Qwen, DeepSeek, Mistral)&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;Test each model against three datasets spanning a spectrum of socially embedded queries&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;Use a validated LLM-as-judge approach to measure the &lt;strong&gt;action endorsement rate&lt;/strong&gt; — the share of responses that affirm the user's action&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;Compare each model's endorsement rate against the normative human baseline for the same queries&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-blue" style="margin-top:0.3em; font-size:1em;"&gt;Using a "human baseline" — what real people say when confronted with the same dilemma — is what turns this from "models are sometimes nice" into a rigorous, falsifiable comparison.&lt;/div&gt;
+
+---
+
+# Results: Three Datasets, One Pattern
+
+&lt;div class="src"&gt;Cheng et al. 2026 · Study 1, action endorsement rate&lt;/div&gt;
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th style="width:26%;"&gt;Dataset&lt;/th&gt;&lt;th style="width:37%;"&gt;What it measures&lt;/th&gt;&lt;th style="width:37%;"&gt;AI vs. human endorsement&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;OEQ&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; font-weight:400;"&gt;Open-ended advice queries, n=3,027&lt;/span&gt;&lt;/td&gt;&lt;td&gt;General personal and social advice-seeking&lt;/td&gt;&lt;td&gt;AI endorses 48% more than the 39% human baseline&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl-red"&gt;&lt;td&gt;&lt;strong&gt;AITA&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; font-weight:400;"&gt;r/AmITheAsshole posts, n=2,000&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Cases with a clear crowdsourced human consensus that the poster was in the wrong&lt;/td&gt;&lt;td&gt;AI affirms in 51% of cases — vs. a 0% human baseline&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;PAS&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; font-weight:400;"&gt;Problematic action statements, n=6,560&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Actions spanning deception, illegality, relational harm, self-harm&lt;/td&gt;&lt;td&gt;47% average endorsement rate, even for clearly harmful actions&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class="box box-red" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;The AITA comparison is the most striking: on posts where an entire online community reached unanimous consensus that the poster was wrong, AI models still validated the poster's actions in half of cases.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:250px; height:250px"&gt;
+![](https://png.pngtree.com/png-vector/20230801/ourmid/pngtree-man-giving-thumbs-up-vector-sketch-design-png-image_6830478.png)
+
+---
+
+# What Social Sycophancy Looks Like
+
+&lt;div class="src"&gt;Illustrative, paraphrased in the style of examples described in Cheng et al. 2026 — not verbatim from the paper&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:800px; height:400px"&gt;
+![](https://cdn.corenexis.com/f/SVJL7YMmiya.png)
+
+---
+
+class: paper-walk
+
+# Paper Walkthrough: Cheng et al. — Three Experiments on Real Behavior
+
+&lt;div class="src"&gt;Cheng et al. 2026 · Studies 2a, 2b, and 3 (N=2,405)&lt;/div&gt;
+
+&lt;div class="box box-blue" style="margin-top:0.3em; font-size:1em;"&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Study 2a &amp;amp; 2b (N=1,605):&lt;/strong&gt; controlled vignette studies — participants imagine being the person judged in the wrong by crowdsourced consensus, without knowing that judgment in advance, and receive either a sycophantic or nonsycophantic AI response&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Study 3 (N=800):&lt;/strong&gt; a live-chat study — participants recall and discuss a &lt;em&gt;real&lt;/em&gt; past interpersonal conflict from their own lives, in an eight-turn, real-time text exchange with an AI model&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;Preregistered regression analyses assess effects of sycophancy, anthropomorphism, and perceived source (AI vs. human) on participants' sense of rightness, willingness to repair, and trust&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-blue" style="margin-top:0.3em; font-size:1em;"&gt;Study 3's ecological validity is the key strength here: participants aren't imagining a hypothetical scenario — they're discussing something that actually happened to them, with real stakes for how they feel about it afterward.&lt;/div&gt;
+
+---
+
+# Results: Sycophancy Increases "Rightness," Decreases Repair
+
+&lt;div class="src"&gt;Cheng et al. 2026 · Studies 2a, 2b, 3&lt;/div&gt;
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th style="width:20%;"&gt;Study&lt;/th&gt;&lt;th style="width:20%;"&gt;N&lt;/th&gt;&lt;th style="width:30%;"&gt;Effect on feeling "in the right"&lt;/th&gt;&lt;th style="width:30%;"&gt;Other effects&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl-red"&gt;&lt;td&gt;&lt;strong&gt;Study 2a&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;vignette&lt;/td&gt;&lt;td&gt;β=2.07, ~62% increase&lt;/td&gt;&lt;td&gt;Reduced willingness to apologize or take initiative to repair&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl-red"&gt;&lt;td&gt;&lt;strong&gt;Study 2b&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;vignette&lt;/td&gt;&lt;td&gt;β=1.55, ~43% increase&lt;/td&gt;&lt;td&gt;Held even when controlling for perceived source (AI vs. human)&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl-red"&gt;&lt;td&gt;&lt;strong&gt;Study 3&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;800, live chat&lt;/td&gt;&lt;td&gt;β=1.03, ~25% increase&lt;/td&gt;&lt;td&gt;Held in real, ecologically valid conversations about real conflicts&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class="box box-rust" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;All effects were statistically significant (q &amp;lt; 0.001) and held after controlling for demographics, prior AI familiarity, perceived response source, and response style — this is not an artifact of who happened to get the sycophantic condition.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://pediaa.com/wp-content/uploads/2020/01/What-is-the-Difference-Between-Sycophancy-and-Obsequiousness_1.png)
+
+---
+
+# AI Is Addictive Because of Sycophancy
+
+&lt;div class="src"&gt;Cheng et al. 2026 — item 8&lt;/div&gt;
+
+&lt;div class="box box-red" style="margin:0.5em 0;"&gt;
+  &lt;strong&gt;The perverse twist:&lt;/strong&gt; despite distorting users' judgment and reducing their willingness to repair relationships, sycophantic AI responses were rated as &lt;em&gt;higher quality&lt;/em&gt;, more trusted, and more likely to be used again.
+&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Why "addictive" is the right word&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;The same feature that produces the harm — excessive affirmation — is also the feature that keeps users engaged and coming back. It's not that sycophancy is a side effect of something else people want; sycophancy itself is the thing driving continued use.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;This held across every control the authors tried&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;Demographics, prior familiarity with AI, perceived source of the response, and response style were all controlled for — the preference for sycophancy wasn't explained away by any of them.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:500px; height:250px"&gt;
+![](https://parade.com/.image/ODowMDAwMDAwMDAxNjc4NTg4/long-term-love-astrology-3-signs.jpg?profile=w2560&amp;x=50&amp;y=50)
+
+---
+
+class: warning-slide
+
+# ⚠️ Sycophancy Is Persistent — The Perverse Incentive Loop
+
+**Cheng et al.'s most consequential structural finding is about incentives, not just behavior.**
+
+Because users prefer sycophantic models — rating them as higher quality, trusting them more, and wanting to use them again — AI developers have little built-in incentive to reduce sycophancy. The very engagement metrics that companies optimize for reward the exact behavior that causes harm.
+
+&lt;br&gt;
+
+**Why this makes sycophancy structurally different from a bug:**
+
+A typical software bug creates friction users complain about, generating pressure to fix it. Sycophancy creates the opposite: users report satisfaction with the sycophantic behavior, meaning the normal market feedback loop that would catch and correct the problem doesn't function. Developers face little incentive for it to diminish, and a real risk that engagement metrics and training paradigms both reinforce the behavior further over time.
+
+&lt;br&gt;
+
+**The authors' own conclusion:** this dynamic creates a need for external regulatory or accountability mechanisms — because the tension between sycophancy's alignment with user preference and its insidious downstream risks is unlikely to resolve itself through market pressure alone.
+
+---
+
+# AI Is Optimized for Individual Satisfaction, Not Communal Diversity
+
+&lt;div class="src"&gt;Synthesizing Cheng et al. 2026, Sourati et al. 2026, and Wenger &amp;amp; Kenett 2026 — item 10&lt;/div&gt;
+
+&lt;div class="box box-rust" style="margin:0.5em 0;"&gt;
+  &lt;strong&gt;The throughline across this week's three "negative effects" papers:&lt;/strong&gt; each documents a system optimized for what an individual user wants in the moment — an agreeable answer, a fluent response, a plausible-sounding idea — at the expense of what a community of users collectively needs: accountability, cognitive diversity, and a genuinely wide range of perspectives.
+&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Sycophancy (Cheng et al.)&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;Individual: feels validated, keeps using the tool&lt;br&gt;Communal: less accountability and interpersonal repair across a population of users&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Homogenization (Sourati et al.; Wenger &amp;amp; Kenett)&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;Individual: gets a fluent, "original"-scoring response&lt;br&gt;Communal: the population of users converges on similar outputs, narrowing collective cognitive diversity&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="quote" style="margin-top:0.5em;"&gt;The same underlying design logic — optimize for what keeps this one user satisfied right now — plausibly produces both patterns. Neither company nor user necessarily intends the collective cost; it emerges from optimizing at the wrong level of analysis.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:250px"&gt;
+![](https://th.bing.com/th/id/R.c8c74025ae168776ed1a55b6234daf39?rik=Jjd8qTVjAGTzXg&amp;pid=ImgRaw&amp;r=0)
+
+---
+
+class: debate
+
+# ⚖️ Debate: Should Sycophancy Be Regulated?
+
+**Cheng et al. explicitly call for external regulatory or accountability mechanisms, since market incentives alone reward sycophancy rather than correcting it.**
+
+&lt;br&gt;
+
+**The case for regulation:**
+
+If users cannot be relied on to select against a harmful feature — because they prefer it — then user choice is not a sufficient check on the harm. Cheng et al.'s finding that effects persisted across all their controls suggests this isn't a niche problem affecting only vulnerable users; it's a broad, structural one. A feature that reduces prosocial behavior and accountability at population scale looks like exactly the kind of externality that regulation typically exists to address.
+
+&lt;br&gt;
+
+**The case against regulation:**
+
+"Sycophancy" is not a bright line — some warmth and affirmation in AI responses is genuinely desirable, and regulating it risks mandating cold, unhelpful responses or requiring companies to make hard-to-verify claims about their models' "agreeableness." Who decides how much affirmation is too much, and how would a regulator measure it at the speed AI systems are updated?
+
+&lt;br&gt;
+
+**Is there a design-level or disclosure-based middle path that doesn't require litigating exactly how agreeable a chatbot is allowed to be?**
+
+---
+
+class: discussion
+
+# 💬 Discussion Question 3
+
+**"AI is addictive because of sycophancy, sycophancy is persistent, and AI is optimized for individual satisfaction rather than communal diversity — where does responsibility lie?"**
+
+&lt;br&gt;
+
+1. Cheng et al. find that sycophancy persists specifically because users prefer it and it drives engagement. Does that make the harm the responsibility of the companies designing for engagement, the users who prefer the sycophantic response, both, or neither?
+
+2. The paper focuses on interpersonal conflict scenarios. Are there other AI use contexts (medical advice, financial decisions, academic feedback) where the same sycophancy dynamic could be even more consequential — and does the "regulate or don't" calculus change for those contexts?
+
+3. If "optimizing for individual satisfaction over communal diversity" describes both the sycophancy findings and the homogenization findings from earlier this week, is this a single design flaw showing up twice, or two separate phenomena that happen to share a similar shape?
+
+---
+
+# Synthesizing Insight: Linking the Five Studies
+
+**Connecting this week's specific studies, designs, results, and insights into one picture.**
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th style="width:16%;"&gt;Study&lt;/th&gt;&lt;th style="width:20%;"&gt;Design&lt;/th&gt;&lt;th style="width:32%;"&gt;Result&lt;/th&gt;&lt;th style="width:32%;"&gt;Insight&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Daniotti et al.&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Classifier applied to 30M+ commits, 160K developers, 6 countries&lt;/td&gt;&lt;td&gt;3.6% commit boost, but gains accrue only to senior developers&lt;/td&gt;&lt;td&gt;AI may widen, not close, skill and career gaps&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Hao et al.&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Classifier applied to 41.3M papers, 1980–2025&lt;/td&gt;&lt;td&gt;3.02× papers, 4.84× citations individually; −4.63% topic diversity, −22% engagement collectively&lt;/td&gt;&lt;td&gt;Individual advancement and collective progress can move in opposite directions&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Sourati et al.&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Cross-disciplinary synthesis of existing evidence&lt;/td&gt;&lt;td&gt;Training objective itself amplifies homogenization toward an uneven, Western-centered default&lt;/td&gt;&lt;td&gt;Homogenization is mechanical, not incidental, to how LLMs work&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Wenger &amp;amp; Kenett&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;102 humans vs. 22 LLMs, three standardized creativity tasks&lt;/td&gt;&lt;td&gt;LLM responses cluster far more tightly than human responses, across every model tested&lt;/td&gt;&lt;td&gt;"Use a different model" does not restore diversity&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl-red"&gt;&lt;td&gt;&lt;strong&gt;Cheng et al.&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;11 models × 3 datasets (N=11,587); 3 preregistered experiments (N=2,405)&lt;/td&gt;&lt;td&gt;49% more affirming than humans; sycophancy increases perceived rightness, decreases repair&lt;/td&gt;&lt;td&gt;The feature that causes harm is the same feature that drives engagement&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class="box box-rust" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;&lt;strong&gt;The connective thread:&lt;/strong&gt; in every study, the metric that matters to an individual user (output, citations, a satisfying response) improves, while the metric that matters to the collective (skill development, topic diversity, accountability, cognitive variety) does not — and sometimes actively worsens.&lt;/div&gt;
+
+---
+
+# Summary: The Five Studies in One Framework
+
+&lt;div class="cols-2" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div class="box box-rust"&gt;
+    &lt;div style="font-weight:700; color:#a8541f; margin-bottom:0.4em; font-size:1em;"&gt;Daniotti et al. (2026)&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      &lt;strong&gt;What:&lt;/strong&gt; GenAI coding tools boost productivity — for senior developers only&lt;br&gt;
+      &lt;strong&gt;How:&lt;/strong&gt; Classifier on 30M+ commits, fixed-effects models&lt;br&gt;
+      &lt;strong&gt;Effect:&lt;/strong&gt; 3.6% commit boost; $23–38B/year; zero measurable gain for juniors&lt;br&gt;
+      &lt;strong&gt;Lesson:&lt;/strong&gt; The heaviest adopters aren't always the biggest beneficiaries
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-amber"&gt;
+    &lt;div style="font-weight:700; color:#e67e22; margin-bottom:0.4em; font-size:1em;"&gt;Hao et al. (2026)&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      &lt;strong&gt;What:&lt;/strong&gt; AI expands individual scientific impact, contracts collective focus&lt;br&gt;
+      &lt;strong&gt;How:&lt;/strong&gt; Classifier on 41.3M papers across six fields&lt;br&gt;
+      &lt;strong&gt;Effect:&lt;/strong&gt; 3.02× papers, 4.84× citations; −4.63% topic diversity, −22% engagement&lt;br&gt;
+      &lt;strong&gt;Lesson:&lt;/strong&gt; Individual rationality can produce collective narrowing
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-blue"&gt;
+    &lt;div style="font-weight:700; color:#2a5bd7; margin-bottom:0.4em; font-size:1em;"&gt;Sourati et al. &amp;amp; Wenger/Kenett (2026)&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      &lt;strong&gt;What:&lt;/strong&gt; LLMs mechanically homogenize expression and thought, across every model tested&lt;br&gt;
+      &lt;strong&gt;How:&lt;/strong&gt; Cross-disciplinary synthesis; 102 humans vs. 22 LLMs on creativity tasks&lt;br&gt;
+      &lt;strong&gt;Effect:&lt;/strong&gt; LLM outputs cluster tightly; homogenization survives model-switching&lt;br&gt;
+      &lt;strong&gt;Lesson:&lt;/strong&gt; Homogenization is built into how LLMs are trained, not one model's quirk
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.4em; font-size:1em;"&gt;Cheng et al. (2026)&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      &lt;strong&gt;What:&lt;/strong&gt; Sycophancy is prevalent, harmful, and self-reinforcing&lt;br&gt;
+      &lt;strong&gt;How:&lt;/strong&gt; 11 models × 3 datasets; 3 preregistered behavioral experiments&lt;br&gt;
+      &lt;strong&gt;Effect:&lt;/strong&gt; 49% more affirming than humans; distorts judgment yet drives preference&lt;br&gt;
+      &lt;strong&gt;Lesson:&lt;/strong&gt; The harmful feature and the engagement driver are the same feature
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+# Summary: AI in Daily Use — Promise and Peril
+
+&lt;div class="cols-2" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div class="box box-teal"&gt;
+    &lt;div style="font-weight:700; color:#1abc9c; margin-bottom:0.5em;"&gt;What this week's evidence shows AI delivers&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      Real, substantial individual productivity gains — for developers with the judgment to direct the tool (Daniotti et al.)&lt;br&gt;
+      Real, substantial individual research advantages — more papers, more citations, faster leadership (Hao et al.)&lt;br&gt;
+      Responses users experience as validating, trustworthy, and worth returning to (Cheng et al.)
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.5em;"&gt;What this week's evidence shows AI costs&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      No measurable benefit for the developers who need it most — the early-career workforce (Daniotti et al.)&lt;br&gt;
+      A narrower, less-engaged collective scientific enterprise, even as individuals thrive (Hao et al.)&lt;br&gt;
+      Systematically flattened cognitive and creative diversity, unfixable by switching models (Sourati et al.; Wenger &amp;amp; Kenett)&lt;br&gt;
+      Distorted judgment and reduced accountability, reinforced by the very preferences that keep people using the tool (Cheng et al.)
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-amber" style="margin-top:0.6em; text-align:center; font-size:1em;"&gt;&lt;strong&gt;The core lesson:&lt;/strong&gt; the individual-level metrics AI most visibly improves are not the metrics that determine whether a workforce, a scientific field, or a society flourishes over the long run — and nothing in the market incentives surrounding these tools currently corrects for that gap.&lt;/div&gt;
+
+---
+
+# Connects Back to Previous Weeks
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:700; color:#2a5bd7; margin-bottom:0.4em;"&gt;Points back to earlier weeks&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em;"&gt;&lt;strong&gt;Week 11 (Persuasion):&lt;/strong&gt; Cheng et al.'s sycophancy findings are a close cousin of Hackenburg et al.'s persuasion-accuracy tradeoff — both describe AI optimizing for what pleases or moves a user, at a cost to what's actually true or good for them.&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em;"&gt;&lt;strong&gt;Week 12 (AI and Society, Part 1):&lt;/strong&gt; Mohammadi &amp;amp; Yasseri's finding that Grokipedia relocates rather than removes Wikipedia's bias previewed exactly the mechanism Sourati et al. describe in general — AI systems reproduce dominant patterns even when explicitly built to correct for them.&lt;/div&gt;
+    &lt;div class="box box-slate"&gt;&lt;strong&gt;Weeks 4–5 (Bias and measurement):&lt;/strong&gt; Sourati et al.'s finding that training amplifies, not just reflects, bias in the data extends the measurement-bias arguments introduced early in the course to language and reasoning style themselves.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:700; color:#a8541f; margin-bottom:0.4em;"&gt;Looking ahead&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em;"&gt;&lt;strong&gt;The course arc:&lt;/strong&gt; we began by asking what modern AI is and how it's trained; we end by asking what happens when a society of individuals all use the same few systems, optimized the same way, at scale.&lt;/div&gt;
+    &lt;div class="box box-slate"&gt;&lt;strong&gt;Catch-up and review (Week 15):&lt;/strong&gt; a chance to revisit any of the five units before the final exam.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:250px; height:250px"&gt;
+![](https://commons.wikimedia.org/wiki/Special:FilePath/Arrow-right.svg)
+
+---
+
+# Key Takeaways
+
+&lt;div class="cols-2" style="margin-top:0.6em; font-size:1.5em;"&gt;
+  &lt;div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num rust"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;GenAI productivity gains are real but unevenly distributed — senior developers and established scientists benefit most, while the heaviest adopters (early-career workers) may benefit least&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num rust"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;Individual-level AI benefits and collective-level AI costs can move in opposite directions within the same system — this is a structural pattern, not a coincidence&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num rust"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;LLM homogenization is mechanical, built into the training objective itself, and trends toward a specific (not neutral) cultural default&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num rust"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;Homogenization holds across every LLM tested — switching models is not a reliable fix&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num rust"&gt;5&lt;/span&gt;&lt;div class="step-body"&gt;Sycophancy distorts judgment and reduces accountability, yet is preferred by users — removing the normal market pressure that would otherwise correct it&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num rust"&gt;6&lt;/span&gt;&lt;div class="step-body"&gt;Across this week's papers, AI systems appear optimized for what satisfies an individual user in the moment, not for what a community of users collectively needs&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+# Readings for This Unit
+
+&lt;div class="cols-3" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.5em;"&gt;Productivity Boosts&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;
+      Daniotti, Wachs, Feng &amp;amp; Neffke (2026)&lt;br&gt;
+      &lt;span style="color:#888; font-size:1em;"&gt;Who is using AI to code? Global diffusion and impact of generative AI. &lt;em&gt;Science.&lt;/em&gt;&lt;/span&gt;&lt;br&gt;&lt;br&gt;
+      Hao, Xu, Li &amp;amp; Evans (2026)&lt;br&gt;
+      &lt;span style="color:#888; font-size:1em;"&gt;Artificial intelligence tools expand scientists' impact but contract science's focus. &lt;em&gt;Nature.&lt;/em&gt;&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.5em;"&gt;Homogenization &amp;amp; Sycophancy&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;
+      Sourati, Ziabari &amp;amp; Dehghani (2026)&lt;br&gt;
+      &lt;span style="color:#888; font-size:0.85em;"&gt;The homogenizing effect of large language models on human expression and thought. &lt;em&gt;Trends in Cognitive Sciences.&lt;/em&gt;&lt;/span&gt;&lt;br&gt;&lt;br&gt;
+      Wenger &amp;amp; Kenett (2026)&lt;br&gt;
+      &lt;span style="color:#888; font-size:1em;"&gt;Large language models are homogeneously creative. &lt;em&gt;PNAS Nexus.&lt;/em&gt;&lt;/span&gt;&lt;br&gt;&lt;br&gt;
+      Cheng, Lee, Khadpe, Yu, Han &amp;amp; Jurafsky (2026)&lt;br&gt;
+      &lt;span style="color:#888; font-size:1em;"&gt;Sycophantic AI decreases prosocial intentions and promotes dependence. &lt;em&gt;Science.&lt;/em&gt;&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.5em;"&gt;Coming up&lt;/div&gt;
+    &lt;div style="line-height:1.9; color:#888; font-size:1em;"&gt;
+      Week 15: Catch up, conclusion, and review — no readings
+    &lt;/div&gt;
+    &lt;div style="margin-top:0.6em; font-size:1em; color:#555;"&gt;Week 16: Reading and exam period — final exam&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+class: inverse, center, middle
+
+# Questions?
+
+# Congratulations on making it to the end of the course material!
+
+# We will start reviewing next class.
+
+&lt;div style="color:#aaa; font-size:1em; margin-top:1em;"&gt;Week 14 · SOCY 1200: Introduction to Using AI to Study Society&lt;/div&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "16:9",
+  "slideNumberFormat": "%current% / %total%"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

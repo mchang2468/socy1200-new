@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>SOCY 1200: Introduction to Using AI to Study Society</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Daniel Karell" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="yale.css" type="text/css" />
+    <link rel="stylesheet" href="yale-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# SOCY 1200: Introduction to Using AI to Study Society
+]
+.subtitle[
+## Unit 4: AI in Experiments: Talking to Robots
+]
+.author[
+### Daniel Karell
+]
+.institute[
+### Yale University
+]
+.date[
+### Week 11
+]
+
+---
+
+
+
+
+&lt;style&gt;
+.remark-slide-content:not(.title-slide) {
+  font-size: 16px; padding: 1.8em 2.2em 1em;
+  color: #1a1a2e; background: #fafafa;
+}
+.remark-slide-content:not(.title-slide) h1 {
+  font-size: 2em; font-weight: 700; letter-spacing: -0.03em;
+  color: #1a1a2e; border-bottom: 3px solid #b83280;
+  padding-bottom: 0.3em; margin-bottom: 0.7em;
+}
+.remark-slide-content:not(.title-slide) h2 { font-size:1.05em; color:#555; font-weight:500; }
+.remark-slide-content:not(.title-slide) p, .remark-slide-content:not(.title-slide) li { line-height:1.65; }
+.inverse:not(.title-slide) { background: #1a1a2e !important; }
+.inverse:not(.title-slide) h1, .inverse:not(.title-slide) h2, .inverse:not(.title-slide) h3 { color:white !important; border:none !important; }
+.inverse:not(.title-slide) h1 { font-size:1.9em !important; letter-spacing:-0.03em; }
+.inverse:not(.title-slide) h2 { color:#aaa !important; font-weight:400 !important; }
+.section-num:not(.title-slide) { display:inline-block; font-size:4em; font-weight:900; color:rgba(184,50,128,0.8); line-height:1; margin-bottom:0.1em; }
+.discussion { background: #0f3460 !important; }
+.discussion h1 { color: #f0c040 !important; border-bottom: 3px solid #f0c040 !important; }
+.discussion p, .discussion li { color: #e8e8f0 !important; line-height: 1.75 !important; }
+.discussion strong { color: #f0c040 !important; }
+.paper-walk { background: #1a3a1a !important; }
+.paper-walk h1 { color: #90ee90 !important; border-bottom: 3px solid #90ee90 !important; }
+.paper-walk p, .paper-walk li { color: #ddeedd !important; line-height:1.7 !important; }
+.paper-walk strong { color: #90ee90 !important; }
+.debate { background: #1a1a2e !important; }
+.debate h1 { color: #ffcc66 !important; border-bottom: 3px solid #ffcc66 !important; }
+.debate p, .debate li { color: #f0e8d0 !important; line-height:1.7 !important; }
+.debate strong { color: #ffcc66 !important; }
+.casestudy { background: #0a1a2a !important; }
+.casestudy h1 { color: #66ccff !important; border-bottom: 3px solid #66ccff !important; }
+.casestudy p, .casestudy li { color: #ddeeff !important; line-height:1.7 !important; }
+.casestudy strong { color: #66ccff !important; }
+.warning-slide { background: #2a0a0a !important; }
+.warning-slide h1 { color: #ff8888 !important; border-bottom: 3px solid #ff8888 !important; }
+.warning-slide p, .warning-slide li { color: #ffd0d0 !important; line-height:1.7 !important; }
+.warning-slide strong { color: #ff8888 !important; }
+.box { border-radius:6px; padding:0.75em 1em; margin:0.4em 0; font-size:0.85em; line-height:1.6; }
+.box-teal   { background:#f0fafa; border-left:4px solid #1abc9c; color:#0c3030; }
+.box-red    { background:#fdf2f2; border-left:4px solid #c0392b; color:#3d0c0c; }
+.box-green  { background:#f0faf3; border-left:4px solid #27ae60; color:#0c3320; }
+.box-blue   { background:#f0f4ff; border-left:4px solid #2a5bd7; color:#0d1f5c; }
+.box-amber  { background:#fffbf0; border-left:4px solid #e67e22; color:#5c3400; }
+.box-slate  { background:#f4f5f7; border-left:4px solid #7f8c8d; color:#2c3e50; }
+.box-purple { background:#f5f0ff; border-left:4px solid #8e44ad; color:#2e0060; }
+.box-orange { background:#fef5ee; border-left:4px solid #d35400; color:#3d1500; }
+.box-plum   { background:#fdf0f7; border-left:4px solid #b83280; color:#4a0f30; }
+.quote { border-left:5px solid #b83280; background:white; border-radius:0 6px 6px 0; padding:0.7em 1.2em; font-size:0.88em; font-style:italic; color:#2c3e50; margin:0.6em 0; box-shadow:0 1px 4px rgba(0,0,0,0.07); }
+.quote cite { display:block; font-style:normal; font-size:0.82em; color:#b83280; margin-top:0.3em; font-weight:600; }
+.cols-2 { display:grid; grid-template-columns:1fr 1fr; gap:1em; margin:0.5em 0; }
+.cols-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.9em; margin:0.5em 0; }
+.cols-4 { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:0.7em; margin:0.5em 0; }
+.step-row { display:flex; align-items:flex-start; gap:0.75em; margin-bottom:0.5em; }
+.step-num { flex-shrink:0; width:1.7em; height:1.7em; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.8em; margin-top:0.05em; }
+.step-num.teal  { background:#1abc9c; color:white; }
+.step-num.blue  { background:#2a5bd7; color:white; }
+.step-num.green { background:#27ae60; color:white; }
+.step-num.amber { background:#e67e22; color:white; }
+.step-num.red   { background:#c0392b; color:white; }
+.step-num.grey  { background:#7f8c8d; color:white; }
+.step-num.plum  { background:#b83280; color:white; }
+.step-body { font-size:0.83em; line-height:1.6; padding-top:0.15em; }
+.styled-table { width:100%; border-collapse:collapse; font-size:0.81em; margin:0.5em 0; box-shadow:0 1px 6px rgba(0,0,0,0.08); }
+.styled-table thead tr { background:#1a1a2e; color:white; }
+.styled-table thead th { padding:0.6em 0.8em; text-align:left; font-weight:600; }
+.styled-table tbody tr:nth-child(even) { background:#f4f5f7; }
+.styled-table tbody tr:nth-child(odd) { background:white; }
+.styled-table tbody td { padding:0.55em 0.8em; color:#2c3e50; vertical-align:top; }
+.styled-table .hl      { background:#fdf0f7 !important; font-weight:600; }
+.styled-table .hl-red  { background:#fdf2f2 !important; }
+.styled-table .hl-green { background:#f0faf3 !important; }
+.badge { display:inline-block; border-radius:20px; padding:0.12em 0.65em; font-size:0.72em; font-weight:700; }
+.badge-teal   { background:#d5f5f0; color:#0e6b5a; }
+.badge-red    { background:#fde8e8; color:#922b21; }
+.badge-green  { background:#e8f8ee; color:#1e8449; }
+.badge-amber  { background:#fef3d0; color:#784212; }
+.badge-grey   { background:#eaecee; color:#515a5a; }
+.badge-blue   { background:#e8edff; color:#1a3fa0; }
+.badge-plum   { background:#fbe0ee; color:#8a1f5c; }
+.mono { font-family:'Cascadia Code','Fira Code','Courier New',monospace; font-size:0.78em; background:#1e2433; color:#abb2bf; border-radius:6px; padding:0.8em 1.1em; line-height:1.85; margin:0.4em 0; }
+.mono .hi-blue   { color:#61afef; }
+.mono .hi-green  { color:#98c379; }
+.mono .hi-red    { color:#e06c75; }
+.mono .hi-amber  { color:#e5c07b; }
+.mono .hi-grey   { color:#636d83; }
+.mono .hi-white  { color:#ffffff; }
+.mono .hi-teal   { color:#56b6c2; }
+.mono .hi-plum   { color:#e296c4; }
+.src { display:inline-block; background:#1a1a2e; color:#FFFFFF; font-size:0.68em; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; border-radius:3px; padding:0.15em 0.55em; margin-bottom:0.45em; }
+blockquote { border:none; padding:0; margin:0; background:none; }
+&lt;/style&gt;
+
+# What We're Covering This Week
+
+&lt;div class="cols-3" style="margin-top:0.7em;"&gt;
+  &lt;div class="box box-plum"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Part I · Talking to Robots&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;How treatments are normally administered&lt;br&gt;Why administer a treatment through conversation&lt;br&gt;The design space for conversational treatments&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-plum"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Part II · Persuasiveness&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;Salvi et al.: GPT-4 outperforms humans&lt;br&gt;Hackenburg et al.: post-training and prompting&lt;br&gt;Costello et al.: changing deep beliefs&lt;br&gt;Argyle et al.: testing theories of persuasion&lt;br&gt;The persuasion–accuracy tradeoff&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-plum"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Part III · Differences in Conversation&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;Why people engage differently with AI conversations&lt;br&gt;Conversation vs. static messages across studies&lt;br&gt;Synthesizing the five studies&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;**The central tension for this week:**
+
+&lt;div class="box box-amber" style="text-align:center; font-size:1em;"&gt;Conversation is what makes AI such a powerful research tool — it lets researchers administer a treatment that adapts, personalizes, and responds. But that same adaptivity is what makes AI a uniquely powerful persuasion technology outside the lab. The tool for studying persuasion and the tool for deploying it are the same tool.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:200px; height:100px"&gt;
+![](https://media.istockphoto.com/id/1765570937/photo/3d-ai-assistant-artificial-intelligence-chat-bot-ai-business-and-iot-concept-future-marketing.jpg?s=170667a&amp;w=0&amp;k=20&amp;c=2N5YnS55ddLL3oktqdB_QWcxYjdXT_XtlflheaAvBio=)
+
+---
+
+# The Five Studies — A Map
+
+&lt;div class="cols-3" style="margin-top:0.4em; font-size:1em;"&gt;
+  &lt;div class="box box-teal"&gt;
+    &lt;div style="font-weight:700; color:#1abc9c; margin-bottom:0.5em;"&gt;Costello, Pennycook &amp;amp; Rand (2024)&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;"Durably reducing conspiracy beliefs through dialogues with AI"&lt;br&gt;&lt;br&gt;
+    &lt;strong&gt;Venue:&lt;/strong&gt; Science&lt;br&gt;
+    &lt;strong&gt;Design:&lt;/strong&gt; N=2,190 conspiracy believers dialogue with GPT-4 Turbo&lt;br&gt;
+    &lt;strong&gt;Key finding:&lt;/strong&gt; ~20% belief reduction, durable 2 months later&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-green"&gt;
+    &lt;div style="font-weight:700; color:#27ae60; margin-bottom:0.5em;"&gt;Salvi, Horta Ribeiro, Gallotti &amp;amp; West (2025)&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;"On the conversational persuasiveness of GPT-4"&lt;br&gt;&lt;br&gt;
+    &lt;strong&gt;Venue:&lt;/strong&gt; Nature Human Behaviour&lt;br&gt;
+    &lt;strong&gt;Design:&lt;/strong&gt; N=900, 2×2×3 debate experiment&lt;br&gt;
+    &lt;strong&gt;Key finding:&lt;/strong&gt; Personalized GPT-4 beats humans 64.4% of the time&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-blue"&gt;
+    &lt;div style="font-weight:700; color:#2a5bd7; margin-bottom:0.5em;"&gt;Argyle, Busby, Gubler et al. (2025)&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;"Testing theories of political persuasion using AI"&lt;br&gt;&lt;br&gt;
+    &lt;strong&gt;Venue:&lt;/strong&gt; PNAS&lt;br&gt;
+    &lt;strong&gt;Design:&lt;/strong&gt; Two studies isolating customization and elaboration&lt;br&gt;
+    &lt;strong&gt;Key finding:&lt;/strong&gt; Neither mechanism clearly beats a generic message&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.6em; font-size:1em;"&gt;
+  &lt;div class="box box-amber"&gt;
+    &lt;div style="font-weight:700; color:#e67e22; margin-bottom:0.5em;"&gt;Hackenburg, Tappin, Hewitt et al. (2025)&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;"The levers of political persuasion with conversational artificial intelligence"&lt;br&gt;&lt;br&gt;
+    &lt;strong&gt;Venue:&lt;/strong&gt; Science &amp;nbsp;·&amp;nbsp; &lt;strong&gt;Design:&lt;/strong&gt; N=76,977; 19 LLMs; 707 political issues&lt;br&gt;
+    &lt;strong&gt;Key finding:&lt;/strong&gt; Post-training and prompting drive persuasiveness — and increased persuasiveness comes with reduced factual accuracy&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-plum"&gt;
+    &lt;div style="font-weight:700; color:#b83280; margin-bottom:0.5em;"&gt;What connects them&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;All five studies administer a treatment through &lt;strong&gt;conversation&lt;/strong&gt; — a live, adaptive, personalized exchange rather than a fixed script. That shared method is this week's throughline.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;I&lt;/div&gt;
+
+# Talking to Robots
+## Using AI to conduct a conversation that administers the treatment
+
+---
+
+# Review: How Experiments Normally Administer Treatments
+
+**Before conversational AI, researchers had a limited toolkit for delivering a "treatment" in an experiment on social behavior.**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Traditional treatment vehicles&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Written vignette:&lt;/strong&gt; a short passage describing a scenario, varied across conditions&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Static message or article:&lt;/strong&gt; a persuasive essay, ad, or news story, pre-written by researchers&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Video or audio stimulus:&lt;/strong&gt; a recorded speech, debate clip, or ad&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Trained confederate:&lt;/strong&gt; a research assistant scripted to say specific things in a live interaction&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Why a conversation is different&lt;/div&gt;
+    &lt;div class="box box-plum" style="margin-bottom:0.3em; font-size:0.82em;"&gt;&lt;strong&gt;Responsive:&lt;/strong&gt; a conversation partner reacts to what the participant actually says&lt;/div&gt;
+    &lt;div class="box box-plum" style="margin-bottom:0.3em; font-size:0.82em;"&gt;&lt;strong&gt;Sustained:&lt;/strong&gt; treatment can unfold over many turns, not one exposure&lt;/div&gt;
+    &lt;div class="box box-plum" style="margin-bottom:0.3em; font-size:0.82em;"&gt;&lt;strong&gt;Personalized:&lt;/strong&gt; arguments can be tailored to the specific person's stated beliefs&lt;/div&gt;
+    &lt;div class="box box-plum" style="font-size:0.82em;"&gt;&lt;strong&gt;Naturalistic:&lt;/strong&gt; resembles how persuasion actually happens outside the lab — through talk&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:350px; height:175px"&gt;
+![](https://commons.wikimedia.org/wiki/Special:FilePath/Chatbot.jpg)
+
+---
+
+# Why Administer a Treatment Through Conversation?
+
+**A conversational treatment is not just a more elaborate vignette — it changes what an experiment can ask.**
+
+&lt;div class="cols-3" style="margin-top:0.6em;"&gt;
+  &lt;div class="box box-teal" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.3em; margin-bottom:0.3em;"&gt;🎯&lt;/div&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Dosage control&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;Researchers can hold conversation length, argument count, or turn structure constant across participants while letting the content adapt&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-teal" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.3em; margin-bottom:0.3em;"&gt;🧩&lt;/div&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Personalized rebuttal&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;The AI can respond directly to each participant's own stated evidence — something a fixed script cannot do at scale&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-teal" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.3em; margin-bottom:0.3em;"&gt;📈&lt;/div&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Scale&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;Thousands of unique, individually tailored conversations can run simultaneously — impossible with trained human confederates&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="quote" style="margin-top:0.6em;"&gt;Costello, Pennycook, and Rand used exactly this logic: GPT-4 Turbo generated a personalized summary of each participant's specific conspiracy belief, then argued against that belief's specific supporting evidence — not a generic script.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:450px; height:225px"&gt;
+![](https://res.cloudinary.com/benjamincrozat-com/image/fetch/c_scale,f_webp,q_auto,w_1200/https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/236/3uQ5UwlJq7FRqjcvekGdAqOi65gT17-metaZ3B0LTQtdHVyYm8ucG5n-.png)
+
+---
+
+# The Design Space: Ways to Talk to Robots
+
+&lt;div class="cols-3" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Fixed-script chatbot&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;AI follows a predetermined branching script — flexible in wording, not in strategy. Closest to a scripted confederate.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Adaptive dialogue partner&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;AI reads what the participant says and generates a genuinely new response each turn, aimed at a persuasive goal.&lt;br&gt;&lt;em&gt;Costello et al.; Salvi et al.&lt;/em&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Debate opponent&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;AI is assigned a stance and argues it across multiple rounds against a live human participant.&lt;br&gt;&lt;em&gt;Salvi et al.; Hackenburg et al.&lt;/em&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-plum" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;Across all five studies this week, the treatment &lt;em&gt;is&lt;/em&gt; the conversation — the independent variable is not a fixed piece of text but an interactive process.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://media.istockphoto.com/id/2185836237/vector/woman-speaker-speaking-from-podium-to-audience-public-speech-of-female-leader-on-stage.jpg?s=612x612&amp;w=0&amp;k=20&amp;c=mM5JyBBlVHFDo5vbvsoLVen1cKjpUtPjY5rmqPTptE0=)
+
+---
+
+class: discussion
+
+# 💬 Discussion Question 1
+
+**"What are some common ways to administer treatments in experiments examining social behavior, and why might we want treatments administered through a conversation?"**
+
+&lt;br&gt;
+
+1. Think of a classic social-psychology experiment you've read about. What was the "treatment"? Was it a written passage, a video, a confederate, or something else? What would change if that treatment were instead delivered through an adaptive AI conversation?
+
+2. Costello et al. personalize each dialogue to the participant's own stated conspiracy belief. What could a researcher learn from a personalized conversational treatment that they could not learn from a single fixed vignette shown to everyone?
+
+3. What is lost, methodologically, when the treatment is no longer identical across participants? If every participant has a different conversation, what exactly is being compared to what?
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;II&lt;/div&gt;
+
+# Persuasiveness
+## How persuasive is AI, and what makes it that way?
+
+---
+
+# Salvi et al.: The Core Finding
+
+&lt;div class="src"&gt;Salvi, Horta Ribeiro, Gallotti &amp;amp; West 2025 · Nature Human Behaviour · N = 900 participants, 600 debates&lt;/div&gt;
+
+&lt;div class="box box-green" style="margin:0.5em 0;"&gt;
+  &lt;strong&gt;Central finding:&lt;/strong&gt; In short, multiround debates on sociopolitical issues, GPT-4 outperforms humans as a persuasive debate opponent — and the gap is driven almost entirely by personalization, not by the model simply being a better arguer in general.
+&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Study design&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;Participants randomly paired with a human or GPT-4 opponent&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;Opponent either does or does not receive sociodemographic data (gender, age, ethnicity, education, employment, political affiliation)&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;Debate topic drawn from a low-, medium-, or high-opinion-strength cluster&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;Short multiround written debate; agreement measured before and after&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Design: a 2×2×3&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em; font-size:1em;"&gt;&lt;strong&gt;Opponent:&lt;/strong&gt; human or GPT-4&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em; font-size:1em;"&gt;&lt;strong&gt;Personalization:&lt;/strong&gt; sociodemographic data or none&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:1em;"&gt;&lt;strong&gt;Topic strength:&lt;/strong&gt; low, medium, or high&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:250px; height:250px"&gt;
+![](https://media.istockphoto.com/id/1752229284/vector/demographic-analysis-infographic-template.jpg?s=170667a&amp;w=0&amp;k=20&amp;c=e8Y-0kyFu8sRtGwUR_0TmiecULBYQMGdFErg2MhBTFw=)
+
+---
+
+class: paper-walk
+
+# Paper Walkthrough: Salvi et al. — Isolating What Drives the Gap
+
+&lt;div class="src"&gt;Salvi et al. 2025&lt;/div&gt;
+
+**The key comparison is not simply "AI vs. human" — it's AI-with-personal-data vs. everything else.**
+
+&lt;br&gt;
+
+When GPT-4 had access to a participant's sociodemographic information and was instructed to use it to craft more persuasive arguments, it was more persuasive than its opponent in 64.4% of debate pairs where the two sides were not equally persuasive.
+
+&lt;br&gt;
+
+Expressed as an odds ratio, personalized GPT-4 had an 81.2% higher chance of achieving greater post-debate agreement than its opponent (95% CI: +26.0% to +160.7%, p&amp;lt;0.01).
+
+&lt;br&gt;
+
+**The surprising part:** when researchers gave the same sociodemographic information to human debaters, it did not make the humans more persuasive. Personalization is a lever that AI can pull effectively — and that, in this study, humans could not.
+
+---
+
+# Salvi et al.: Results — Personalization Is the Key Lever
+
+&lt;div class="src"&gt;Salvi et al. 2025&lt;/div&gt;
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th style="width:30%;"&gt;Condition&lt;/th&gt;
+    &lt;th style="width:35%;"&gt;Effect on persuasiveness&lt;/th&gt;
+    &lt;th style="width:35%;"&gt;Interpretation&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;GPT-4 + personalization&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;span class="badge badge-plum"&gt;Strongest ✓&lt;/span&gt;&lt;br&gt;64.4% win rate vs. opponent when unequal&lt;/td&gt;&lt;td&gt;Personalized AI is the standout condition in the whole study&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;GPT-4, no personalization&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;span class="badge badge-grey"&gt;Comparable to humans&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Without personal data, AI is not dramatically more persuasive than a human opponent&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Human + personalization&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;span class="badge badge-grey"&gt;No meaningful gain&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Access to the same demographic data did not help human debaters&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl-green"&gt;&lt;td&gt;&lt;strong&gt;Topic opinion strength&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;span class="badge badge-green"&gt;Moderates effect&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Persuasion is easier on weakly held opinions than deeply held ones&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class="box box-plum" style="margin-top:0.4em; font-size:1em;"&gt;&lt;strong&gt;Why this matters:&lt;/strong&gt; the finding is not "AI is a better writer." It's that AI can operationalize a persuasion strategy — using audience information to tailor arguments instantly — at a level humans in this study simply did not achieve, even with the same inputs.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://media.licdn.com/dms/image/v2/D4E22AQEklmpX4lb0CQ/feedshare-shrink_800/B4EZaa7lttGQAg-/0/1746356040889?e=2147483647&amp;v=beta&amp;t=iEEpaop_z-K_niB7GF3h4D-H1LfyxHABPAm0AfJ8OYo)
+
+---
+
+# A Counterintuitive Result: Why Didn't Personalization Help Humans?
+
+**Salvi and colleagues note this was one of their more surprising findings.**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-blue"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Possible explanations&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      -Humans may not know &lt;em&gt;how&lt;/em&gt; to translate demographic data into targeted arguments on the fly&lt;br&gt;
+      -Under time pressure, humans may default to their strongest general argument rather than customizing&lt;br&gt;
+      -LLMs can instantly cross-reference an argument against a full space of demographic associations; humans reason more narrowly
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-amber"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Why it matters for this course&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      -This is exactly the kind of question a "conversation as treatment" design can isolate — hold the information constant, vary only who (or what) is doing the arguing&lt;br&gt;
+      -It reframes AI's persuasive edge as a &lt;em&gt;skill&lt;/em&gt; gap in rapid personalization, not a mysterious "superhuman" quality
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://smythos.com/wp-content/uploads/2024/11/human-chatbot-conversation-1.jpeg)
+
+---
+
+# Hackenburg et al.: The Core Finding
+
+&lt;div class="src"&gt;Hackenburg, Tappin, Hewitt et al. 2025 · Science · N = 76,977 across three experiments; 19 LLMs; 707 issues&lt;/div&gt;
+
+&lt;div class="box box-amber" style="margin:0.5em 0;"&gt;
+  &lt;strong&gt;Central finding:&lt;/strong&gt; Contrary to fears that ever-larger models will become ever more persuasive on their own, the persuasive power of current AI comes mainly from &lt;em&gt;post-training&lt;/em&gt; and &lt;em&gt;prompting&lt;/em&gt; choices — which boosted persuasiveness by as much as 51% and 27% respectively — while model scale and personalization had comparatively small effects.
+&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Study scope&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num amber"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;19 LLMs spanning more than four orders of magnitude in scale, including frontier models&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num amber"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;707 politically balanced issues&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num amber"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;Eight prompting strategies tested, motivated by theories of persuasion&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num amber"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;Three post-training methods, including supervised fine-tuning and reward modeling, explicitly aimed at maximizing persuasiveness&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Why this design matters&lt;/div&gt;
+    &lt;div class="box box-plum" style="font-size:0.85em;"&gt;This is by far the largest persuasion experiment in the set — large enough to separate "bigger model" from "differently trained or prompted model," which smaller studies cannot do&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://www.debutinfotech.com/_next/image?url=https:%2F%2Fblogs.debutinfotech.com%2Fwp-content%2Fuploads%2F2025%2F04%2FLLM-Development-Companies.jpg&amp;w=1200&amp;q=80)
+
+---
+
+class: paper-walk
+
+# Paper Walkthrough: Hackenburg et al. — Comparing the Levers
+
+&lt;div class="src"&gt;Hackenburg et al. 2025&lt;/div&gt;
+
+**Four candidate levers of AI persuasiveness — only two turn out to matter much.**
+
+&lt;table class="styled-table" style="margin-top:0.5em;"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th style="width:22%;"&gt;Lever&lt;/th&gt;&lt;th style="width:40%;"&gt;What it is&lt;/th&gt;&lt;th style="width:38%;"&gt;Effect on persuasiveness&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Post-training&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Fine-tuning or reward modeling explicitly aimed at maximizing persuasive success&lt;/td&gt;&lt;td&gt;Up to +51% — the largest lever&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl-green"&gt;&lt;td&gt;&lt;strong&gt;Prompting&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Instructing the model to use a specific strategy (e.g., an "information-dense" style focused on facts and evidence)&lt;/td&gt;&lt;td&gt;Up to +27% — second largest&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Model scale&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Using a larger, more capable model with no other changes&lt;/td&gt;&lt;td&gt;Small effect&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Personalization&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Giving the model information about the specific audience&lt;/td&gt;&lt;td&gt;Small effect in this study&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class="box box-blue" style="margin-top:0.4em; font-size:1em;"&gt;This is a genuinely different picture from "scaling laws" fears — a small, open-source model that has been post-trained for persuasion can rival a much larger frontier model that hasn't been.&lt;/div&gt;
+
+---
+
+# Which Prompting Strategy Wins?
+
+&lt;div class="src"&gt;Hackenburg et al. 2025&lt;/div&gt;
+
+**Of eight prompting strategies tested, the "information" prompt — instructing the model to focus on deploying facts and evidence — produced the largest persuasion gains across the three experiments.**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Strategies tested (examples)&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em; font-size:0.82em;"&gt;&lt;strong&gt;Information:&lt;/strong&gt; deploy facts and evidence&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em; font-size:0.82em;"&gt;&lt;strong&gt;Debate:&lt;/strong&gt; parliamentary-style argumentation&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em; font-size:0.82em;"&gt;&lt;strong&gt;Norms:&lt;/strong&gt; emphasize that others agree with the position&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:0.82em;"&gt;&lt;strong&gt;Mega:&lt;/strong&gt; combine all strategies at once&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Why "information density" wins&lt;/div&gt;
+    &lt;div class="box box-plum" style="font-size:1em;"&gt;LLMs can rapidly access and strategically deploy large amounts of factual claims in a way a human debater, working from memory, cannot easily match turn by turn — this is a structural advantage, not just better writing&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:200px; height:200px"&gt;
+![](https://tse1.mm.bing.net/th/id/OIP.HCDYMCZYHrGKSl0VrCguTwHaHa?r=0&amp;rs=1&amp;pid=ImgDetMain&amp;o=7&amp;rm=3)
+
+---
+
+class: warning-slide
+
+# ⚠️ The Persuasion–Accuracy Tradeoff
+
+**Hackenburg et al.'s most consequential finding: the same methods that increase persuasiveness tend to decrease factual accuracy.**
+
+The research team fact-checked 466,769 claims made by the LLMs across their experiments. Strikingly, wherever post-training or prompting increased a model's persuasiveness, those same interventions systematically decreased the factual accuracy of the claims it made.
+
+&lt;br&gt;
+
+**What this means:**
+
+- The most effective way currently known to make an LLM more persuasive is not "make it smarter" — it's to optimize it for winning arguments, which appears to come at the expense of truthfulness
+- A persuasive AI is not necessarily an accurate one — and the two properties may trade off directly, not just coincidentally
+- This complicates any simple story where "AI persuasion is fine because it's just really good at explaining true things"
+
+&lt;br&gt;
+
+**This reframes the risk:** it is not that AI might become persuasive by accident as it scales. It's that persuasiveness can be deliberately engineered — and that engineering has a measurable cost in accuracy.
+
+---
+
+# Why Would Persuasiveness and Accuracy Trade Off?
+
+**A few candidate mechanisms, worth debating rather than taking as settled:**
+
+&lt;div class="cols-3" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Selective emphasis&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;A persuasive-optimized model may learn to emphasize true-but-misleading framings, or state claims with more confidence than the evidence supports&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Reward hacking&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;If "persuasiveness" is the training signal, the model optimizes for changing minds — not for being correct. Anything that moves the audience gets reinforced, true or not&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Fluency vs. rigor&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;Persuasive writing favors confident, simple, emotionally resonant claims — qualities that are often in tension with the hedged, qualified language of accurate claims&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="quote" style="margin-top:0.6em;"&gt;If persuasiveness and accuracy trade off by default, then any deployment decision about persuasive AI is implicitly also a decision about how much inaccuracy is acceptable in exchange for influence.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:300px"&gt;
+![](https://img.magnific.com/premium-vector/accuracy-icon-simple-element-from-core-values-collection-creative-accuracy-icon-web-design-templates-infographics-more_676904-1515.jpg?w=740)
+
+---
+
+# Costello et al.: The Core Finding
+
+&lt;div class="src"&gt;Costello, Pennycook &amp;amp; Rand 2024 · Science · N = 2,190 conspiracy believers&lt;/div&gt;
+
+&lt;div class="box box-teal" style="margin:0.5em 0;"&gt;
+  &lt;strong&gt;Central finding:&lt;/strong&gt; A single, roughly 8-minute personalized dialogue with GPT-4 Turbo reduced belief in a self-identified conspiracy theory by approximately 20% on average — an effect that held up two months later, generalized to unrelated conspiracy beliefs, and occurred even among people with deeply entrenched views.
+&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Why conspiracy beliefs are a hard test&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.3em; font-size:1em;"&gt;Influential theories propose conspiracy beliefs serve deep psychological needs — making them resistant to counterevidence by design&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:1em;"&gt;Decades of research had largely found such beliefs durable and hard to shift with argument alone&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Why AI changed the equation&lt;/div&gt;
+    &lt;div class="box box-green" style="margin-bottom:0.3em; font-size:1em;"&gt;Prior failures may reflect counterevidence that was insufficiently compelling and tailored — not that beliefs are truly unmovable&lt;/div&gt;
+    &lt;div class="box box-green" style="font-size:1em;"&gt;AI can generate individually tailored, evidence-based rebuttals at a scale no team of human researchers could match&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://media.istockphoto.com/id/1411957846/pt/foto/headline-titles-media-with-conspiracy-theories-3d-illustration.jpg?s=612x612&amp;w=0&amp;k=20&amp;c=8_w4geA7CuwhzieM4Kv3_Cl_5uRAVdDXWlXn78XROZk=)
+
+---
+
+class: paper-walk
+
+# Paper Walkthrough: Costello et al. — The Dialogue Design
+
+&lt;div class="src"&gt;Costello et al. 2024&lt;/div&gt;
+
+**The design's key move is fully personalizing both the belief summary and the rebuttal.**
+&lt;div class="box box-blue" style="margin-top:0.3em; font-size:1em;"&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num plum"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;Participant describes, in their own words, a conspiracy theory they believe and the evidence they think supports it&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num plum"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;GPT-4 Turbo converts this into a brief, standardized belief statement, which the participant rates (0 = definitely false, 100 = definitely true) — this is the pre-treatment measure&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num plum"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;All participants then enter a conversation with GPT-4 Turbo: the treatment group's AI argues against the conspiracy's veracity using evidence tailored to what the participant said; the control group discusses an unrelated topic&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num plum"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;Participant re-rates belief in the same statement — post-treatment measure&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num plum"&gt;5&lt;/span&gt;&lt;div class="step-body"&gt;Follow-up survey at 2 months measures durability and spillover to other beliefs&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-blue" style="margin-top:0.3em; font-size:1em;"&gt;GPT-4 Turbo is used three times in this design: to screen and summarize beliefs, to conduct the persuasive conversation, and — in later analysis — to help process open-ended response data. This is itself a methodological demonstration of what conversational AI enables.&lt;/div&gt;
+
+---
+
+# What a Belief-Revision Dialogue Looks Like
+
+&lt;div class="src"&gt;Illustrative example, constructed for teaching — not a verbatim transcript from the paper&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:1000px; height:500px"&gt;
+![](https://cdn.corenexis.com/f/nYqETKbN23T.png)
+
+---
+
+# Costello et al.: Durability and Generalization
+
+&lt;div class="src"&gt;Costello et al. 2024&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-green"&gt;
+    &lt;div style="font-weight:700; color:#27ae60; margin-bottom:0.4em;"&gt;What held up&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      -~20% average belief reduction, measured immediately after the dialogue&lt;br&gt;
+      -Effect size essentially unchanged at 2-month follow-up&lt;br&gt;
+      -Occurred even among participants with the most deeply entrenched beliefs&lt;br&gt;
+      -Reduced belief in &lt;em&gt;unrelated&lt;/em&gt; conspiracy theories the participant hadn't discussed&lt;br&gt;
+      -Shifted self-reported behavioral intentions related to the belief
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-plum"&gt;
+    &lt;div style="font-weight:700; color:#b83280; margin-bottom:0.4em;"&gt;Why this is scientifically important&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      -Challenges the assumption that conspiracy beliefs are fundamentally impervious to evidence&lt;br&gt;
+      -Suggests the barrier was more about the &lt;em&gt;quality and tailoring&lt;/em&gt; of counterevidence than about the beliefs themselves&lt;br&gt;
+      -Spillover to unrelated beliefs hints at a shift in general epistemic openness, not just one fact
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:400px"&gt;
+![](https://media.licdn.com/dms/image/v2/D4D12AQHvJi7gaY5NkA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1710685685683?e=2147483647&amp;v=beta&amp;t=veNYtXtsrTeUXh_MPpnwSxERI5BXv7o0dp4JmL75WyM)
+
+---
+
+class: casestudy
+
+# 📊 Case Study: DebunkBot in the Real World
+
+**Costello has since built on this work with a public-facing tool, sometimes called "DebunkBot," that lets anyone have a similar evidence-based conversation about a belief they hold.**
+
+&lt;br&gt;
+
+**What's changed since the original study:** the underlying model has been updated from GPT-4, the state-of-the-art model at the time of the study, to a newer model — illustrating how quickly the technical substrate underneath a persuasion tool can shift even as the underlying method stays the same.
+
+&lt;br&gt;
+
+**Documented real-world use:** teachers have reportedly incorporated the tool into classroom lessons on critical thinking, and it has been suggested as a tool people can use on themselves — as an aid for finding their own blind spots, or as a neutral third party when a conversation with a friend or family member about a contested claim has stalled.
+
+&lt;br&gt;
+
+**The open question:** a lab study with paid participants who signed up for a "conspiracy beliefs" study is not the same population, or the same context, as someone stumbling onto a debunking chatbot outside a research setting. Does the effect replicate at that scale, with that self-selection?
+
+---
+
+# Why Is AI So Persuasive? Addressing Every Claim
+
+**A mechanism that shows up across Costello et al., Salvi et al., and Hackenburg et al.: AI can respond to every specific point an interlocutor raises, exhaustively.**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;What a human debater does&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em; font-size:1em;"&gt;Picks the strongest 1–2 counterarguments; runs out of time, memory, or patience to address every point&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:1em;"&gt;May concede or ignore claims outside their expertise&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;What the AI does&lt;/div&gt;
+    &lt;div class="box box-plum" style="margin-bottom:0.3em; font-size:1em;"&gt;Can address each specific piece of "evidence" the other person raises, one by one, with a tailored response — this is exactly Costello et al.'s design&lt;/div&gt;
+    &lt;div class="box box-plum" style="font-size:1em;"&gt;Draws on a vastly larger store of retrievable facts than any individual human, deployed instantly (Hackenburg et al.'s "information" prompt)&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="quote" style="margin-top:0.6em;"&gt;Exhaustiveness is not the same as correctness. Hackenburg et al.'s tradeoff finding is a caution here: an AI that never runs out of counterarguments to deploy is not the same as an AI that is always right.&lt;/div&gt;
+
+---
+
+# Argyle et al.: Testing Theories of Political Persuasion Using AI
+
+&lt;div class="src"&gt;Argyle, Busby, Gubler, Lyman, Olcott, Pond &amp;amp; Wingate 2025 · PNAS · Two original studies&lt;/div&gt;
+
+&lt;div class="box box-blue" style="margin:0.5em 0;"&gt;
+  &lt;strong&gt;Central contribution:&lt;/strong&gt; Rather than just asking "is AI persuasive," this paper uses AI as a research tool to isolate and test two specific, long-standing theoretical mechanisms of persuasion — message customization and elaboration — by leveraging AI's ability to overcome practical limits that have historically made these mechanisms hard to test cleanly.
+&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Why this study is different&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;Most studies this week ask whether AI is persuasive. This one uses AI's controllability to test &lt;em&gt;why&lt;/em&gt; persuasion works — treating AI as an instrument for theory-testing, not just a persuader in its own right.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;The two mechanisms tested&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em; font-size:1em;"&gt;&lt;strong&gt;Customization:&lt;/strong&gt; tailoring message content to the individual recipient&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:1em;"&gt;&lt;strong&gt;Elaboration:&lt;/strong&gt; promoting deeper cognitive engagement through back-and-forth interaction&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:350px; height:175px"&gt;
+![](https://iblp.org/wp-content/uploads/2012/10/persuasiveness-character-quality-scaled.jpg)
+
+---
+
+class: paper-walk
+
+# Paper Walkthrough: Argyle et al. — Isolating Customization and Elaboration
+
+&lt;div class="src"&gt;Argyle et al. 2025&lt;/div&gt;
+
+**The practical problem this design solves: testing microtargeting and interactive elaboration used to require enormous manual effort.**
+&lt;div class="box box-amber" style="margin-top:0.3em; font-size:1em;"&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;Researchers use LLMs to generate messages that vary systematically in how customized they are to the individual recipient&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;Separately, they compare a single static message against a six-turn interactive chat (using either direct argumentation or motivational interviewing) to test elaboration&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num blue"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;Participants' policy attitudes on controversial political issues are measured before and after exposure&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;Persuasive gains from customization and from elaboration are each compared against a generic, non-customized, non-interactive message&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="box box-amber" style="margin-top:0.3em; font-size:1em;"&gt;Before AI, testing "does microtargeting work" required hand-writing dozens of tailored message variants — cost-prohibitive at scale. LLMs make the factorial design tractable, which is exactly the "why conversation" logic from Part I.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:200px; height:100px"&gt;
+![](https://shopgrohplayrooms.com/cdn/shop/files/Customizable_Icon_3c30071a-9398-4205-8d02-795d2b62bfed.png?v=1708230435&amp;width=900)
+
+---
+
+# Argyle et al.: The Adjustable Levers
+
+&lt;div class="src"&gt;Argyle et al. 2025 — mechanisms this design makes it possible to isolate and vary&lt;/div&gt;
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th style="width:24%;"&gt;Lever&lt;/th&gt;&lt;th style="width:38%;"&gt;What it varies&lt;/th&gt;&lt;th style="width:38%;"&gt;Why AI enables testing it&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Argument strength&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;How strong or weak the underlying case is&lt;/td&gt;&lt;td&gt;LLM can generate matched strong/weak versions of the same argument&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Emotional appeal&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Degree of emotional vs. purely rational framing&lt;/td&gt;&lt;td&gt;Tone can be systematically dialed up or down across otherwise identical content&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Source credibility&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Perceived expertise or trustworthiness of the messenger&lt;/td&gt;&lt;td&gt;Framing devices can be varied while holding the argument itself constant&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Elaboration rate&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;How much back-and-forth interaction accompanies the message&lt;/td&gt;&lt;td&gt;Interactive chat vs. static single message, held to a fixed number of turns&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class="box box-plum" style="margin-top:0.4em; font-size:1em;"&gt;This table is the connective tissue for the week: it names, explicitly, the same levers other papers are testing implicitly — Salvi et al.'s personalization is a form of customization; Hackenburg et al.'s prompting strategies manipulate emotional appeal and information density.&lt;/div&gt;
+
+---
+
+# Argyle et al.: The Surprising Null Result
+
+**Given how much attention microtargeting and interactive persuasion receive, the result is notably modest.**
+
+&lt;div class="box box-slate" style="margin:0.5em 0; text-align:center; font-size:1em;"&gt;LLMs were approximately equally persuasive across conditions. Neither microtargeted customization nor interaction-driven elaboration produced messages that were clearly more persuasive than a single, generic, non-customized message.&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Why this is surprising&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      Microtargeting is widely feared as a uniquely potent political tool&lt;br&gt;
+      Interactive dialogue seems intuitively more persuasive than a one-shot message&lt;br&gt;
+      Salvi et al. found personalization was decisive — a seeming contradiction
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-teal"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;How to reconcile with Salvi et al.&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      Different personalization: sociodemographic targeting (Salvi et al.) vs. content customization mechanisms (Argyle et al.)&lt;br&gt;
+      Different outcome measures and issue sets&lt;br&gt;
+      A reminder that "AI is persuasive" is not one finding — it's a family of context-dependent findings
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:350px; height:175px"&gt;
+![](https://static.vecteezy.com/system/resources/previews/022/479/092/large_2x/system-artificial-intelligence-chatgpt-chat-bot-ai-technology-smart-robot-ai-chat-gpt-application-software-free-photo.jpg)
+
+---
+
+# Summary Table: Comparing the Four Persuasion Studies
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th style="width:16%;"&gt;Study&lt;/th&gt;&lt;th style="width:22%;"&gt;What varies&lt;/th&gt;&lt;th style="width:31%;"&gt;Headline result&lt;/th&gt;&lt;th style="width:31%;"&gt;Persuasion lever identified&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Costello et al.&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Personalized dialogue vs. no dialogue&lt;/td&gt;&lt;td&gt;~20% belief reduction, durable at 2 months&lt;/td&gt;&lt;td&gt;Exhaustive, individually tailored rebuttal&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Salvi et al.&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Human/AI opponent × personalization&lt;/td&gt;&lt;td&gt;Personalized AI beats humans 64.4% of the time&lt;/td&gt;&lt;td&gt;Rapid sociodemographic personalization&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Hackenburg et al.&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Post-training, prompting, scale, personalization&lt;/td&gt;&lt;td&gt;Post-training +51%, prompting +27%; accuracy falls as persuasion rises&lt;/td&gt;&lt;td&gt;Explicit optimization for persuasion&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Argyle et al.&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Customization and elaboration vs. generic message&lt;/td&gt;&lt;td&gt;Neither mechanism clearly beats a generic message&lt;/td&gt;&lt;td&gt;Null — persuasion gains not from these levers, at least here&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class="box box-amber" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;&lt;strong&gt;Taken together:&lt;/strong&gt; AI persuasion is real and substantial in several designs — but which specific mechanism drives it differs by study, and at least one plausible mechanism (customization/elaboration, as operationalized by Argyle et al.) didn't clearly matter.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:250px; height:250px"&gt;
+![](https://media.istockphoto.com/id/486354344/vector/seo-optimization-web-analytics-programming-process-elements.jpg?s=170667a&amp;w=0&amp;k=20&amp;c=Lyk_NvXnUJ3yPgM-dTPNiJvSgBx1cFGMpASSVIkdRDo=)
+
+---
+
+class: discussion
+
+# 💬 Discussion Question 2
+
+**"How much consent is necessary for studies and experiments involving AI persuasion?"**
+
+&lt;br&gt;
+
+Costello et al.'s participants know they are in a study and are told (in the treatment condition) they will discuss a belief with an AI. Salvi et al.'s participants know they're in a debate experiment but may not know for certain whether their opponent is human or AI.
+
+&lt;br&gt;
+
+1. Is it acceptable for a persuasion study to withhold, until debrief, whether the participant's conversation partner is AI or human? Does the answer depend on whether the study measures belief change or just conversation quality?
+
+2. Hackenburg et al.'s finding that persuasive optimization reduces accuracy raises a further consent question: should participants specifically be told that the AI they're talking to may be less accurate the more persuasive it is designed to be?
+
+3. Costello et al.'s belief-change intervention is designed to help people — but the same techniques could be repurposed to *instill* false beliefs. Does informed consent look different for a persuasion study whose stated goal is prosocial versus one that is agnostic about the direction of belief change?
+
+---
+
+class: warning-slide
+
+# ⚠️ Are These Effects Overestimated?
+
+**A live, current example: even a landmark result in this literature is under active reexamination.**
+
+In June 2026, *Science* published an Editorial Expression of Concern for Costello, Pennycook, and Rand (2024). The authors had become aware of reporting inconsistencies and issues with the public dataset that made some reported values hard to reproduce — including inconsistent application of screening criteria and a code-merging error that spliced extraneous rows into the published dataset.
+
+&lt;br&gt;
+
+The authors have since submitted a corrected analysis pipeline to *Science*, which is under evaluation; they report that the corrected results match the original findings in direction, statistical significance, and substantive size — but this has not yet been independently confirmed as of the concern's publication.
+
+&lt;br&gt;
+
+**This is not unique to Costello et al. — it's a prompt to ask the same question of every study this week:** self-selected samples (people who sign up for a persuasion study), novel-technology excitement effects, publication bias toward positive results, and the practical difficulty of independently replicating any large AI-conversation dataset all push effect sizes upward, on average, relative to their true size.
+
+---
+
+# Sources of Overestimation in AI Persuasion Research
+
+&lt;div class="cols-2" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Sample and setting&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;
+      Prolific and similar platforms recruit people willing to engage with unfamiliar technology&lt;br&gt;
+      Lab conversations happen in a focused setting with no distractions — unlike real-world scrolling&lt;br&gt;
+      Paid participants may engage more earnestly than an organic user
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Measurement and publication&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;
+      Self-reported belief ratings immediately after a conversation may capture short-term compliance, not durable change&lt;br&gt;
+      Novel, striking findings ("AI beats humans," "AI cures conspiracy belief") are more likely to be published and covered by the press than null results&lt;br&gt;
+      Data-processing errors, as with Costello et al., can inflate or distort reported effects even without any intent to mislead
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://commons.wikimedia.org/wiki/Special:FilePath/Magnifying%20glass%20icon.svg)
+
+---
+
+class: debate
+
+# ⚖️ Debate: How Risky Are Persuasive LLMs for Society?
+
+**All four studies converge on one fact: conversational AI can measurably shift what people believe. The question this raises is what that capability means once it leaves the lab.**
+
+&lt;br&gt;
+
+**The case for serious concern:**
+
+Hackenburg et al. show persuasiveness can be deliberately engineered through post-training — and that doing so degrades factual accuracy. Combine that with Salvi et al.'s finding that personalized AI already outperforms humans, and you have a technology that can be optimized to change minds at scale, cheaply, while becoming less accurate as it becomes more effective.
+
+&lt;br&gt;
+
+**The case for more measured concern:**
+
+Costello et al.'s intervention moved people toward *more* accurate beliefs, not away from them — persuasive AI is not inherently harmful; its effects depend on what it's aimed at. Argyle et al. found some feared mechanisms (microtargeting, interactive elaboration) didn't clearly outperform generic messages — suggesting some fears may be more theoretical than demonstrated.
+
+&lt;br&gt;
+
+**What would change your assessment of the risk — new evidence, new deployment context, or new safeguards?**
+
+---
+
+# Three Risks of Persuasive AI at Scale
+
+&lt;div class="cols-3" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.4em;"&gt;Weaponized accuracy tradeoff&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;Hackenburg et al.'s finding implies a bad actor could deliberately trade away accuracy for persuasive power — with no natural technical barrier stopping them.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.4em;"&gt;Scale without disclosure&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;Costello et al.'s dialogue design could be redeployed to install false beliefs as easily as to correct them — and, outside a research context, without any consent or debrief at all.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.4em;"&gt;Erosion of epistemic autonomy&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;If personalized, exhaustive AI argument becomes routine in political and commercial life, the effort required to resist persuasion may rise faster than people's ability to detect it.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:350px; height:175px"&gt;
+![](https://commons.wikimedia.org/wiki/Special:FilePath/Warning%20icon.svg)
+
+---
+
+class: discussion
+
+# 💬 Discussion Question 3
+
+**"In what ways are persuasive LLMs risky for society — and how should that risk be weighed against their demonstrated benefits?"**
+
+&lt;br&gt;
+
+1. Costello et al.'s intervention reduces false beliefs; a bad actor's use of the same method could install them. Should regulation target the *technology* (limiting persuasive AI generally) or the *use* (requiring disclosure, consent, or accuracy standards for specific deployments)?
+
+2. Hackenburg et al. found that post-training for persuasion reduces factual accuracy. Should AI developers be required to report a "persuasion budget" — a disclosed tradeoff between how persuasive and how accurate a deployed system is?
+
+3. If Argyle et al. are right that some feared mechanisms (microtargeting, interactive elaboration) don't clearly add persuasive power beyond a generic message, does that change how urgently we should regulate those specific techniques — even while other levers (Hackenburg et al.'s post-training) remain a serious concern?
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;III&lt;/div&gt;
+
+# Differences in Conversation
+## Why talking to an AI is not like reading a message from one
+
+---
+
+# People Treat AI Conversations More Seriously
+
+**A pattern running underneath every study this week: participants engage with a live back-and-forth exchange differently than they engage with a static message — even when the underlying content could be similar.**
+
+&lt;div class="box box-plum" style="margin:0.5em 0;"&gt;
+  &lt;strong&gt;Evidence from Costello et al.:&lt;/strong&gt; dialogues averaged roughly 8.4 minutes — participants sustained real-time, individualized engagement with an AI interlocutor addressing their own specific claims, not skimming a paragraph and moving on.
+&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;What conversation seems to add&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:0.9em;"&gt;Sustained attention across multiple turns; a sense of being specifically responded to, not broadcast at; the social expectation of a "back-and-forth," which invites more careful engagement than passively reading text&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Why this matters methodologically&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:0.9em;"&gt;If conversational format itself changes how seriously people engage, then comparing an "AI conversation" condition to a "static AI message" condition isn't just comparing content — it's comparing entirely different modes of exposure&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:500px; height:250px"&gt;
+![](https://img.magnific.com/premium-photo/robot-man-talking-each-other_843415-618.jpg)
+
+---
+
+# Why Does Conversational Format Change Engagement?
+
+&lt;div class="cols-3" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Turn-taking obligation&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;A conversation creates a social expectation to respond, which can sustain attention longer than a passive reading task&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Perceived personal address&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;When a response directly references what you just said, it feels addressed to you specifically — distinct from a generic message written for anyone&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Forced elaboration&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;Responding in a conversation requires generating your own words in reply — a more active cognitive process than reading alone&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="quote" style="margin-top:0.6em;"&gt;These are the same mechanisms Argyle et al. set out to isolate as "elaboration" and "customization" — this section is really asking whether their null result generalizes, or whether it's specific to their design.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:600px; height:300px"&gt;
+![](https://img.magnific.com/premium-photo/robot-man-suit-talk-each-other_843415-613.jpg)
+
+---
+
+class: paper-walk
+
+# Paper Walkthrough: Conversation vs. Static Message, Across Studies
+
+&lt;div class="src"&gt;Synthesizing Hackenburg et al. 2025 and Argyle et al. 2025&lt;/div&gt;
+
+**Two of this week's studies directly test dialogue against static text — and reach different conclusions.**
+
+&lt;br&gt;
+
+Hackenburg et al. compared static, single-message persuasion against interactive dialogue within the same large-scale experiment, and found that while static messages were effective on their own, conversational AI was substantially more persuasive still.
+
+&lt;br&gt;
+
+Argyle et al. randomly assigned participants to a single static message or a six-turn interactive chat (using direct argumentation or motivational interviewing), and found the interactive conditions were **not** more effective at changing policy attitudes than a single generic static message.
+
+&lt;br&gt;
+
+&lt;div class="box box-amber" style="font-size:1em;"&gt;These are not necessarily contradictory — they used different topics, populations, chat lengths, and interaction styles. But together they show that "conversation beats static text" is an empirical claim that doesn't hold uniformly, not a law.&lt;/div&gt;
+
+---
+
+# Table: Conversation vs. Static Message — What the Evidence Shows
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th style="width:24%;"&gt;Study&lt;/th&gt;&lt;th style="width:38%;"&gt;Comparison made&lt;/th&gt;&lt;th style="width:38%;"&gt;Result&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl-green"&gt;&lt;td&gt;&lt;strong&gt;Hackenburg et al. 2025&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Static message vs. interactive dialogue, same experiment&lt;/td&gt;&lt;td&gt;Dialogue substantially more persuasive than static message&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl-red"&gt;&lt;td&gt;&lt;strong&gt;Argyle et al. 2025&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Static message vs. six-turn interactive chat&lt;/td&gt;&lt;td&gt;No clear advantage for interactive chat over static message&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Costello et al. 2024&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;AI dialogue (treatment) vs. AI dialogue on unrelated topic (control)&lt;/td&gt;&lt;td&gt;Did not test static text directly — dialogue vs. no-relevant-treatment&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Salvi et al. 2025&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Human vs. AI, both in live multiround debate format&lt;/td&gt;&lt;td&gt;Did not test static text directly — both conditions were conversational&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class="box box-plum" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;Notice that two of the four studies didn't test the conversation-vs-static question directly at all — a gap worth naming explicitly rather than assuming the answer.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://static.vecteezy.com/system/resources/previews/011/875/478/original/meet-of-team-of-people-for-talk-dialog-communication-discussion-business-relationship-discuss-problems-together-exchange-opinions-of-team-worker-support-group-illustration-vector.jpg)
+
+---
+
+# Synthesizing Insight: Conversation as a Persuasion Amplifier — Or Not
+
+**Linking the specific studies, designs, results, and insights from this week into one picture.**
+
+&lt;div class="cols-2" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div class="box box-teal"&gt;
+    &lt;div style="font-weight:700; color:#1abc9c; margin-bottom:0.4em;"&gt;Where conversation clearly adds power&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;
+      Costello et al.: personalized, iterative rebuttal reaches beliefs static text had failed to shift for decades&lt;br&gt;
+      Salvi et al.: live back-and-forth lets personalization operate in real time, turn by turn&lt;br&gt;
+      Hackenburg et al.: dialogue outperformed static messages within the same large study
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.4em;"&gt;Where the evidence is more mixed&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;
+      Argyle et al.: interactive elaboration did not clearly beat a generic static message&lt;br&gt;
+      Two studies (Costello et al., Salvi et al.) never actually tested a static-text comparison condition, so their "dialogue works" findings can't tell us dialogue is *better than* text — only that dialogue works
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-amber" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;&lt;strong&gt;The honest synthesis:&lt;/strong&gt; conversation reliably enables things static text cannot (personalized rebuttal, real-time adaptation) — but "conversation is always more persuasive than a well-written static message" is not yet a settled empirical finding.&lt;/div&gt;
+
+---
+
+# Summary: The Four Studies in One Framework
+
+&lt;div class="cols-3" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div class="box box-teal"&gt;
+    &lt;div style="font-weight:700; color:#1abc9c; margin-bottom:0.4em; font-size:1em;"&gt;Costello et al. (2024)&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      &lt;strong&gt;What:&lt;/strong&gt; Personalized dialogue reduces conspiracy belief&lt;br&gt;
+      &lt;strong&gt;How:&lt;/strong&gt; GPT-4 Turbo argues against a participant's specific stated belief&lt;br&gt;
+      &lt;strong&gt;Effect:&lt;/strong&gt; ~20% belief reduction, durable 2 months&lt;br&gt;
+      &lt;strong&gt;Under review:&lt;/strong&gt; Editorial Expression of Concern, June 2026&lt;br&gt;
+      &lt;strong&gt;Lesson:&lt;/strong&gt; Tailored, exhaustive rebuttal can move even entrenched beliefs
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-green"&gt;
+    &lt;div style="font-weight:700; color:#27ae60; margin-bottom:0.4em; font-size:1em;"&gt;Salvi et al. (2025)&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      &lt;strong&gt;What:&lt;/strong&gt; GPT-4 outperforms humans in live debate&lt;br&gt;
+      &lt;strong&gt;How:&lt;/strong&gt; 2×2×3 RCT; sociodemographic personalization&lt;br&gt;
+      &lt;strong&gt;Effect:&lt;/strong&gt; 64.4% win rate when personalized; 81.2% higher odds&lt;br&gt;
+      &lt;strong&gt;Surprise:&lt;/strong&gt; Personalization didn't help human debaters&lt;br&gt;
+      &lt;strong&gt;Lesson:&lt;/strong&gt; Rapid, effective personalization is AI's edge
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-amber"&gt;
+    &lt;div style="font-weight:700; color:#e67e22; margin-bottom:0.4em; font-size:1em;"&gt;Hackenburg et al. (2025)&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      &lt;strong&gt;What:&lt;/strong&gt; Post-training and prompting drive persuasion&lt;br&gt;
+      &lt;strong&gt;How:&lt;/strong&gt; 19 LLMs, 707 issues, N=76,977&lt;br&gt;
+      &lt;strong&gt;Effect:&lt;/strong&gt; Post-training +51%, prompting +27%; scale and personalization: small&lt;br&gt;
+      &lt;strong&gt;Tradeoff:&lt;/strong&gt; More persuasive → less factually accurate&lt;br&gt;
+      &lt;strong&gt;Lesson:&lt;/strong&gt; Persuasiveness can be engineered — with a cost
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://wallpapers.com/images/hd/chatgpt-6zhb18pem7l42g36.jpg)
+
+---
+
+# Summary: Persuasive AI — Promise and Peril
+
+&lt;div class="cols-2" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div class="box box-teal"&gt;
+    &lt;div style="font-weight:700; color:#1abc9c; margin-bottom:0.5em;"&gt;What persuasive AI can do&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      Durably reduce false beliefs through personalized, evidence-based dialogue (Costello et al.)&lt;br&gt;
+      Serve as a rigorous instrument for testing persuasion theory itself (Argyle et al.)&lt;br&gt;
+      Make previously infeasible experimental designs — 128 cells, 707 issues, 19 models — tractable&lt;br&gt;
+      Address every specific claim a person raises, not just the strongest general counterargument
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.5em;"&gt;What persuasive AI can threaten&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      Be deliberately optimized for persuasion at a documented cost to factual accuracy (Hackenburg et al.)&lt;br&gt;
+      Outperform human persuaders specifically via personalization at a speed humans cannot match (Salvi et al.)&lt;br&gt;
+      Redeploy belief-change methods without consent, disclosure, or a prosocial goal&lt;br&gt;
+      Complicate the boundary between "helping people think more clearly" and "engineering what people believe"
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-amber" style="margin-top:0.6em; text-align:center; font-size:1em;"&gt;&lt;strong&gt;The core lesson:&lt;/strong&gt; persuasive AI is not a single phenomenon with a single risk profile. Its effects — and their ethics — depend on the specific mechanism engaged, the accuracy of what it's arguing for, and who controls the objective it's optimizing.&lt;/div&gt;
+
+---
+
+# Connects Back to Previous Weeks
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:700; color:#2a5bd7; margin-bottom:0.4em;"&gt;Points back to earlier weeks&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em;"&gt;&lt;strong&gt;Week 10 (Dynamic materials):&lt;/strong&gt; This week is a direct extension — treatments generated and adapted in real time, now specifically for persuasion rather than discourse quality.&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em;"&gt;&lt;strong&gt;Week 10 (Williams-Ceci et al.):&lt;/strong&gt; That week's covert-influence finding foreshadows Hackenburg et al.'s point that persuasive optimization can happen invisibly, without the audience's awareness.&lt;/div&gt;
+    &lt;div class="box box-slate"&gt;&lt;strong&gt;Weeks 4–5 (Measurement and bias):&lt;/strong&gt; Hackenburg et al.'s persuasion-accuracy tradeoff is a new instance of a familiar pattern — optimizing a model for one property degrades another.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:700; color:#b83280; margin-bottom:0.4em;"&gt;Points forward&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em;"&gt;&lt;strong&gt;Weeks 12–14 (AI and Society):&lt;/strong&gt; If persuasive AI scales the way Hackenburg et al. suggest it could, what does that mean for public discourse and epistemic autonomy at a societal level?&lt;/div&gt;
+    &lt;div class="box box-slate"&gt;&lt;strong&gt;Sycophancy:&lt;/strong&gt; A persuasive AI and a sycophantic AI are close cousins — one changes your mind toward a target, the other tells you what you already believe. Both exploit the same trust in conversational AI this week has documented.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:250px; height:250px"&gt;
+![](https://commons.wikimedia.org/wiki/Special:FilePath/Arrow-right.svg)
+
+---
+
+# Ethics Recap: Designing Consent for AI Persuasion Research
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Questions an IRB should ask&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num plum"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;Are participants told whether their conversation partner is human or AI, and when?&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num plum"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;Is the persuasive goal disclosed — and is it prosocial (correcting a false belief) or agnostic about direction?&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num plum"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;Is there a debrief that explains what was attempted and why?&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num plum"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;Does the study measure whether participants felt manipulated after the fact?&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Why this is harder than it looks&lt;/div&gt;
+    &lt;div class="box box-amber" style="font-size:1em; margin-bottom:0.3em;"&gt;Full disclosure of the persuasive intent before the conversation could itself blunt the effect being studied — creating a tension between informed consent and valid measurement&lt;/div&gt;
+    &lt;div class="box box-amber" style="font-size:1em;"&gt;A study designed to correct false beliefs (Costello et al.) still needs the same ethical scrutiny as one that could go either direction — good intentions don't remove the need for consent&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://www.surveylegend.com/wordpress/wp-content/uploads/2023/06/survey-ethics.jpg)
+
+---
+
+# Key Takeaways
+
+&lt;div class="cols-1" style="margin-top:0.6em; font-size:1.5em;"&gt;
+  &lt;div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num plum"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;Conversation is a distinct treatment vehicle — adaptive, personalized, and sustained in a way static materials cannot be&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num plum"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;Personalization is the clearest, most consistently identified lever of AI persuasiveness across these studies — though its exact form differs (Salvi et al.'s demographics vs. Argyle et al.'s content customization)&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num plum"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;Post-training and prompting can deliberately engineer persuasiveness — and doing so measurably reduces factual accuracy (Hackenburg et al.)&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num plum"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;Persuasive AI is not inherently harmful — Costello et al. show it can durably correct false beliefs — but the same mechanism is direction-agnostic&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num plum"&gt;5&lt;/span&gt;&lt;div class="step-body"&gt;"Conversation beats static text" is real in some designs (Hackenburg et al.) and absent in others (Argyle et al.) — treat it as an empirical question, not a given&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num plum"&gt;6&lt;/span&gt;&lt;div class="step-body"&gt;Even landmark findings in this space are subject to ongoing scientific scrutiny — the Costello et al. Editorial Expression of Concern is a live example of science self-correcting&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+# Readings for This Unit
+
+&lt;div class="cols-3" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.5em;"&gt;Persuasiveness&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;
+      Costello, Pennycook &amp;amp; Rand (2024)&lt;br&gt;
+      &lt;span style="color:#888; font-size:1em;"&gt;Durably reducing conspiracy beliefs through dialogues with AI. &lt;em&gt;Science.&lt;/em&gt;&lt;/span&gt;&lt;br&gt;&lt;br&gt;
+      Salvi, Horta Ribeiro, Gallotti &amp;amp; West (2025)&lt;br&gt;
+      &lt;span style="color:#888; font-size:1em;"&gt;On the conversational persuasiveness of GPT-4. &lt;em&gt;Nature Human Behaviour.&lt;/em&gt;&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.5em;"&gt;Levers and theory&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;
+      Hackenburg, Tappin, Hewitt et al. (2025)&lt;br&gt;
+      &lt;span style="color:#888; font-size:1em;"&gt;The levers of political persuasion with conversational artificial intelligence. &lt;em&gt;Science.&lt;/em&gt;&lt;/span&gt;&lt;br&gt;&lt;br&gt;
+      Argyle, Busby, Gubler et al. (2025)&lt;br&gt;
+      &lt;span style="color:#888; font-size:1em;"&gt;Testing theories of political persuasion using AI. &lt;em&gt;PNAS.&lt;/em&gt;&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.5em;"&gt;Next week&lt;/div&gt;
+    &lt;div style="line-height:1.9; color:#888; font-size:1em;"&gt;
+      The Interplay of AI and Society
+    &lt;/div&gt;
+    &lt;div style="margin-top:0.6em; font-size:1em; color:#555;"&gt;Continuing the study of AI and social behavior.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:175px; height:350px"&gt;
+![](https://i.pinimg.com/474x/8a/71/51/8a715121876d85fe76e02ddf76dca5e5.jpg)
+
+---
+
+class: inverse, center, middle
+
+# Questions?
+
+&lt;div style="color:#aaa; font-size:0.9em; margin-top:1em;"&gt;Week 11 · SOCY 1200: Introduction to Using AI to Study Society&lt;/div&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "16:9",
+  "slideNumberFormat": "%current% / %total%"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

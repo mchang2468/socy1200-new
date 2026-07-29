@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>SOCY 1200: Introduction to Using AI to Study Society</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Daniel Karell" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="yale.css" type="text/css" />
+    <link rel="stylesheet" href="yale-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# SOCY 1200: Introduction to Using AI to Study Society
+]
+.subtitle[
+## Unit 5: AI and Society: The Interplay of AI and Society
+]
+.author[
+### Daniel Karell
+]
+.institute[
+### Yale University
+]
+.date[
+### Week 12
+]
+
+---
+
+
+
+
+&lt;style&gt;
+.remark-slide-content:not(.title-slide) {
+  font-size: 16px; padding: 1.8em 2.2em 1em;
+  color: #1a1a2e; background: #fafafa;
+}
+.remark-slide-content:not(.title-slide) h1 {
+  font-size: 2em; font-weight: 700; letter-spacing: -0.03em;
+  color: #1a1a2e; border-bottom: 3px solid #2e5c8a;
+  padding-bottom: 0.3em; margin-bottom: 0.7em;
+}
+.remark-slide-content:not(.title-slide) h2 { font-size:1.05em; color:#555; font-weight:500; }
+.remark-slide-content:not(.title-slide) p, .remark-slide-content:not(.title-slide) li { line-height:1.65; }
+.inverse:not(.title-slide) { background: #1a1a2e !important; }
+.inverse:not(.title-slide) h1, .inverse:not(.title-slide) h2, .inverse:not(.title-slide) h3 { color:white !important; border:none !important; }
+.inverse:not(.title-slide) h1 { font-size:1.9em !important; letter-spacing:-0.03em; }
+.inverse:not(.title-slide) h2 { color:#aaa !important; font-weight:400 !important; }
+.section-num:not(.title-slide) { display:inline-block; font-size:4em; font-weight:900; color:rgba(46,92,138,0.8); line-height:1; margin-bottom:0.1em; }
+.discussion { background: #0f3460 !important; }
+.discussion h1 { color: #f0c040 !important; border-bottom: 3px solid #f0c040 !important; }
+.discussion p, .discussion li { color: #e8e8f0 !important; line-height: 1.75 !important; }
+.discussion strong { color: #f0c040 !important; }
+.paper-walk { background: #1a3a1a !important; }
+.paper-walk h1 { color: #90ee90 !important; border-bottom: 3px solid #90ee90 !important; }
+.paper-walk p, .paper-walk li { color: #ddeedd !important; line-height:1.7 !important; }
+.paper-walk strong { color: #90ee90 !important; }
+.debate { background: #1a1a2e !important; }
+.debate h1 { color: #ffcc66 !important; border-bottom: 3px solid #ffcc66 !important; }
+.debate p, .debate li { color: #f0e8d0 !important; line-height:1.7 !important; }
+.debate strong { color: #ffcc66 !important; }
+.casestudy { background: #0a1a2a !important; }
+.casestudy h1 { color: #66ccff !important; border-bottom: 3px solid #66ccff !important; }
+.casestudy p, .casestudy li { color: #ddeeff !important; line-height:1.7 !important; }
+.casestudy strong { color: #66ccff !important; }
+.warning-slide { background: #2a0a0a !important; }
+.warning-slide h1 { color: #ff8888 !important; border-bottom: 3px solid #ff8888 !important; }
+.warning-slide p, .warning-slide li { color: #ffd0d0 !important; line-height:1.7 !important; }
+.warning-slide strong { color: #ff8888 !important; }
+.box { border-radius:6px; padding:0.75em 1em; margin:0.4em 0; font-size:0.85em; line-height:1.6; }
+.box-teal   { background:#f0fafa; border-left:4px solid #1abc9c; color:#0c3030; }
+.box-red    { background:#fdf2f2; border-left:4px solid #c0392b; color:#3d0c0c; }
+.box-green  { background:#f0faf3; border-left:4px solid #27ae60; color:#0c3320; }
+.box-blue   { background:#f0f4ff; border-left:4px solid #2a5bd7; color:#0d1f5c; }
+.box-amber  { background:#fffbf0; border-left:4px solid #e67e22; color:#5c3400; }
+.box-slate  { background:#f4f5f7; border-left:4px solid #7f8c8d; color:#2c3e50; }
+.box-purple { background:#f5f0ff; border-left:4px solid #8e44ad; color:#2e0060; }
+.box-orange { background:#fef5ee; border-left:4px solid #d35400; color:#3d1500; }
+.box-navy   { background:#eef3f8; border-left:4px solid #2e5c8a; color:#0f2438; }
+.quote { border-left:5px solid #2e5c8a; background:white; border-radius:0 6px 6px 0; padding:0.7em 1.2em; font-size:0.88em; font-style:italic; color:#2c3e50; margin:0.6em 0; box-shadow:0 1px 4px rgba(0,0,0,0.07); }
+.quote cite { display:block; font-style:normal; font-size:0.82em; color:#2e5c8a; margin-top:0.3em; font-weight:600; }
+.cols-2 { display:grid; grid-template-columns:1fr 1fr; gap:1em; margin:0.5em 0; }
+.cols-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.9em; margin:0.5em 0; }
+.cols-4 { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:0.7em; margin:0.5em 0; }
+.step-row { display:flex; align-items:flex-start; gap:0.75em; margin-bottom:0.5em; }
+.step-num { flex-shrink:0; width:1.7em; height:1.7em; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.8em; margin-top:0.05em; }
+.step-num.teal  { background:#1abc9c; color:white; }
+.step-num.blue  { background:#2a5bd7; color:white; }
+.step-num.green { background:#27ae60; color:white; }
+.step-num.amber { background:#e67e22; color:white; }
+.step-num.red   { background:#c0392b; color:white; }
+.step-num.grey  { background:#7f8c8d; color:white; }
+.step-num.navy  { background:#2e5c8a; color:white; }
+.step-body { font-size:0.83em; line-height:1.6; color:#2c3e50; padding-top:0.15em; }
+.styled-table { width:100%; border-collapse:collapse; font-size:0.81em; margin:0.5em 0; box-shadow:0 1px 6px rgba(0,0,0,0.08); }
+.styled-table thead tr { background:#1a1a2e; color:white; }
+.styled-table thead th { padding:0.6em 0.8em; text-align:left; font-weight:600; }
+.styled-table tbody tr:nth-child(even) { background:#f4f5f7; }
+.styled-table tbody tr:nth-child(odd) { background:white; }
+.styled-table tbody td { padding:0.55em 0.8em; color:#2c3e50; vertical-align:top; }
+.styled-table .hl      { background:#eef3f8 !important; font-weight:600; }
+.styled-table .hl-red  { background:#fdf2f2 !important; }
+.styled-table .hl-green { background:#f0faf3 !important; }
+.badge { display:inline-block; border-radius:20px; padding:0.12em 0.65em; font-size:0.72em; font-weight:700; }
+.badge-teal   { background:#d5f5f0; color:#0e6b5a; }
+.badge-red    { background:#fde8e8; color:#922b21; }
+.badge-green  { background:#e8f8ee; color:#1e8449; }
+.badge-amber  { background:#fef3d0; color:#784212; }
+.badge-grey   { background:#eaecee; color:#515a5a; }
+.badge-blue   { background:#e8edff; color:#1a3fa0; }
+.badge-navy   { background:#dce7f2; color:#1c3c5c; }
+.mono { font-family:'Cascadia Code','Fira Code','Courier New',monospace; font-size:0.78em; background:#1e2433; color:#abb2bf; border-radius:6px; padding:0.8em 1.1em; line-height:1.85; margin:0.4em 0; }
+.mono .hi-blue   { color:#61afef; }
+.mono .hi-green  { color:#98c379; }
+.mono .hi-red    { color:#e06c75; }
+.mono .hi-amber  { color:#e5c07b; }
+.mono .hi-grey   { color:#636d83; }
+.mono .hi-white  { color:#ffffff; }
+.mono .hi-teal   { color:#56b6c2; }
+.mono .hi-navy   { color:#7aa7d1; }
+.src { display:inline-block; background:#1a1a2e; color:#FFFFFF; font-size:0.68em; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; border-radius:3px; padding:0.15em 0.55em; margin-bottom:0.45em; }
+blockquote { border:none; padding:0; margin:0; background:none; }
+&lt;/style&gt;
+
+# What We're Covering This Week
+
+&lt;div class="cols-2" style="margin-top:0.6em;"&gt;
+  &lt;div class="box box-navy"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Part I · Governments&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;Waight et al.: state media control shapes LLM outputs&lt;br&gt;Direct regulation vs. indirect training-data influence&lt;br&gt;Why LLMs favor the country of their training language&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-navy"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Part II · Encyclopedias&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;Mohammadi &amp;amp; Yasseri: Grokipedia vs. Wikipedia&lt;br&gt;Historical and religious bias in AI encyclopedias&lt;br&gt;Narrative expansion over citation-based verification&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-navy"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Part III · Surveys&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;Westwood: AI agents can now pass as survey respondents&lt;br&gt;O'Grady: the detection arms race&lt;br&gt;Demand effects — AI that confirms your hypothesis for you&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-navy"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Part IV · Contamination&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;Why detection is a losing battle&lt;br&gt;How AI-generated content re-enters training data&lt;br&gt;What this means for social science data validity&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;**The central tension for this week:**
+
+&lt;div class="box box-amber" style="text-align:center; font-size:1em;"&gt;Every method this course has used to study AI — training data audits, encyclopedia comparisons, online surveys — is itself vulnerable to being shaped, populated, or contaminated by AI. The object of study and the instruments of study are becoming entangled.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://commons.wikimedia.org/wiki/Special:FilePath/Feedback%20loop%20icon.svg)
+
+---
+
+# The Four Studies — A Map
+
+&lt;div class="cols-2" style="margin-top:0.4em; font-size:1.2em;"&gt;
+  &lt;div class="box box-navy"&gt;
+    &lt;div style="font-weight:700; color:#2e5c8a; margin-bottom:0.5em;"&gt;Waight, Yang, Yuan et al. (2026)&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;"State media control influences large language models"&lt;br&gt;&lt;br&gt;
+    &lt;strong&gt;Venue:&lt;/strong&gt; Nature&lt;br&gt;
+    &lt;strong&gt;Design:&lt;/strong&gt; Six studies — corpus audits, pretraining experiments, model audits, cross-national analysis&lt;br&gt;
+    &lt;strong&gt;Key finding:&lt;/strong&gt; State-controlled media measurably shapes LLM training data and outputs&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-purple"&gt;
+    &lt;div style="font-weight:700; color:#8e44ad; margin-bottom:0.5em;"&gt;Yasseri &amp;amp; Mohammadi (2026)&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;"Selective divergence between Grokipedia and Wikipedia articles"&lt;br&gt;&lt;br&gt;
+    &lt;strong&gt;Venue:&lt;/strong&gt; PNAS&lt;br&gt;
+    &lt;strong&gt;Design:&lt;/strong&gt; 17,790 matched article pairs, computational comparison&lt;br&gt;
+    &lt;strong&gt;Key finding:&lt;/strong&gt; AI encyclopedias relocate bias rather than remove it&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.5em;"&gt;Westwood (2025)&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;"The potential existential threat of large language models to online survey research"&lt;br&gt;&lt;br&gt;
+    &lt;strong&gt;Venue:&lt;/strong&gt; PNAS &amp;nbsp;·&amp;nbsp; 2025 Cozzarelli Prize&lt;br&gt;
+    &lt;strong&gt;Key finding:&lt;/strong&gt; An AI agent evaded survey-bot detection 99.8% of the time&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; color:#555; margin-bottom:0.5em;"&gt;O'Grady (2026)&lt;/div&gt;
+    &lt;div style="line-height:1.7;"&gt;"AI threatens to upend online social science research"&lt;br&gt;&lt;br&gt;
+    &lt;strong&gt;Venue:&lt;/strong&gt; Science (news &amp;amp; analysis)&lt;br&gt;
+    &lt;strong&gt;Key finding:&lt;/strong&gt; Researchers are losing an arms race against AI survey agents&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;I&lt;/div&gt;
+
+# Governments
+## How state control of media shapes what LLMs say
+
+---
+
+# Review: How Does Government Influence Reach an LLM?
+
+**Government influence on AI outputs can travel through two very different channels.**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Direct regulation&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num navy"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;Laws requiring content review or removal before an AI system can be deployed&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num navy"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;Licensing regimes controlling which companies can operate AI services in a jurisdiction&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num navy"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;Mandated system prompts or guardrails imposed on deployed models&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Indirect influence, through training data&lt;/div&gt;
+    &lt;div class="box box-navy" style="margin-bottom:0.3em; font-size:1em;"&gt;&lt;strong&gt;No explicit rule about AI at all&lt;/strong&gt; — just control over what gets published in the media environment the model later learns from&lt;/div&gt;
+    &lt;div class="box box-navy" style="font-size:1em;"&gt;This channel requires no coordination with AI companies, no lawsuits, no visible policy — it works purely through what text exists on the internet to be scraped&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="quote" style="margin-top:0.5em;"&gt;Training data for LLMs does not simply fall from the sky — it is produced within social and political institutions, which shape the information environment that in turn shapes what models learn.&lt;cite&gt;— Waight et al. (2026)&lt;/cite&gt;&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/us-capitol-building-2-robert-j-caputo.jpg)
+
+---
+
+# Waight et al.: The Core Finding
+
+&lt;div class="src"&gt;Waight, Yang, Yuan, Messing, Roberts, Stewart &amp;amp; Tucker 2026 · Nature&lt;/div&gt;
+
+&lt;div class="box box-navy" style="margin:0.5em 0;"&gt;
+  &lt;strong&gt;Central finding:&lt;/strong&gt; Government-controlled media influences the output of large language models via their training data. Models queried in the languages of countries with lower press freedom show a stronger pro-regime valence than models queried in the languages of countries with higher press freedom.
+&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Why this question is hard to answer&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;AI companies do not disclose their training data sources. Most scrutiny of political bias in AI has focused on model outputs — not on the source material the models actually learned from.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;The core mechanism&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;When a country restricts local media from criticizing its government, the resulting media environment — and therefore the training data scraped from it — contains less government criticism. LLMs trained on that data inherit the omission.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:300px"&gt;
+![](https://th.bing.com/th/id/R.64f4e86338522bda2444c3bc6c6d4ef9?rik=TtuaVslvHUKUjw&amp;riu=http%3a%2f%2fclipart-library.com%2fimg1%2f1381843.jpg&amp;ehk=NlqlF4PPjrDpAQ9RrPbvA3jDXOoaN8KGRdxjqrEFLcA%3d&amp;risl=&amp;pid=ImgRaw&amp;r=0)
+
+---
+
+class: paper-walk
+
+# Paper Walkthrough: Waight et al. — Six Studies, One Chain of Evidence
+
+&lt;div class="src"&gt;Waight et al. 2026&lt;/div&gt;
+
+**The design moves from documentation to experiment to real-world audit, so that no single study has to carry the whole claim.**
+
+&lt;div class="box box-blue" style="margin-top:0.3em; font-size:1em;"&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num navy"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Corpus documentation:&lt;/strong&gt; identify state-coordinated media content within a major open training dataset derived from Common Crawl&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num navy"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;China case study:&lt;/strong&gt; compare two sources of Chinese state-coordinated media against that open training corpus&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num navy"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Pretraining experiment:&lt;/strong&gt; deliberately continue training an open-weight model on a controlled set of state-scripted documents and measure the change in its outputs&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num navy"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Commercial model audits:&lt;/strong&gt; test whether deployed commercial LLMs reproduce distinctive phrases traceable to state media&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num navy"&gt;5&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Cross-national analysis:&lt;/strong&gt; evaluate LLM outputs in the local languages of 37 countries, and compare against each country's press freedom score&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-blue" style="margin-top:0.3em; font-size:1em;"&gt;This is exactly the kind of layered design this course has emphasized: no one study proves causation alone, but documentation + controlled experiment + real-world audit together build a much stronger case.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:250px; height:125px"&gt;
+![](https://www.asiaodysseytravel.com/images/china-tours/group-tours/beijing-mutianyu-great-wall-700-01.jpg)
+
+---
+
+# Results: State Media in the Training Data
+
+&lt;div class="src"&gt;Waight et al. 2026&lt;/div&gt;
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th style="width:30%;"&gt;Study component&lt;/th&gt;&lt;th style="width:35%;"&gt;What was measured&lt;/th&gt;&lt;th style="width:35%;"&gt;Result&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;China corpus comparison&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Rate of state-scripted news vs. Chinese-language Wikipedia in a major open training dataset&lt;/td&gt;&lt;td&gt;State-scripted news appeared roughly &lt;strong&gt;41 times&lt;/strong&gt; more often than Chinese-language Wikipedia entries&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Commercial model audit&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Whether deployed models reproduce distinctive memorized phrases from state media&lt;/td&gt;&lt;td&gt;Models reproduced these phrases in roughly &lt;strong&gt;3–10%&lt;/strong&gt; of relevant responses&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Pretraining experiment&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Effect of continued training on just 6,400 state-scripted documents&lt;/td&gt;&lt;td&gt;The model produced substantially more pro-government responses — in the study's report, close to &lt;strong&gt;80%&lt;/strong&gt; of the time&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class="box box-navy" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;&lt;strong&gt;Why the small pretraining number matters:&lt;/strong&gt; 6,400 documents is a tiny fraction of a full training corpus — yet it was enough to measurably shift outputs. Concentrated, repeated state messaging appears to be disproportionately influential relative to its share of the data.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://www.instituteforgovernment.org.uk/sites/default/files/styles/16_9_desktop/public/2023-04/treasury-2880x920.jpg?h=17e6ff01&amp;itok=dcg69Nz5)
+
+---
+
+class: casestudy
+
+# 📊 Case Study: Why Repetition, Not Just Volume, Drove the Effect
+
+**Waight et al. found that commercial models reproduced distinctive memorized phrases from state media — a signature of intentional, repeated messaging rather than incidental exposure.**
+
+&lt;br&gt;
+
+State-coordinated media campaigns often deliberately repeat specific phrases and framings across many platforms, precisely so that the messaging is seen and internalized by audiences. Waight et al.'s finding suggests that same repetition strategy leaves a disproportionate fingerprint in LLM training data — and, in turn, in memorized model outputs.
+
+&lt;br&gt;
+
+**Why this matters beyond China:** the mechanism Waight et al. document — deliberate repetition producing outsized representation in scraped training corpora — is not specific to any one government's media strategy. Any well-resourced, coordinated messaging campaign (state or otherwise) that saturates the online information environment could leave a similar fingerprint.
+
+&lt;br&gt;
+
+**The open question:** how would a research team detect this kind of influence for messaging campaigns that are less centralized, or for languages and countries not yet covered by an audit like this one?
+
+---
+
+# LLMs Favor the Country of Their Training Language
+
+&lt;div class="src"&gt;Waight et al. 2026 · Cross-national analysis, 37 countries&lt;/div&gt;
+
+&lt;div class="box box-navy" style="margin:0.5em 0;"&gt;
+  &lt;strong&gt;Finding:&lt;/strong&gt; Ask the same political question in two different languages and you may get two very different answers. Models queried in the language of a country with lower press freedom show a stronger pro-regime valence than models queried in the language of a country with higher press freedom.
+&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Why language, not just topic, matters&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;A model doesn't have one single "political stance" — its stance can shift depending on which language's training data it draws on most heavily for a given query, since different languages draw from different regional media ecosystems.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Implication for global AI use&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;Hundreds of millions of people, including inside enterprises, use commercial LLMs. If the language you query in shapes the political valence of the answer you get, "the same AI system" is not delivering the same political information everywhere.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://wallpaperaccess.com/full/1260521.jpg)
+
+---
+
+# Direct vs. Indirect Government Control of AI
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th style="width:20%;"&gt;Mechanism&lt;/th&gt;&lt;th style="width:40%;"&gt;How it works&lt;/th&gt;&lt;th style="width:40%;"&gt;Why it's hard to counter&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Direct regulation&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Explicit laws, licensing, mandated guardrails governing AI systems&lt;/td&gt;&lt;td&gt;Visible and contestable — can be litigated, reported on, and debated publicly&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl-red"&gt;&lt;td&gt;&lt;strong&gt;Indirect, via training data&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Controlling the media environment that gets scraped into training corpora, with no AI-specific policy at all&lt;/td&gt;&lt;td&gt;Invisible — no company discloses training sources, so the influence is undetectable without exactly the kind of forensic audit Waight et al. conducted&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class="box box-amber" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;The indirect channel is arguably the more consequential one for AI governance debates, precisely because it requires no AI-specific policy to work — and because most AI governance proposals focus on regulating deployment, not auditing the information ecosystem upstream of training.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://beaithink.com/wp-content/uploads/2025/08/AI-Regulation.webp)
+
+---
+
+class: discussion
+
+# 💬 Discussion Question 1
+
+**"How does government media control propagate into LLMs, and what should be done about it?"**
+
+&lt;br&gt;
+
+1. Waight et al.'s pretraining experiment shows that a small, concentrated set of documents (6,400) can shift a model's outputs substantially. If concentrated, repeated messaging is disproportionately influential, does this concern apply only to state actors — or could any well-funded organization achieve a similar effect by flooding the information environment?
+
+2. If the mechanism is indirect — no AI-specific law required — what kind of intervention could actually address it? Is auditing training data sufficient, or does addressing this problem require addressing media freedom itself, upstream of AI entirely?
+
+3. The cross-national finding means a single global AI product may give politically different answers depending on the language of the query. Should AI companies be required to disclose this kind of cross-lingual divergence to users?
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;II&lt;/div&gt;
+
+# Encyclopedias
+## Can an AI encyclopedia fix bias, or does it just relocate it?
+
+---
+
+# Review: What Wikipedia's Model Was Supposed to Guarantee
+
+**Wikipedia's core promise was never perfect neutrality — it was a transparent, contestable process for approaching it.**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Wikipedia's editorial model&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em; font-size:1em;"&gt;Crowd-sourced, volunteer editors, with visible edit histories and talk-page debates&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em; font-size:1em;"&gt;Citation-based verification: claims are expected to trace back to a checkable source&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:1em;"&gt;Bias can still creep in — but the process for contesting it is public&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;The AI-encyclopedia pitch&lt;/div&gt;
+    &lt;div class="box box-navy" style="font-size:1em;"&gt;In October 2025, xAI launched Grokipedia, an AI-generated encyclopedia built on the Grok model, explicitly framed as a corrective to Wikipedia's alleged ideological bias — content is generated and "fact-checked" by the model rather than a community of editors&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="quote" style="margin-top:0.5em;"&gt;The question this section asks is not whether Wikipedia is biased — plenty of critics on multiple sides think it is — but whether replacing a contestable human process with an AI-generation process actually reduces bias, or just moves it somewhere less visible.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://metro.co.uk/wp-content/uploads/2025/11/GettyImages-2246858533-aadb.jpg?quality=90&amp;strip=all&amp;w=646)
+
+---
+
+# Mohammadi &amp;amp; Yasseri: The Core Finding
+
+&lt;div class="src"&gt;Mohammadi &amp;amp; Yasseri 2026 · PNAS · 17,790 matched article pairs&lt;/div&gt;
+
+&lt;div class="box box-purple" style="margin:0.5em 0;"&gt;
+  &lt;strong&gt;Central finding:&lt;/strong&gt; Grokipedia does not uniformly "correct" Wikipedia's alleged biases. Instead, AI-generated encyclopedic content selectively diverges from Wikipedia in structure and sourcing — longer, less citation-dense, and, in a specific subset of politically and culturally sensitive topics, shifted toward more right-leaning news sources.
+&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;What stayed similar&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:0.9em;"&gt;Overall political leaning across the full article set was broadly comparable between the two platforms — this is not a story of wholesale ideological capture&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Where the divergence concentrated&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:0.9em;"&gt;Among articles that diverged substantially, the rightward shift in cited sources concentrated specifically in religion, history, literature, and art — precisely the topics most sensitive to historical and cultural framing&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:450px; height:225px"&gt;
+![](https://d3nwecxvwq3b5n.cloudfront.net/AcuCustom/Sitename/DAM/045/bias_in_AI1_Main.jpg)
+
+---
+
+class: paper-walk
+
+# Paper Walkthrough: Mohammadi &amp;amp; Yasseri — The 17,790-Pair Comparison
+
+&lt;div class="src"&gt;Mohammadi &amp;amp; Yasseri 2026 · Center for Sociology of Humans and Machines, Trinity College Dublin &amp;amp; TU Dublin&lt;/div&gt;
+
+&lt;div class="box box-blue" style="margin-top:0.3em; font-size:1em;"&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num navy"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;Sample the 20,000 most-edited English Wikipedia articles — heavy editing correlates with controversy and topical salience, which makes bias more likely to be visible&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num navy"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;Match each Wikipedia article to its Grokipedia counterpart on the same topic — 17,790 usable matched pairs&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num navy"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;Compare pairs across lexical richness, readability, structural organization, reference density, and semantic similarity&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num navy"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;For the subset of articles that diverge substantially in content, map cited news sources to an established political-leaning dataset built from social media sharing patterns&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;5&lt;/span&gt;&lt;div class="step-body"&gt;Break results down by topic category to locate where divergence concentrates&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-blue" style="margin-top:0.3em; font-size:1em;"&gt;The scale here (17,790 pairs) is what makes the topic-level breakdown credible — a handful of anecdotal examples couldn't distinguish "AI encyclopedias are biased" from "these two particular articles are biased."&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:350px; height:175px"&gt;
+![](https://tse3.mm.bing.net/th/id/OIP.12iZatVUiJvO5SzomqH3DwHaFj?r=0&amp;rs=1&amp;pid=ImgDetMain&amp;o=7&amp;rm=3)
+
+---
+
+# Results: Historical and Religious Bias in AI Encyclopedias
+
+&lt;div class="src"&gt;Mohammadi &amp;amp; Yasseri 2026&lt;/div&gt;
+
+&lt;div class="box box-red" style="margin:0.5em 0; text-align:center; font-size:1em;"&gt;Among articles where Grokipedia's content diverged substantially from Wikipedia's, cited news sources showed a systematic rightward shift — concentrated specifically in articles about &lt;strong&gt;religion, history, literature, and art&lt;/strong&gt;.&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Why these topics specifically&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      -These are exactly the categories most dependent on interpretive framing rather than settled fact&lt;br&gt;
+      -Historical and religious narratives often have contested "correct" framings across ideological lines&lt;br&gt;
+      -A model trained partly on more polarized commentary about these topics may reproduce that polarization
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-amber"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;The researchers' framing&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      -Not a claim that Grokipedia is uniformly "far-right"&lt;br&gt;
+      -A claim that AI generation &lt;em&gt;relocates&lt;/em&gt; bias into specific topic areas and makes it less visible than a contestable, citation-checkable Wikipedia edit
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://img.magnific.com/premium-photo/celebration-global-literacy-vector-illustration_1122658-308.jpg)
+
+---
+
+# Grokipedia vs. Wikipedia, By the Numbers
+
+&lt;div class="src"&gt;Mohammadi &amp;amp; Yasseri 2026; corroborated by independent analyses of the Grokipedia corpus&lt;/div&gt;
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th style="width:30%;"&gt;Metric&lt;/th&gt;&lt;th style="width:35%;"&gt;Wikipedia&lt;/th&gt;&lt;th style="width:35%;"&gt;Grokipedia&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Article length&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Shorter, on matched topics&lt;/td&gt;&lt;td&gt;Substantially longer&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Reading level required&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;~10.7 grade level&lt;/td&gt;&lt;td&gt;~14.5 grade level — notably harder to read&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl-red"&gt;&lt;td&gt;&lt;strong&gt;References per 1,000 words&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;~35&lt;/td&gt;&lt;td&gt;~20 — fewer citations despite more text&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Syntactic complexity&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Lower&lt;/td&gt;&lt;td&gt;Higher&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class="box box-navy" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;&lt;strong&gt;The pattern:&lt;/strong&gt; more words, harder to read, and proportionally less grounded in checkable citations — exactly the profile of "narrative expansion over citation-based verification."&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://th.bing.com/th/id/R.3d355f83f55e28fd93d63fb51781763f?rik=Bb59CuPd2DD8GA&amp;pid=ImgRaw&amp;r=0)
+
+---
+
+# Results: Favoring Narrative Over Citation-Based Verification
+
+&lt;div class="src"&gt;Mohammadi &amp;amp; Yasseri 2026&lt;/div&gt;
+
+&lt;div class="box box-purple" style="margin:0.5em 0;"&gt;
+  &lt;strong&gt;Finding:&lt;/strong&gt; AI-generated encyclopedic content departs from established editorial norms, favoring narrative expansion over citation-based verification — raising questions about transparency, provenance, and the governance of knowledge in automated information systems.
+&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Why fewer citations per word matters&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;A Wikipedia claim is expected to trace to a source a reader can check. An AI-generated claim can be fluent and confident without that same per-claim traceability — length substitutes for verifiability.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;A related, independent finding&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;A separate analysis of the full Grokipedia corpus (Triedman &amp;amp; Mantzarlis, Cornell Tech) found Grokipedia cites a number of sources rated "generally unreliable" or blacklisted by the Wikipedia community — a further sign of loosened sourcing standards, not just fewer citations overall.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:250px; height:250px"&gt;
+![](https://img.magnific.com/premium-vector/book-fairy-tale-story_1308-24576.jpg?semt=ais_hybrid)
+
+---
+
+class: casestudy
+
+# 📊 Case Study: "Fixing" Wikipedia's Bias, or Relocating It?
+
+**Grokipedia was launched with an explicit promise: to "purge the propaganda" and correct Wikipedia's alleged left-leaning bias, delivering "the truth, the whole truth and nothing but the truth."**
+
+&lt;br&gt;
+
+**What the evidence actually shows:** overall political leaning across the full 17,790-pair comparison was broadly similar between the two platforms. The promised wholesale correction didn't clearly materialize as a uniform shift.
+
+&lt;br&gt;
+
+**What did happen:** bias didn't disappear — it moved. It concentrated in specific topic categories (religion, history, literature, art) and became harder to detect, because Grokipedia's process lacks Wikipedia's visible edit history, talk-page debate, and per-claim citation density.
+
+&lt;br&gt;
+
+**The pattern worth naming:** a platform explicitly built to fix a rival's bias can still be biased — just differently, and less transparently. This is a case study in why "AI-corrected" is not the same claim as "unbiased."
+
+---
+
+class: discussion
+
+# 💬 Discussion Question 2
+
+**"AI-generated encyclopedias are historically and religiously biased, and tend to favor narrative over citation-based verification — what follows from that?"**
+
+&lt;br&gt;
+
+1. Grokipedia's content is, by design, generated by a single company's model rather than negotiated among thousands of independent volunteer editors. Even setting aside the specific rightward shift documented here, does that structural difference alone make an AI encyclopedia less trustworthy as a reference source — regardless of which direction any bias runs?
+
+2. Mohammadi and Yasseri found the bias concentrated in religion, history, literature, and art — not, say, science or technology articles. Why might interpretive, narrative-heavy topics be more susceptible to this kind of drift than fact-dense technical topics?
+
+3. If citation-based verification is what let Wikipedia's biases be contested and corrected over time, what would an equivalent accountability mechanism look like for an AI-generated encyclopedia — and is it possible to build one without reintroducing a human editorial layer?
+
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;III&lt;/div&gt;
+
+# Surveys
+## When you can no longer assume your respondents are human
+
+---
+
+# Westwood: The Core Finding
+
+&lt;div class="src"&gt;Westwood 2025 · PNAS · 2025 Cozzarelli Prize, Behavioral and Social Sciences&lt;/div&gt;
+
+&lt;div class="box box-red" style="margin:0.5em 0;"&gt;
+  &lt;strong&gt;Central finding:&lt;/strong&gt; Autonomous AI agents, built from a simple prompt, can complete online surveys with responses that evade nearly every existing detection method — fundamentally compromising the assumption that logically coherent survey responses come from humans.
+&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Why online surveys matter this much&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;Surveys are a primary data source across medicine, economics, political science, and public health. Thousands of peer-reviewed studies each year rely on unsupervised online data collection.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Westwood's own framing&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;"We can no longer trust that survey responses are coming from real people... With survey data tainted by bots, AI can poison the entire knowledge ecosystem."&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://seoarcade.com/wp-content/uploads/2023/05/image-6.png)
+
+---
+
+class: paper-walk
+
+# Paper Walkthrough: Westwood — Building the Autonomous Synthetic Respondent
+
+&lt;div class="src"&gt;Westwood 2025&lt;/div&gt;
+
+**The design goal: build the simplest possible AI agent that could pass as a real survey-taker, to establish a lower bound on the threat.**
+&lt;div class="box box-blue" style="margin-top:0.3em; font-size:1em;"&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;Build a model-agnostic Python agent, deployable via API (OpenAI, Anthropic, Google) or locally with open-weight models&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;Give the agent a single prompt of roughly 500 words specifying a persona and instructing it to answer like a human&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;Deploy the agent against real survey platforms and state-of-the-art bot-detection methods — attention checks, behavioral flags, response-pattern analysis, and specialized AI-detection tools&lt;/div&gt;&lt;/div&gt;
+&lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;Test robustness: different underlying models (o4-mini, DeepSeek R1, Mistral Large, Claude 3.7 Sonnet, Grok 3, Gemini 2.5), and prompts written in Russian, Mandarin, or Korean&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-blue" style="margin-top:0.3em; font-size:1em;"&gt;Notice the minimalism: a single ~500-word prompt, not a custom-built evasion system. The threat model is "what a single moderately sophisticated user could do this afternoon," not a nation-state operation.&lt;/div&gt;
+
+---
+
+# How the Agent Beat Every Detection Method
+
+&lt;div class="src"&gt;Westwood 2025&lt;/div&gt;
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th style="width:26%;"&gt;Detection method&lt;/th&gt;&lt;th style="width:38%;"&gt;What it normally catches&lt;/th&gt;&lt;th style="width:36%;"&gt;How the agent evaded it&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl-red"&gt;&lt;td&gt;&lt;strong&gt;Attention check questions&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Inattentive humans clicking through without reading&lt;/td&gt;&lt;td&gt;Agent read and answered correctly every time — it never clicks through inattentively&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Impossible-biography traps&lt;/strong&gt;&lt;br&gt;&lt;span style="font-size:1em; font-weight:400;"&gt;e.g., "have you visited the moon," "were you elected president"&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Bots that answer inconsistently or absurdly&lt;/td&gt;&lt;td&gt;Zero errors across trials — the agent reliably declined the impossible claims&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl-red"&gt;&lt;td&gt;&lt;strong&gt;Behavioral / biometric flags&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Bots that type unnaturally fast or move the mouse in straight lines&lt;/td&gt;&lt;td&gt;Agent used humanlike mouse movement and typed letter-by-letter at realistic speed, including typos it then corrected&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Specialized AI-response detectors&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Text with statistical fingerprints of LLM generation&lt;/td&gt;&lt;td&gt;Evaded detection in roughly &lt;strong&gt;99.8%&lt;/strong&gt; of attempts across the study&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class="box box-red" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;Every layer of defense researchers currently rely on — including a paper specifically designed to detect AI survey responses — was defeated by a single generic prompt.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:350px; height:175px"&gt;
+![](https://images.detecting-ai.com/posts_top-10-free-ai-detectors-features-accuracy-and-limitations_6795bf837c4cb25d9013ed6c-1ab21e6fe35c06a3c150ec2ec3caf067.webp)
+
+---
+
+# AI Survey Responses Can Intentionally Confirm Hypotheses
+
+&lt;div class="src"&gt;Westwood 2025 — demand effects&lt;/div&gt;
+
+&lt;div class="box box-red" style="margin:0.5em 0;"&gt;
+  &lt;strong&gt;Finding:&lt;/strong&gt; When the AI agent encountered a common experimental design, it often inferred the researcher's hypothesis on its own and then biased its answers to confirm that hypothesis — while still maintaining realistic response variation, making the pattern hard to spot.
+&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Why this is worse than random noise&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;Older survey fraud (click-farms, careless respondents) added &lt;em&gt;random&lt;/em&gt; noise — it made estimates less precise, but didn't systematically point them in a false direction. AI-generated demand-effect responses introduce &lt;em&gt;targeted&lt;/em&gt; bias — they corrupt findings from within by confirming what researchers already expected to see.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Weaponizable with one instruction&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;With a single instruction, the same agent can be redirected to systematically bias polling results in a chosen direction — Westwood explicitly frames this as usable for coordinated information warfare, not just accidental contamination.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:350px; height:175px"&gt;
+![](https://img.magnific.com/premium-vector/young-good-looking-man-holding-board-said-yes_97632-4260.jpg)
+
+---
+
+# Real-World Stakes: The 2024 Election Polls
+
+&lt;div class="src"&gt;Westwood 2025&lt;/div&gt;
+
+&lt;div class="box box-red" style="margin:0.5em 0; text-align:center; font-size:1.05em;"&gt;In seven major U.S. national polls conducted before the 2024 election, adding just &lt;strong&gt;10 to 52 fake AI survey responses&lt;/strong&gt; — at roughly &lt;strong&gt;5 cents each&lt;/strong&gt; — would have been enough to flip the predicted outcome.
+&lt;/div&gt;
+
+&lt;div class="cols-3" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-slate" style="text-align:center;"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Cost&lt;/div&gt;
+    &lt;div style="font-size:1.4em; font-weight:900; color:#c0392b;"&gt;~$2.60&lt;/div&gt;
+    &lt;div style="font-size:1em;"&gt;to flip a major national poll (52 responses × 5¢)&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate" style="text-align:center;"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Language robustness&lt;/div&gt;
+    &lt;div style="font-size:1.4em; font-weight:900; color:#c0392b;"&gt;3 languages&lt;/div&gt;
+    &lt;div style="font-size:1em;"&gt;tested (Russian, Mandarin, Korean) — flawless English output regardless&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate" style="text-align:center;"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Detection evasion&lt;/div&gt;
+    &lt;div style="font-size:1.4em; font-weight:900; color:#c0392b;"&gt;99.8%&lt;/div&gt;
+    &lt;div style="font-size:1em;"&gt;of attempts across the study&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="quote" style="margin-top:0.4em;"&gt;The findings reveal a critical vulnerability in our data infrastructure — a potential existential threat to unsupervised online research.&lt;cite&gt;— Westwood (2025)&lt;/cite&gt;&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:350px; height:175px"&gt;
+![](https://penncapital-star.com/wp-content/uploads/2024/03/GettyImages-1491230368-election-2024-sign-1536x1048.jpeg)
+
+---
+
+# What a Demand-Effect-Biased Response Looks Like
+
+&lt;div class="src"&gt;Illustrative example, constructed for teaching — not a verbatim transcript from the paper&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:800px; height:400px"&gt;
+![](https://cdn.corenexis.com/f/zJqhudT1hAG.png)
+
+---
+
+# Why This Threatens Every Field That Uses Surveys
+
+&lt;div class="cols-3" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Public health&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;Self-reported symptoms, behaviors, and health outcomes underpin epidemiological research and policy — a domain where biased data has direct real-world consequences&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Political science and polling&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;Election forecasting, policy attitude research, and public opinion tracking all depend on the assumption that respondents are a representative sample of real people&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Market and social research&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;Commercial panels (Prolific, CloudResearch, MTurk) are widely used across academic social science — and, per Westwood, their existing quality checks did not stop the agent&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-navy" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;This is not a niche methodological worry — it strikes at a data-collection method that a huge share of empirical social science, including work covered earlier in this course, depends on.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:500px; height:250px"&gt;
+![](https://tse3.mm.bing.net/th/id/OIP.MIbHyWU5FWdnH3EG4Z8wigHaEK?r=0&amp;rs=1&amp;pid=ImgDetMain&amp;o=7&amp;rm=3)
+
+---
+
+# O'Grady: The Arms Race Researchers Are Losing
+
+&lt;div class="src"&gt;O'Grady 2026 · Science (news &amp;amp; analysis)&lt;/div&gt;
+
+&lt;div class="box box-slate" style="margin:0.5em 0;"&gt;
+  &lt;strong&gt;O'Grady's framing:&lt;/strong&gt; researchers who rely on online studies have spent years refining methods to detect inattentive or fraudulent respondents — but the rapid advancement of AI may be outpacing every defense they've built, faster than new defenses can be developed.
+&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Why this is an "arms race," not a fixed problem&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;Every time researchers publish a new detection method, that method becomes part of the public record — and future AI agents (or their designers) can be built or prompted specifically to defeat it.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;A widening problem, not a narrowing one&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:1em;"&gt;O'Grady also points to related reporting (Phillips 2026, &lt;em&gt;Nature&lt;/em&gt;) documenting that AI chatbots are increasingly infiltrating social-science surveys and getting better at avoiding detection over time — this is a trend, not a one-time event.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:300px"&gt;
+![](https://img.magnific.com/premium-photo/playful-cat-chases-tiny-mouse-across-grey-background_1306135-35929.jpg)
+
+---
+
+class: debate
+
+# ⚖️ Debate: Should Survey Platforms Require Proof of Humanness?
+
+**Westwood's agent evaded every layer of defense platforms like Prolific and CloudResearch currently deploy. What should platforms and researchers do?**
+
+&lt;br&gt;
+
+**The case for strict identity verification:**
+
+If 10–52 fake responses can flip a national poll, the status quo is not a minor data-quality issue — it is an existential threat to a core method of social science. Verified phone numbers, payment history, and cross-referencing against public records (like voter files) could raise the cost of running an AI agent at scale.
+
+&lt;br&gt;
+
+**The case against strict verification:**
+
+Identity verification excludes vulnerable and marginalized populations who lack the required documentation — exactly the groups survey research most needs to reach for representative, equitable data. It also creates a privacy-invasive honeypot of personal data, and determined bad actors can likely still find workarounds.
+
+&lt;br&gt;
+
+**Is there a middle path — and does it need to look different for academic research than for commercial polling?**
+
+
+---
+
+class: discussion
+
+# 💬 Discussion Question 3
+
+**"How much consent and disclosure does survey research need in an era when respondents may not be human?"**
+
+&lt;br&gt;
+
+1. Westwood's agent maintained a consistent, plausible demographic persona across an entire survey. If a researcher can no longer verify that "a person" completed a study, does informed consent even remain a coherent concept for that dataset — since there may be no person to have consented?
+
+2. Should journals require authors to disclose what bot-detection methods they used, the way they currently require disclosure of sample size or exclusion criteria? Would that meaningfully help, given Westwood's 99.8% evasion rate?
+
+3. O'Grady describes this as a losing arms race. If detection is not a durable long-term solution, what would a fundamentally different approach to online data collection need to look like?
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;IV&lt;/div&gt;
+
+# Contamination of AI-Generated Data
+## Why the problem compounds instead of staying contained
+
+---
+
+# The Best LLMs Now Evade Detection Systems
+
+&lt;div class="src"&gt;Synthesizing Westwood 2025 and O'Grady 2026&lt;/div&gt;
+
+&lt;div class="box box-red" style="margin:0.5em 0;"&gt;
+  &lt;strong&gt;The headline number to hold onto:&lt;/strong&gt; a generic, publicly describable AI agent evaded state-of-the-art survey-bot detection 99.8% of the time — including detectors specifically designed and published to catch AI-generated survey responses.
+&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;This is not unique to surveys&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:0.9em;"&gt;The same underlying capability — producing fluent, humanlike, contextually appropriate text and behavior — that lets a model evade a survey detector also lets AI-generated text blend into any other corpus it enters: web pages, encyclopedia articles, social media posts.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Why "best" models are the problem, not the exception&lt;/div&gt;
+    &lt;div style="line-height:1.7; font-size:0.9em;"&gt;Westwood tested multiple frontier models (o4-mini, Claude 3.7 Sonnet, Gemini 2.5, Grok 3, and others) and found the evasion capability was broadly shared across them — this is a property of frontier-level fluency, not one company's failure.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://commons.wikimedia.org/wiki/Special:FilePath/Magnifying%20glass%20icon.svg)
+
+---
+
+# Why Detection Is a Losing Arms Race
+
+&lt;div class="cols-3" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Publication paradox&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;Publishing a new detection method (a necessary step for peer review and replication) simultaneously teaches future agents exactly what to defeat&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Asymmetric cost&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;Building a robust detector is a research project; defeating one can be a single prompt — the effort required to attack is far lower than the effort required to defend&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Capability drift&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;As general-purpose model capability improves for unrelated reasons (better reasoning, more humanlike text), evasion ability improves as a side effect — no one has to specifically train a model to beat detectors&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="quote" style="margin-top:0.6em;"&gt;Detection-based defenses treat contamination as a problem to be caught after the fact. But if evasion improves as a side effect of general capability gains, "catch it after the fact" is a strategy with a shrinking shelf life.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:500px; height:250px"&gt;
+![](https://aviationweek.com/sites/default/files/styles/crop_freeform/public/2020-04/raytheon_hypersonic_missile-raytheon.jpg?itok=bCeZxaDm)
+
+---
+
+class: warning-slide
+
+# ⚠️ Contamination as a Compounding Problem
+
+**Each of this week's studies documents AI-generated or AI-shaped content entering a corpus that future systems — and future research — will draw on.**
+
+&lt;br&gt;
+
+**The loop, made concrete with this week's own studies:**
+
+Government-influenced media (Waight et al.) becomes training data for the next generation of models. AI-generated encyclopedia content (Mohammadi &amp;amp; Yasseri) is published to the open web, where future training-data crawlers cannot easily distinguish it from human-written text. AI-generated survey responses (Westwood) corrupt published datasets, which may themselves later be cited, summarized, or even scraped as source material.
+
+&lt;br&gt;
+
+**Why "compounding" is the right word, not just "widespread":** each of these contamination sources doesn't just add noise once — it becomes part of the substrate that the *next* model, the *next* encyclopedia comparison, or the *next* survey-detection method has to be built on. Errors and biases don't stay contained to one dataset; they propagate forward.
+
+&lt;br&gt;
+
+**This is the same feedback-loop concern researchers call "model collapse" when AI-generated content increasingly displaces human-generated content in what future models learn from.**
+
+---
+
+# The Contamination Feedback Loop
+
+&lt;div class="cols-4" style="margin-top:0.6em; font-size:1em;"&gt;
+  &lt;div class="box box-navy" style="text-align:center;"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;1. Source&lt;/div&gt;
+    &lt;div style="line-height:1.6;"&gt;State media, AI encyclopedias, and AI survey agents each generate or shape text&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-navy" style="text-align:center;"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;2. Publication&lt;/div&gt;
+    &lt;div style="line-height:1.6;"&gt;That text is published to the open web or into research datasets, indistinguishable from human-generated content&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-navy" style="text-align:center;"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;3. Ingestion&lt;/div&gt;
+    &lt;div style="line-height:1.6;"&gt;Future model training and future research both draw on this now-contaminated pool&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-navy" style="text-align:center;"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;4. Amplification&lt;/div&gt;
+    &lt;div style="line-height:1.6;"&gt;Biases and errors are reproduced, sometimes intensified, in the next generation of models and studies&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-amber" style="margin-top:0.6em; text-align:center; font-size:1em;"&gt;Notice this loop has no natural stopping point — each of this week's four papers documents one entry point into the same cycle, not four unrelated problems.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://static.vecteezy.com/system/resources/thumbnails/048/066/521/small_2x/recycle-icon-set-ecology-eco-friendly-and-environmental-management-symbols-isolated-images-vector.jpg)
+
+---
+
+# Social Science Data Validity Needs Urgent Help
+
+&lt;div class="src"&gt;O'Grady 2026 — framing the stakes for the field&lt;/div&gt;
+
+&lt;div class="box box-red" style="margin:0.5em 0; text-align:center; font-size:1em;"&gt;O'Grady's title states the claim plainly: AI threatens to &lt;strong&gt;upend&lt;/strong&gt; online social science research — not merely complicate it.&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;What's at stake if this goes unaddressed&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      - Decades of methodological investment in online survey infrastructure could become unreliable&lt;br&gt;
+      - Published findings built on compromised data may not be flagged or retracted for years&lt;br&gt;
+      - Public trust in social science findings — already strained — could erode further
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-teal"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;What "urgent help" could look like&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:1em;"&gt;
+      - New validation standards that don't rely solely on after-the-fact detection&lt;br&gt;
+      - Field-wide coordination — since AI evasion capability is shared across research areas&lt;br&gt;
+      - Re-evaluating which findings actually require unsupervised online data collection versus other, harder-to-corrupt methods
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:450px; height:225px"&gt;
+![](https://t4.ftcdn.net/jpg/01/26/15/71/360_F_126157167_ofQxDFJoOzWYTIEV3lrpM4Z9MAA3beRG.jpg)
+
+---
+
+class: discussion
+
+# 💬 Discussion Question 4
+
+**"If contamination compounds and detection is a losing arms race, what should the field actually do?"**
+
+&lt;br&gt;
+
+1. If the same underlying capability lets AI evade survey detectors, populate biased encyclopedia content, and reproduce state media phrasing, is "contamination" really four separate problems (governments, encyclopedias, surveys, training data) — or one problem showing up in four places? Does that change what a solution should target?
+
+2. Some fields (e.g., clinical trials) rely heavily on in-person, verified data collection specifically because of fraud risk. Should social science follow that model more broadly now — and what would be lost if online, unsupervised data collection became rare again?
+
+3. Waight et al., Mohammadi &amp;amp; Yasseri, and Westwood all required extensive, resource-intensive forensic work to even detect their respective problems. Is bias/contamination detection now a specialized subfield of its own — and if so, who should be responsible for funding and staffing it?
+
+---
+
+# Synthesizing Insight: Linking the Four Studies
+
+**Connecting this week's specific studies, designs, results, and insights into one picture.**
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th style="width:16%;"&gt;Study&lt;/th&gt;&lt;th style="width:20%;"&gt;Design&lt;/th&gt;&lt;th style="width:32%;"&gt;Result&lt;/th&gt;&lt;th style="width:32%;"&gt;Insight&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Waight et al.&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Six-study chain: corpus audit → pretraining experiment → commercial audit → cross-national analysis&lt;/td&gt;&lt;td&gt;State media in training data at 41× the Wikipedia rate; pro-regime valence tracks press freedom by language&lt;/td&gt;&lt;td&gt;Government influence over AI can be entirely indirect — no AI policy required&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Mohammadi &amp;amp; Yasseri&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;17,790 matched Wikipedia/Grokipedia article pairs, computational comparison&lt;/td&gt;&lt;td&gt;Rightward source shift concentrated in religion/history/lit/art; fewer citations despite more text&lt;/td&gt;&lt;td&gt;"AI-corrected" bias is often just relocated, less visible bias&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl-red"&gt;&lt;td&gt;&lt;strong&gt;Westwood&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Autonomous agent deployed against real detection methods&lt;/td&gt;&lt;td&gt;99.8% evasion rate; 10–52 fake responses could flip a national poll&lt;/td&gt;&lt;td&gt;The core assumption behind unsupervised online data collection no longer holds&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;O'Grady&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Synthesizing reporting across the detection-evasion literature&lt;/td&gt;&lt;td&gt;Detection methods are consistently outpaced by model capability gains&lt;/td&gt;&lt;td&gt;This is a structural, worsening arms race — not a one-time fixable bug&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class="box box-navy" style="margin-top:0.5em; text-align:center; font-size:1em;"&gt;&lt;strong&gt;The connective thread:&lt;/strong&gt; in every case, AI-generated or AI-shaped content enters a pool — training data, encyclopedic knowledge, survey datasets — that the next round of models or research will treat as ground truth.&lt;/div&gt;
+
+---
+
+# Summary: The Four Studies in One Framework
+
+&lt;div class="cols-2" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div class="box box-navy"&gt;
+    &lt;div style="font-weight:700; color:#2e5c8a; margin-bottom:0.4em; font-size:1em;"&gt;Waight et al. (2026)&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      &lt;strong&gt;What:&lt;/strong&gt; State media control shapes LLM training data and outputs&lt;br&gt;
+      &lt;strong&gt;How:&lt;/strong&gt; Corpus audits, pretraining experiments, commercial audits, cross-national analysis&lt;br&gt;
+      &lt;strong&gt;Effect:&lt;/strong&gt; 41× overrepresentation; ~80% pro-government shift from 6,400 documents&lt;br&gt;
+      &lt;strong&gt;Lesson:&lt;/strong&gt; Government influence over AI can be entirely indirect
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-purple"&gt;
+    &lt;div style="font-weight:700; color:#8e44ad; margin-bottom:0.4em; font-size:1em;"&gt;Mohammadi &amp;amp; Yasseri (2026)&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      &lt;strong&gt;What:&lt;/strong&gt; AI encyclopedias relocate, not remove, bias&lt;br&gt;
+      &lt;strong&gt;How:&lt;/strong&gt; 17,790 matched article-pair comparison&lt;br&gt;
+      &lt;strong&gt;Effect:&lt;/strong&gt; Rightward source shift in religion/history/lit/art; fewer citations per word&lt;br&gt;
+      &lt;strong&gt;Lesson:&lt;/strong&gt; "AI-corrected" is not the same claim as "unbiased"
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red" style="grid-column: span 2;"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.4em; font-size:1em;"&gt;Westwood (2025) &amp;amp; O'Grady (2026)&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      &lt;strong&gt;What:&lt;/strong&gt; AI agents can pass as human survey respondents and evade detection — and the arms race favors the agents&lt;br&gt;
+      &lt;strong&gt;How:&lt;/strong&gt; Autonomous synthetic respondent tested against real detection infrastructure; synthesizing reporting across the field&lt;br&gt;
+      &lt;strong&gt;Effect:&lt;/strong&gt; 99.8% evasion; 10–52 fake responses could flip a national poll&lt;br&gt;
+      &lt;strong&gt;Lesson:&lt;/strong&gt; Unsupervised online data collection can no longer assume human respondents
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+# Summary: AI and Society — Promise and Peril
+
+&lt;div class="cols-2" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div class="box box-teal"&gt;
+    &lt;div style="font-weight:700; color:#1abc9c; margin-bottom:0.5em;"&gt;What this week's methods make possible&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      - Forensic-quality audits that can trace political bias back to specific training-data sources (Waight et al.)&lt;br&gt;
+      - Large-scale, systematic comparison of AI-generated vs. human-generated reference content (Mohammadi &amp;amp; Yasseri)&lt;br&gt;
+      - Precise, quantified measurement of exactly how vulnerable a research method is (Westwood)
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.5em;"&gt;What this week's findings threaten&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      - Political information delivered by "the same" AI system that differs by query language (Waight et al.)&lt;br&gt;
+      - Reference knowledge that looks authoritative while being less verifiable and less contestable (Mohammadi &amp;amp; Yasseri)&lt;br&gt;
+      - The basic assumption — a human answered this survey — that huge swaths of social science are built on (Westwood, O'Grady)
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-amber" style="margin-top:0.6em; text-align:center; font-size:1em;"&gt;&lt;strong&gt;The core lesson:&lt;/strong&gt; AI's effects on society aren't limited to what it says to individual users — they extend into the information ecosystem, the reference sources, and the research infrastructure that society and science both depend on.&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:450px; height:225px"&gt;
+![](https://tse2.mm.bing.net/th/id/OIP.0XK7rDIOOXuNlFOosw9fWwAAAA?r=0&amp;rs=1&amp;pid=ImgDetMain&amp;o=7&amp;rm=3)
+
+---
+
+# Connects Back to Previous Weeks
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:700; color:#2a5bd7; margin-bottom:0.4em;"&gt;Points back to earlier weeks&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em;"&gt;&lt;strong&gt;Weeks 4–5 (Bias and measurement):&lt;/strong&gt; Waight et al. and Mohammadi &amp;amp; Yasseri are large-scale, high-stakes instances of the demographic and cultural bias patterns introduced earlier in the course.&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em;"&gt;&lt;strong&gt;Weeks 6–7 (Synthetic people):&lt;/strong&gt; Westwood's synthetic respondents are silicon sampling turned adversarial — the same capability used earlier to simulate humans for research is now used to impersonate them without disclosure.&lt;/div&gt;
+    &lt;div class="box box-slate"&gt;&lt;strong&gt;Week 11 (Persuasion):&lt;/strong&gt; Westwood's demand-effect finding is a direct descendant of Hackenburg et al.'s persuasion-accuracy tradeoff — AI optimizing to satisfy an inferred goal at the expense of truthfulness.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:700; color:#2e5c8a; margin-bottom:0.4em;"&gt;Points forward&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em;"&gt;&lt;strong&gt;Week 14 (AI and Society, Part 2):&lt;/strong&gt; This week covered AI shaping information and research infrastructure; Week 14 turns to AI's effects on productivity, homogenization, and sycophancy in daily use.&lt;/div&gt;
+    &lt;div class="box box-slate"&gt;&lt;strong&gt;Sourati et al. (Week 14):&lt;/strong&gt; The homogenization concern previewed here — many models converging on similar, less diverse outputs — is examined directly.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:250px; height:250px"&gt;
+![](https://commons.wikimedia.org/wiki/Special:FilePath/Arrow-right.svg)
+
+---
+
+# Key Takeaways
+
+&lt;div class="cols-2" style="margin-top:0.6em; font-size:1em;"&gt;
+  &lt;div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num navy"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;Government influence over LLMs can be entirely indirect — through the media environment scraped into training data, with no AI-specific policy involved&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num navy"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;Concentrated, repeated messaging is disproportionately influential relative to its share of training data — a small, coordinated corpus can shift outputs measurably&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num navy"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;An AI encyclopedia built to "fix" bias can still be biased — just relocated to specific topics and made less contestable&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num navy"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;The core assumption behind unsupervised online surveys — that a coherent response came from a human — is no longer safe to make&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num navy"&gt;5&lt;/span&gt;&lt;div class="step-body"&gt;AI survey agents can infer and confirm a researcher's hypothesis, producing targeted bias that's harder to catch than random noise&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num navy"&gt;6&lt;/span&gt;&lt;div class="step-body"&gt;All four problems feed a single compounding loop: AI-shaped content enters the pool that the next model or study treats as ground truth&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:500px; height:500px"&gt;
+![](https://cdn.pixabay.com/photo/2017/03/16/08/35/key-2148476_1280.jpg)
+
+---
+
+# Readings for This Unit
+
+&lt;div class="cols-3" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.5em;"&gt;Governments&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;
+      Waight, Yang, Yuan et al. (2026)&lt;br&gt;
+      &lt;span style="color:#888; font-size:0.85em;"&gt;State media control influences large language models. &lt;em&gt;Nature.&lt;/em&gt;&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.5em;"&gt;Encyclopedias, Surveys &amp;amp; Contamination&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;
+      Yasseri &amp;amp; Mohammadi (2026)&lt;br&gt;
+      &lt;span style="color:#888; font-size:1em;"&gt;Selective divergence between Grokipedia and Wikipedia articles. &lt;em&gt;PNAS.&lt;/em&gt;&lt;/span&gt;&lt;br&gt;&lt;br&gt;
+      Westwood (2025)&lt;br&gt;
+      &lt;span style="color:#888; font-size:1em;"&gt;The potential existential threat of large language models to online survey research. &lt;em&gt;PNAS.&lt;/em&gt;&lt;/span&gt;&lt;br&gt;&lt;br&gt;
+      O'Grady (2026)&lt;br&gt;
+      &lt;span style="color:#888; font-size:1em;"&gt;AI threatens to upend online social science research. &lt;em&gt;Science.&lt;/em&gt;&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.5em;"&gt;Coming up&lt;/div&gt;
+    &lt;div style="line-height:1.9; color:#888; font-size:1em;"&gt;
+      November recess — no readings&lt;br&gt;&lt;br&gt;
+      Week 14: Unit 5, Part 2
+    &lt;/div&gt;
+    &lt;div style="margin-top:0.6em; font-size:1em; color:#555;"&gt;AI use in society: productivity, homogenization, and sycophancy&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:175px; height:350px"&gt;
+![](https://commons.wikimedia.org/wiki/Special:FilePath/Bookshelf%20icon.svg)
+
+---
+
+class: inverse, center, middle
+
+# Questions?
+# Enjoy your November recess!
+
+&lt;div style="color:#aaa; font-size:0.9em; margin-top:1em;"&gt;Week 12 · SOCY 1200: Introduction to Using AI to Study Society&lt;/div&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "16:9",
+  "slideNumberFormat": "%current% / %total%"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

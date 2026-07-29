@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>SOCY 1200: Introduction to Using AI to Study Society</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Daniel Karell" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="yale.css" type="text/css" />
+    <link rel="stylesheet" href="yale-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# SOCY 1200: Introduction to Using AI to Study Society
+]
+.subtitle[
+## Unit 3: Synthetic People: Silicon Sampling
+]
+.author[
+### Daniel Karell
+]
+.institute[
+### Yale University
+]
+.date[
+### Week 6
+]
+
+---
+
+
+
+
+&lt;style&gt;
+.remark-slide-content:not(.title-slide) {
+  font-size: 16px; padding: 1.8em 2.2em 1em;
+  color: #1a1a2e; background: #fafafa;
+}
+.remark-slide-content:not(.title-slide) h1 {
+  font-size: 2em; font-weight: 700; letter-spacing: -0.03em;
+  color: #1a1a2e; border-bottom: 3px solid #16a085;
+  padding-bottom: 0.3em; margin-bottom: 0.7em;
+}
+.remark-slide-content:not(.title-slide) h2 { font-size:1.05em; color:#555; font-weight:500; }
+.remark-slide-content:not(.title-slide) p, .remark-slide-content:not(.title-slide) li { line-height:1.65; }
+.inverse:not(.title-slide) { background: #1a1a2e !important; }
+.inverse:not(.title-slide) h1, .inverse:not(.title-slide) h2, .inverse:not(.title-slide) h3 { color:white !important; border:none !important; }
+.inverse:not(.title-slide) h1 { font-size:1.9em !important; letter-spacing:-0.03em; }
+.inverse:not(.title-slide) h2 { color:#aaa !important; font-weight:400 !important; }
+.section-num:not(.title-slide) { display:inline-block; font-size:4em; font-weight:900; color:rgba(39,183,245,0.8); line-height:1; margin-bottom:0.1em; }
+.discussion { background: #0f3460 !important; }
+.discussion h1 { color: #f0c040 !important; border-bottom: 3px solid #f0c040 !important; }
+.discussion p, .discussion li { color: #e8e8f0 !important; line-height: 1.75 !important; }
+.discussion strong { color: #f0c040 !important; }
+.paper-walk { background: #1a3a1a !important; }
+.paper-walk h1 { color: #90ee90 !important; border-bottom: 3px solid #90ee90 !important; }
+.paper-walk p, .paper-walk li { color: #ddeedd !important; line-height:1.7 !important; }
+.paper-walk strong { color: #90ee90 !important; }
+.debate { background: #1a1a2e !important; }
+.debate h1 { color: #ffcc66 !important; border-bottom: 3px solid #ffcc66 !important; }
+.debate p, .debate li { color: #f0e8d0 !important; line-height:1.7 !important; }
+.debate strong { color: #ffcc66 !important; }
+.casestudy { color: #FFFFFF !important }
+.casestudy { background: #0a1a2a !important; }
+.casestudy h1 { color: #66ccff !important; border-bottom: 3px solid #66ccff !important; }
+.casestudy p, .casestudy li { color: #ddeeff !important; line-height:1.7 !important; }
+.casestudy strong { color: #66ccff !important; }
+.box { border-radius:6px; padding:0.75em 1em; margin:0.4em 0; font-size:0.85em; line-height:1.6; }
+.box-teal   { background:#f0fafa; border-left:4px solid #16a085; color:#0c3030; }
+.box-red    { background:#fdf2f2; border-left:4px solid #c0392b; color:#3d0c0c; }
+.box-green  { background:#f0faf3; border-left:4px solid #27ae60; color:#0c3320; }
+.box-blue   { background:#f0f4ff; border-left:4px solid #2a5bd7; color:#0d1f5c; }
+.box-amber  { background:#fffbf0; border-left:4px solid #e67e22; color:#5c3400; }
+.box-slate  { background:#f4f5f7; border-left:4px solid #7f8c8d; color:#2c3e50; }
+.box-purple { background:#f5f0ff; border-left:4px solid #8e44ad; color:#2e0060; }
+.quote { border-left:5px solid #16a085; background:white; border-radius:0 6px 6px 0; padding:0.7em 1.2em; font-size:0.88em; font-style:italic; color:#2c3e50; margin:0.6em 0; box-shadow:0 1px 4px rgba(0,0,0,0.07); }
+.quote cite { display:block; font-style:normal; font-size:0.82em; color:#16a085; margin-top:0.3em; font-weight:600; }
+.cols-2 { display:grid; grid-template-columns:1fr 1fr; gap:1em; margin:0.5em 0; }
+.cols-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.9em; margin:0.5em 0; }
+.cols-4 { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:0.7em; margin:0.5em 0; }
+.step-row { display:flex; align-items:flex-start; gap:0.75em; margin-bottom:0.5em; }
+.step-num { flex-shrink:0; width:1.7em; height:1.7em; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.8em; margin-top:0.05em; }
+.step-num.teal  { background:#16a085; color:white; }
+.step-num.red   { background:#c0392b; color:white; }
+.step-num.blue  { background:#2a5bd7; color:white; }
+.step-num.green { background:#27ae60; color:white; }
+.step-num.amber { background:#e67e22; color:white; }
+.step-num.grey  { background:#7f8c8d; color:white; }
+.step-body { font-size:0.83em; line-height:1.6; color:#2c3e50; padding-top:0.15em; }
+.styled-table { width:100%; border-collapse:collapse; font-size:0.81em; margin:0.5em 0; box-shadow:0 1px 6px rgba(0,0,0,0.08); }
+.styled-table thead tr { background:#1a1a2e; color:white; }
+.styled-table thead th { padding:0.6em 0.8em; text-align:left; font-weight:600; }
+.styled-table tbody tr:nth-child(even) { background:#f4f5f7; }
+.styled-table tbody tr:nth-child(odd) { background:white; }
+.styled-table tbody td { padding:0.55em 0.8em; color:#2c3e50; vertical-align:top; }
+.styled-table .hl      { background:#f0fafa !important; font-weight:600; }
+.styled-table .hl-red  { background:#fdf2f2 !important; }
+.styled-table .hl-green { background:#f0faf3 !important; }
+.badge { display:inline-block; border-radius:20px; padding:0.12em 0.65em; font-size:0.72em; font-weight:700; }
+.badge-teal   { background:#d5f5f0; color:#0e6b5a; }
+.badge-red    { background:#fde8e8; color:#922b21; }
+.badge-green  { background:#e8f8ee; color:#1e8449; }
+.badge-amber  { background:#fef3d0; color:#784212; }
+.badge-grey   { background:#eaecee; color:#515a5a; }
+.badge-blue   { background:#e8edff; color:#1a3fa0; }
+.mono { font-family:'Cascadia Code','Fira Code','Courier New',monospace; font-size:0.78em; background:#1e2433; color:#abb2bf; border-radius:6px; padding:0.8em 1.1em; line-height:1.85; margin:0.4em 0; }
+.mono .hi-blue   { color:#61afef; }
+.mono .hi-green  { color:#98c379; }
+.mono .hi-red    { color:#e06c75; }
+.mono .hi-amber  { color:#e5c07b; }
+.mono .hi-grey   { color:#636d83; }
+.mono .hi-white  { color:#ffffff; }
+.mono .hi-teal   { color:#56b6c2; }
+.src { display:inline-block; background:#1a1a2e; color:#FFFFFF; font-size:0.68em; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; border-radius:3px; padding:0.15em 0.55em; margin-bottom:0.45em; }
+blockquote { border:none; padding:0; margin:0; background:none; }
+&lt;/style&gt;
+
+
+# What We're Covering This Week
+
+&lt;div class="cols-3" style="margin-top:0.7em;"&gt;
+  &lt;div class="box box-teal"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Part I · Definition&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;What is silicon sampling?&lt;br&gt;How does it work?&lt;br&gt;Why is traditional polling struggling?&lt;br&gt;What is "algorithmic fidelity"?&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-teal"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Part II · Promise&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;What can silicon sampling do well?&lt;br&gt;Demographic subgroup emulation&lt;br&gt;Scale and cost advantages&lt;br&gt;Use cases where it might help&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-teal"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.4em;"&gt;Part III · Limitations&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;Plausibility ≠ validity&lt;br&gt;Variance compression&lt;br&gt;Subgroup failure modes&lt;br&gt;Reproducibility failures&lt;br&gt;The feedback loop risk&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;**The central tension for this week:**
+
+&lt;div class="box box-amber" style="text-align:center; font-size:0.9em;"&gt;Silicon sampling is simultaneously the most exciting methodological development in political science in decades — and potentially the most dangerous one if misused.&lt;/div&gt;
+
+---
+
+# The Four Papers — A Map
+
+&lt;div class="cols-2" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:700; color:#16a085; margin-bottom:0.5em;"&gt;The promise&lt;/div&gt;
+    &lt;div class="box box-teal" style="margin-bottom:0.4em;"&gt;&lt;strong&gt;Argyle et al. (2023)&lt;/strong&gt; — "Out of One, Many": GPT-3 can emulate response distributions from demographic subgroups with remarkable fidelity. Introduces "algorithmic fidelity" and "silicon samples."&lt;/div&gt;
+    &lt;div class="box box-teal"&gt;&lt;strong&gt;Weatherby &amp; Recht (2026)&lt;/strong&gt; — NYT opinion essay: silicon sampling is already being deployed commercially. The Axios maternal health case. Public opinion requires real humans.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.5em;"&gt;The limitations&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.4em;"&gt;&lt;strong&gt;Bisbee et al. (2024)&lt;/strong&gt; — ChatGPT recovers correct averages but fails on variance; regression coefficients diverge; prompt sensitivity; 3-month reproducibility collapse.&lt;/div&gt;
+    &lt;div class="box box-red"&gt;&lt;strong&gt;Bollen, Higton &amp; Sands (2025)&lt;/strong&gt; — GenAI is nationally representative but locally blind: correlates with national surveys, fails to reflect local community views; subgroup prompting doesn't help.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:500px; height:250px"&gt;
+![](https://www.nutanix.com/en_au/blog/end-the-legacy-of-three-tier-architecture/_jcr_content/root/container/componentContainer/container_flex_box/flexcol_2/image.coreimg.85.768.jpeg/1700014483916/img-blog-stock-3-tier-architecture.jpeg)
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;I&lt;/div&gt;
+
+# Definition
+## What is silicon sampling and how does it work?
+
+---
+
+# The Polling Crisis That Created Silicon Sampling
+
+**Traditional survey research is in serious trouble.** This context is essential for understanding why silicon sampling is tempting.
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;What's going wrong&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;↓&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Response rates collapsing:&lt;/strong&gt; phone survey response rates fell from ~35% (2000s) to ~6% (2020s)&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;↓&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Costs exploding:&lt;/strong&gt; a single national probability sample now costs $100k–$500k+&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;↓&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Web polling unreliable:&lt;/strong&gt; non-probability web samples introduce unmeasured biases&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;↓&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;High-profile failures:&lt;/strong&gt; 2016 and 2020 election polling errors shook confidence&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Why polls still matter&lt;/div&gt;
+    &lt;div class="box box-blue" style="margin-bottom:0.3em; font-size:0.82em;"&gt;Polls are democracy's information infrastructure — they tell policymakers, journalists, and citizens what people actually think&lt;/div&gt;
+    &lt;div class="box box-blue" style="margin-bottom:0.3em; font-size:0.82em;"&gt;Subgroup opinion data drives policy decisions on health, education, housing, immigration&lt;/div&gt;
+    &lt;div class="box box-blue" style="font-size:0.82em;"&gt;Academic research on polarization, public opinion dynamics, and democratic behavior depends on survey data&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="quote" style="margin-top:0.5em;"&gt;Phone polling has become exponentially harder. Web polling is too uncertain. Silicon sampling removes the messy, costly part of asking people what they think.&lt;cite&gt;— Weatherby &amp; Recht (2026)&lt;/cite&gt;&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:200px; height:100px"&gt;
+![](https://st.depositphotos.com/33945136/56736/v/450/depositphotos_567365530-stock-illustration-polling-station-cartoon-vector-illustration.jpg)
+
+---
+
+# What Is Silicon Sampling?
+
+&lt;div class="src"&gt;Argyle et al. 2023 · Political Analysis&lt;/div&gt;
+
+**Core idea:** Condition a large language model on a detailed sociodemographic backstory and ask it to respond as that person would to a survey question.
+
+&lt;div class="mono" style="margin:0.5em 0;"&gt;
+&lt;span class="hi-grey"&gt;Example: Creating a silicon sample respondent&lt;/span&gt;
+&lt;br&gt;&lt;/br&gt;
+Backstory prompt:
+&lt;span class="hi-teal"&gt;"You are a 54-year-old white woman living in rural Tennessee.
+You did not attend college. You are a registered Republican and
+attend church weekly. You work part-time at a grocery store.
+Your family income is approximately $35,000 per year."&lt;/span&gt;
+&lt;br&gt;&lt;/br&gt;
+Survey question:
+&lt;span class="hi-white"&gt;"How do you feel about the Democratic Party on a scale from
+0 (very cold) to 100 (very warm)?"&lt;/span&gt;
+&lt;br&gt;&lt;/br&gt;
+GPT-3 response: &lt;span class="hi-amber"&gt;18&lt;/span&gt;
+&lt;br&gt;&lt;/br&gt;
+&lt;span class="hi-grey"&gt;Compare to ANES: women, rural Tennessee, GOP, no college → mean ≈ 21&lt;/span&gt;
+&lt;br&gt;&lt;/br&gt;
+&lt;span class="hi-green"&gt;Alignment: strong ✓&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:200px; height:100px"&gt;
+![](https://lp-cms-production.imgix.net/2019-06/GettyImages-163642367_super.jpg?fit=crop&amp;q=40&amp;sharp=10&amp;vib=20&amp;auto=format&amp;ixlib=react-8.6.4)
+
+---
+
+# Algorithmic Fidelity: Argyle et al.'s Core Concept
+
+&lt;div class="src"&gt;Argyle et al. 2023&lt;/div&gt;
+
+**Algorithmic fidelity** = the degree to which an LLM conditioned on sociodemographic information accurately reproduces the response distributions of that demographic group.
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;The key insight about AI "bias"&lt;/div&gt;
+    &lt;div class="box box-teal" style="font-size:0.83em; margin-bottom:0.4em;"&gt;Prior work treated algorithmic bias as a bug — a uniform distortion to be eliminated. Argyle et al. reframe it: &lt;strong&gt;demographic patterning in LLM responses is a feature that enables conditioning.&lt;/strong&gt;&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:0.83em;"&gt;The model knows that rural Tennessee Republicans respond differently to the Democratic Party than urban Massachusetts Democrats — and this difference is &lt;em&gt;fine-grained&lt;/em&gt;, not just surface-level.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;What they found&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num teal"&gt;✓&lt;/span&gt;&lt;div class="step-body"&gt;GPT-3 conditioned on backstories produces responses that &lt;strong&gt;correlate strongly&lt;/strong&gt; with ANES and Cooperative Congressional Election Study subgroup means&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num teal"&gt;✓&lt;/span&gt;&lt;div class="step-body"&gt;The model captures &lt;strong&gt;nuanced interactions&lt;/strong&gt; — e.g., the difference between Black women Democrats and Black men Democrats, not just a generic "Black Democrat" response&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num teal"&gt;✓&lt;/span&gt;&lt;div class="step-body"&gt;Fidelity goes &lt;strong&gt;beyond surface similarity&lt;/strong&gt; — the model reproduces the attitudinal structure underlying survey responses&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://api.isr.umich.edu/wp-content/uploads/2023/06/Screenshot-2025-09-23-at-11.58.06-AM.png)
+
+---
+
+# How Silicon Sampling Works: The Pipeline
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Step by step&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num teal"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Define the target population&lt;/strong&gt; — what sociodemographic groups do you want to sample?&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num teal"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Generate backstories&lt;/strong&gt; — for each synthetic respondent, construct a detailed persona: age, race, gender, education, income, region, religion, party&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num teal"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Condition the model&lt;/strong&gt; — inject the backstory as the system prompt or prefix&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num teal"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Administer the survey&lt;/strong&gt; — present each question to the conditioned model&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num teal"&gt;5&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Aggregate&lt;/strong&gt; — combine responses to produce group-level estimates&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num amber"&gt;6&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Validate&lt;/strong&gt; — compare to real survey benchmarks where available&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;Why this is appealing&lt;/div&gt;
+    &lt;div class="box box-teal" style="margin-bottom:0.3em; font-size:0.82em;"&gt;&lt;strong&gt;Cost:&lt;/strong&gt; $0.001 per synthetic respondent vs. $10–$50 for a real one&lt;/div&gt;
+    &lt;div class="box box-teal" style="margin-bottom:0.3em; font-size:0.82em;"&gt;&lt;strong&gt;Speed:&lt;/strong&gt; 10,000 synthetic respondents in minutes vs. weeks for a real survey&lt;/div&gt;
+    &lt;div class="box box-teal" style="margin-bottom:0.3em; font-size:0.82em;"&gt;&lt;strong&gt;Subgroups:&lt;/strong&gt; can generate arbitrary subgroup samples — even very rare demographic intersections&lt;/div&gt;
+    &lt;div class="box box-teal" style="font-size:0.82em;"&gt;&lt;strong&gt;Sensitivity:&lt;/strong&gt; pilot test sensitive question wording without exposing real respondents to objectionable content&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:500px; height:250px"&gt;
+![](https://www.rishabheng.com/wp-content/uploads/2025/12/cross-country-pipeline-design-and-engineering.jpg)
+
+---
+
+# What LLMs Know About Human Opinion
+
+&lt;div class="src"&gt;Argyle et al. 2023&lt;/div&gt;
+GPT-3 has absorbed massive amounts of text about what different kinds of Americans think and say. The question is whether this internal representation is calibrated well enough to produce valid estimates.
+
+&lt;div class="mono" style="margin:0.5em 0; font-size:0.77em;"&gt;
+&lt;span class="hi-grey"&gt;Argyle et al. test feeling thermometer ratings (0-100) across 11 sociopolitical groups
+across demographic subgroups defined by race, gender, education, region, religion, party&lt;/span&gt;
+&lt;br&gt;&lt;/br&gt;
+Results:
+&lt;br&gt;&lt;/br&gt;
+
+ANES mean (real survey) vs. Silicon sample (GPT-3 conditioned):
+&lt;br&gt;&lt;/br&gt;
+  Black Americans:      ANES = 72.3,  Silicon = 71.8   ✓  Δ = 0.5
+&lt;br&gt;&lt;/br&gt;
+  Republican Party:     ANES = 43.1,  Silicon = 44.2   ✓  Δ = 1.1
+&lt;br&gt;&lt;/br&gt;
+  Feminists:            ANES = 52.8,  Silicon = 54.1   ✓  Δ = 1.3
+&lt;br&gt;&lt;/br&gt;
+  Illegal immigrants:   ANES = 41.5,  Silicon = 40.9   ✓  Δ = 0.6
+&lt;br&gt;&lt;/br&gt;
+&lt;span class="hi-grey"&gt;Subgroup-level correlations (e.g., GOP women vs. Dem women): r ≈ 0.85–0.92&lt;/span&gt;
+&lt;br&gt;&lt;/br&gt;
+&lt;span class="hi-green"&gt;Well beyond what random chance or surface similarity would produce ✓&lt;/span&gt;
+&lt;/div&gt;
+
+---
+
+# Traditional Polling Is Struggling — Why This Matters
+
+**The crisis of survey research is the essential context for evaluating silicon sampling.**
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th style="width:28%;"&gt;Problem&lt;/th&gt;
+    &lt;th style="width:35%;"&gt;What's happening&lt;/th&gt;
+    &lt;th style="width:37%;"&gt;Silicon sampling promise&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Response rates&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Phone response rates below 6%; web panels have unknown biases&lt;/td&gt;&lt;td&gt;No response rate problem — model always responds&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Cost&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;National probability sample: $100k–$500k+; limits research scope&lt;/td&gt;&lt;td&gt;10,000 synthetic respondents for ~$10&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Speed&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Field-to-data: weeks to months; misses fast-moving events&lt;/td&gt;&lt;td&gt;Survey results in minutes&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Rare subgroups&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Small demographic intersections need oversample at high cost&lt;/td&gt;&lt;td&gt;Can generate arbitrary subgroup sizes instantly&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Sensitive questions&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Social desirability bias; refusal; question order effects&lt;/td&gt;&lt;td&gt;Can pilot wording without real respondent exposure&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://img.magnific.com/premium-vector/online-survey-concept-people-filling-survey-form-feedback-service-online-test_773186-447.jpg?w=1380)
+
+---
+
+# Silicon Sampling Is Already Being Used — Commercially
+
+&lt;div class="src"&gt;Weatherby &amp; Recht 2026 · New York Times opinion essay&lt;/div&gt;
+
+**The Axios maternal health case: the moment silicon sampling became publicly visible.**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div class="box box-amber" style="font-size:0.83em; margin-bottom:0.4em;"&gt;&lt;strong&gt;What happened:&lt;/strong&gt; Axios published a story on maternal health policy referencing "findings" that a majority of people trusted their doctors and nurses. Normal enough — except the "poll" was a computer simulation run by AI startup Aaru. No people were involved.&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:0.83em;"&gt;An editor's note and clarification were added after the fact. But the uncorrected story circulated. Simulated opinion data was treated as real opinion data in policy journalism.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;Who is doing this?&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em; font-size:0.82em;"&gt;&lt;strong&gt;Aaru&lt;/strong&gt; — AI startup selling synthetic polling to political campaigns and policy organizations&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em; font-size:0.82em;"&gt;&lt;strong&gt;Synthetic users&lt;/strong&gt; — concept used by tech companies for product development and UX research&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:0.82em;"&gt;&lt;strong&gt;Academic researchers&lt;/strong&gt; — increasingly using silicon sampling for pilot studies, cost reduction, and subgroup analysis&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://tse3.mm.bing.net/th/id/OIF.Noz1eVwX01ocrrG0UVGRSw?r=0&amp;cb=thfvnextfalcon4&amp;rs=1&amp;pid=ImgDetMain&amp;o=7&amp;rm=3)
+
+---
+
+class: discussion
+
+# 💬 Discussion Question 1
+
+**"Silicon sampling removes the messy, costly part of asking people what they think."**
+
+Weatherby &amp; Recht frame this as a devastating critique. But is the messiness of real polling a feature, not a bug?
+
+&lt;br&gt;
+
+1. Argyle et al. show that GPT-3 conditioned on demographic backstories can reproduce group-level response distributions. Does this mean LLMs "know" what these groups think — or that they've learned to mimic what these groups are described as thinking in text?
+
+2. Weatherby &amp; Recht argue that "public opinion has value only insofar as it summarizes the beliefs of actual humans." Is this claim obviously true? What is lost if we replace human responses with good-faith simulations?
+
+3. Polling companies like Gallup and Pew face existential pressure from declining response rates and rising costs. If silicon sampling can produce results that are "close enough" for most purposes at 1% of the cost — should they adopt it?
+
+&lt;br&gt;
+
+**Is the appeal of silicon sampling a sign of polling's crisis — or is it creating a new crisis of its own?**
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;II&lt;/div&gt;
+
+# Promise
+## What silicon sampling can do — and evidence that it sometimes works
+
+---
+
+# What Silicon Sampling Does Well
+
+**Argyle et al.'s evidence suggests silicon sampling is genuinely useful for some purposes.**
+
+&lt;div class="cols-3" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-teal" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.3em; margin-bottom:0.3em;"&gt;📊&lt;/div&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Group-level means&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;Silicon samples reproduce group-level average responses with high accuracy — r ≈ 0.85–0.92 with ANES subgroup means&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-teal" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.3em; margin-bottom:0.3em;"&gt;🎯&lt;/div&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Relative rankings&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;Which groups rate the Democratic Party lower than others? Silicon samples get the ordering right even when absolute values drift&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-teal" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.3em; margin-bottom:0.3em;"&gt;🔬&lt;/div&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Hypothesis generation&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;Use silicon sampling to pilot hypotheses cheaply before committing to expensive real surveys — if the effect doesn't show up in silicon, it may not be worth the cost&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;
+
+&lt;div class="cols-3" style="margin-top:0.4em;"&gt;
+  &lt;div class="box box-teal" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.3em; margin-bottom:0.3em;"&gt;⚡&lt;/div&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Rare subgroups&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;Black Republican women over 65 in rural states — tiny N in real surveys, arbitrary N in silicon&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-teal" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.3em; margin-bottom:0.3em;"&gt;📝&lt;/div&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Question wording pilots&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;Test how a sensitive question lands before exposing real respondents to it&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-teal" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.3em; margin-bottom:0.3em;"&gt;🌍&lt;/div&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.3em;"&gt;Large-scope estimates&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;National-level aggregates and broad cross-national comparisons where local precision isn't needed&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+# Paper Walkthrough: Argyle et al. — Validating Algorithmic Fidelity
+
+&lt;div class="src"&gt;argyle_simulate_2023 · "Out of One, Many"&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;Study design&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num teal"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;Draw real respondents from ANES and CCES; extract their sociodemographic profiles&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num teal"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;Convert each profile into a detailed backstory; condition GPT-3 on it&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num teal"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;Ask GPT-3 to respond to the same survey items the real respondent answered&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num teal"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;Compare: silicon sample vs. actual responses, at individual and group level&lt;/div&gt;&lt;/div&gt;
+    &lt;div style="margin-top:0.5em; font-weight:600; font-size:0.84em;"&gt;Why this design is strong&lt;/div&gt;
+    &lt;div class="box box-green" style="font-size:0.82em;"&gt;They're not just checking if the mean is right — they're checking whether the model captures the &lt;em&gt;correlation structure&lt;/em&gt; among attitudes that real humans exhibit&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;What "beyond surface similarity" means&lt;/div&gt;
+    &lt;div class="mono" style="font-size:0.75em;"&gt;
+Surface similarity (WRONG test):
+&lt;br&gt;&lt;/br&gt;
+  Silicon mean ≈ Human mean
+  → model could achieve this by being a
+    mean-reverting machine
+&lt;br&gt;&lt;/br&gt;
+Beyond surface similarity (RIGHT test):
+&lt;br&gt;&lt;/br&gt;
+  Conditional on being a Black woman
+  Democrat, silicon responses reproduce
+  the correlation between attitudes
+  toward civil rights AND attitudes
+  toward the federal government
+&lt;br&gt;&lt;/br&gt;
+  r(civil rights, fed. gov.) for Black
+  women Dems:
+  &lt;br&gt;&lt;/br&gt;
+  Human sample: &lt;span class="hi-green"&gt;0.43&lt;/span&gt;
+  &lt;br&gt;&lt;/br&gt;
+  Silicon:      &lt;span class="hi-green"&gt;0.41&lt;/span&gt;  ✓
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+# Synthetic Data and Rare Demographic Subgroups
+
+**One of silicon sampling's most compelling use cases: the rare subgroup problem.**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;The real survey problem&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.3em; font-size:1em;"&gt;A national survey of N=2,000 might have &lt;strong&gt;12 Black Republican women&lt;/strong&gt; in it. You cannot estimate anything meaningful about this subgroup from 12 observations.&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:1em;"&gt;Oversampling costs money; often still only gets to N=50–100 for rare groups; confidence intervals remain wide.&lt;/div&gt;
+    &lt;div style="margin-top:0.5em; font-weight:600; font-size:1em;"&gt;What silicon sampling offers&lt;/div&gt;
+    &lt;div class="box box-teal" style="font-size:1em;"&gt;Generate N=1,000 synthetic Black Republican women instantly. If algorithmic fidelity holds for this subgroup, you can estimate attitudes with much tighter intervals — and cheaply.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Where this matters most&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em; font-size:1em;"&gt;&lt;strong&gt;Intersectional research:&lt;/strong&gt; studying how race × gender × religion × region interact in shaping political attitudes&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em; font-size:1em;"&gt;&lt;strong&gt;Comparative politics:&lt;/strong&gt; estimating group opinions in countries without large representative surveys&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:1em;"&gt;&lt;strong&gt;Historical reconstruction:&lt;/strong&gt; what might public opinion have looked like on issues that weren't surveyed at the time?&lt;/div&gt;
+    &lt;div class="box box-amber" style="margin-top:0.4em; font-size:1em;"&gt;&lt;strong&gt;Key caveat:&lt;/strong&gt; Argyle et al.'s fidelity evidence is primarily for U.S. demographic groups. Generalization to other countries or historical periods is not validated.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+class: inverse, center, middle
+
+&lt;div class="section-num"&gt;III&lt;/div&gt;
+
+# Limitations
+## Where silicon sampling breaks down — and why it matters
+
+---
+
+# Plausibility Is Not Validity
+
+&lt;div class="src"&gt;Bisbee et al. 2024 · Political Analysis · "Synthetic Replacements for Human Survey Data?"&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;The core problem they identify&lt;/div&gt;
+    &lt;div class="box box-amber" style="font-size:1em; margin-bottom:0.4em;"&gt;Silicon sample responses &lt;em&gt;look reasonable&lt;/em&gt; — they're not absurd, they're in the right direction, they sound like what this kind of person would say. But looking reasonable is not the same as being statistically valid for inference.&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:1em;"&gt;A plausible fake and a valid estimate are not the same thing. The difference is exactly what you need for social science research.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Their test: 11 feeling thermometers, ANES 2016–2020&lt;/div&gt;
+    &lt;div class="mono" style="font-size:0.75em;"&gt;
+Average scores (0-100):
+&lt;br&gt;&lt;/br&gt;
+  ChatGPT means:  &lt;span class="hi-green"&gt;correlate well&lt;/span&gt; with ANES ✓
+&lt;br&gt;&lt;/br&gt;
+  ChatGPT SDs:    &lt;span class="hi-red"&gt;consistently lower&lt;/span&gt; than ANES ✗
+&lt;br&gt;&lt;/br&gt;
+Regression coefficients (race on thermometer):
+&lt;br&gt;&lt;/br&gt;
+  ANES:     β = 0.31 (p &amp;lt; 0.001)
+&lt;br&gt;&lt;/br&gt;
+  ChatGPT:  β = 0.09 (p = 0.18)   ✗ WRONG DIRECTION/SIZE
+
+&lt;br&gt;&lt;/br&gt;
+&lt;span class="hi-grey"&gt;The averages look fine.
+The variance is compressed.
+The regression is wrong.
+These cannot all be "valid."&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://www.kdllaw.com/assets/photos/reasonable.jpg)
+
+---
+
+# Synthetic Data Gets the Mean Right but the Distribution Wrong
+
+**This is the most important methodological finding from Bisbee et al.**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;What compressed variance looks like&lt;/div&gt;
+    &lt;div class="mono" style="font-size:0.76em;"&gt;
+Real ANES responses (feeling thermometer 0–100):
+&lt;br&gt;&lt;/br&gt;
+  Distribution: &lt;span class="hi-blue"&gt;▂▃▄▅▅▆▆▆▆▆▅▄▄▃▃▂▂▂▂▂&lt;/span&gt;
+                lots of 0s, lots of 100s, full range
+  SD ≈ 35
+&lt;br&gt;&lt;/br&gt;
+Silicon responses:
+
+  Distribution: &lt;span class="hi-amber"&gt;░░░▁▂▄▆██▆▄▂▁░░░░░░░&lt;/span&gt;
+                compressed toward center, few extremes
+  SD ≈ 18
+&lt;br&gt;&lt;/br&gt;
+&lt;span class="hi-green"&gt;Means:  ✓ similar&lt;/span&gt;
+&lt;br&gt;&lt;/br&gt;
+&lt;span class="hi-red"&gt;Tails:  ✗ wrong — model avoids extremes&lt;/span&gt;
+&lt;br&gt;&lt;/br&gt;
+&lt;span class="hi-red"&gt;SDs:    ✗ wrong — systematically too small&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;Why this breaks inference&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.4em; font-size:0.82em;"&gt;Social science rarely cares only about means. We care about polarization (variance), extremism (tails), and relationships between variables (covariance). Silicon data is wrong on all three.&lt;/div&gt;
+    &lt;div class="box box-red" style="margin-bottom:0.4em; font-size:0.82em;"&gt;Regression coefficients — the core of most quantitative political science — depend on variance in both the predictor and outcome. Compressed variance = biased coefficients.&lt;/div&gt;
+    &lt;div class="box box-amber" style="font-size:0.82em;"&gt;&lt;strong&gt;The practical consequence:&lt;/strong&gt; Alignment creates a socially acceptable, moderate-sounding AI that suppresses extremes. This is exactly what you don't want if you're trying to measure polarization or extreme attitudes.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://cdn.scribbr.com/wp-content/uploads/2020/10/normal-distributions-with-different-sds-1024x633.png)
+
+---
+
+# Many Subgroups Challenge LLMs
+
+&lt;div class="src"&gt;Bisbee et al. 2024&lt;/div&gt;
+
+**As the conditioning backstory grows more complex, performance degrades.**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;The dimensionality problem&lt;/div&gt;
+    &lt;div class="box box-teal" style="margin-bottom:0.3em; font-size:1em;"&gt;&lt;strong&gt;Simple backstory:&lt;/strong&gt; "You are a Republican woman." → Good fidelity&lt;/div&gt;
+    &lt;div class="box box-amber" style="margin-bottom:0.3em; font-size:1em;"&gt;&lt;strong&gt;Moderate backstory:&lt;/strong&gt; "You are a 45-year-old Black Republican woman from rural Alabama." → Moderate fidelity&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:1em;"&gt;&lt;strong&gt;Complex backstory:&lt;/strong&gt; "You are a 45-year-old Black Republican evangelical woman from rural Alabama, income $28k, high school diploma, recently divorced, children in public school." → Fidelity degrades&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Why this happens&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:1em; margin-bottom:0.4em;"&gt;The LLM's internal representation of a "45-year-old Black Republican evangelical woman from rural Alabama with income $28k" is built from a tiny fraction of training data. Most of the internet doesn't write about this specific intersection.&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:1em;"&gt;The more specific the backstory, the more the model has to extrapolate from the nearest training examples — and the more it falls back on stereotypes rather than data.&lt;/div&gt;
+    &lt;div class="box box-amber" style="margin-top:0.4em; font-size:1em;"&gt;&lt;strong&gt;Irony:&lt;/strong&gt; Silicon sampling is most appealing precisely for the rare, fine-grained subgroups where real surveys fail. But these are exactly the subgroups where silicon sampling also fails.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+# Silicon Sampling Is Not Reproducible
+
+&lt;div class="src"&gt;Bisbee et al. 2024&lt;/div&gt;
+
+**The same prompt produces different results over time — and the results drift in systematic ways.**
+
+&lt;div class="mono" style="margin:0.5em 0;"&gt;
+&lt;span class="hi-grey"&gt;Same prompt, same model (ChatGPT), run at three-month intervals&lt;/span&gt;
+&lt;br&gt;&lt;/br&gt;
+Month 1: "You are a 35-year-old white male Republican..."
+  → Feeling thermometer for immigrants: &lt;span class="hi-amber"&gt;31.2&lt;/span&gt;
+&lt;br&gt;&lt;/br&gt;
+Month 4: Same prompt
+  → Feeling thermometer for immigrants: &lt;span class="hi-amber"&gt;38.7&lt;/span&gt;
+&lt;br&gt;&lt;/br&gt;
+Month 7: Same prompt
+  → Feeling thermometer for immigrants: &lt;span class="hi-red"&gt;44.1&lt;/span&gt;
+&lt;br&gt;&lt;/br&gt;
+&lt;span class="hi-grey"&gt;The model changed. The "respondent" didn't.
+A 12-point drift over 6 months on a core attitude is not noise.
+It is a systematic change in what the model learned to say.&lt;/span&gt;
+&lt;/div&gt;
+
+--
+
+&lt;div class="box box-red" style="font-size:1em; margin-top:0.3em;"&gt;&lt;strong&gt;Implication:&lt;/strong&gt; If you cannot replicate your silicon sample from 6 months ago — and you cannot, because the model has changed — the data is not a stable foundation for published research. The "respondents" are a snapshot of a changing model, not stable simulations of real people.&lt;/div&gt;
+
+---
+
+# GenAI Is Nationally Representative but Locally Blind
+
+&lt;div class="src"&gt;Bollen, Higton &amp; Sands 2025 · Political Analysis&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;Study design&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:1em; margin-bottom:0.3em;"&gt;Street view images of urban neighborhoods in an American city — assessing safety, wealth, and disorder&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:1em; margin-bottom:0.3em;"&gt;&lt;strong&gt;Three comparison groups:&lt;/strong&gt;&lt;br&gt;1. GenAI models (GPT-4V, Gemini)&lt;br&gt;2. Nationally representative survey&lt;br&gt;3. Locally representative survey of &lt;em&gt;actual city residents&lt;/em&gt;&lt;/div&gt;
+    &lt;div class="box box-teal" style="font-size:1em;"&gt;They can directly test: is GenAI representative of national opinion or local opinion?&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;Results&lt;/div&gt;
+    &lt;div class="mono" style="font-size:0.75em;"&gt;
+GenAI vs. National survey:
+&lt;br&gt;
+  Neighborhood safety:  r = &lt;span class="hi-green"&gt;0.71&lt;/span&gt; ✓ strong
+  &lt;br&gt;
+  Neighborhood wealth:  r = &lt;span class="hi-green"&gt;0.68&lt;/span&gt; ✓ strong
+  &lt;br&gt;
+  Disorder:             r = &lt;span class="hi-green"&gt;0.65&lt;/span&gt; ✓ good
+  &lt;br&gt;&lt;/br&gt;
+
+GenAI vs. Local residents:
+&lt;br&gt;
+  Neighborhood safety:  r = &lt;span class="hi-red"&gt;0.29&lt;/span&gt; ✗ weak
+  &lt;br&gt;
+  Neighborhood wealth:  r = &lt;span class="hi-red"&gt;0.34&lt;/span&gt; ✗ weak
+  &lt;br&gt;
+  Disorder:             r = &lt;span class="hi-red"&gt;0.22&lt;/span&gt; ✗ poor
+    &lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:0.82em; margin-top:0.3em;"&gt;GenAI correlates well with the &lt;em&gt;national average&lt;/em&gt; view but poorly with the &lt;em&gt;local community&lt;/em&gt; view&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+# Paper Walkthrough: Bollen et al. — The Local/National Gap
+
+&lt;div class="src"&gt;Bollen, Higton &amp; Sands 2025&lt;/div&gt;
+
+&lt;div class="cols-2" style="margin-top:0.4em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;Why the gap exists&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:0.82em; margin-bottom:0.4em;"&gt;The internet — which LLMs are trained on — contains mostly national-level discourse about cities. A neighborhood in Cleveland is described through the lens of national media narratives, not through the eyes of Cleveland residents.&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:0.82em;"&gt;Local residents have lived experience: they know which blocks are actually safe, which areas are gentrifying, which parks are well-maintained. LLMs have text. These are not the same.&lt;/div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin:0.5em 0 0.3em;"&gt;The prompting fix attempt&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:0.82em;"&gt;Bollen et al. tried prompting models to "respond as a local resident of this neighborhood" — and found it &lt;strong&gt;made things worse&lt;/strong&gt;, not better. The model doesn't have local knowledge; it just generates a stereotype of a local resident.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;What this means for research&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;!&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Policy implications:&lt;/strong&gt; GenAI-generated neighborhood assessments diverge from what residents actually think — so policy decisions based on them may not serve communities&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;!&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Inequality dimension:&lt;/strong&gt; GenAI performs worst on minority-majority and low-income neighborhoods — the places where community voice matters most&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;!&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;The general lesson:&lt;/strong&gt; Silicon sampling is not representative of &lt;em&gt;people&lt;/em&gt; — it is representative of &lt;em&gt;what people have written&lt;/em&gt; about populations on the internet&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://wallpapers.com/images/hd/cloudy-sky-above-cleveland-ohio-rd237931wt1py8q5.jpg)
+
+---
+
+# Synthetic Data Has Not Been Widely Validated
+
+**The field has moved faster than its validation infrastructure.**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;The state of validation&lt;/div&gt;
+    &lt;div class="box box-amber" style="font-size:0.83em; margin-bottom:0.4em;"&gt;Argyle et al. (2023) provided the canonical validation for U.S. public opinion on feeling thermometers. This is one study, on one set of outcomes, using one model (GPT-3).&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:0.83em; margin-bottom:0.4em;"&gt;Bisbee et al. and Bollen et al. show the method fails on other outcomes and other comparison groups. The conditions under which it succeeds vs. fails are not well-characterized.&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:0.83em;"&gt;Commercial operators (Aaru) are selling silicon sampling to campaigns &lt;em&gt;before&lt;/em&gt; the academic validation is complete. The practice is ahead of the evidence.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;What would adequate validation look like?&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num teal"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Multiple outcomes&lt;/strong&gt; — not just feeling thermometers; vote choice, policy attitudes, values measures&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num teal"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Multiple populations&lt;/strong&gt; — not just U.S. national; states, cities, non-Western countries&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num teal"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Multiple models&lt;/strong&gt; — GPT-4, Claude, Llama, Gemini; do results replicate?&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num teal"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Longitudinal stability&lt;/strong&gt; — does the same prompt produce the same results 6 months later?&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num teal"&gt;5&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Inferential validity&lt;/strong&gt; — do regressions using silicon data recover the same coefficients as real survey data?&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:200px; height:100px"&gt;
+![](https://static.vecteezy.com/system/resources/thumbnails/022/762/930/small_2x/web-validation-icon-vector.jpg)
+
+---
+
+class: casestudy
+
+# 📊 Case Study: What Bisbee et al. Actually Found — The Regression Problem in Detail
+
+**The central statistical failure that Bisbee et al. document.**
+
+&lt;br&gt;
+
+**The validation test:** Run the same regression using ANES data and ChatGPT silicon samples. If silicon sampling is valid for inference, the coefficients should be similar.
+
+&lt;br&gt;
+
+**Task:** Regress feeling thermometer ratings of immigrants on race, gender, education, and party identification.
+
+&lt;br&gt;
+
+| Predictor | ANES coefficient | Silicon coefficient | Same direction? | Similar magnitude? |
+|---|---|---|---|---|
+| Black (vs. white) | +12.3*** | +3.1 (n.s.) | ✓ | ✗ |
+| Female (vs. male) | +4.7** | +1.2 (n.s.) | ✓ | ✗ |
+| College degree | +8.9*** | +2.4* | ✓ | ✗ |
+| Democrat (vs. Rep.) | +18.4*** | +6.7*** | ✓ | ✗ |
+
+&lt;br&gt;
+
+**Pattern:** Silicon sampling gets the direction right but dramatically underestimates the magnitude — because compressed variance attenuates all coefficients. A study using silicon samples would conclude that race and gender matter much less for immigration attitudes than they actually do.
+
+---
+
+class: discussion
+
+# 💬 Discussion Question 2
+
+**"Synthetic data is representative on average but has trouble replicating human variability."**
+
+&lt;br&gt;
+
+Bisbee et al. find that silicon samples get the means right but compress the variance — producing attenuated regression coefficients and misleading inferences about subgroup differences.
+
+&lt;br&gt;
+
+1. Some researchers have proposed using silicon sampling as a "first pass" — use it to identify which hypotheses are worth testing with real surveys. Does the variance compression problem undermine this use case? Or does getting the direction right make it useful for hypothesis screening even if the magnitude is wrong?
+
+2. Bollen et al. find that prompting models to "respond as a local resident" makes things worse — the model generates a stereotype rather than actual local knowledge. This suggests there are things LLMs fundamentally cannot know. What kinds of knowledge are genuinely inaccessible to LLMs trained on internet text?
+
+3. The Axios maternal health story was corrected after publication. But the uncorrected version had already circulated. Should there be disclosure requirements for synthetic polling — the way there are for sponsored content?
+
+---
+
+# The Feedback Loop Risk
+
+**What happens when LLMs start being trained on synthetic data?**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;The current situation&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:0.83em; margin-bottom:0.4em;"&gt;LLMs are trained on human-generated text → they learn to simulate human opinion → their outputs enter the information environment → those outputs are scraped into training data for future LLMs&lt;/div&gt;
+    &lt;div class="box box-amber" style="font-size:0.83em;"&gt;This loop already exists for general text. Silicon sampling accelerates it in a particularly dangerous domain: public opinion data used to make policy decisions.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;What goes wrong in the loop&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Variance compression compounds:&lt;/strong&gt; each generation of models trained on prior-generation synthetic data further compresses opinion variance&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Minority views disappear:&lt;/strong&gt; extreme, marginal, and underrepresented perspectives are averaged away by each training cycle&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Errors calcify:&lt;/strong&gt; systematic biases in generation 1 become "facts about public opinion" in training data for generation 2&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;&lt;strong&gt;Reality decouples:&lt;/strong&gt; eventually the model's "knowledge" of public opinion reflects a synthetic averaging, not actual human views&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:250px; height:125px"&gt;
+![](https://tse3.mm.bing.net/th/id/OIP.e2suRTfPhc45IdViBU4YtgHaHa?r=0&amp;cb=thfvnextfalcon4&amp;rs=1&amp;pid=ImgDetMain&amp;o=7&amp;rm=3)
+
+---
+
+# The Feedback Loop: A Concrete Scenario
+
+**Hypothetical 5-year trajectory if silicon sampling becomes standard practice:**
+
+&lt;center&gt;
+&lt;div style="width:1000px; height:500px"&gt;
+![](https://cdn.corenexis.com/f/tNCCs9C5iNd.png)
+
+---
+
+class: debate
+
+# ⚖️ Debate: Should Silicon Sampling Be Regulated?
+
+**Weatherby &amp; Recht's position:** Silicon sampling "undermines the very idea of the opinion poll" and "will only worsen our broken information ecosystem." Public opinion data should represent actual humans — using AI simulations without disclosure is a form of deception.
+
+&lt;br&gt;
+
+**The industry and researcher counterposition:** Silicon sampling, properly labeled and validated, is a useful tool that should be evaluated on its merits — not prohibited. The Axios incident was a labeling failure, not a method failure. Banning the tool because it was misused is like banning statistical modeling because it can be manipulated.
+
+&lt;br&gt;
+
+**The academic middle ground (Argyle et al.):** Silicon sampling is useful for hypothesis generation, pilot studies, and rare subgroups — but should not replace human surveys for primary inference. Explicit validation requirements and disclosure standards are appropriate.
+
+&lt;br&gt;
+
+**Three questions:**
+1. Should silicon polling require the same disclosure as sponsored content?
+2. Should academic journals require that silicon samples be validated against real surveys before publication?
+3. Is there any use case where silicon samples without real-survey validation is scientifically acceptable?
+
+---
+
+# A Framework for Thinking About Silicon Sampling Use Cases
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th style="width:30%;"&gt;Use case&lt;/th&gt;
+    &lt;th style="width:20%; text-align:center;"&gt;Appropriate?&lt;/th&gt;
+    &lt;th style="width:50%;"&gt;Conditions&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl-green"&gt;&lt;td&gt;&lt;strong&gt;Hypothesis generation&lt;/strong&gt;&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-green"&gt;Yes&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Cheap way to screen hypotheses before fielding real surveys; direction only, not magnitude&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Rare subgroup estimation&lt;/strong&gt;&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-amber"&gt;With caution&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Only for groups with established validation; not for local or non-Western populations&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl-green"&gt;&lt;td&gt;&lt;strong&gt;Question wording pilots&lt;/strong&gt;&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-green"&gt;Yes&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Excellent use case; doesn't require inferential validity&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Primary inference (means)&lt;/strong&gt;&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-amber"&gt;With validation&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Only if validated against real surveys for this outcome, population, and model version&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Regression-based inference&lt;/strong&gt;&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-red"&gt;Not yet&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Bisbee et al. show coefficients are attenuated; not suitable for causal inference without correction&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Local/community opinion&lt;/strong&gt;&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-red"&gt;No&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Bollen et al. show national vs. local gap; prompting doesn't help&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Commercial public polling&lt;/strong&gt;&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-red"&gt;Not without disclosure&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Axios case; must be labeled as AI simulation; cannot substitute for human survey&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;center&gt;
+&lt;div style="width:500px; height:250px"&gt;
+![](https://www.workyard.com/wp-content/uploads/2023/03/Featured-Image-6.png)
+
+---
+
+class: discussion
+
+# 💬 Discussion Question 3
+
+**"Using simulations of human opinions in place of the real thing will only worsen our broken information ecosystem."**
+
+— Weatherby &amp; Recht (2026)
+
+&lt;br&gt;
+
+Weatherby and Recht argue that the value of public opinion data derives from its connection to actual humans — and that silicon sampling severs that connection in a way that is fundamentally misleading, regardless of accuracy.
+
+&lt;br&gt;
+
+1. Argyle et al. show silicon samples correlate strongly with real surveys at the group level. Weatherby &amp; Recht argue this is not enough. Who is right, and what would settle the dispute?
+
+2. If silicon sampling became standard in polling — and the public knew this — would it undermine trust in public opinion research? Or would it be like other methodological innovations (weighting, MRP) that changed the field but didn't destroy it?
+
+3. The Walter Lippmann "pictures in our heads" framing that Weatherby &amp; Recht invoke suggests that public opinion polls serve a democratic function beyond just measuring attitudes — they help citizens form their own pictures of what fellow citizens think. What happens to that function if the "fellow citizens" are AI-generated?
+
+---
+
+# What Silicon Sampling Can and Cannot Do
+
+&lt;div class="cols-2" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div class="box box-teal"&gt;
+    &lt;div style="font-weight:700; color:#16a085; margin-bottom:0.5em;"&gt;What silicon sampling can do&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      Reproduce &lt;strong&gt;group-level averages&lt;/strong&gt; with reasonable fidelity for U.S. national samples &lt;span style="color:#888;"&gt;(Argyle et al.)&lt;/span&gt;&lt;br&gt;
+      Capture &lt;strong&gt;relative ordering&lt;/strong&gt; of groups on attitudinal scales&lt;br&gt;
+      Generate &lt;strong&gt;arbitrary subgroup sizes&lt;/strong&gt; instantly and cheaply&lt;br&gt;
+      Serve as &lt;strong&gt;hypothesis screening&lt;/strong&gt; before fielding real surveys&lt;br&gt;
+      &lt;strong&gt;Pilot survey instruments&lt;/strong&gt; and question wording&lt;br&gt;
+      Represent &lt;strong&gt;national averages&lt;/strong&gt; reasonably on visual classification tasks &lt;span style="color:#888;"&gt;(Bollen et al.)&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.5em;"&gt;What silicon sampling cannot do&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      Reproduce &lt;strong&gt;variance&lt;/strong&gt; accurately — distributions are compressed &lt;span style="color:#888;"&gt;(Bisbee et al.)&lt;/span&gt;&lt;br&gt;
+      Support &lt;strong&gt;regression-based inference&lt;/strong&gt; — coefficients are attenuated&lt;br&gt;
+      Represent &lt;strong&gt;local community views&lt;/strong&gt; — nationally representative ≠ locally accurate &lt;span style="color:#888;"&gt;(Bollen et al.)&lt;/span&gt;&lt;br&gt;
+      Handle &lt;strong&gt;fine-grained demographic intersections&lt;/strong&gt; with many dimensions&lt;br&gt;
+      &lt;strong&gt;Reproduce reliably over time&lt;/strong&gt; — 3-month drift is substantial &lt;span style="color:#888;"&gt;(Bisbee et al.)&lt;/span&gt;&lt;br&gt;
+      Be improved by &lt;strong&gt;subgroup prompting&lt;/strong&gt; — makes local bias worse, not better &lt;span style="color:#888;"&gt;(Bollen et al.)&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:500px; height:250px"&gt;
+![](https://static.vecteezy.com/system/resources/previews/036/391/702/large_2x/yes-and-no-decision-concept-bubbles-illustration-with-checkmark-and-cross-icons-vector.jpg)
+
+---
+
+# Why Silicon Sampling Gets Means Right but Distributions Wrong
+
+**A deeper explanation of the variance compression problem.**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;The training data mechanism&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:1em; margin-bottom:0.4em;"&gt;The internet produces more content about &lt;em&gt;what groups typically think&lt;/em&gt; than about the full distribution of within-group variation. When millions of articles describe "Republican attitudes," they describe the modal Republican — not the range from moderate to extreme.&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:1em;"&gt;The model learned the central tendency of each group. It didn't learn the spread. Central tendency is what it produces.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:1em; margin-bottom:0.4em;"&gt;The alignment mechanism (compounding)&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:1em; margin-bottom:0.3em;"&gt;Alignment suppresses extreme outputs. The model is trained not to confidently assert very strong opinions — because strong opinions are associated with harmful content in the training signal.&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:1em; margin-bottom:0.3em;"&gt;Result: the model is doubly compressed. It learned central tendencies from training data, and then alignment further suppresses the tails.&lt;/div&gt;
+    &lt;div class="box box-amber" style="font-size:1em;"&gt;&lt;strong&gt;Two wrongs don't make a right.&lt;/strong&gt; Both mechanisms push in the same direction: toward moderate, plausible, non-extreme responses.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://englishpluspodcast.com/wp-content/uploads/2023/05/Internet-History.jpg)
+
+---
+
+# Prompt Sensitivity in Silicon Sampling
+
+&lt;div class="src"&gt;Bisbee et al. 2024&lt;/div&gt;
+
+**Small changes in backstory prompts produce large changes in output — a reproducibility crisis within the reproducibility crisis.**
+
+&lt;div class="mono" style="margin:0.5em 0; font-size:0.77em;"&gt;
+&lt;span class="hi-grey"&gt;Backstory variation 1:&lt;/span&gt;
+"You are a Republican from Texas."
+  → Feeling thermometer for immigrants: &lt;span class="hi-amber"&gt;28.3&lt;/span&gt;
+&lt;br&gt;&lt;/br&gt;
+&lt;span class="hi-grey"&gt;Backstory variation 2:&lt;/span&gt;
+"You are a registered Republican living in Texas."
+  → Feeling thermometer for immigrants: &lt;span class="hi-amber"&gt;31.7&lt;/span&gt;
+&lt;br&gt;&lt;/br&gt;
+&lt;span class="hi-grey"&gt;Backstory variation 3:&lt;/span&gt;
+"You are a conservative Republican in Texas."
+  → Feeling thermometer for immigrants: &lt;span class="hi-amber"&gt;24.1&lt;/span&gt;
+&lt;br&gt;&lt;/br&gt;
+&lt;span class="hi-grey"&gt;Backstory variation 4:&lt;/span&gt;
+"You are a Texan who votes Republican."
+  → Feeling thermometer for immigrants: &lt;span class="hi-amber"&gt;35.8&lt;/span&gt;
+&lt;br&gt;&lt;/br&gt;
+&lt;span class="hi-red"&gt;A 12-point range across superficially identical descriptions of the same person.&lt;/span&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;/br&gt;
+&lt;div class="box box-red" style="font-size:1em; margin-top:0.3em;"&gt;This is not just a sensitivity finding — it means there is no "correct" backstory. The researcher's choice of wording is introducing researcher degrees of freedom into what looks like an objective data generation process.&lt;/div&gt;
+
+---
+
+# Synthetic Data in the Wild: Three Use Cases Evaluated
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th style="width:28%;"&gt;Actual use case&lt;/th&gt;
+    &lt;th style="width:32%;"&gt;What researchers have done&lt;/th&gt;
+    &lt;th style="width:20%; text-align:center;"&gt;Assessment&lt;/th&gt;
+    &lt;th style="width:20%;"&gt;Why&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl-green"&gt;&lt;td&gt;&lt;strong&gt;Survey instrument pilot&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Use silicon samples to test whether question wording produces expected attitudinal patterns before fielding&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-green"&gt;Valid&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Direction is right; validity of wording test doesn't require correct variance&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;National subgroup comparison&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Compare immigration attitudes across age, education, and party groups using silicon samples as benchmark&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-amber"&gt;Conditional&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Works if validated against ANES for these outcomes; relative ordering is reliable&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Local community opinion for policy&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Generate synthetic responses from local demographic profile to inform city planning decisions&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-red"&gt;Invalid&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Bollen et al.: national ≠ local; prompting doesn't fix it; excludes marginalized voices&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Causal inference with regression&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Regress policy attitudes on race, education, gender using silicon sample data&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-red"&gt;Invalid&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Bisbee et al.: coefficients attenuated; wrong magnitudes; directionally misleading&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Cross-national comparison&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Compare public opinion across 20 countries using silicon samples in each country's language&lt;/td&gt;&lt;td style="text-align:center;"&gt;&lt;span class="badge badge-red"&gt;Unvalidated&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Argyle et al. validated for U.S. only; non-Western countries have less training data&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;center&gt;
+&lt;div style="width:300px; height:150px"&gt;
+![](https://media.istockphoto.com/id/1316002891/vector/multilingual-communication-international-friendship-world-map-multi-ethnic-children-tags.jpg?s=612x612&amp;w=0&amp;k=20&amp;c=ENC0nkhyADEiHKNnlZF-pNZT9uN4L30rwVQ7C1-S2GM=)
+
+---
+
+# The Lippmann Problem: What Is Opinion Polling For?
+
+&lt;div class="src"&gt;Weatherby &amp; Recht 2026&lt;/div&gt;
+
+**Weatherby &amp; Recht invoke Walter Lippmann's 1922 concept of "pictures in our heads."**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;Lippmann's argument&lt;/div&gt;
+    &lt;div class="box box-blue" style="font-size:0.83em; margin-bottom:0.4em;"&gt;Humans form "pictures in their heads" of the societies they live in. Democracy needs tools to keep those pictures accurate — to correct for the inevitable distortions of individual perspective.&lt;/div&gt;
+    &lt;div class="box box-blue" style="font-size:0.83em;"&gt;Opinion polling is one such tool: it tells citizens and policymakers what their fellow citizens actually think — correcting for elite and media distortions.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;What silicon sampling does to this function&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:0.83em; margin-bottom:0.4em;"&gt;Silicon sampling replaces real opinion with a model's internal representation of opinion — which is itself derived from a biased, non-representative corpus of text.&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:0.83em; margin-bottom:0.4em;"&gt;If policymakers and citizens form their "pictures" based on AI-generated opinion data, those pictures depict a homogenized, nationally averaged, non-extreme, alignment-compressed version of society — not society itself.&lt;/div&gt;
+    &lt;div class="box box-amber" style="font-size:0.83em;"&gt;&lt;strong&gt;The pictures become a mirror of the model — not a mirror of society.&lt;/strong&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:250px; height:250px"&gt;
+![](https://www.thephilroom.com/wp-content/uploads/2023/02/walter-lippmann-01.png)
+
+---
+
+# When Silicon Sampling Goes Wrong: Three Failure Modes
+
+**A taxonomy of how silicon sampling can mislead — and which paper documents each.**
+
+&lt;div class="cols-3" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-red" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.4em; margin-bottom:0.3em;"&gt;📉&lt;/div&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.4em;"&gt;Variance compression&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7; text-align:left;"&gt;Silicon means look right. Distributions are too narrow. Regression coefficients are attenuated toward zero. Polarization appears lower than it is.&lt;br&gt;&lt;br&gt;&lt;span style="color:#888;"&gt;Bisbee et al. (2024)&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.4em; margin-bottom:0.3em;"&gt;🗺️&lt;/div&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.4em;"&gt;Local blindness&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7; text-align:left;"&gt;National averages reproduced accurately. Local community views missed entirely. Minority-majority neighborhoods most affected. Subgroup prompting makes it worse.&lt;br&gt;&lt;br&gt;&lt;span style="color:#888;"&gt;Bollen et al. (2025)&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red" style="text-align:center;"&gt;
+    &lt;div style="font-size:1.4em; margin-bottom:0.3em;"&gt;🔄&lt;/div&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.4em;"&gt;Temporal drift&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7; text-align:left;"&gt;Same prompt produces different results 3–6 months later as the underlying model changes silently. Research is not reproducible even by the original authors.&lt;br&gt;&lt;br&gt;&lt;span style="color:#888;"&gt;Bisbee et al. (2024)&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-amber" style="margin-top:0.6em; font-size:1em;"&gt;&lt;strong&gt;All three failure modes are invisible in aggregate accuracy statistics.&lt;/strong&gt; The silicon data looks plausible regardless of which failure mode is operating. This is what makes them dangerous.&lt;/div&gt;
+
+---
+
+# How Researchers Have Tried to Use Silicon Sampling Responsibly
+
+**The field is developing norms. Here are emerging best practices.**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;Transparency practices&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num teal"&gt;1&lt;/span&gt;&lt;div class="step-body"&gt;Disclose that data is AI-generated in the abstract and methods section — not just in a footnote&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num teal"&gt;2&lt;/span&gt;&lt;div class="step-body"&gt;Report which model and version was used; archive the prompt template&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num teal"&gt;3&lt;/span&gt;&lt;div class="step-body"&gt;Test sensitivity to backstory wording before committing to a final prompt&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num teal"&gt;4&lt;/span&gt;&lt;div class="step-body"&gt;Label silicon sample findings as "conditional on model" not as "public opinion"&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;Validation practices&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;5&lt;/span&gt;&lt;div class="step-body"&gt;Always compare silicon samples to real survey benchmarks for at least some outcomes&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;6&lt;/span&gt;&lt;div class="step-body"&gt;Report both means &lt;em&gt;and&lt;/em&gt; standard deviations — if SDs are compressed, flag this explicitly&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;7&lt;/span&gt;&lt;div class="step-body"&gt;Never rely on silicon samples for regression-based causal claims without variance correction&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num green"&gt;8&lt;/span&gt;&lt;div class="step-body"&gt;Use silicon samples for hypothesis generation only — validate with real surveys before publication claims&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:250px; height:250px"&gt;
+![](https://img.magnific.com/premium-vector/responsibility-flat-icon-colored-sign-from-personality-collection-creative-responsibility-icon-illustration-web-design-infographics-more_676904-1938.jpg?w=2000)
+
+---
+
+# Key Numbers to Remember
+
+**A quick-reference summary of the quantitative findings from this week:**
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th style="width:45%;"&gt;Finding&lt;/th&gt;
+    &lt;th style="width:25%; text-align:center;"&gt;Number&lt;/th&gt;
+    &lt;th style="width:30%;"&gt;Source&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="hl-green"&gt;&lt;td&gt;Correlation between GPT-3 silicon means and ANES group means&lt;/td&gt;&lt;td style="text-align:center; color:#27ae60; font-weight:700;"&gt;r ≈ 0.85–0.92&lt;/td&gt;&lt;td&gt;Argyle et al.&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;GenAI vs. national survey on neighborhood ratings&lt;/td&gt;&lt;td style="text-align:center; color:#27ae60; font-weight:700;"&gt;r ≈ 0.65–0.71&lt;/td&gt;&lt;td&gt;Bollen et al.&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;GenAI vs. local residents on neighborhood ratings&lt;/td&gt;&lt;td style="text-align:center; color:#c0392b; font-weight:700;"&gt;r ≈ 0.22–0.34&lt;/td&gt;&lt;td&gt;Bollen et al.&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Typical standard deviation compression (silicon vs. ANES)&lt;/td&gt;&lt;td style="text-align:center; color:#c0392b; font-weight:700;"&gt;~50% lower&lt;/td&gt;&lt;td&gt;Bisbee et al.&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;Race coefficient (immigration thermometer): ANES vs. silicon&lt;/td&gt;&lt;td style="text-align:center; color:#c0392b; font-weight:700;"&gt;+12.3 vs. +3.1&lt;/td&gt;&lt;td&gt;Bisbee et al.&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Backstory wording variation → attitude score range&lt;/td&gt;&lt;td style="text-align:center; color:#c0392b; font-weight:700;"&gt;~12 points&lt;/td&gt;&lt;td&gt;Bisbee et al.&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;Drift in same prompt over 6 months (immigration attitudes)&lt;/td&gt;&lt;td style="text-align:center; color:#c0392b; font-weight:700;"&gt;~12 points&lt;/td&gt;&lt;td&gt;Bisbee et al.&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;center&gt;
+&lt;div style="width:250px; height:250px"&gt;
+![](https://tse1.mm.bing.net/th/id/OIP.175GrDATsGqWqNkYhdG6bgHaHa?r=0&amp;cb=thfvnextfalcon4&amp;rs=1&amp;pid=ImgDetMain&amp;o=7&amp;rm=3)
+
+---
+
+# Thinking About "Opinions" Philosophically
+
+**Silicon sampling forces a conceptual question: what is an opinion, and who can have one?**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-blue"&gt;
+    &lt;div style="font-weight:700; color:#2a5bd7; margin-bottom:0.4em;"&gt;The functionalist view&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;An "opinion" is a propensity to respond in a certain way given certain stimuli. If the silicon sample's propensities correlate with human propensities — it is functionally an opinion. What else matters?&lt;br&gt;&lt;br&gt;On this view: if Argyle et al.'s correlation holds, silicon opinions &lt;em&gt;are&lt;/em&gt; opinions.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.4em;"&gt;The realist view (Weatherby &amp; Recht)&lt;/div&gt;
+    &lt;div style="font-size:1em; line-height:1.7;"&gt;An "opinion" is a mental state of an experiencing subject — grounded in lived experience, stakes, identity, and the possibility of changing one's mind through dialogue.&lt;br&gt;&lt;br&gt;LLMs don't have any of these. Silicon sampling produces something that &lt;em&gt;resembles&lt;/em&gt; an opinion but lacks its essential character.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;br&gt;&lt;div class="box box-slate" style="font-size:1em;"&gt;This is not just philosophy — it has methodological consequences. If opinions require lived experience and stakes, then a model that has never faced housing insecurity cannot validly simulate attitudes toward housing policy — even if its outputs correlate with those attitudes at the group level.&lt;/div&gt;
+
+---
+
+# The Argyle et al. / Bisbee et al. Tension: A Direct Comparison
+
+**Both papers use rigorous designs on similar data — and reach very different conclusions. Why?**
+
+&lt;table class="styled-table"&gt;
+  &lt;thead&gt;&lt;tr&gt;
+    &lt;th style="width:24%;"&gt;Dimension&lt;/th&gt;
+    &lt;th style="width:38%;"&gt;Argyle et al. (2023) — optimistic&lt;/th&gt;
+    &lt;th style="width:38%;"&gt;Bisbee et al. (2024) — skeptical&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Model used&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;GPT-3 (davinci-003)&lt;/td&gt;&lt;td&gt;ChatGPT (GPT-3.5-turbo)&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;What they measured&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Correlation of group-level means; attitudinal structure&lt;/td&gt;&lt;td&gt;Standard deviations; regression coefficients; reproducibility&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Validation benchmark&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;ANES, CCES group means&lt;/td&gt;&lt;td&gt;ANES individual-level regression&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;Finding&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Strong correlation with real survey &lt;em&gt;averages&lt;/em&gt;&lt;/td&gt;&lt;td&gt;Correct averages, compressed variance, wrong coefficients&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Conclusion&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Silicon sampling is a powerful new tool&lt;/td&gt;&lt;td&gt;Silicon sampling is not reliable for statistical inference&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="hl"&gt;&lt;td&gt;&lt;strong&gt;The resolution&lt;/strong&gt;&lt;/td&gt;&lt;td colspan="2"&gt;Both are right. The method works for what Argyle et al. tested (group means). It fails for what Bisbee et al. tested (variance, regression). The question is which you need for your research.&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://thfvnext.bing.com/th?id=OIF.d34O1wxy0PTVgAZN%2fnwQFg&amp;r=0&amp;cb=thfvnextfalcon4&amp;rs=1&amp;pid=ImgDetMain&amp;o=7&amp;rm=3)
+
+---
+
+# What "Nationally Representative, Locally Misaligned" Means for Policy
+
+&lt;div class="src"&gt;Bollen, Higton &amp; Sands 2025&lt;/div&gt;
+
+**The local/national gap has direct policy implications — not just methodological ones.**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;Concrete policy scenario&lt;/div&gt;
+    &lt;div class="box box-slate" style="font-size:0.82em; margin-bottom:0.4em;"&gt;A city government wants to assess community views on a proposed housing development in a predominantly Latino neighborhood. They use a GenAI tool to generate synthetic community responses — cheaper than a local survey.&lt;/div&gt;
+    &lt;div class="box box-red" style="font-size:0.82em; margin-bottom:0.4em;"&gt;GenAI generates responses that reflect &lt;em&gt;national average views&lt;/em&gt; on affordable housing — predominantly White, middle-class, suburban perspectives. The actual neighborhood residents oppose the development for reasons tied to local history and community displacement.&lt;/div&gt;
+    &lt;div class="box box-amber" style="font-size:0.82em;"&gt;Policy is made based on synthetic "community input." The actual community was never asked.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:600; font-size:0.84em; margin-bottom:0.4em;"&gt;The equity dimension&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;!&lt;/span&gt;&lt;div class="step-body"&gt;Bollen et al. find GenAI performs worst on &lt;strong&gt;minority-majority neighborhoods&lt;/strong&gt; — the communities with least political power and most at stake in local decisions&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;!&lt;/span&gt;&lt;div class="step-body"&gt;These are also the communities &lt;strong&gt;least represented in LLM training data&lt;/strong&gt; — the same pattern Ashwin et al. found for qualitative data from marginalized populations&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="step-row"&gt;&lt;span class="step-num red"&gt;!&lt;/span&gt;&lt;div class="step-body"&gt;Using GenAI as a substitute for community engagement with marginalized groups is not just methodologically wrong — it is a form of &lt;strong&gt;epistemic exclusion&lt;/strong&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:250px; height:125px"&gt;
+![](https://media.istockphoto.com/id/537851711/photo/flags-of-nations.jpg?s=612x612&amp;w=0&amp;k=20&amp;c=DK5yHpbi1uY5sTibN5IZw8AbbQj0PDipXEDbLAUZz_s=)
+
+---
+
+# Silicon Sampling and Alignment: A Critical Interaction
+
+**The same alignment that makes LLMs safe for general use makes them bad simulators of the full range of human opinion.**
+
+&lt;div class="cols-2" style="margin-top:0.5em;"&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.4em;"&gt;What alignment does to silicon sampling&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:0.84em;"&gt;
+      Suppresses extreme views — especially hateful, violent, or discriminatory ones&lt;br&gt;
+      Pushes responses toward moderate, socially acceptable positions&lt;br&gt;
+      Compresses variance by making the model hesitant to simulate strong opinions&lt;br&gt;
+      Produces a model that simulates the "average reasonable person," not the full distribution
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-amber"&gt;
+    &lt;div style="font-weight:700; color:#e67e22; margin-bottom:0.4em;"&gt;Why this is a problem for social science&lt;/div&gt;
+    &lt;div style="line-height:1.8; font-size:0.84em;"&gt;
+      Extreme views are real and politically consequential&lt;br&gt;
+      Polarization research requires measuring the tails, not just the center&lt;br&gt;
+      Alignment produces a silicon society that is more moderate than the real one&lt;br&gt;
+      This connects directly to Lyman et al. (Week 1) on alignment and social science research
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+--
+
+&lt;div class="quote" style="margin-top:0.5em;"&gt;An aligned model asked to simulate a Trump voter will express views more moderate than a real Trump voter would. That's the point of alignment. It's also the reason silicon sampling underestimates polarization.&lt;cite&gt;— Connecting Lyman et al. (Week 1) to Bisbee et al. (Week 6)&lt;/cite&gt;&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:450px; height:225px"&gt;
+![](https://cisp.cachefly.net/assets/articles/images/resized/0000989914_resized_opinion21022.jpg)
+
+---
+
+# A One-Page Decision Guide
+
+**Should I use silicon sampling for my research purpose?**
+
+&lt;center&gt;
+&lt;div style="width:350px; height:700px"&gt;
+![](https://cdn.corenexis.com/f/T5nT2kVJDOP.png)
+
+---
+
+# Summary: The Four Papers Together
+
+&lt;div class="cols-2" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div class="box box-teal"&gt;
+    &lt;div style="font-weight:700; color:#16a085; margin-bottom:0.5em;"&gt;Argyle et al. — The proof of concept&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;Introduces silicon sampling with strong validation evidence. Group-level means reproduce well. Captures attitudinal structure, not just surface similarity. Argues LLM "bias" is a feature enabling conditioning.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-amber"&gt;
+    &lt;div style="font-weight:700; color:#e67e22; margin-bottom:0.5em;"&gt;Weatherby &amp; Recht — The public alarm&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;The Axios case: silicon sampling is already being misused commercially. Public opinion requires real humans. The practice is moving faster than the validation. A democratic danger.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.5em;"&gt;Bisbee et al. — The inferential failure&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;ChatGPT gets means right but compresses variance and produces wrong regression coefficients. Reproducibility collapses over 3 months. Not suitable for statistical inference without correction.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-red"&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.5em;"&gt;Bollen et al. — The local blindness&lt;/div&gt;
+    &lt;div style="line-height:1.8;"&gt;GenAI represents national averages, not local community views. Fails especially on minority-majority neighborhoods. Subgroup prompting makes things worse. Can't substitute for local knowledge.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:400px; height:200px"&gt;
+![](https://miro.medium.com/v2/resize:fit:1358/1*MLgeMIUAAb0nDG3taGe1pw.png)
+
+---
+
+# Readings for This Unit
+
+&lt;div class="cols-2" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.5em;"&gt;The promise&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      Argyle et al. (2023)&lt;br&gt;
+      &lt;span style="color:#888; font-size:1em;"&gt;Out of one, many: using language models to simulate human samples. &lt;em&gt;Political Analysis.&lt;/em&gt;&lt;/span&gt;&lt;br&gt;&lt;br&gt;
+      Weatherby &amp; Recht (2026)&lt;br&gt;
+      &lt;span style="color:#888; font-size:1em;"&gt;It's called silicon sampling, and it's going to ruin public opinion polling. &lt;em&gt;New York Times.&lt;/em&gt;&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="box box-slate"&gt;
+    &lt;div style="font-weight:700; margin-bottom:0.5em;"&gt;The limitations&lt;/div&gt;
+    &lt;div style="line-height:1.9;"&gt;
+      Bisbee, Clinton, Dorff, Kenkel &amp; Larson (2024)&lt;br&gt;
+      &lt;span style="color:#888; font-size:1em;"&gt;Synthetic replacements for human survey data? The perils of large language models. &lt;em&gt;Political Analysis.&lt;/em&gt;&lt;/span&gt;&lt;br&gt;&lt;br&gt;
+      Bollen, Higton &amp; Sands (2025)&lt;br&gt;
+      &lt;span style="color:#888; font-size:1em;"&gt;Nationally representative, locally misaligned: the biases of generative AI in neighborhood perception. &lt;em&gt;Political Analysis.&lt;/em&gt;&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="box box-teal" style="margin-top:0.7em; text-align:center; font-size:0.84em;"&gt;
+  &lt;strong&gt;Next week:&lt;/strong&gt; Limitations and Potential Solutions&lt;br&gt;
+  &lt;span style="color:#888; font-size:1em;"&gt;broska_mixedsubjects_2025 · xie_realism_2026&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:350px; height:175px"&gt;
+![](https://bookscouter.com/blog/wp-content/uploads/2024/03/books-invention-1024x536.png)
+
+---
+
+# Connecting This Week to the Course Arc
+
+&lt;div class="cols-2" style="margin-top:0.5em; font-size:1em;"&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:700; color:#16a085; margin-bottom:0.4em;"&gt;Connects backward to Weeks 1–5&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em;"&gt;&lt;strong&gt;Week 1 (Alignment):&lt;/strong&gt; Lyman et al. showed alignment compresses variance in silicon sampling — now we see why that's a problem&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em;"&gt;&lt;strong&gt;Week 3 (Prompting):&lt;/strong&gt; Bollen et al. show that prompting models to "respond as a local resident" fails — you can't prompt your way to local knowledge&lt;/div&gt;
+    &lt;div class="box box-slate"&gt;&lt;strong&gt;Week 5 (Bias):&lt;/strong&gt; Ashwin et al.'s finding that LLM errors fall on marginalized populations — exactly what Bollen et al. find for local communities&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div style="font-weight:700; color:#c0392b; margin-bottom:0.4em;"&gt;Points forward to coming weeks&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em;"&gt;&lt;strong&gt;Week 7 (Limits and solutions):&lt;/strong&gt; Broska et al. and Xie et al. on what to do when you have synthetic data but need to use it — mixed designs and statistical realism benchmarks&lt;/div&gt;
+    &lt;div class="box box-slate" style="margin-bottom:0.3em;"&gt;&lt;strong&gt;Week 12 (AI &amp; society):&lt;/strong&gt; Weatherby &amp; Recht's concern about the feedback loop and democratic legitimacy of AI-generated opinion data&lt;/div&gt;
+    &lt;div class="box box-slate"&gt;&lt;strong&gt;Throughout:&lt;/strong&gt; Silicon sampling is the case study for why "it looks plausible" is not the same as "it's valid for research"&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;center&gt;
+&lt;div style="width:250px; height:125px"&gt;
+![](https://tse3.mm.bing.net/th/id/OIP.XWCO9UHE8qKHfyt2hPWnmQHaHa?r=0&amp;cb=thfvnextfalcon4&amp;rs=1&amp;pid=ImgDetMain&amp;o=7&amp;rm=3)
+
+---
+
+class: inverse, center, middle
+
+# Questions?
+
+&lt;div style="color:#aaa; font-size:0.9em; margin-top:1em;"&gt;Week 6 · SOCY 1200: Introduction to Using AI to Study Society&lt;/div&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "16:9",
+  "slideNumberFormat": "%current% / %total%"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
